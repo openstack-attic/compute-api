@@ -1,0 +1,8 @@
+{
+    "version": {
+        "status": "BETA",
+        "id": "v1.0",
+        "docURL" : "http://docs.rackspacecloud.com/cs/cs-devguid-v1.0.pdf",
+        "wadl" : "https://servers.api.rackspacecloud.com/v1.0/application.wadl"
+    }
+}

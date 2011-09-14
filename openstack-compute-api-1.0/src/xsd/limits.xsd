@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../xslt/schema.xslt"?>
+
+<!-- (C) 2009 Rackspace Hosting, All Rights Reserved -->
+
+<schema
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:csapi="http://docs.rackspacecloud.com/servers/api/v1.0"
+    xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://docs.rackspacecloud.com/servers/api/v1.0"
+>
+  <annotation>
+    <xsd:appinfo
+        xml:lang="EN"
+        xmlns="http://www.w3.org/1999/xhtml">
+      <xsdxt:title>Limits</xsdxt:title>
+      <xsdxt:link rel="index" href="api.xsd" />
+    </xsd:appinfo>
+    <xsd:documentation
+        xml:lang="EN"
+        xmlns="http://www.w3.org/1999/xhtml">
+      <p>
+        This schema file defines types related to preconfigured
+        limits.  Limits are used to manage the capacity of the API and
+        to prevent abuse.  The API defines two kinds of limits <a
+        href="#type_RateLimit" title="See definition of a
+        RateLimit">RateLimits</a> and <a href="#type_AbsoluteLimit"
+        title="See definition of an
+        AbsoluteLimit">AbsoluteLimits</a>. RateLimits are thresholds
+        that are reset after a certain amount of time passes.
+        Absolute limits are fixed.
+      </p>
+    </xsd:documentation>
+  </annotation>
+
+  <element name="limits" type="csapi:Limits">
+    <annotation>
+    <xsd:documentation
+        xml:lang="EN"
+        xmlns="http://www.w3.org/1999/xhtml">
+      <p>
+        The limits element contains information on both rate and
+        absolute limits.
+      </p>
+    </xsd:documentation>
+    <xsd:appinfo>
+      <xsdxt:samples>
+        <xsdxt:sample>
+          <xsdxt:code type="application/xml" href="../samples/limits.xml" />
+        </xsdxt:sample>
+        <xsdxt:sample>
+          <xsdxt:code type="application/json" href="../samples/limits.json" />
+        </xsdxt:sample>
+      </xsdxt:samples>
+    </xsd:appinfo>
+  </annotation>
+  </element>
+
+  <!-- Complex Types -->
+  <complexType name="Limits">
+    <annotation>
+    <xsd:documentation
+        xml:lang="EN"
+        xmlns="http://www.w3.org/1999/xhtml">
+      <p>
+        A container that holds a list of rate limits, followed by a
+        list of absolute limits.
+      </p>
+    </xsd:documentation>
+    </annotation>
+    <sequence>
+      <element name="rate"      type="csapi:RateLimits">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              The element hold a list of RateLimits.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </element>
+      <element name="absolute"  type="csapi:AbsoluteLimits">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              The element hold a list of AbsoluteLimits.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+
+  <complexType name="RateLimits">
+    <sequence>
+      <element name="limit" type="csapi:RateLimit" minOccurs="1" maxOccurs="unbounded">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              A sequence of RateLimit elements.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+
+  <complexType name="AbsoluteLimits">
+    <sequence>
+      <element name="limit" type="csapi:AbsoluteLimit" minOccurs="1" maxOccurs="unbounded">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              A sequence of AbsoluteLimit elements.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+
+  <complexType name="RateLimit">
+    <annotation>
+    <xsd:documentation
+        xml:lang="EN"
+        xmlns="http://www.w3.org/1999/xhtml">
+      <p>
+        A rate limit is a threshold that is reset after a certain
+        amount of time.  Rate limits are imposed on the HTTP protocol
+        and they are based on an <a href="#type_HTTPVerb" title="See
+        definition of HTTPVerb">HTTPVerb</a> and a regular expression
+        applied to a URI.  For example, the rate limit below&#x2026;
+      </p>
+      <xsdxt:code type="application/xml">
+        <![CDATA[
+        <limit xmlns="http://docs.rackspacecloud.com/servers/api/v1.0"
+               verb="POST"
+               URI="*/servers" regex="^/servers"
+               value="25" remaining="24"
+               unit="DAY" resetTime="1244511839" />
+        ]]>
+      </xsdxt:code>
+      <p>
+        &#x2026;indicates that only 25 posts per day are allowed on
+        any API URI ending in /servers. The 26 post will raise an <a
+        href="faults.xsd#element_overLimit" title="See OverLimit
+        Fault">OverLimitFault</a> until the resetTime arrives.
+      </p>
+      <p>
+        It is important to note that rate limits should be applied in
+        order relative to the verb, going from least to most specific.
+        Thus, although the threshold for POST to */servers, below, is
+        25 per day, one cannot POST to */servers more than 10 times
+        withing a single minute because the rate limits for any POST
+        is 10/min.
+      </p>
+      <xsdxt:code type="application/xml" href="../samples/rateLimits.xml"/>
+    </xsd:documentation>
+    </annotation>
+    <attribute name="verb"      type="csapi:HTTPVerb" use="required">
+      <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          The <a href="#type_HTTPVerb" title="See definition of
+          HTTPVerb">HTTPVerb</a> the limit applies to.
+        </p>
+      </xsd:documentation>
+      </annotation>
+    </attribute>
+    <attribute name="URI"       type="xsd:string" use="required">
+      <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          A human readable wild-card URI.  Here "*" matches any
+          character.
+        </p>
+      </xsd:documentation>
+      </annotation>
+    </attribute>
+    <attribute name="regex"     type="xsd:string" use="required">
+      <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          A machine processable regular expression URI.  The regular
+          expression boundary matcher "^" takes affect after the root
+          URI path.  For example, the regular expression ^/servers would
+          match the bold portion of the following URI: <br />
+          https://servers.api.rackspacecloud.com/v1.0/3542812<strong>/servers</strong>
+        </p>
+      </xsd:documentation>
+      </annotation>
+    </attribute>
+    <attribute name="unit"      type="csapi:RateLimitUnit" use="required">
+      <annotation>
+        <xsd:documentation
+            xml:lang="EN"
+            xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            The unit of time (<a href="#type_RateLimitUnit" title="See
+            definition of RateLimitUnit">RateLimitUnit</a>) associated
+            with the rate value.
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+    <attribute name="value"     type="xsd:int"    use="required">
+      <annotation>
+        <xsd:documentation
+            xml:lang="EN"
+            xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            The rate limit in <a href="#type_RateLimitUnit" title="See
+            definition of RateLimitUnit">RateLimitUnits</a>.
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+    <attribute name="remaining" type="xsd:int"    use="required">
+      <annotation>
+        <xsd:documentation
+            xml:lang="EN"
+            xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            The number of units remaining before an <a
+            href="faults.xsd#element_overLimit" title="See OverLimit
+            Fault">OverLimitFault</a> is raised.
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+    <attribute name="resetTime" type="xsd:long" use="required">
+      <annotation>
+        <xsd:documentation
+            xml:lang="EN"
+            xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            The time in Unix time (the number of seconds since January
+            1, 1970 00:00:00 UTC) when the rate limit will reset.
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+  </complexType>
+
+  <complexType name="AbsoluteLimit">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          Absolute limits are predefined fixed limits.  We define each
+          of these limits as a key/value pair. Please consult the <a
+          href="http://docs.rackspacecloud.com/servers/api/cs-devguide-latest.pdf"
+          title="CS API Spec">API Specification</a> for a list of
+          absolute limits used by the system.
+        </p>
+      </xsd:documentation>
+    </annotation>
+    <attribute name="name"  type="xsd:string" use="required">
+      <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          The name (or key) of the absolute limit.  Currently,
+          the following names are available:
+        </p>
+        <ul>
+          <li>maxTotalRAMSize</li>
+          <li>maxIPGroups</li>
+          <li>maxIPGroupMemebers</li>
+        </ul>
+        <p>
+          This may not be an exhaustive list. Please consult the API
+          Specification.  We do not define absolute limit names as an
+          enumeration in this schema because we may need to impose new
+          limits quickly without the need to modifying the schema
+          document.
+        </p>
+      </xsd:documentation>
+      </annotation>
+    </attribute>
+    <attribute name="value" type="xsd:int" use="required">
+      <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          A value specifying the absolute limit.The name of the
+          absolute limit determines the unit type.  For example, the
+          key maxIPGroups implies that the value is in terms of
+          IPGroups.
+        </p>
+      </xsd:documentation>
+      </annotation>
+    </attribute>
+  </complexType>
+
+  <!-- Simple Types -->
+  <simpleType name="HTTPVerb">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          The HTTP verbs (or methods) on which rate-limits may be
+          enforced.
+        </p>
+      </xsd:documentation>
+    </annotation>
+    <restriction base="xsd:string">
+      <enumeration value="POST" />
+      <enumeration value="PUT" />
+      <enumeration value="GET" />
+      <enumeration value="DELETE" />
+      <enumeration value="HEAD" />
+    </restriction>
+  </simpleType>
+
+  <simpleType name="RateLimitUnit">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          Units of time supported by rate limits.
+        </p>
+      </xsd:documentation>
+    </annotation>
+    <restriction base="xsd:string">
+      <enumeration value="MINUTE"/>
+      <enumeration value="HOUR"/>
+      <enumeration value="DAY"/>
+    </restriction>
+  </simpleType>
+
+</schema>
+

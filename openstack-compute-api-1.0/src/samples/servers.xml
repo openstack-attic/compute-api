@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<servers xmlns="http://docs.rackspacecloud.com/servers/api/v1.0">
+
+  <server id="1234" name="sample-server"
+	  imageId="1" flavorId="1"
+	  status="BUILD" progress="60"
+	  hostId="e4d909c290d0fb1ca068ffaddf22cbd0"
+	  >
+    <metadata>
+      <meta key="Server Label">Web Head 1</meta>
+      <meta key="Image Version">2.1</meta>
+    </metadata>
+    <addresses>
+      <public>
+          <ip addr="67.23.10.132"/>
+          <ip addr="67.23.10.131"/>
+      </public>
+      <private>
+          <ip addr="10.176.42.16"/>
+      </private>
+    </addresses>
+  </server>
+
+  <server id="5678" name="sample-server2"
+	  imageId="1" flavorId="1"
+	  status="ACTIVE"
+	  hostId="9e107d9d372bb6826bd81d3542a419d6">
+    <metadata>
+      <meta key="Server Label">DB 1</meta>
+    </metadata>
+    <addresses>
+      <public>
+          <ip addr="67.23.10.133"/>
+      </public>
+      <private>
+          <ip addr="10.176.42.17"/>
+      </private>
+    </addresses>
+  </server>
+
+</servers>

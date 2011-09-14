@@ -1,0 +1,5 @@
+<overLimit xmlns="http://docs.rackspacecloud.com/servers/api/v1.0" code="413"
+	   retryAfter="2010-08-01T00:00:00Z">
+  <message>OverLimit Retry...</message>
+  <details>Error Details...</details>
+</overLimit>

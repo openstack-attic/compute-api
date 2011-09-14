@@ -1,0 +1,1008 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../xslt/schema.xslt"?>
+
+<!-- (C) 2009 Rackspace Hosting, All Rights Reserved -->
+
+<schema
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:csapi="http://docs.rackspacecloud.com/servers/api/v1.0"
+    xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://docs.rackspacecloud.com/servers/api/v1.0"
+>
+  <annotation>
+    <xsd:appinfo
+        xml:lang="EN"
+        xmlns="http://www.w3.org/1999/xhtml">
+      <xsdxt:title>Servers and Related Types</xsdxt:title>
+      <xsdxt:link rel="index" href="api.xsd" />
+    </xsd:appinfo>
+    <xsd:documentation
+        xml:lang="EN"
+        xmlns="http://www.w3.org/1999/xhtml">
+      <p>
+        This schema file defines a <a href="#type_Server" title="Server Type Definition">
+        Server</a> and all internal entities
+        related to servers including:
+        <a href="#type_Addresses" title="Addresses type definition">Addresses</a>,
+        <a href="#type_ShareIp" title="ShareIp type definition">ShareIPs</a>,
+        <a href="#type_File" title="File type definition">Files</a>, and
+        <a href="#type_Metadata" title="Metadata type definition">MetaData</a>.
+      </p>
+    </xsd:documentation>
+  </annotation>
+
+  <include schemaLocation="common.xsd">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          Common types used by multiple entities and possibly spanning
+          several types of requests.
+        </p>
+      </xsd:documentation>
+    </annotation>
+  </include>
+
+  <element name="server" type="csapi:Server">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          The element defines a server.
+        </p>
+      </xsd:documentation>
+      <xsd:appinfo>
+        <xsdxt:samples>
+          <xsdxt:sample>
+            <xsdxt:code type="application/xml" href="../samples/server.xml" />
+          </xsdxt:sample>
+          <xsdxt:sample>
+            <xsdxt:code type="application/json" href="../samples/server.json" />
+          </xsdxt:sample>
+        </xsdxt:samples>
+      </xsd:appinfo>
+    </annotation>
+  </element>
+
+  <element name="servers" type="csapi:Servers">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          A collection of servers.
+        </p>
+      </xsd:documentation>
+      <xsd:appinfo>
+        <xsdxt:samples>
+          <xsdxt:sample>
+            <xsdxt:code type="application/xml" href="../samples/servers.xml" />
+          </xsdxt:sample>
+          <xsdxt:sample>
+            <xsdxt:code type="application/json" href="../samples/servers.json" />
+          </xsdxt:sample>
+        </xsdxt:samples>
+      </xsd:appinfo>
+    </annotation>
+  </element>
+
+  <element name="addresses" type="csapi:Addresses">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          The element defines list of addresses (public and private).
+        </p>
+      </xsd:documentation>
+      <xsd:appinfo>
+        <xsdxt:samples>
+          <xsdxt:sample>
+            <xsdxt:code type="application/xml" href="../samples/addresses.xml" />
+          </xsdxt:sample>
+          <xsdxt:sample>
+            <xsdxt:code type="application/json" href="../samples/addresses.json" />
+          </xsdxt:sample>
+        </xsdxt:samples>
+      </xsd:appinfo>
+    </annotation>
+  </element>
+
+  <element name="public" type="csapi:AddressList">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          The element defines a list of public addresses.
+        </p>
+      </xsd:documentation>
+      <xsd:appinfo>
+        <xsdxt:samples>
+          <xsdxt:sample>
+            <xsdxt:code type="application/xml" href="../samples/public.xml" />
+          </xsdxt:sample>
+          <xsdxt:sample>
+            <xsdxt:code type="application/json" href="../samples/public.json" />
+          </xsdxt:sample>
+        </xsdxt:samples>
+      </xsd:appinfo>
+    </annotation>
+  </element>
+
+  <element name="private" type="csapi:AddressList">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          The element defines list of private addresses.
+        </p>
+      </xsd:documentation>
+      <xsd:appinfo>
+        <xsdxt:samples>
+          <xsdxt:sample>
+            <xsdxt:code type="application/xml" href="../samples/private.xml" />
+          </xsdxt:sample>
+          <xsdxt:sample>
+            <xsdxt:code type="application/json" href="../samples/private.json" />
+          </xsdxt:sample>
+        </xsdxt:samples>
+      </xsd:appinfo>
+    </annotation>
+  </element>
+
+  <element name="shareIp" type="csapi:ShareIp">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          The element defines request to share a public IP address.
+        </p>
+      </xsd:documentation>
+      <xsd:appinfo>
+        <xsdxt:samples>
+          <xsdxt:sample>
+            <xsdxt:code type="application/xml" href="../samples/shareip.xml" />
+          </xsdxt:sample>
+          <xsdxt:sample>
+            <xsdxt:code type="application/json" href="../samples/shareip.json" />
+          </xsdxt:sample>
+        </xsdxt:samples>
+      </xsd:appinfo>
+    </annotation>
+  </element>
+  
+  <element name="addIp" type="csapi:AddIp">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          The element defines request to add an IP address.
+        </p>
+      </xsd:documentation>
+      <xsd:appinfo>
+        <xsdxt:samples>
+          <xsdxt:sample>
+            <xsdxt:code type="application/xml" href="../samples/addip.xml" />
+          </xsdxt:sample>
+          <xsdxt:sample>
+            <xsdxt:code type="application/json" href="../samples/addip.json" />
+          </xsdxt:sample>
+        </xsdxt:samples>
+      </xsd:appinfo>
+    </annotation>
+  </element>
+  
+   <element name="ip" type="csapi:Address">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          The element defines response that returns an added IP address.
+        </p>
+      </xsd:documentation>
+      <xsd:appinfo>
+        <xsdxt:samples>
+          <xsdxt:sample>
+            <xsdxt:code type="application/xml" href="../samples/address.xml" />
+          </xsdxt:sample>
+          <xsdxt:sample>
+            <xsdxt:code type="application/json" href="../samples/addip.json" />
+          </xsdxt:sample>
+        </xsdxt:samples>
+      </xsd:appinfo>
+    </annotation>
+  </element>
+  
+
+  <!-- Complex Types -->
+  <complexType name="Server">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          A server is a virtual machine instance in the Cloud Servers
+          system.  Note that this complex type defines all elements
+          and attributes as optional because a server instance may
+          take many different forms depending on the operation.  When
+          creating a server, for example, the name, imageId, and
+          flavorId attributes are required.  In addition, optional
+          metadata and personality file elements may be specified:
+        </p>
+        <xsdxt:samples>
+          <xsdxt:sample>
+            <xsdxt:code type="application/xml" href="../samples/server-post-req.xml" />
+          </xsdxt:sample>
+          <xsdxt:sample>
+            <xsdxt:code type="application/json" href="../samples/server-post-req.json" />
+          </xsdxt:sample>
+        </xsdxt:samples>
+        <p>
+          The response to such a crate operation will include the
+          administration password, host ID, and addresses associated
+          with the server:
+        </p>
+        <xsdxt:samples>
+          <xsdxt:sample>
+            <xsdxt:code type="application/xml" href="../samples/server-post-resp.xml" />
+          </xsdxt:sample>
+          <xsdxt:sample>
+            <xsdxt:code type="application/json" href="../samples/server-post-resp.json" />
+          </xsdxt:sample>
+        </xsdxt:samples>
+        <p>
+          When modifying a server only the name and administration
+          password should be specified as these are the only
+          attributes that are modifiable.
+        </p>
+        <xsdxt:samples>
+          <xsdxt:sample>
+            <xsdxt:code type="application/xml" href="../samples/server-put-req.xml" />
+          </xsdxt:sample>
+          <xsdxt:sample>
+            <xsdxt:code type="application/json" href="../samples/server-put-req.json" />
+          </xsdxt:sample>
+        </xsdxt:samples>
+      </xsd:documentation>
+    </annotation>
+    <sequence>
+      <element name="metadata" type="csapi:Metadata" minOccurs="0">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              A collection of meta data items associated with the server.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </element>
+      <element ref="csapi:addresses" minOccurs="0">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              A server's public and private address.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </element>
+      <element name="personality" type="csapi:Personality" minOccurs="0">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              A collection of small <a href="#type_File" title="See
+              definition of file">files</a> used to personalize a new
+              server instance.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </element>
+    </sequence>
+    <attribute type="xsd:string" name="name" use="optional">
+      <annotation>
+        <xsd:documentation
+            xml:lang="EN"
+            xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            The name of the server.
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+    <attribute type="xsd:int"    name="id"   use="optional">
+      <annotation>
+        <xsd:documentation
+            xml:lang="EN"
+            xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            The ID of the server.
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+    <attribute type="xsd:string" name="adminPass" use="optional">
+      <annotation>
+        <xsd:documentation
+            xml:lang="EN"
+            xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            The server's administration password.
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+    <attribute type="xsd:int"    name="imageId" use="optional">
+      <annotation>
+        <xsd:documentation
+            xml:lang="EN"
+            xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            The ID of the image used to create the server.
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+    <attribute type="xsd:int"    name="flavorId" use="optional">
+      <annotation>
+        <xsd:documentation
+            xml:lang="EN"
+            xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            The current server flavor ID.
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+    <attribute type="xsd:string"    name="hostId" use="optional">
+      <annotation>
+        <xsd:documentation
+            xml:lang="EN"
+            xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            A unique ID that identifies the physical host that the VM
+            is running on. This ID is unique <strong>per
+            account</strong> and not globally unique.
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+    <attribute type="csapi:Progress"  name="progress"  use="optional">
+      <annotation>
+        <xsd:documentation
+            xml:lang="EN"
+            xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            The progress of the current server operation.
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+    <attribute type="csapi:ServerStatus" name="status" use="optional">
+      <annotation>
+        <xsd:documentation
+            xml:lang="EN"
+            xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            The current state (or <a href="#type_ServerStatus"
+            title="See definition of ServerStatus">status</a>) of the
+            server.
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+    <attribute type="xsd:int" name="sharedIpGroupId" use="optional">
+      <annotation>
+        <xsd:documentation
+            xml:lang="EN"
+            xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            An ID of the <a href="ipgroup.xsd#type_SharedIpGroup"
+            title="See definition of SharedIPGroup">shared IP
+            group</a> that the server belongs to.
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+  </complexType>
+
+  <complexType name="Servers">
+    <sequence>
+      <element name="server" type="csapi:Server" minOccurs="0" maxOccurs="1000">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              A collection of servers.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+
+  <complexType name="Metadata">
+    <sequence>
+      <element name="meta" type="csapi:MetadataItem" minOccurs="0" maxOccurs="5">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              A collection of metadata items.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+
+  <complexType name="MetadataItem">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          A MetadataItem is simply a name-value pair. The name is
+          specified in the key attribute and the <a
+          href="#type_MetadataValue" title="See definition of
+          MetadataValue">value</a> is included inline.
+        </p>
+        <xsdxt:code type="application/xml">
+          <![CDATA[
+            <meta xmlns="http://docs.rackspacecloud.com/servers/api/v1.0"
+                  key="Server Label">Web Head 1</meta>
+          ]]>
+        </xsdxt:code>
+      </xsd:documentation>
+    </annotation>
+    <simpleContent>
+      <extension base="csapi:MetadataValue">
+	<attribute name="key" type="csapi:MetadataKey" use="required">
+          <annotation>
+            <xsd:documentation
+                xml:lang="EN"
+                xmlns="http://www.w3.org/1999/xhtml">
+              <p>
+                A meta data name-value pair.
+              </p>
+            </xsd:documentation>
+          </annotation>
+        </attribute>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+  <complexType name="Personality">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        A collection of small <a href="#type_File" title="See
+        definition of file">files</a> used to personalize a server
+        instance.
+      </xsd:documentation>
+    </annotation>
+    <sequence>
+      <element name="file" type="csapi:File" minOccurs="0" maxOccurs="5">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              A collection of files.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+
+  <complexType name="File">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          A file is simply a full path along with base64 file
+          content. The name of the file is specified in the path
+          attribute and the <a href="#type_FileContent" title="See
+          definition of FileContent">file content</a> is included
+          inline.
+        </p>
+        <xsdxt:code type="application/xml">
+          <![CDATA[
+          <file xmlns="http://docs.rackspacecloud.com/servers/api/v1.0"
+                path="/etc/banner.txt">
+            ICAgICAgDQoiQSBjbG91ZCBkb2VzIG5vdCBrbm93IHdoeSBpdCBtb3ZlcyBpbiBqdXN0IHN1Y2gg
+            YSBkaXJlY3Rpb24gYW5kIGF0IHN1Y2ggYSBzcGVlZC4uLkl0IGZlZWxzIGFuIGltcHVsc2lvbi4u
+            LnRoaXMgaXMgdGhlIHBsYWNlIHRvIGdvIG5vdy4gQnV0IHRoZSBza3kga25vd3MgdGhlIHJlYXNv
+            bnMgYW5kIHRoZSBwYXR0ZXJucyBiZWhpbmQgYWxsIGNsb3VkcywgYW5kIHlvdSB3aWxsIGtub3cs
+            IHRvbywgd2hlbiB5b3UgbGlmdCB5b3Vyc2VsZiBoaWdoIGVub3VnaCB0byBzZWUgYmV5b25kIGhv
+            cml6b25zLiINCg0KLVJpY2hhcmQgQmFjaA==
+          </file>
+          ]]>
+        </xsdxt:code>
+      </xsd:documentation>
+    </annotation>
+    <simpleContent>
+      <extension base="csapi:FileContent">
+	<attribute name="path"  type="csapi:FileName" use="required">
+          <annotation>
+            <xsd:documentation
+                xml:lang="EN"
+                xmlns="http://www.w3.org/1999/xhtml">
+              <p>
+                Full file path.
+              </p>
+            </xsd:documentation>
+          </annotation>
+        </attribute>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+  <complexType name="Addresses">
+    <sequence>
+      <element ref="csapi:public"  minOccurs="0">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              Public server addresses.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </element>
+      <element ref="csapi:private" minOccurs="0">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              Private server addresses.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+
+  <complexType name="AddressList">
+    <sequence>
+      <element name="ip" type="csapi:Address" minOccurs="0" maxOccurs="unbounded">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              A collection of addresses.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+
+  <complexType name="Address">
+    <attribute name="addr" type="xsd:string" use="required">
+      <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              An IP address.
+            </p>
+          </xsd:documentation>
+        </annotation>
+    </attribute>
+  </complexType>
+
+  <complexType name="ShareIp">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          This type is used to represent a request to share an IP
+          address.
+        </p>
+      </xsd:documentation>
+    </annotation>
+    <attribute name="sharedIpGroupId" type="xsd:int" use="required">
+      <annotation>
+        <xsd:documentation
+            xml:lang="EN"
+            xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            The <a href="ipgroup.xsd#type_SharedIpGroup" title="See
+            definition of SharedIPGroup">shared IP group</a> use to
+            share the address.
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+    <attribute name="configureServer" type="xsd:boolean" default="false">
+      <annotation>
+        <xsd:documentation
+            xml:lang="EN"
+            xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            If true, the server is configured with the new address
+            though the address may not be enabled.
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+  </complexType>
+  
+    <complexType name="AddIp">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          This type is used to represent a request to add an IP
+          address.
+        </p>
+      </xsd:documentation>
+    </annotation>
+    <attribute name="configureServer" type="xsd:boolean" default="false">
+      <annotation>
+        <xsd:documentation
+            xml:lang="EN"
+            xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            If true, the server is added and configured with the new address
+            though the address may not be enabled.
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+  </complexType>
+  
+
+  <!-- Simple Types -->
+  <simpleType name="ServerStatus">
+    <restriction base="xsd:string">
+      <enumeration value="ACTIVE">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              The server is ready to use.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="SUSPENDED">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              The server is in an inactive (suspended) state.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="DELETED">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              The server has been deleted.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="QUEUE_RESIZE">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              A request to perform a <a
+              href="actions.xsd#element_resize" title="See definition
+              of resize">resize action</a> has been received. The
+              operation is pending.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="PREP_RESIZE">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              The server is being prepared to perform the resize
+              operation.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="RESIZE">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              The server is being resized.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="VERIFY_RESIZE">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              The server is waiting for the resize operation to be
+              confirmed so that the original server may be removed.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="RESCUE">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              The server is in rescue mode.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="ERROR">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              The requested operation failed, the server is in an
+              error state.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="BUILD">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              The server is being built.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="RESTORING">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              The server is being restored.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="PASSWORD">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              The server password is being changed.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="REBUILD">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              The server is being rebuilt.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="DELETE_IP">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              A shared IP address is being removed.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="SHARE_IP_NO_CONFIG">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              An IP address is being shared, but not configured.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="SHARE_IP">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              An IP address is being shared, and the server is being
+              configured with the new address.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="ADD_IP_NO_CONFIG">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              An IP address is being added, but not configured.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="ADD_IP">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              An IP address is being added, and the server is being
+              configured with the new address.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
+      
+      <enumeration value="REBOOT">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              The server is going through a <a
+              href="actions.xsd#type_RebootType" title="See definition
+              of RebootType">SOFT</a> reboot.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="HARD_REBOOT">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              The server is going through a <a
+              href="actions.xsd#type_RebootType" title="See definition
+              of RebootType">HARD</a> reboot.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="UNKNOWN">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              The server is in an unknown state.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="QUEUE_MOVE">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              Reserved for future use.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="PREP_MOVE">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              Reserved for future use.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="MOVE">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              Reserved for future use.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="VERIFY_MOVE">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              Reserved for future use.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="PENDING">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              Reserved for future use.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
+    </restriction>
+  </simpleType>
+
+  <simpleType name="FileName">
+    <restriction base="xsd:string">
+      <maxLength value="255" />
+    </restriction>
+  </simpleType>
+
+  <simpleType name="FileContent">
+    <restriction base="xsd:base64Binary">
+      <maxLength value="10240" />
+    </restriction>
+  </simpleType>
+
+  <simpleType name="MetadataKey">
+    <restriction base="xsd:string">
+      <maxLength value="255" />
+    </restriction>
+  </simpleType>
+
+  <simpleType name="MetadataValue">
+    <restriction base="xsd:string">
+      <maxLength value="255" />
+    </restriction>
+  </simpleType>
+</schema>

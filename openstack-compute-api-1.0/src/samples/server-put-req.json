@@ -1,0 +1,7 @@
+{
+  "server" :
+    {
+        "name" : "new-server-test",
+	    "adminPass" : "newPassword"
+    }
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<images xmlns="http://docs.rackspacecloud.com/servers/api/v1.0">
+  <image id="1"   name="CentOS 5.2"
+	 updated="2010-10-10T12:00:00Z"
+	 created="2010-08-10T12:00:00Z"
+	 status="ACTIVE"
+	 />
+  <image id="743" name="My Server Backup"
+	 serverId="12"
+	 updated="2010-10-10T12:00:00Z"
+	 created="2010-08-10T12:00:00Z"
+	 status="SAVING" progress="80"
+	 />
+</images>

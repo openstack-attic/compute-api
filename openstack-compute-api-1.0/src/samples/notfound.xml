@@ -1,0 +1,4 @@
+<itemNotFound xmlns="http://docs.rackspacecloud.com/servers/api/v1.0" code="404">
+  <message>Not Found</message>
+  <details>Error Details...</details>
+</itemNotFound>

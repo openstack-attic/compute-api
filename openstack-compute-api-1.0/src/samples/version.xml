@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<version xmlns="http://docs.rackspacecloud.com/servers/api/v1.0"
+	 id="v1.0"
+	 status="BETA"
+	 docURL="http://docs.rackspacecloud.com/cs/cs-devguid-v1.0.pdf"
+	 wadl="https://servers.api.rackspacecloud.com/v1.0/application.wadl"/>

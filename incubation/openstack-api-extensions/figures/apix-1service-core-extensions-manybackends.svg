@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   viewBox="123 99 336 225"
+   width="28pc"
+   height="225pt"
+   id="svg2"
+   inkscape:version="0.48.0 r9654"
+   sodipodi:docname="apix-1service-core-extensions-manybackends.png">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1557"
+     inkscape:window-height="753"
+     id="namedview153"
+     showgrid="false"
+     inkscape:zoom="0.83911111"
+     inkscape:cx="210"
+     inkscape:cy="160.07571"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg2" />
+  <metadata
+     id="metadata4">
+    <dc:date>2011-05-12 16:35Z</dc:date>
+    <!-- Produced by OmniGraffle Professional 5.2.3 -->
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs6">
+    <filter
+       id="Shadow"
+       filterUnits="userSpaceOnUse">
+      <feGaussianBlur
+         in="SourceAlpha"
+         result="blur"
+         stdDeviation="3.488"
+         id="feGaussianBlur9" />
+      <feOffset
+         in="blur"
+         result="offset"
+         dx="0"
+         dy="4"
+         id="feOffset11" />
+      <feFlood
+         flood-color="#7e7e7e"
+         flood-opacity=".75"
+         result="flood"
+         id="feFlood13" />
+      <feComposite
+         in="flood"
+         in2="offset"
+         operator="in"
+         id="feComposite15" />
+    </filter>
+    <filter
+       id="Shadow_2"
+       filterUnits="userSpaceOnUse">
+      <feGaussianBlur
+         in="SourceAlpha"
+         result="blur"
+         stdDeviation="3.488"
+         id="feGaussianBlur18" />
+      <feOffset
+         in="blur"
+         result="offset"
+         dx="0"
+         dy="4"
+         id="feOffset20" />
+      <feFlood
+         flood-color="black"
+         flood-opacity=".75"
+         result="flood"
+         id="feFlood22" />
+      <feComposite
+         in="flood"
+         in2="offset"
+         operator="in"
+         id="feComposite24" />
+    </filter>
+    <font-face
+       font-family="Helvetica"
+       font-size="36"
+       units-per-em="1000"
+       underline-position="-75.683594"
+       underline-thickness="49.316406"
+       slope="0"
+       x-height="522.94922"
+       cap-height="717.28516"
+       ascent="770.01953"
+       descent="-229.98047"
+       font-weight="500"
+       id="font-face26">
+      <font-face-src
+         id="font-face-src28">
+        <font-face-name
+           name="Helvetica"
+           id="font-face-name30" />
+      </font-face-src>
+    </font-face>
+    <font-face
+       font-family="Helvetica"
+       font-size="24"
+       units-per-em="1000"
+       underline-position="-75.683594"
+       underline-thickness="49.316406"
+       slope="-500"
+       x-height="522.94922"
+       cap-height="717.28516"
+       ascent="770.01953"
+       descent="-229.98047"
+       font-style="italic"
+       font-weight="500"
+       id="font-face32">
+      <font-face-src
+         id="font-face-src34">
+        <font-face-name
+           name="Helvetica-Oblique"
+           id="font-face-name36" />
+      </font-face-src>
+    </font-face>
+    <marker
+       orient="auto"
+       overflow="visible"
+       markerUnits="strokeWidth"
+       id="FilledArrow_Marker"
+       viewBox="-1 -4 10 8"
+       markerWidth="10"
+       markerHeight="8"
+       color="black">
+      <g
+         id="g39">
+        <path
+           d="M 8 0 L 0 -3 L 0 3 Z"
+           fill="currentColor"
+           stroke="currentColor"
+           stroke-width="1"
+           id="path41" />
+      </g>
+    </marker>
+    <font-face
+       font-family="Helvetica"
+       font-size="9"
+       units-per-em="1000"
+       underline-position="-75.683594"
+       underline-thickness="49.316406"
+       slope="0"
+       x-height="522.94922"
+       cap-height="717.28516"
+       ascent="770.01953"
+       descent="-229.98047"
+       font-weight="500"
+       id="font-face43">
+      <font-face-src
+         id="font-face-src45">
+        <font-face-name
+           name="Helvetica"
+           id="font-face-name47" />
+      </font-face-src>
+    </font-face>
+    <marker
+       orient="auto"
+       overflow="visible"
+       markerUnits="strokeWidth"
+       id="FilledArrow_Marker_2"
+       viewBox="-1 -4 10 8"
+       markerWidth="10"
+       markerHeight="8"
+       color="#9ff">
+      <g
+         id="g50">
+        <path
+           d="M 8 0 L 0 -3 L 0 3 Z"
+           fill="currentColor"
+           stroke="currentColor"
+           stroke-width="1"
+           id="path52" />
+      </g>
+    </marker>
+    <marker
+       orient="auto"
+       overflow="visible"
+       markerUnits="strokeWidth"
+       id="FilledArrow_Marker_3"
+       viewBox="-1 -4 10 8"
+       markerWidth="10"
+       markerHeight="8"
+       color="#9f9">
+      <g
+         id="g55">
+        <path
+           d="M 8 0 L 0 -3 L 0 3 Z"
+           fill="currentColor"
+           stroke="currentColor"
+           stroke-width="1"
+           id="path57" />
+      </g>
+    </marker>
+  </defs>
+  <g
+     stroke="none"
+     stroke-opacity="1"
+     stroke-dasharray="none"
+     fill="none"
+     fill-opacity="1"
+     id="g59">
+    <title
+       id="title61">1service-core-extensions-manybackends</title>
+    <rect
+       fill="white"
+       width="576"
+       height="733"
+       id="rect63" />
+    <g
+       id="g65">
+      <title
+         id="title67">Layer 1</title>
+      <g
+         id="g69">
+        <use
+           xlink:href="#id348_Graphic"
+           filter="url(#Shadow)"
+           id="use71" />
+        <use
+           xlink:href="#id357_Graphic"
+           filter="url(#Shadow_2)"
+           id="use73" />
+        <use
+           xlink:href="#id358_Graphic"
+           filter="url(#Shadow_2)"
+           id="use75" />
+        <use
+           xlink:href="#id359_Graphic"
+           filter="url(#Shadow_2)"
+           id="use77" />
+        <use
+           xlink:href="#id360_Graphic"
+           filter="url(#Shadow_2)"
+           id="use79" />
+        <use
+           xlink:href="#id361_Graphic"
+           filter="url(#Shadow_2)"
+           id="use81" />
+      </g>
+      <g
+         id="id348_Graphic">
+        <rect
+           x="197.5"
+           y="115"
+           width="142"
+           height="100"
+           fill="red"
+           fill-opacity=".15000001"
+           id="rect84" />
+        <rect
+           x="197.5"
+           y="115"
+           width="142"
+           height="100"
+           stroke="black"
+           stroke-linecap="round"
+           stroke-linejoin="round"
+           stroke-width="1"
+           id="rect86" />
+      </g>
+      <text
+         transform="translate(214 143.5)"
+         fill="black"
+         id="text88">
+        <tspan
+           font-family="Helvetica"
+           font-size="36"
+           font-weight="500"
+           x="0"
+           y="35"
+           textLength="108.08789"
+           id="tspan90">LBaaS</tspan>
+      </text>
+      <rect
+         x="134"
+         y="274"
+         width="64"
+         height="39"
+         stroke="#33c"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-width="1"
+         id="rect92" />
+      <text
+         transform="translate(139 279)"
+         fill="black"
+         id="text94">
+        <tspan
+           font-family="Helvetica"
+           font-size="24"
+           font-style="italic"
+           font-weight="500"
+           x="0"
+           y="23"
+           textLength="53.35547"
+           id="tspan96">Zeus</tspan>
+      </text>
+      <rect
+         x="229.25"
+         y="274"
+         width="80"
+         height="39"
+         stroke="#33c"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-width="1"
+         id="rect98" />
+      <text
+         transform="translate(234.25 279)"
+         fill="black"
+         id="text100">
+        <tspan
+           font-family="Helvetica"
+           font-size="24"
+           font-style="italic"
+           font-weight="500"
+           x="0"
+           y="23"
+           textLength="69.398438"
+           id="tspan102">Pound</tspan>
+      </text>
+      <rect
+         x="343"
+         y="274"
+         width="105"
+         height="39"
+         stroke="#33c"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-width="1"
+         id="rect104" />
+      <text
+         transform="translate(348 279)"
+         fill="black"
+         id="text106">
+        <tspan
+           font-family="Helvetica"
+           font-size="24"
+           font-style="italic"
+           font-weight="500"
+           x="0"
+           y="23"
+           textLength="94.6875"
+           id="tspan108">HAProxy</tspan>
+      </text>
+      <line
+         x1="228.3017"
+         y1="215.39087"
+         x2="188.03308"
+         y2="265.86987"
+         marker-end="url(#FilledArrow_Marker)"
+         stroke="black"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-width="1"
+         id="line110" />
+      <line
+         x1="268.80774"
+         y1="215.49998"
+         x2="269.10083"
+         y2="263.60019"
+         marker-end="url(#FilledArrow_Marker)"
+         stroke="black"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-width="1"
+         id="line112" />
+      <line
+         x1="309.87234"
+         y1="215.38643"
+         x2="351.7176"
+         y2="266.34879"
+         marker-end="url(#FilledArrow_Marker)"
+         stroke="black"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-width="1"
+         id="line114" />
+      <g
+         id="id357_Graphic">
+        <rect
+           x="198"
+           y="116"
+           width="71.80774"
+           height="22"
+           fill="#9ff"
+           id="rect117" />
+        <rect
+           x="198"
+           y="116"
+           width="71.80774"
+           height="22"
+           stroke="black"
+           stroke-linecap="round"
+           stroke-linejoin="round"
+           stroke-width="1"
+           id="rect119" />
+        <text
+           transform="translate(203 121.5)"
+           fill="black"
+           id="text121">
+          <tspan
+             font-family="Helvetica"
+             font-size="9"
+             font-weight="500"
+             fill="black"
+             x="21.150208"
+             y="9"
+             textLength="19.507324"
+             id="tspan123">Core</tspan>
+        </text>
+      </g>
+      <g
+         id="id358_Graphic">
+        <rect
+           x="270.5"
+           y="115.5"
+           width="69"
+           height="22"
+           fill="#9f9"
+           id="rect126" />
+        <rect
+           x="270.5"
+           y="115.5"
+           width="69"
+           height="22"
+           stroke="black"
+           stroke-linecap="round"
+           stroke-linejoin="round"
+           stroke-width="1"
+           id="rect128" />
+        <text
+           transform="translate(275.5 121)"
+           fill="black"
+           id="text130">
+          <tspan
+             font-family="Helvetica"
+             font-size="9"
+             font-weight="500"
+             fill="black"
+             x="7.487793"
+             y="9"
+             textLength="44.024414"
+             id="tspan132">Extensions</tspan>
+        </text>
+      </g>
+      <g
+         id="id359_Graphic">
+        <rect
+           x="214.5"
+           y="191.5"
+           width="28.59613"
+           height="22"
+           fill="#9f9"
+           id="rect135" />
+        <rect
+           x="214.5"
+           y="191.5"
+           width="28.59613"
+           height="22"
+           stroke="black"
+           stroke-linecap="round"
+           stroke-linejoin="round"
+           stroke-width="1"
+           id="rect137" />
+      </g>
+      <g
+         id="id360_Graphic">
+        <rect
+           x="254.20195"
+           y="191.5"
+           width="28.596085"
+           height="22"
+           fill="#c96"
+           id="rect140" />
+        <rect
+           x="254.20195"
+           y="191.5"
+           width="28.596085"
+           height="22"
+           stroke="black"
+           stroke-linecap="round"
+           stroke-linejoin="round"
+           stroke-width="1"
+           id="rect142" />
+      </g>
+      <g
+         id="id361_Graphic">
+        <rect
+           x="296.5"
+           y="191.5"
+           width="28.59607"
+           height="22"
+           fill="#fc9"
+           id="rect145" />
+        <rect
+           x="296.5"
+           y="191.5"
+           width="28.59607"
+           height="22"
+           stroke="black"
+           stroke-linecap="round"
+           stroke-linejoin="round"
+           stroke-width="1"
+           id="rect147" />
+      </g>
+      <line
+         x1="227.5"
+         y1="139.5"
+         x2="228.35719"
+         y2="181.10223"
+         marker-end="url(#FilledArrow_Marker_2)"
+         stroke="#9ff"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-width="1"
+         id="line149" />
+      <line
+         x1="293.61673"
+         y1="137.85309"
+         x2="247.1909"
+         y2="184.15585"
+         marker-end="url(#FilledArrow_Marker_3)"
+         stroke="#9f9"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-width="1"
+         id="line151" />
+    </g>
+  </g>
+</svg>

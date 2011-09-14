@@ -1,0 +1,4 @@
+<badRequest xmlns="http://docs.rackspacecloud.com/servers/api/v1.0" code="400">
+  <message>Bad Request</message>
+  <details>Error Details...</details>
+</badRequest>

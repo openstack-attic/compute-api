@@ -1,0 +1,4 @@
+<serverCapacityUnavailable xmlns="http://docs.rackspacecloud.com/servers/api/v1.0" code="503">
+  <message>Server Capacity Unavailable</message>
+  <details>Error Details...</details>
+</serverCapacityUnavailable>

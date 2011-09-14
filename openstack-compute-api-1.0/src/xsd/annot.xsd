@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../xslt/schema.xslt"?>
+
+<!-- (C) 2009 Rackspace Hosting, All Rights Reserved -->
+
+
+<schema
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://docs.rackspacecloud.com/xsd-ext/v1.0"
+>
+  <annotation>
+    <xsd:appinfo>
+      <xsdxt:title>TRC Annotations</xsdxt:title>
+    </xsd:appinfo>
+    <xsd:documentation
+        xml:lang="EN"
+        xmlns="http://www.w3.org/1999/xhtml">
+      <p>
+        The following is a list of custom annotations that are used in
+        XML Schema descriptions for version 1.0 of the Cloud Servers
+        API.  Each annotation is defined as a single XML element in
+        the <a href="http://docs.rackspacecloud.com/xsd-ext/v1.0"
+        title="TRC Annotation Schema">
+        http://docs.rackspacecloud.com/xsd-ext/v1.0</a> namespace.
+        These elements can be added as annotations via the appinfo
+        schema tag.
+      </p>
+      <p>
+        Annotations allow useful meta-data to be associated with the
+        schema types. For example, a root element of a particular type
+        can be associated with a sample document that illustrates its
+        usage.  Annotations also provide hints when converting schema
+        into presentation markups such as XHTML, Docbook, and Open
+        Document Format.
+      </p>
+      <p>
+        Aside from custom elements, schema types in the Cloud Servers
+        API are also annotated with documentation tags.  These tags
+        always contain text in XHTML 1.1 block elements.
+      </p>
+    </xsd:documentation>
+  </annotation>
+
+  <!-- Imports -->
+  <xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/xml.xsd">
+    <xsd:annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          Get access to the xml: attribute groups for xml:lang needed
+          by the Documentation type.
+        </p>
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:import>
+
+  <!-- Meta-Annotations -->
+  <element name="annotation" type="xsdxt:Annotation">
+    <annotation>
+      <xsd:appinfo>
+        <xsdxt:annotation type="ELEMENT"/>
+      </xsd:appinfo>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          This is a meta-annotation, it is only used only when
+          defining another annotation and provides information about
+          the annotation.
+        </p>
+      </xsd:documentation>
+    </annotation>
+  </element>
+
+  <!-- Documenation Annotations -->
+  <element name="code" type="xsdxt:Code">
+    <annotation>
+      <xsd:appinfo>
+        <xsdxt:annotation type="DOCUMENTATION"/>
+      </xsd:appinfo>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          Used to embed a fragment of code in the documentation text.
+        </p>
+      </xsd:documentation>
+    </annotation>
+  </element>
+
+  <!-- Schema Annotations -->
+  <element name="title" type="xsd:string">
+    <annotation>
+      <xsd:appinfo>
+        <xsdxt:annotation type="SCHEMA"/>
+      </xsd:appinfo>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          Defines a text based title for the current schema document.
+          The title is used when converting the schema to presentation
+          markup.
+        </p>
+      </xsd:documentation>
+    </annotation>
+  </element>
+
+  <element name="head" type="xsdxt:Template">
+    <annotation>
+      <xsd:appinfo>
+        <xsdxt:annotation type="SCHEMA"/>
+      </xsd:appinfo>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          This tag is a template tag.  It places content as is in a
+          document when converting the schema to some presentation
+          type. The presentation type is specified with the type
+          attribute. The contents of head should be well-formed
+          XML. This places content in the document header (think
+          html:head) when converting the schema to presentation
+          markup. See the header tag to place content at the top of
+          the body content.
+        </p>
+      </xsd:documentation>
+    </annotation>
+  </element>
+
+  <element name="header" type="xsdxt:Template">
+    <annotation>
+      <xsd:appinfo>
+        <xsdxt:annotation type="SCHEMA"/>
+      </xsd:appinfo>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          This tag is a template tag.  It places content as is in a
+          document when converting the schema to some presentation
+          type. The presentation type is specified with the type
+          attribute. The contents of header should be well-formed
+          XML. This places content on the top of the presentation
+          markup -- for XHTML this places content right after the
+          html:body tag. See the head tag to place content in the
+          document header.
+        </p>
+      </xsd:documentation>
+    </annotation>
+  </element>
+
+  <element name="footer" type="xsdxt:Template">
+    <annotation>
+      <xsd:appinfo>
+        <xsdxt:annotation type="SCHEMA"/>
+      </xsd:appinfo>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          This tag is a template tag.  It places content as is in a
+          document when converting the schema to some presentation
+          type. The presentation type is specified with the type
+          attribute. The contents of footer should be well-formed
+          XML. This places content on the bottom of the presentation
+          markup -- for XHTML this places content before closing the
+          html:body tag. See the header tag to place content in the
+          beginning of the document.
+        </p>
+      </xsd:documentation>
+    </annotation>
+  </element>
+
+  <element name="samples" type="xsdxt:Samples">
+    <annotation>
+      <xsd:appinfo>
+        <xsdxt:annotation type="ELEMENT DOCUMENTATION"/>
+      </xsd:appinfo>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          Samples provides a means of displaying several versions of
+          the same code sample. We can do this to display the same
+          sample in various formats: XML, JSON.  Each sample can
+          contain an optional description and a code element.
+        </p>
+      </xsd:documentation>
+    </annotation>
+  </element>
+
+  <element name="link" type="xsdxt:Link">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          The link annotation establishes one or more relationships
+          from a particular Schema document to another file.  This is
+          useful for establishing links between pages when converting
+          to a presentation markup.
+        </p>
+      </xsd:documentation>
+      <xsd:appinfo>
+        <xsdxt:annotation type="SCHEMA"/>
+        <xsdxt:samples>
+          <xsdxt:sample title="Forward Links">
+            <xsdxt:description xmlns="http://www.w3.org/1999/xhtml">
+              <p>
+                In this example, we note that the schema file is indexed
+                by file index.xsd. Also, there is an alternative version
+                of this file (schema.rnc) in RelaxNG Compact Syntax.
+              </p>
+            </xsdxt:description>
+            <xsdxt:code type="application/xml">
+            <![CDATA[
+            <schema elementFormDefault="qualified" attributeFormDefault="unqualified"
+                    xmlns="http://www.w3.org/2001/XMLSchema"
+                    xmlns:csapi="http://docs.rackspacecloud.com/xsd-ext/v1.0"
+                    targetNamespace="http://docs.rackspacecloud.com/xsd-ext/v1.0">
+              <annotation>
+                <appinfo>
+                  <xsdxt:link rel="index" href="index.xsd" />
+                  <xsdxt:link rel="alternate" type="application/relax-ng-compact-syntax"
+                              href="schema.rnc" />
+                </appinfo>
+              </annotation>
+              ...
+            </schema>
+            ]]>
+            </xsdxt:code>
+          </xsdxt:sample>
+          <xsdxt:sample title="Reverse Links">
+            <xsdxt:description xmlns="http://www.w3.org/1999/xhtml">
+              <p>
+                Here we denote a reverse link.  We are saying this file
+                serves as an index to file schema.xsd.
+              </p>
+            </xsdxt:description>
+            <xsdxt:code type="application/xml">
+            <![CDATA[
+            <schema elementFormDefault="qualified" attributeFormDefault="unqualified"
+                    xmlns="http://www.w3.org/2001/XMLSchema"
+                    xmlns:csapi="http://docs.rackspacecloud.com/xsd-ext/v1.0"
+                    targetNamespace="http://docs.rackspacecloud.com/xsd-ext/v1.0">
+              <annotation>
+                <appinfo>
+                  <xsdxt:link rev="index" href="schema.xsd" />
+                </appinfo>
+              </annotation>
+              ...
+            </schema>
+            ]]>
+            </xsdxt:code>
+          </xsdxt:sample>
+        </xsdxt:samples>
+      </xsd:appinfo>
+    </annotation>
+  </element>
+
+  <!-- Complex Types -->
+  <complexType name="Annotation">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          This type provides information about a custom annotation.
+        </p>
+      </xsd:documentation>
+    </annotation>
+    <attribute type="xsdxt:AnnotationTypes" name="type" use="required" />
+  </complexType>
+
+  <complexType name="Documentation" mixed="true">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          Used to capture documentation usually as XHTML.
+        </p>
+      </xsd:documentation>
+    </annotation>
+    <sequence minOccurs="0" maxOccurs="unbounded">
+      <any processContents="lax"/>
+    </sequence>
+    <attribute ref="xml:lang" use="optional" />
+  </complexType>
+
+  <complexType name="Template">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          A template places content as is in a document when
+          converting the schema to some presentation type. The
+          presentation type is specified with the type attribute.
+        </p>
+      </xsd:documentation>
+    </annotation>
+    <sequence minOccurs="1" maxOccurs="unbounded">
+      <any processContents="lax"/>
+    </sequence>
+    <attribute type="xsd:string" name="type" use="optional" default="application/xhtml+xml">
+      <annotation>
+        <xsd:documentation
+            xml:lang="EN"
+            xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            Language defines the type of content in the template.  It
+            should be a mime-type. XHTML is assumed if type is not
+            specified.
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+  </complexType>
+
+  <complexType name="Sample">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          Used to provide example instances of schema elements.
+        </p>
+      </xsd:documentation>
+    </annotation>
+    <sequence>
+      <element name="description" type="xsdxt:Documentation"
+               minOccurs="0">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              An optional description or summary of the example.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </element>
+      <element ref="xsdxt:code">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              The example code.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </element>
+    </sequence>
+    <attribute type="xsd:string" name="title" use="optional">
+      <annotation>
+        <xsd:documentation
+            xml:lang="EN"
+            xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            A descriptive title for the sample, the type attribute may
+            be used as a title if this attribute is not specified.
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+  </complexType>
+
+  <complexType name="Samples">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          A collection of samples.
+        </p>
+      </xsd:documentation>
+    </annotation>
+    <sequence>
+      <element name="description" type="xsdxt:Documentation"
+               minOccurs="0">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              An optional description or summary of the example.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </element>
+      <element name="sample" type="xsdxt:Sample" minOccurs="1"
+               maxOccurs="unbounded">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              A list of samples to display.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+
+  <complexType name="Code">
+    <annotation>
+      <xsd:documentation xml:lang="EN"
+                         xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          Source code that may be provided inline or that may be
+          referenced via an href attribute.
+        </p>
+      </xsd:documentation>
+    </annotation>
+    <simpleContent>
+      <extension base="xsd:string">
+        <attribute type="xsd:anyURI" name="href" use="optional">
+          <annotation>
+            <xsd:documentation
+                xml:lang="EN"
+                xmlns="http://www.w3.org/1999/xhtml">
+              <p>
+                This provides a link to the source code.  If both the
+                in-line text and the href parameter are specified,
+                in-line text will be ignored.
+              </p>
+            </xsd:documentation>
+          </annotation>
+        </attribute>
+        <attribute type="xsd:string" name="type" use="optional" default="application/xml">
+          <annotation>
+            <xsd:documentation
+                xml:lang="EN"
+                xmlns="http://www.w3.org/1999/xhtml">
+              <p>
+                A mime type describing the source code.
+              </p>
+            </xsd:documentation>
+          </annotation>
+        </attribute>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+  <complexType name="Link">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          Used to establish relationships between documents.
+        </p>
+      </xsd:documentation>
+    </annotation>
+    <attribute type="xsd:anyURI" name="href" use="required"/>
+    <attribute type="xsd:QName" name="qname" use="optional">
+      <annotation>
+        <xsd:documentation
+            xml:lang="EN"
+            xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            When linking to an XML document, denotes the QName of the
+            element to link to.  This is usually used when linking
+            with foreign schema elements.
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+    <attribute type="xsd:string" name="type" use="optional">
+      <annotation>
+        <xsd:documentation
+            xml:lang="EN"
+            xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            A mime type describing the type of link.
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+    <attribute type="xsdxt:LinkRelationships" name="rel" use="optional">
+      <annotation>
+        <xsd:documentation
+            xml:lang="EN"
+            xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            The relationships from the current document to the
+            document pointed to by the href attribute.
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+    <attribute type="xsdxt:LinkRelationships" name="rev" use="optional">
+      <annotation>
+        <xsd:documentation
+            xml:lang="EN"
+            xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            The relationships from the document pointed to by the href
+            attribute to the current document.
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+  </complexType>
+
+  <!-- Simple Types -->
+  <simpleType name="LinkRelationships">
+      <annotation>
+        <xsd:documentation
+            xml:lang="EN"
+            xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            A list of document relationships separated by whitespace.
+          </p>
+        </xsd:documentation>
+      </annotation>
+    <list itemType="xsdxt:LinkRelationship"/>
+  </simpleType>
+
+  <simpleType name="LinkRelationship">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          A document relationship used in link elements. In order to
+          remain flexible, this is <strong>not</strong> a finite
+          enumeration. In practice, however, only three relationships
+          are currently supported: <em>alternate</em>, <em>index</em>,
+          and <em>schema</em>. The <em>alternate</em> forward
+          relationship denotes that the linked document can be used as
+          an alternative to the current document. The <em>index</em>
+          forward relationship that the link document is an index to
+          the current document. Finally, the <em>schema</em>
+          relationship denotes that a schema element from the link
+          document is used in the current document.
+        </p>
+      </xsd:documentation>
+    </annotation>
+    <restriction base="xsd:NCName" />
+  </simpleType>
+
+  <simpleType name="AnnotationTypes">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          A list of annotation types separated by whitespace.
+        </p>
+      </xsd:documentation>
+    </annotation>
+    <list itemType="xsdxt:AnnotationType"/>
+  </simpleType>
+
+  <simpleType name="AnnotationType">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          This enumeration describes where a custom annotation can be
+          applied.
+        </p>
+      </xsd:documentation>
+    </annotation>
+    <restriction base="xsd:string">
+      <enumeration value="SCHEMA">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              The annotation can be applied to the schema tag.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="ELEMENT">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              The annotation can be applied to the element tag.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="DOCUMENTATION">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              The annotation can be embedded in the documentation tag
+              of any schema element.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="ANY">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              The annotation can be applied to any element in the XML
+              Schema namespace.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
+    </restriction>
+  </simpleType>
+</schema>

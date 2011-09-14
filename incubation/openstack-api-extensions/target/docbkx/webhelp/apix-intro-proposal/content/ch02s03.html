@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:exsl="http://exslt.org/common" xmlns:ng="http://docbook.org/docbook-ng"><head>
+<meta http-equiv="X-UA-Compatible" content="IE=7"/>
+<title>2.3. Extensions and Versions</title><meta name="generator" content="DocBook XSL-NS Stylesheets V1.76.1"/><link rel="home" href="index.html" title="OpenStack API Extensions"/><link rel="up" href="Background.html" title="Chapter 2. Background"/><link rel="prev" href="ch02s02.html" title="2.2. Relationship to OpenGL"/><link rel="next" href="ch02s04.html" title="2.4. Versioning Extensions"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><script type="text/javascript">
+            //The id for tree cookie
+            var treeCookieId = "treeview-324";
+            var language = "en";
+            var w = new Object();
+            //Localization
+            txt_filesfound = 'Results';
+            txt_enter_at_least_1_char = "You must enter at least one character.";
+            txt_browser_not_supported = "Your browser is not supported. Use of Mozilla Firefox is recommended.";
+            txt_please_wait = "Please wait. Search in progress...";
+            txt_results_for = "Results for: ";
+        </script><style type="text/css">
+            input {
+            margin-bottom: 5px;
+            margin-top: 2px;
+            }
+
+            .folder {
+            display: block;
+            height: 22px;
+            padding-left: 20px;
+            background: transparent url(../common/jquery/treeview/images/folder.gif) 0 0px no-repeat;
+            }
+            
+        </style><link rel="shortcut icon" href="../favicon.ico" type="image/x-icon"/><link rel="stylesheet" type="text/css" href="../common/css/positioning.css"/><!--[if IE]>
+	<link rel="stylesheet" type="text/css" href="../common/css/ie.css"/>
+	<![endif]--><link rel="stylesheet" type="text/css" href="../common/jquery/theme-redmond/jquery-ui-1.8.2.custom.css"/><link rel="stylesheet" type="text/css" href="../common/jquery/treeview/jquery.treeview.css"/><script type="text/javascript" src="../common/jquery/jquery-1.4.2.min.js"><!----></script><script type="text/javascript" src="../common/jquery/jquery-ui-1.8.2.custom.min.js"><!----></script><script type="text/javascript" src="../common/jquery/jquery.cookie.js"><!----></script><script type="text/javascript" src="../common/jquery/treeview/jquery.treeview.min.js"><!----></script><script type="text/javascript" src="search/htmlFileList.js"><!----></script><script type="text/javascript" src="search/htmlFileInfoList.js"><!----></script><script type="text/javascript" src="search/nwSearchFnt.js"><!----></script><script type="text/javascript" src="search/stemmers/en_stemmer.js"><!--//make this scalable to other languages as well.--></script><script type="text/javascript" src="search/index-1.js"><!----></script><script type="text/javascript" src="search/index-2.js"><!----></script><script type="text/javascript" src="search/index-3.js"><!----></script><script type="text/javascript">
+	    var _gaq = _gaq || [];
+	    _gaq.push(['_setAccount', 'UA-17511903-6']);
+	  </script><script type="text/javascript" src="../common/ga.js"><!----></script></head><body><div id="header"><a onclick="_gaq.push(['_trackEvent', 'Header', 'logo', 'click', 1]);" target="_blank" href="http://www.openstack.org"><img src="../common/images/openstack-logo.png" alt="OpenStack Documentation" width="157" height="47"/></a><p class="breadcrumbs"><a href="http://docs.openstack.org/">OpenStack Manuals</a><a href="index.html">OpenStack API Extensions</a></p><h1>2.3. Extensions and Versions</h1><div id="navheader" align="right"><!----><table class="navLinks"><tr><td><a id="showHideButton" onclick="showHideToc(); _gaq.push(['_trackEvent', 'Header', 'show/hide', 'click', 1]);" class="pointLeft" title="Hide TOC tree">Sidebar
+                            </a></td><td><a accesskey="p" class="navLinkPrevious" onclick="_gaq.push(['_trackEvent', 'Header', 'prevLink', 'click', 1]);" tabindex="5" href="ch02s02.html">Prev</a>
+				      |
+                                        <a accesskey="u" class="navLinkUp" onclick="_gaq.push(['_trackEvent', 'Header', 'upLink', 'click', 1]);" tabindex="5" href="Background.html">Up</a>
+				  |
+                                    <a accesskey="n" class="navLinkNext" onclick="_gaq.push(['_trackEvent', 'Header', 'nextLink', 'click', 1]);" tabindex="5" href="ch02s04.html">Next</a></td></tr></table></div></div><div id="content"><div class="statustext">DRAFT -  DRAFT -  DRAFT -  DRAFT -  DRAFT -  DRAFT - </div><div class="section" title="2.3. Extensions and Versions"><div xmlns="" class="titlepage"><div><div><h2 xmlns="http://www.w3.org/1999/xhtml" class="title" style="clear: both"><a id="d6e84"/>2.3. Extensions and Versions</h2></div></div></div><p> Extensions are always interpreted in relation to a version of the core API. In
+                other words, from a client's perspective, an extension modifies <span class="emphasis"><em>a
+                    particular version</em></span> of the core API in some way. In reality, an
+                extension may be applicable to several versions of an API at once. For example, a
+                particular extension may continue to be available as a core API moves from one
+                version to another. In fact, different implementations may decide to include support
+                for an extension at different versions. As explained in 
+                , 
+                when an extension is defined, the minimal version of the core API that is required
+                to run the extension is specified; implementers are free to support the extension in
+                that version or in a later version of the core. Note, however, that because the
+                extension mechanism allows for promotion, an extension in one version of a core API
+                may become a standard feature in a later version. </p><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../common/images/admon/note.png"/></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>
+                    As always, implementers are not required to
+                    support an extension unless it is promoted to the
+                    core.
+                </p></td></tr></table></div><p> Because several versions of the core API may be supported simultaneously, and
+                because each version may offer support for a different set of extensions, clients
+                must be able to detect what versions and extensions are available in a particular
+                deployment. Thus, both extensions and versions are queryable. Issuing a <span class="command"><strong>GET</strong></span> on the
+                base URL (<code class="code">/</code>) of the API endpoint returns information about what
+                versions are available. Similarly, issuing a <span class="command"><strong>GET</strong></span> on the API's extensions resource
+                    (<code class="code">/v1.1/extensions</code>) returns information about what extensions are
+                available. (See 
+                  
+                for details of such requests.) Note that,
+                since extensions modify a particular version of the API, the <code class="code">extensions</code>
+                resource itself is always accessed at a particular version. </p><p> Backward-compatible changes in an API usually require a minor version bump. In an
+                extensible API, however, these changes can be brought in as extensions. The net
+                effect is that versions change infrequently and thus provide a stable platform on
+                which to develop. The Policy Review Board (PRB), with the help of project team
+                leaders, is responsible for ensuring that this stability is maintained by closely
+                guarding core API versions. Extensions, however, can be developed without the
+                consent or approval of the PRB. They can be developed in a completely decentralized
+                manner both by individual OpenStack developers and by commercial vendors. Because
+                extensions can be promoted to standard features, the development of new versions can
+                be influenced significantly by individual developers and the OpenStack client
+                community and is therefore not strictly defined by the PRB. In other words, new
+                features of a core API may be developed in a bottom-up fashion. </p><p>
+                That said, not all extensions are destined to be
+                promoted to the next API version. Core APIs always
+                deals with core functionality — functionality
+                that is supported by all implementations and is
+                applicable in common cases.  Extensions that deal with
+                niche functionality should always remain extensions.
+            </p><p>
+                The table below summarizes the differences between
+                versions and extensions.
+            </p><div class="table"><a id="d6e99"/><p class="title"><strong>Table 2.1. Versions versus Extensions</strong></p><div class="table-contents"><table summary="Versions versus Extensions" border="1"><colgroup><col class="c1"/><col class="c2"/></colgroup><thead><tr><th>Versions</th><th>Extensions</th></tr></thead><tbody><tr><td>
+                                <p title="Rare"><strong>Rare. </strong>
+                                        Versions provide a stable
+                                        platform on which to develop.
+                                    </p>
+                            </td><td>
+                                <p title="Frequent"><strong>Frequent. </strong>
+                                        Extensions bring new features
+                                        to the market quickly and in a
+                                        compatible manner.
+                                    </p>
+                            </td></tr><tr><td>
+                                <p title="Centralized"><strong>Centralized. </strong>
+                                        Versions are maintained by the
+                                        entity that controls the API
+                                        Spec: the OpenStack Policy
+                                        Review Board. Only the PRB can
+                                        create a new version; only the
+                                        PRB defines what "OpenStack
+                                        Compute 1.1" means.
+                                    </p>
+                            </td><td>
+                                <p title="Decentralized"><strong>Decentralized. </strong>
+                                        Extensions are maintained by
+                                        third parties, including
+                                        individual OpenStack
+                                        developers and software
+                                        vendors. Anyone can create an
+                                        extension.
+                                    </p>
+                            </td></tr><tr><td>
+                                <p title="Core"><strong>Core. </strong>
+                                        Versions support core
+                                        functionality.
+                                    </p>
+                            </td><td>
+                                <p title="Niche"><strong>Niche. </strong>
+                                        Extensions provide specialized
+                                        functionality.
+                                    </p>
+                            </td></tr><tr><td>
+                                <p title="Queryable"><strong>Queryable. </strong>
+                                        Issuing a <span class="command"><strong>GET</strong></span> on the base
+                                        URL (<code class="code">/</code>) of the
+                                        API endpoint returns
+                                        information about what
+                                        versions are available.
+                                    </p>
+                            </td><td>
+                                <p title="Queryable"><strong>Queryable. </strong>
+                                        Issuing a <span class="command"><strong>GET</strong></span> on the API's
+                                        extensions resource
+                                        (<code class="code">/v1.1/extensions</code>)
+                                        returns information about what
+                                        extensions are available.
+                                    </p>
+                            </td></tr></tbody></table></div></div><br class="table-break"/></div><script type="text/javascript" src="../common/main.js"><!----></script><hr/><div id="disqus_thread"><script type="text/javascript">
+	      var disqus_shortname = 'openstackdocs'; 	      
+	    </script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><script type="text/javascript" src="../common/comments.js"><!----></script></div><hr/><div class="legal"><a href="index.html">Legal notices</a></div></div><div><div id="leftnavigation" style="padding-top:3px; background-color:white;"><div id="tabs"><ul><li><a href="#treeDiv" tabindex="1"><span class="contentsTab">Contents</span></a></li><li><a href="#searchDiv" tabindex="1"><span class="searchTab">Search</span></a></li></ul><div id="treeDiv"><img src="../common/images/loading.gif" alt="loading table of contents..." id="tocLoading" style="display:block;"/><div id="ulTreeDiv" style="display:none" class="thisisthat"><ul id="tree" class="filetree"><li tabindex="2"><span class="file"><a href="ch01.html">1. Overview</a></span><ul><li tabindex="2"><span class="file"><a href="ch01s01.html">1.1. Intended Audience</a></span></li><li tabindex="2"><span class="file"><a href="ch01s02.html">1.2. Organization of this Document</a></span></li><li tabindex="2"><span class="file"><a href="ch01s03.html">1.3. Document Change History</a></span></li></ul></li><li tabindex="2"><span class="file"><a href="Background.html">2. Background</a></span><ul><li tabindex="2"><span class="file"><a href="ch02s01.html">2.1. What are Extensions?</a></span></li><li tabindex="2"><span class="file"><a href="ch02s02.html">2.2. Relationship to OpenGL</a></span></li><li tabindex="2" id="webhelp-currentid"><span class="file"><a href="ch02s03.html">2.3. Extensions and Versions</a></span></li><li tabindex="2"><span class="file"><a href="ch02s04.html">2.4. Versioning Extensions</a></span></li><li tabindex="2"><span class="file"><a href="ch02s05.html">2.5. Extensions and Pluggability</a></span></li></ul></li></ul></div></div><div id="searchDiv"><div id="search"><form onsubmit="Verifie(ditaSearch_Form);return false" name="ditaSearch_Form" class="searchForm"><fieldset class="searchFieldSet"><legend>Search</legend><center><input id="textToSearch" name="textToSearch" type="text" class="searchText"/> &nbsp; <input onclick="Verifie(ditaSearch_Form)" type="button" class="searchButton" value="Go" id="doSearch"/></center></fieldset></form></div><div id="searchResults"><center/></div><p class="searchHighlight"><a href="#" onclick="toggleHighlight()">Search Highlighter (On/Off)</a></p></div></div></div></div></body></html>

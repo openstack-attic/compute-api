@@ -1,0 +1,11 @@
+fil = new Array();
+fil["0"]= "Background.html@@@Chapter 2. Background@@@null";
+fil["1"]= "ch01.html@@@Chapter 1. Overview@@@null";
+fil["2"]= "ch01s01.html@@@1.1. Intended Audience@@@null";
+fil["3"]= "ch01s02.html@@@1.2. Organization of this Document@@@null";
+fil["4"]= "ch01s03.html@@@1.3. Document Change History@@@null";
+fil["5"]= "ch02s01.html@@@2.1. What are Extensions?@@@null";
+fil["6"]= "ch02s02.html@@@2.2. Relationship to OpenGL@@@null";
+fil["7"]= "ch02s03.html@@@2.3. Extensions and Versions@@@null";
+fil["8"]= "ch02s04.html@@@2.4. Versioning Extensions@@@null";
+fil["9"]= "ch02s05.html@@@2.5. Extensions and Pluggability@@@null";
