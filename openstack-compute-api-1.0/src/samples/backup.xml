@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<backupSchedule
-    xmlns="http://docs.rackspacecloud.com/servers/api/v1.0"
-    enabled="true" weekly="THURSDAY" daily="H_0400_0600" />
