@@ -88,8 +88,8 @@
                                 set       toc,title
                             </generateToc>
                             <!-- The following elements sets the autonumbering of sections in output for chapter numbers but no numbered sections-->
-                            <sectionAutolabel>0</sectionAutolabel>
-                            <sectionLabelIncludesComponentLabel>0</sectionLabelIncludesComponentLabel>
+                            <!--<sectionAutolabel>0</sectionAutolabel>
+                            <sectionLabelIncludesComponentLabel>0</sectionLabelIncludesComponentLabel>-->
                             <postProcess>
                                 <!-- Copies the figures to the correct location for webhelp -->
                                 
