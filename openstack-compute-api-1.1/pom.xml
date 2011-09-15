@@ -95,34 +95,34 @@
                                 
                                 
                                 <copy todir="${basedir}/target/docbkx/webhelp/openstack-compute-api-1.1/os-compute-devguide/figures">
-                                    <fileset dir="${basedir}/source/docbkx/openstack-compute-api-1.1/figures">
+                                    <fileset dir="${basedir}/src/docbkx/openstack-compute-api-1.1/figures">
                                         <include name="**/*.png" />
                                     </fileset>
                                 </copy>
                                 
                                 <!-- Copies schema to a folder and styling for the schemas so a browser can display them -->
                                 <copy todir="${basedir}/target/docbkx/webhelp/api/xsd">
-                                    <fileset dir="${basedir}/source/docbkx/openstack-compute-api-1.1/xsd">
+                                    <fileset dir="${basedir}/src/docbkx/openstack-compute-api-1.1/xsd">
                                         <include name="**/*.*" />
                                     </fileset>
                                 </copy>
                                 <copy todir="${basedir}/target/docbkx/webhelp/api/xslts">
-                                    <fileset dir="${basedir}/source/docbkx/openstack-compute-api-1.1/xslt">
+                                    <fileset dir="${basedir}/src/docbkx/openstack-compute-api-1.1/xslt">
                                         <include name="**/*.*" />
                                     </fileset>
                                 </copy>
                                 <copy todir="${basedir}/target/docbkx/webhelp/api/style">
-                                    <fileset dir="${basedir}/source/docbkx/openstack-compute-api-1.1/style">
+                                    <fileset dir="${basedir}/src/docbkx/openstack-compute-api-1.1/style">
                                         <include name="**/*.*" />
                                     </fileset>
                                 </copy>
                                 <copy todir="${basedir}/target/docbkx/webhelp/api/js">
-                                    <fileset dir="${basedir}/source/docbkx/openstack-compute-api-1.1/js">
+                                    <fileset dir="${basedir}/src/docbkx/openstack-compute-api-1.1/js">
                                         <include name="**/*.*" />
                                     </fileset>
                                 </copy>
                                 <copy todir="${basedir}/target/docbkx/webhelp/api/samples">
-                                    <fileset dir="${basedir}/source/docbkx/openstack-compute-api-1.1/samples">
+                                    <fileset dir="${basedir}/src/docbkx/openstack-compute-api-1.1/samples">
                                         <include name="**/*.*" />
                                     </fileset>
                                 </copy>
