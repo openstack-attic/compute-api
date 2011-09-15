@@ -128,12 +128,7 @@
                                 </copy>
                                 
                                 <!-- New stuff -->
-                                <copy todir="${basedir}/target/docbkx/webhelp/trunk/openstack-compute/admin/">
-                                    <fileset
-                                        dir="${basedir}/target/docbkx/webhelp/openstack-compute-admin/os-compute-adminguide/">
-                                        <include name="**/*" />
-                                    </fileset>
-                                </copy>
+                               
                                 
                                 <copy
                                     todir="${basedir}/target/docbkx/webhelp/trunk/openstack-compute/developer/openstack-compute-api-1.1/">
@@ -142,26 +137,6 @@
                                         <include name="**/*" />
                                     </fileset>
                                 </copy>
-                                
-                                <!-- Why is this necessary? -->
-                                <mkdir dir="${basedir}/target/docbkx/webhelp/openstack-compute-api-1.0/cs-devguide"/>
-                                <copy
-                                    todir="${basedir}/target/docbkx/webhelp/trunk/openstack-compute/developer/openstack-compute-api-1.0">
-                                    <fileset
-                                        dir="${basedir}/target/docbkx/webhelp/openstack-compute-api-1.0/cs-devguide/">
-                                        <include name="**/*" />
-                                    </fileset>
-                                </copy>
-                                <copy
-                                    todir="${basedir}/target/docbkx/webhelp/trunk/openstack-object-storage/admin">
-                                    <fileset
-                                        dir="${basedir}/target/docbkx/webhelp/openstack-object-storage-admin/os-objectstorage-adminguide/">
-                                        <include name="**/*" />
-                                    </fileset>
-                                </copy>
-                                
-                                
-                                
                                 
                                 <!--Moves PDFs to the needed placement -->
                                 <move failonerror="false"
