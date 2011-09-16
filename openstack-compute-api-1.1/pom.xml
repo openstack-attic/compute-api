@@ -128,7 +128,7 @@
                                 </copy>
                                 
                                 <!-- New stuff -->
-                               
+                                <mkdir dir="${basedir}/target/docbkx/webhelp/trunk/openstack-compute/developer/openstack-compute-api-1.1/"/>
                                 
                                 <copy
                                     todir="${basedir}/target/docbkx/webhelp/trunk/openstack-compute/developer/openstack-compute-api-1.1/">
