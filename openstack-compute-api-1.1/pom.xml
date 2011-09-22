@@ -70,7 +70,7 @@
                         <phase>generate-sources</phase>
                         <configuration>
                             <!-- These parameters only apply to webhelp -->
-                            <enableDisqus>0</enableDisqus>
+                            <enableDisqus>1</enableDisqus>
                             <disqusShortname>openstackdocs</disqusShortname>
                             <enableGoogleAnalytics>1</enableGoogleAnalytics>
                             <googleAnalyticsId>UA-17511903-6</googleAnalyticsId>
@@ -93,45 +93,44 @@
                             <postProcess>
                                 <!-- Copies the figures to the correct location for webhelp -->
                                 
-                                
                                 <copy todir="${basedir}/target/docbkx/webhelp/os-compute-devguide/figures">
                                     <fileset dir="${basedir}/src/figures">
                                         <include name="**/*.png" />
                                     </fileset>
                                 </copy>
                                 
+                               <!-- New stuff -->
+                                <mkdir dir="${basedir}/target/docbkx/webhelp/api/openstack-compute/1.1/"/>
+                                
                                 <!-- Copies schema to a folder and styling for the schemas so a browser can display them -->
-                                <copy todir="${basedir}/target/docbkx/webhelp/api/xsd">
+                                <copy todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/1.1/xsd">
                                     <fileset dir="${basedir}/src/xsd">
                                         <include name="**/*.*" />
                                     </fileset>
                                 </copy>
-                                <copy todir="${basedir}/target/docbkx/webhelp/api/xslts">
+                                <copy todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/1.1/xslts">
                                     <fileset dir="${basedir}/src/xslt">
                                         <include name="**/*.*" />
                                     </fileset>
                                 </copy>
-                                <copy todir="${basedir}/target/docbkx/webhelp/api/style">
+                                <copy todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/1.1/style">
                                     <fileset dir="${basedir}/src/style">
                                         <include name="**/*.*" />
                                     </fileset>
                                 </copy>
-                                <copy todir="${basedir}/target/docbkx/webhelp/api/js">
+                                <copy todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/1.1/js">
                                     <fileset dir="${basedir}/src/js">
                                         <include name="**/*.*" />
                                     </fileset>
                                 </copy>
-                                <copy todir="${basedir}/target/docbkx/webhelp/api/samples">
+                                <copy todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/1.1/samples">
                                     <fileset dir="${basedir}/src/samples">
                                         <include name="**/*.*" />
                                     </fileset>
                                 </copy>
-                                
-                                <!-- New stuff -->
-                                <mkdir dir="${basedir}/target/docbkx/webhelp/trunk/openstack-compute/developer/openstack-compute-api-1.1/"/>
-                                
+                                                               
                                 <copy
-                                    todir="${basedir}/target/docbkx/webhelp/trunk/openstack-compute/developer/openstack-compute-api-1.1/">
+                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/1.1/">
                                     <fileset
                                         dir="${basedir}/target/docbkx/webhelp/os-compute-devguide/">
                                         <include name="**/*" />
@@ -141,7 +140,7 @@
                                 <!--Moves PDFs to the needed placement -->
                                 <move failonerror="false"
                                     file="${basedir}/target/docbkx/pdf/os-compute-devguide.pdf"
-                                    tofile="${basedir}/target/docbkx/webhelp/trunk/openstack-compute/developer/openstack-compute-api-1.1/os-compute-devguide-1.1.pdf"/>
+                                    tofile="${basedir}/target/docbkx/webhelp/api/openstack-compute/1.1/os-compute-devguide-1.1.pdf"/>
                                
                                                                 
                                 <!--Deletes leftover uneeded directories -->
