@@ -190,7 +190,31 @@
       </xsd:appinfo>
     </annotation>
   </element>
-  
+
+  <element name="addFloatingIp" type="csapi:AddFloatingIp">
+    <annotation>
+      <xsd:documentation
+        xml:lang="EN"
+        xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          The action associate a floating IP of the server.
+        </p>
+      </xsd:documentation>
+    </annotation>
+  </element>
+
+  <element name="removeFloatingIp" type="csapi:RemoveFloatingIp">
+    <annotation>
+      <xsd:documentation
+        xml:lang="EN"
+        xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          The action disassociate a floating IP of the server.
+        </p>
+      </xsd:documentation>
+    </annotation>
+  </element>
+
   <!-- Complex Types -->
 
   <complexType abstract="true" name="Action">
@@ -367,6 +391,49 @@
                   </xsd:documentation>
               </annotation>
           </attribute>
+      </extension>
+    </complexContent>
+  </complexType>
+
+
+  <complexType name="AddFloatingIp">
+    <complexContent>
+      <extension base="csapi:Action" >
+        <sequence>
+          <any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+        </sequence>
+        <attribute type="xsd:string" name="address" use="required">
+          <annotation>
+            <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+              <p>
+                The address of floating Ip.
+              </p>
+            </xsd:documentation>
+          </annotation>
+        </attribute>
+      </extension>
+    </complexContent>
+  </complexType>
+
+  <complexType name="RemoveFloatingIp">
+    <complexContent>
+      <extension base="csapi:Action" >
+        <sequence>
+          <any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+        </sequence>
+        <attribute type="xsd:string" name="address" use="required">
+          <annotation>
+            <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+              <p>
+                The address of floating Ip.
+              </p>
+            </xsd:documentation>
+          </annotation>
+        </attribute>
       </extension>
     </complexContent>
   </complexType>

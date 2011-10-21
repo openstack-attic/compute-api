@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../xslt/schema.xsl"?>
+
+<!-- (C) 2011 OpenStack LLC., All Rights Reserved -->
+
+<schema
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:csapi="http://docs.openstack.org/compute/api/v1.1"
+    xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:atom="http://www.w3.org/2005/Atom"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+    targetNamespace="http://docs.openstack.org/compute/api/v1.1"
+>
+  <annotation>
+    <xsd:appinfo
+        xml:lang="EN"
+        xmlns="http://www.w3.org/1999/xhtml">
+      <xsdxt:title>Users type</xsdxt:title>
+      <xsdxt:link rel="index" href="api.xsd" />
+    </xsd:appinfo>
+    <xsd:documentation
+        xml:lang="EN"
+        xmlns="http://www.w3.org/1999/xhtml">
+      <p>
+        This schema file defines a Users
+      </p>
+    </xsd:documentation>
+  </annotation>
+
+  <!-- Import ATOM specific schema definitions -->
+  <import namespace="http://www.w3.org/2005/Atom" schemaLocation="atom/atom.xsd" />
+
+  <include schemaLocation="common.xsd">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          Common types used by multiple entities and possibly spanning
+          several types of requests.
+        </p>
+      </xsd:documentation>
+    </annotation>
+  </include>
+  <include schemaLocation="faults.xsd">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          All fault types.
+        </p>
+      </xsd:documentation>
+    </annotation>
+  </include>
+
+  <element name="user" type="csapi:User">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          The element defines a User.
+        </p>
+      </xsd:documentation>
+    </annotation>
+  </element>
+
+  <element name="users" type="csapi:Users">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          A collection of users.
+        </p>
+      </xsd:documentation>
+    </annotation>
+  </element>
+  
+  <element name="account" type="csapi:Account">
+    <annotation>
+      <xsd:documentation
+        xml:lang="EN"
+        xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          The element defines an account.
+        </p>
+      </xsd:documentation>
+    </annotation>
+  </element>
+  
+  <!-- Complex Types -->
+  <complexType name="User">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          A user (TODO: Should be described)
+        </p>
+      </xsd:documentation>
+    </annotation> 
+    <attribute name="admin" type="xsd:string">
+          <annotation>
+              <xsd:documentation
+                  xml:lang="EN"
+                  xmlns="http://www.w3.org/1999/xhtml">
+                  <p>
+                     A user is admin or not. True or T for true, otherwise false.
+                  </p>
+              </xsd:documentation>
+          </annotation>
+      </attribute>
+    <attribute name="name" type="xsd:string">
+      <annotation>
+        <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            The name of a user
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+    <attribute name="access" type="xsd:string">
+      <annotation>
+        <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            Access token for user
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+    <attribute name="secret" type="xsd:string">
+      <annotation>
+        <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            Secret of user
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+    <element name="fault" type="csapi:AsyncAPIFault" minOccurs="0">
+          <annotation>
+              <xsd:documentation
+                  xml:lang="EN"
+                  xmlns="http://www.w3.org/1999/xhtml">
+                  <p>
+                      The detials of a fault that may have occured
+                      while cerating the server or performing a server
+                      action.
+                  </p>
+              </xsd:documentation>
+          </annotation>
+    </element>
+    <anyAttribute namespace="##other" processContents="lax"/>
+  </complexType>
+
+ 
+  <complexType name="Users">
+    <sequence>
+      <element name="user" type="csapi:User" minOccurs="0" maxOccurs="1000">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              A collection of users.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </element>
+      <element vc:minVersion="1.1" ref="atom:link" minOccurs="0" maxOccurs="unbounded" />
+      <any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </sequence>
+    <anyAttribute namespace="##other" processContents="lax"/>
+  </complexType>
+  
+  <!-- Complex Types -->
+  <complexType name="Account">
+    <annotation>
+      <xsd:documentation
+        xml:lang="EN"
+        xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          An account (TODO: Should be described)
+        </p>
+      </xsd:documentation>
+    </annotation> 
+    <attribute name="manager" type="xsd:string">
+      <annotation>
+        <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            A manager for the account
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+    <attribute name="description" type="xsd:string">
+      <annotation>
+        <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            The description of the account
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+    <anyAttribute namespace="##other" processContents="lax"/>
+  </complexType>
+</schema>

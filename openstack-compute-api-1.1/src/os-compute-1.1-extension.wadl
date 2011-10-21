@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- (C) 2011 OpenStack LLC., All Rights Reserved -->
+
+<!--*******************************************************-->
+<!--         Import Common XML Entities                    -->
+<!--                                                       -->
+<!--     You can resolve the entites with xmllint          -->
+<!--                                                       -->
+<!--        xmllint -noent os-compute-1.1.wadl             -->
+<!--*******************************************************-->
+<!DOCTYPE application [<!ENTITY % common  SYSTEM "common.ent">
+%common;]>
+
+<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns="http://wadl.dev.java.net/2009/02"
+   xmlns:osapi="http://docs.openstack.org/compute/api/v1.1"
+   xmlns:common="http://docs.openstack.org/common/api/v1.0"
+   xmlns:atom="http://www.w3.org/2005/Atom"
+   xsi:schemaLocation="http://docs.openstack.org/compute/api/v1.1
+                       xsd/api.xsd
+                       http://docs.openstack.org/common/api/v1.0
+                       xsd/api-common.xsd
+                       ">
+
+    <grammars>
+        <include href="xsd/api.xsd" />
+        <include href="xsd/api-common.xsd" />
+    </grammars>
+
+    <!--*******************************************************-->
+    <!--             All Resoruces                             -->
+    <!--*******************************************************-->
+
+    <resources base="https://servers.api.openstack.com">
+        <resource id="version" path="v1.1/">
+            <resource id="tenantID" path="{tenantId}">
+                <param name="tenantId" style="template" type="xsd:string"/>
+                <resource id="OsCreateServerExt" path="os-create-server-ext">
+                    <resource path="detail" type="#DetailServerList"/>
+                </resource>
+                <resource id="Flavors" path="flavors">
+                    <resource path="{flavorId}">
+                        <param name="flavorId" style="template" type="osapi:UUID"/>
+                        <resource id="FlavorsExt" type="FlavorsExtList" path="os-extra_specs">
+                            <resource path="detail" type="#DetailFlavorsExtList"/>
+                            <method href="#createFlavorExt" />
+                            <resource path="{extId}">
+                                <param name="extId" style="template" type="osapi:UUID"/>
+                                <method href="#getFlavorExt"/>
+                                <method href="#updateFlavorExt"/>
+                                <method href="#deleteFlavorExt"/>
+                            </resource>
+                        </resource>
+                    </resource>
+                </resource>
+                <resource id="FloatingIps" type="FloatingIpList" path="os-floating-ips">
+                    <resource path="detail" type="#DetailFloatingIpList"/>
+                    <method href="#createFloatingIp" />
+                    <resource path="{floatingIp}">
+                        <param name="floatingIp" style="template" type="xsd:string"/>
+                        <method href="#getFloatingIp"/>
+                        <method href="#deleteFloatingIp"/>
+                    </resource>
+                </resource>
+                <resource id="Servers" path="servers">
+                        <resource path="{serverId}">
+                            <resource path="action">
+                                <method href="#addFloatingIp"/>
+                                <method href="#removeFloatingIp"/>
+                            </resource>
+                        </resource>
+                </resource>
+            </resource>
+        </resource>
+    </resources>
+
+    <!--*******************************************************-->
+    <!--               Resource Types                          -->
+    <!--*******************************************************-->
+    <resource_type id="DetailServerList">
+        <doc xml:lang="EN" title="Detail Server List">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                A detailed server list including security groups.
+            </p>
+        </doc>
+        <method href="#listDetailServers"/>
+    </resource_type>
+    
+    <resource_type id="FlavorsExtList">
+        <doc xml:lang="EN" title="Detail Image List">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                A flavors extension list.
+            </p>
+        </doc>
+        <method href="#listFlavorsExt"/>
+    </resource_type>
+  
+    <resource_type id="DetailFlavorsExtList">
+        <doc xml:lang="EN" title="Detail Image List">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                A flavors extension list.
+            </p>
+        </doc>
+        <method href="#listDetailFlavorsExt"/>
+    </resource_type>
+
+    <resource_type id="FloatingIpList">
+        <doc xml:lang="EN" title="List Floating Ip">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                A list floating IPs
+            </p>
+        </doc>
+        <method href="#listFloatingIp"/>
+    </resource_type>    
+ 
+ 
+    <resource_type id="DetailFloatingIpList">
+        <doc xml:lang="EN" title="Detail Floating Ip">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                A detailed server list.
+            </p>
+        </doc>
+        <method href="#listDetailFloatingIp"/>
+    </resource_type> 
+    
+    <!--*******************************************************-->
+    <!--               All Methods                             -->
+    <!--*******************************************************-->
+    <!-- os-create-server-ext -->
+    <method name="GET" id="listDetailServers">
+        <doc xml:lang="EN" title="List Detail Servers">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                List all servers (all details) including detail of security groups
+            </p>
+        </doc>
+        <request>
+            &serverListParameters;
+        </request>
+        <response status="200 203">
+            <representation mediaType="application/xml" element="osapi:servers">
+                <param name="next" style="plain" type="xsd:anyURI"
+                    path="/osapi:servers/atom:link[@rel='next']/@href">
+                    <link resource_type="#DetailServerList" rel="next"/>
+                </param>
+                <param name="previous" style="plain" type="xsd:anyURI"
+                    path="/osapi:servers/atom:link[@rel='previous']/@href">
+                    <link resource_type="#DetailServerList" rel="previous"/>
+                </param>
+            </representation>
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+    
+    <!-- os-extra_specs -->
+    <!-- TODO add description of parameters-->
+    <method name="PUT" id="createFlavorExt">
+        <doc xml:lang="EN" title="Create Flavor Extension">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Creates a new flavor extension.
+                {'extra_specs':{'key1':'value1','key2':'value2'}}
+            </p>
+        </doc>
+        <request>
+            <representation mediaType="application/xml"/>
+            <representation mediaType="application/json" />
+        </request>
+        <response status="202"/>        
+        <!-- All other common faults except build in progess -->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &buildFaults;
+    </method>
+    
+    <method name="GET" id="listFlavorsExt">
+        <doc xml:lang="EN" title="List FlavorExt">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                List flavor extension
+            </p>
+        </doc>
+        <response status="200 203"><!-- TODO(nati): detailed representation is needed -->
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+
+    <method name="GET" id="listDetailFlavorsExt">
+        <doc xml:lang="EN" title="List Detailed FloatingIp">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                List detailed flavor extension
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+
+    <method name="GET" id="getFlavorExt">
+        <doc xml:lang="EN" title="Get FlavorExt">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Get flavor extension
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common and GET Faults-->
+        &commonFaults;
+        &getFaults;
+    </method>
+    
+    <method name="DELETE" id="deleteFlavorExt">
+        <doc xml:lang="EN" title="Delete FlavorExt">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Delete a flovor extension
+            </p>
+        </doc>
+        <response status="204"/>
+        <!-- Common and GET Faults -->
+        &commonFaults;
+        &getFaults;
+    </method>
+    
+    <method name="GET" id="detailListFlavorExt">
+        <doc xml:lang="EN" title="List Detail FlavorExt">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                List all flavor extension.
+            </p>
+        </doc>
+        <request>
+            &serverListParameters;
+        </request>
+        <response status="200 203">
+            <representation mediaType="application/xml"/>
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+    
+    <method name="POST" id="updateFlavorExt">
+        <doc xml:lang="EN" title="Update a FlavorExt">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Update a flavlor extension
+            </p>
+        </doc>
+        <request>
+            <representation mediaType="application/xml"/>
+            <representation mediaType="application/json" />
+        </request>
+        <response status="200">
+            <representation mediaType="application/xml"/>
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common, GET, POST/PUT, inProgress Faults-->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &inProgressFault;
+    </method>
+
+    <!-- Floating IP -->
+    <method name="PUT" id="createFloatingIp">
+        <doc xml:lang="EN" title="Create FlavorExt">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Allocate floating Ip
+            </p>
+        </doc>
+        <request>
+            <representation mediaType="application/xml"/>
+            <representation mediaType="application/json" />
+        </request>
+        <response status="202"/>        
+        <!-- All other common faults except build in progess -->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &buildFaults;
+    </method>
+
+    <method name="GET" id="listFloatingIp">
+        <doc xml:lang="EN" title="List FloatingIp">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                List floating Ips
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+    
+    <method name="GET" id="listDetailFloatingIp">
+        <doc xml:lang="EN" title="List Detailed FloatingIp">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                List detailed floating Ips
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+
+    <method name="GET" id="getFloatingIp">
+        <doc xml:lang="EN" title="Get Floating Ip">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Get floating Ip
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common and GET Faults-->
+        &commonFaults;
+        &getFaults;
+    </method>
+
+    <method name="DELETE" id="deleteFloatingIp">
+        <doc xml:lang="EN" title="Delete Floating Ip">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Disaccosiate floating IP
+            </p>
+        </doc>
+        <response status="204"/>
+        <!-- Common and GET Faults -->
+        &commonFaults;
+        &getFaults;
+    </method>
+
+    <!-- Server Actions -->
+    <method name="POST" id="addFloatingIp">
+        <doc xml:lang="EN" title="Associate Floating Ip">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Change a server's password.
+            </p>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="osapi:addFloatingIp"/>
+            <representation mediaType="application/json" />
+        </request>
+        <response status="202"/>
+        <!-- Common, GET, postput, inProgress Faults-->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &inProgressFault;
+    </method>
+
+    <method name="POST" id="removeFloatingIp">
+        <doc xml:lang="EN" title="Disaccosiate Floating Ip">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Change a server's password.
+            </p>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="osapi:removeFloatingIp"/>
+            <representation mediaType="application/json" />
+        </request>
+        <response status="202"/>
+        <!-- Common, GET, postput, inProgress Faults-->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &inProgressFault;
+    </method>
+
+</application>

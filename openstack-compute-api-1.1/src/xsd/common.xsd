@@ -55,6 +55,7 @@
     </sequence>
     <anyAttribute namespace="##other" processContents="lax"/>
   </complexType>
+  
   <complexType name="MetadataItem">
     <annotation>
       <xsd:documentation
@@ -152,5 +153,109 @@
       <maxLength value="255" />
     </restriction>
   </simpleType>
+  
+  
+  <complexType name="SecurityGroups">
+    <sequence>
+      <element name="security_group" type="csapi:SecurityGroupItem" minOccurs="0" maxOccurs="1000">
+        <annotation>
+          <xsd:documentation
+            xml:lang="EN"
+            xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              A collection of security group items. 
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </element>
+      <element vc:minVersion="1.1" ref="atom:link" minOccurs="0" maxOccurs="unbounded" />
+      <any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </sequence>
+    <anyAttribute namespace="##other" processContents="lax"/>
+  </complexType>
+  
+  <complexType name="SecurityGroupItem">
+    <annotation>
+      <xsd:documentation
+        xml:lang="EN"
+        xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          A SecurityGroupItem is simply a name
+        </p>
+        <xsdxt:code type="application/xml">
+          <![CDATA[
+            <meta xmlns="http://docs.openstack.org/compute/api/v1.0"
+                  key="Server Label">Web Head 1</meta>
+          ]]>
+        </xsdxt:code>
+      </xsd:documentation>
+    </annotation>
+    <simpleContent>
+      <attribute name="name" type="xsd:string" use="required">
+          <annotation>
+            <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+              <p>
+                A security group name
+              </p>
+            </xsd:documentation>
+          </annotation>
+        </attribute>
+        <anyAttribute namespace="##other" processContents="lax"/>
+    </simpleContent>
+  </complexType>
+ 
+  <complexType name="Networks">
+    <sequence>
+      <element name="network" type="csapi:Network" minOccurs="0" maxOccurs="1000">
+        <annotation>
+          <xsd:documentation
+            xml:lang="EN"
+            xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              A collection of Networks 
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </element>
+      <element vc:minVersion="1.1" ref="atom:link" minOccurs="0" maxOccurs="unbounded" />
+      <any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </sequence>
+    <anyAttribute namespace="##other" processContents="lax"/>
+  </complexType>
+  
+  <complexType name="Network">
+    <annotation>
+      <xsd:documentation
+        xml:lang="EN"
+        xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          A Network
+        </p>
+        <xsdxt:code type="application/xml">
+          <![CDATA[
+            <meta xmlns="http://docs.openstack.org/compute/api/v1.0"
+                  key="Server Label">Web Head 1</meta>
+          ]]>
+        </xsdxt:code>
+      </xsd:documentation>
+    </annotation>
+    <simpleContent>
+      <attribute name="uuid" type="xsd:string" use="required">
+        <annotation>
+          <xsd:documentation
+            xml:lang="EN"
+            xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              A Network uuid
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </attribute>
+      <anyAttribute namespace="##other" processContents="lax"/>
+    </simpleContent>
+  </complexType>
+ 
 </schema>
 

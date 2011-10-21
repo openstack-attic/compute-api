@@ -150,7 +150,7 @@
       </xsd:appinfo>
     </annotation>
   </element>
-  
+
   <element name="network" type="csapi:AddressList">
     <annotation>
       <xsd:documentation
@@ -194,7 +194,7 @@
       </xsd:appinfo>
     </annotation>
   </element>
-  
+
 
   <!-- Complex Types -->
   <complexType name="Server">
@@ -488,6 +488,116 @@
         </xsd:documentation>
       </annotation>
     </attribute>
+    <attribute type="xsd:anyURI" name="config_drive" use="optional">
+      <annotation>
+        <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            The image_ref for config_drive.
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+    <attribute type="csapi:SecurityGroups" name="security_groups" use="optional">
+      <annotation>
+        <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            List for Security Groups
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+    <attribute type="csapi:Networks" name="networks" use="optional">
+      <annotation>
+        <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            List of Networks
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>   
+    <attribute type="xsd:string" name="blob" use="optional">
+      <annotation>
+        <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            Encrypted host_info which is used in distributed scheduler 
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+    <attribute type="xsd:string" name="keyname" use="optional">
+        <annotation>
+          <xsd:documentation
+            xml:lang="EN"
+            xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              Key Name
+            </p>
+          </xsd:documentation>
+        </annotation>     
+    </attribute>
+    <attribute type="xsd:string" name="user_data" use="optional">
+          <annotation>
+            <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+              <p>
+                User data
+              </p>
+            </xsd:documentation>
+         </annotation>
+    </attribute>    
+    <attribute type="xsd:string" name="availability_zone" use="optional">
+      <annotation>
+        <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            Availability zone (format is zone:servername)
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+    <attribute type="xsd:string" name="reservation_id" use="optional">
+      <annotation>
+        <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            Reservation ID
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute> 
+    <attribute type="xsd:positiveInteger" name="min_count" use="optional">
+      <annotation>
+        <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            Minimun count
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+    <attribute type="xsd:positiveInteger" name="max_count" use="optional">
+      <annotation>
+        <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            Maximun count
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
     <anyAttribute namespace="##other" processContents="lax"/>
   </complexType>
 
@@ -593,6 +703,15 @@
               <attribute type="csapi:ExtensibleServerStatus" name="status" use="prohibited"/>
               <attribute type="xsd:dateTime" name="updated" use="prohibited"/>
               <attribute type="xsd:dateTime" name="created" use="prohibited"/>
+              <attribute type="xsd:anyURI" name="config_drive" use="optional"/>
+              <attribute type="csapi:SecurityGroups" name="security_groups" use="optional"/>
+              <attribute type="csapi:Networks" name="networks" use="optional"/>
+              <attribute type="xsd:string" name="blob" use="optional"/>
+              <attribute type="xsd:string" name="keyname" use="optional"/>
+              <attribute type="xsd:string" name="availability_zone" use="optional"/>
+              <attribute type="xsd:string" name="reservation_id" use="optional"/>
+              <attribute type="xsd:positiveInteger" name="min_count" use="optional"/>
+              <attribute type="xsd:positiveInteger" name="max_count" use="optional"/>
               <anyAttribute namespace="##other" processContents="lax"/>
           </restriction>
       </complexContent>
@@ -719,7 +838,7 @@
     </annotation>
     <simpleContent>
       <extension base="csapi:FileContent">
-	<attribute name="path"  type="csapi:FileName" use="required">
+  <attribute name="path"  type="csapi:FileName" use="required">
           <annotation>
             <xsd:documentation
                 xml:lang="EN"

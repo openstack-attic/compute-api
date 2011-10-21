@@ -12,8 +12,8 @@
 <!DOCTYPE application [<!ENTITY % common  SYSTEM "common.ent">
 %common;]>
 
-<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-   xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
    xmlns="http://wadl.dev.java.net/2009/02"
    xmlns:osapi="http://docs.openstack.org/compute/api/v1.1"
    xmlns:common="http://docs.openstack.org/common/api/v1.0"
@@ -34,7 +34,7 @@
     <!--*******************************************************-->
 
     <resources base="https://servers.api.openstack.com">
-        <resource id="version" type="#VersionDetails" path="v1.1/">
+        <resource id="version" type="#VersionDetails" path="v1.1">
             <resource id="extensions" type="#ExtensionList" path="extensions">
                 <resource id="extension" path="{alias}">
                     <param name="alias" style="template" type="xsd:string"/>
@@ -63,12 +63,28 @@
                             <method href="#revertServer"/>
                             <method href="#createImage"/>
                         </resource>
+                        <method href="#pause"/>/
+                        <method href="#unpause"/>
+                        <method href="#suspend"/>
+                        <method href="#resume"/>
+                        <method href="#rescue"/>
+                        <method href="#migrate"/>
+                        <method href="#unrescue"/>
+                        <method href="#reset_network"/>
+                        <method href="#inject_network_info"/>
                         <resource path="ips" type="#Addresses">
                             <resource path="{networkId}" type="#NetworkAddressList">
                                 <param name="networkId" style="template" type="xsd:string"/>
                             </resource>
                         </resource>
                         <resource path="metadata" type="#Metadata #MetadataList"/>
+                        <resource id="Consoles" type="#ConsoleList" path="consoles">
+                            <resource path="{consoleId}">
+                                <param name="consoleId" style="template" type="xsd:positiveInteger"/>
+                                <method href="#getConsole"/>
+                                <method href="#deleteConsole"/>
+                            </resource>
+                        </resource>
                     </resource>
                 </resource>
                 <resource id="Images" type="#ImageList" path="images">
@@ -109,7 +125,7 @@
     </resource_type>
 
     <resource_type id="DetailServerList">
-        <doc xml:lang="EN" title="Detail Image List">
+        <doc xml:lang="EN" title="Detail Server List">
             <p xmlns="http://www.w3.org/1999/xhtml">
                 A detailed server list.
             </p>
@@ -162,6 +178,15 @@
             </p>
         </doc>
         <method href="#listImages"/>
+    </resource_type>
+
+    <resource_type id="ConsoleList">
+        <doc xml:lang="EN" title="Image List">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                A list of consoles
+            </p>
+        </doc>
+        <method href="#listConsoles"/>
     </resource_type>
 
     <resource_type id="DetailFlavorList">
@@ -364,6 +389,47 @@
         <doc xml:lang="EN" title="Delete Image">
             <p xmlns="http://www.w3.org/1999/xhtml">
                 Deletes the specified image.
+            </p>
+        </doc>
+        <response status="204"/>
+        <!-- Common and GET Faults -->
+        &commonFaults;
+        &getFaults;
+    </method>
+    
+    <method name="GET" id="listConsoles">
+        <doc xml:lang="EN" title="List Consoles">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                List consoles.
+            </p>
+        </doc>
+        <response status="200 203"><!-- TODO(nati): detailed representation is needed -->
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+
+    <method name="GET" id="getConsole">
+        <doc xml:lang="EN" title="Get Console Details">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                List details of the console.
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml"/>
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common and GET Faults-->
+        &commonFaults;
+        &getFaults;
+    </method>
+    
+    <method name="DELETE" id="deleteConsole">
+        <doc xml:lang="EN" title="Delete Console">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Deletes the specified console.
             </p>
         </doc>
         <response status="204"/>
@@ -669,6 +735,166 @@
         &inProgressFault;
     </method>
 
+    <method name="POST" id="pause">
+        <doc xml:lang="EN" title="Pause">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Pause a server
+            </p>
+        </doc>
+        <response status="202"/>
+        <!-- TODO:nati add exception -->
+        <!-- All other faults, build, common, get, post/put, and inProgress -->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &buildFaults;
+        &inProgressFault;
+    </method>
+
+    <method name="POST" id="unpause">
+        <doc xml:lang="EN" title="unPause">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Pause a server
+            </p>
+        </doc>
+        <response status="202"/>
+        <!-- TODO:nati add exception -->
+        <!-- All other faults, build, common, get, post/put, and inProgress -->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &buildFaults;
+        &inProgressFault;
+    </method>
+ 
+    <method name="POST" id="diagnostics">
+        <doc xml:lang="EN" title="diagnostics">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Diagnostics a server
+            </p>
+        </doc>
+        <response status="202"/>
+        <!-- TODO:nati add exception -->
+        <!-- All other faults, build, common, get, post/put, and inProgress -->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &buildFaults;
+        &inProgressFault;
+    </method>
+ 
+    <method name="POST" id="suspend">
+        <doc xml:lang="EN" title="suspend">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Suspend a server
+            </p>
+        </doc>
+        <response status="202"/>
+        <!-- TODO:nati add exception -->
+        <!-- All other faults, build, common, get, post/put, and inProgress -->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &buildFaults;
+        &inProgressFault;
+    </method>
+    
+    <method name="POST" id="resume">
+        <doc xml:lang="EN" title="resume">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Resume a server
+            </p>
+        </doc>
+        <response status="202"/>
+        <!-- TODO:nati add exception -->
+        <!-- All other faults, build, common, get, post/put, and inProgress -->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &buildFaults;
+        &inProgressFault;
+    </method>
+
+    <method name="POST" id="rescue">
+        <doc xml:lang="EN" title="rescue">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Rescue a server
+            </p>
+        </doc>
+        <response status="202"/>
+        <!-- TODO:nati add exception -->
+        <!-- All other faults, build, common, get, post/put, and inProgress -->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &buildFaults;
+        &inProgressFault;
+    </method>
+  
+    <method name="POST" id="unrescue">
+        <doc xml:lang="EN" title="unrescue">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Rescue a server
+            </p>
+        </doc>
+        <response status="202"/>
+        <!-- TODO:nati add exception -->
+        <!-- All other faults, build, common, get, post/put, and inProgress -->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &buildFaults;
+        &inProgressFault;
+    </method>
+    
+    <method name="POST" id="migrate">
+        <doc xml:lang="EN" title="migrate">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Migrate a server
+            </p>
+        </doc>
+        <response status="202"/>
+        <!-- TODO:nati add exception -->
+        <!-- All other faults, build, common, get, post/put, and inProgress -->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &buildFaults;
+        &inProgressFault;
+    </method>   
+
+    <method name="POST" id="reset_network">
+        <doc xml:lang="EN" title="reset_network">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Reset network of a server
+            </p>
+        </doc>
+        <response status="202"/>
+        <!-- TODO:nati add exception -->
+        <!-- All other faults, build, common, get, post/put, and inProgress -->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &buildFaults;
+        &inProgressFault;
+    </method>
+    
+    <method name="POST" id="inject_network_info">
+        <doc xml:lang="EN" title="inject_network_info">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Inject Network Info to the server
+            </p>
+        </doc>
+        <response status="202"/>
+        <!-- TODO:nati add exception -->
+        <!-- All other faults, build, common, get, post/put, and inProgress -->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &buildFaults;
+        &inProgressFault;
+    </method>
+    
     <!-- IPs -->
     <method name="GET" id="getServerAddresses">
         <doc xml:lang="EN" title="List Addresses">

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../xslt/schema.xsl"?>
+
+<!-- (C) 2011 OpenStack LLC., All Rights Reserved -->
+
+<schema
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:csapi="http://docs.openstack.org/compute/api/v1.1"
+    xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:atom="http://www.w3.org/2005/Atom"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+    targetNamespace="http://docs.openstack.org/compute/api/v1.1"
+>
+  <annotation>
+    <xsd:appinfo
+        xml:lang="EN"
+        xmlns="http://www.w3.org/1999/xhtml">
+      <xsdxt:title>Zones type</xsdxt:title>
+      <xsdxt:link rel="index" href="api.xsd" />
+    </xsd:appinfo>
+    <xsd:documentation
+        xml:lang="EN"
+        xmlns="http://www.w3.org/1999/xhtml">
+      <p>
+        This schema file defines a Zones
+      </p>
+    </xsd:documentation>
+  </annotation>
+
+  <!-- Import ATOM specific schema definitions -->
+  <import namespace="http://www.w3.org/2005/Atom" schemaLocation="atom/atom.xsd" />
+
+  <include schemaLocation="common.xsd">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          Common types used by multiple entities and possibly spanning
+          several types of requests.
+        </p>
+      </xsd:documentation>
+    </annotation>
+  </include>
+  <include schemaLocation="faults.xsd">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          All fault types.
+        </p>
+      </xsd:documentation>
+    </annotation>
+  </include>
+
+  <element name="zone" type="csapi:Zone">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          The element defines a Zone.
+        </p>
+      </xsd:documentation>
+    </annotation>
+  </element>
+ 
+  <element name="zones" type="csapi:Zones">
+    <annotation>
+      <xsd:documentation
+        xml:lang="EN"
+        xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          The element defines a list of Zone.
+        </p>
+      </xsd:documentation>
+    </annotation>
+  </element>
+ 
+  <element name="instance_type" type="csapi:InstanceType">
+    <annotation>
+      <xsd:documentation
+        xml:lang="EN"
+        xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          The element defines a instance_type
+        </p>
+      </xsd:documentation>
+    </annotation>
+  </element>
+ 
+  <!-- Complex Types -->
+  <complexType name="Zone">
+    <annotation>
+      <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          A user (TODO: Should be described)
+        </p>
+      </xsd:documentation>
+    </annotation>    
+    <attribute name="api_url" type="xsd:string">
+          <annotation>
+              <xsd:documentation
+                  xml:lang="EN"
+                  xmlns="http://www.w3.org/1999/xhtml">
+                  <p>
+                    Api url for zone
+                  </p>
+              </xsd:documentation>
+          </annotation>
+      </attribute>
+    <attribute name="username" type="xsd:string">
+      <annotation>
+        <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            A username for zone
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+    <attribute name="password" type="xsd:string">
+      <annotation>
+        <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            A password for zone
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+    <attribute name="weight_offset" type="xsd:float">
+      <annotation>
+        <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            Weight offset for zone
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+    <attribute name="weight_scale" type="xsd:float">
+      <annotation>
+        <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            Weight scale for zone
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+    <element name="fault" type="csapi:AsyncAPIFault" minOccurs="0">
+          <annotation>
+              <xsd:documentation
+                  xml:lang="EN"
+                  xmlns="http://www.w3.org/1999/xhtml">
+                  <p>
+                      The detials of a fault that may have occured
+                      while cerating the server or performing a server
+                      action.
+                  </p>
+              </xsd:documentation>
+          </annotation>
+    </element>
+    <anyAttribute namespace="##other" processContents="lax"/>
+  </complexType>
+
+  <complexType name="InstanceType">
+    <annotation>
+      <xsd:documentation
+        xml:lang="EN"
+        xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          A user (TODO: Should be described)
+        </p>
+      </xsd:documentation>
+    </annotation>     
+    <attribute name="memory_mb" type="xsd:positiveInteger">
+      <annotation>
+        <xsd:documentation
+          xml:lang="EN"
+          xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+             memory for this instance type
+          </p>
+        </xsd:documentation>
+      </annotation>
+    </attribute>
+    <anyAttribute namespace="##other" processContents="lax"/>
+  </complexType>
+ 
+  <complexType name="Zones">
+    <sequence>
+      <element name="zone" type="csapi:Zone" minOccurs="0" maxOccurs="1000">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              A collection of zones.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </element>
+      <element vc:minVersion="1.1" ref="atom:link" minOccurs="0" maxOccurs="unbounded" />
+      <any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </sequence>
+    <anyAttribute namespace="##other" processContents="lax"/>
+  </complexType>
+</schema>

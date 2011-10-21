@@ -100,4 +100,26 @@
       </xsd:documentation>
     </annotation>
   </include>
+  <include schemaLocation="users.xsd">
+    <annotation>
+      <xsd:documentation
+        xml:lang="EN"
+        xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          Users
+        </p>
+      </xsd:documentation>
+    </annotation>
+  </include>
+  <include schemaLocation="zones.xsd">
+    <annotation>
+      <xsd:documentation
+        xml:lang="EN"
+        xmlns="http://www.w3.org/1999/xhtml">
+        <p>
+          Zones
+        </p>
+      </xsd:documentation>
+    </annotation>
+  </include>
 </schema>
