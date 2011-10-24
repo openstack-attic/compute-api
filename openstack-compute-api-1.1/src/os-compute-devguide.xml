@@ -2145,15 +2145,10 @@ Host: servers.api.openstack.org/v1.1/
                         </tr>
                     </tbody>
                 </informaltable>
-                <para>
-                    This operation updates the editable attributes of
-                    a server: the name of the server, the server
-                    metadata, and the IPv4 and IPv6 access address.
-                    Note that while the server name is editable, the
-                    operation does not change the server host
-                    name. Note also that server names are not
-                    guaranteed to be unique.
-                </para>
+                <para> This operation updates the editable attributes of a server: the name of the
+                    server and the IPv4 and IPv6 access addresses. Note that while the server name
+                    is editable, the operation does not change the server host name. Note also that
+                    server names are not guaranteed to be unique. </para>
                 <example>
                     <title>Server Update Name Request: XML</title>
                     <programlisting language="xml">
