@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- (C) 2011 OpenStack LLC., All Rights Reserved -->
+
+<!--*******************************************************-->
+<!--         Import Common XML Entities                    -->
+<!--                                                       -->
+<!--     You can resolve the entites with xmllint          -->
+<!--                                                       -->
+<!--        xmllint -noent os-compute-1.1.wadl             -->
+<!--*******************************************************-->
+<!DOCTYPE application [<!ENTITY % common  SYSTEM "common.ent">
+%common;]>
+
+<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns="http://wadl.dev.java.net/2009/02"
+   xmlns:osapi="http://docs.openstack.org/compute/api/v1.1"
+   xmlns:common="http://docs.openstack.org/common/api/v1.0"
+   xmlns:atom="http://www.w3.org/2005/Atom"
+   xsi:schemaLocation="http://docs.openstack.org/compute/api/v1.1
+                       xsd/api.xsd
+                       http://docs.openstack.org/common/api/v1.0
+                       xsd/api-common.xsd
+                       ">
+
+    <grammars>
+        <include href="xsd/api.xsd" />
+        <include href="xsd/api-common.xsd" />
+    </grammars>
+
+    <!--*******************************************************-->
+    <!--             All Resoruces                             -->
+    <!--*******************************************************-->
+
+    <resources base="https://servers.api.openstack.com">
+        <resource id="version" path="v1.1">
+            <resource id="tenantID" path="{tenantId}">
+                <param name="tenantId" style="template" type="xsd:string"/>
+                <resource id="Users" type="#UserList" path="users">
+                    <method href="#createUser" />
+                    <resource path="detail" type="#DetailUserList"/>
+                    <resource path="{userId}">
+                        <param name="userId" style="template" type="xsd:string"/>
+                        <method href="#getUser"/>
+                        <method href="#deleteUser"/>
+                        <method href="#updateUser"/>
+                    </resource>  
+                </resource>
+                <resource id="Accounts" path="accounts">
+                    <resource path="{accountsId}">
+                        <param name="accountId" style="template" type="xsd:string"/>
+                        <method href="#getAccount"/>
+                        <method href="#deleteAccount"/>
+                        <method href="#updateAccount"/>
+                    </resource>  
+                </resource>
+                <resource id="Zones" type="#ZoneList" path="zones">
+                    <method href="#createZone" />
+                    <resource path="detail" type="#DetailZoneList"/>
+                    <resource path="info" type="#InfoZone"/>
+                    <resource path="boot" type="#BootZone"/>
+                    <resource path="select" type="#SelectZone"/>
+                    <resource path="{zoneId}">
+                        <param name="zoneId" style="template" type="xsd:string"/>
+                        <method href="#getZone"/>
+                        <method href="#deleteZone"/>
+                        <method href="#updateZone"/>
+                    </resource>
+                </resource>
+            </resource>
+        </resource>
+    </resources>
+
+    <!--*******************************************************-->
+    <!--               Resource Types                          -->
+    <!--*******************************************************-->
+
+    <resource_type id="UserList">
+        <doc xml:lang="EN" title="Server List">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                A list of users. 
+            </p>
+        </doc>
+        <method href="#listUsers"/>
+    </resource_type>
+    
+    <resource_type id="DetailUserList">
+        <doc xml:lang="EN" title="Server List">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                A list of users. 
+            </p>
+        </doc>
+        <method href="#detailListUsers"/>
+    </resource_type>
+
+    <resource_type id="ZoneList">
+        <doc xml:lang="EN" title="Server List">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                A list of users. 
+            </p>
+        </doc>
+        <method href="#listZones"/>
+    </resource_type>
+    
+    <resource_type id="DetailZoneList">
+        <doc xml:lang="EN" title="Server List">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                A list of users. 
+            </p>
+        </doc>
+        <method href="#detailListZones"/>
+    </resource_type>
+    
+    <resource_type id="InfoZone">
+        <doc xml:lang="EN" title="Information of a zone">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Information of a zone. 
+            </p>
+        </doc>
+        <method href="#zoneInfo"/>
+    </resource_type>   
+ 
+    <resource_type id="BootZone">
+        <doc xml:lang="EN" title="Boot from a zone">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Boot on the Zone 
+            </p>
+        </doc>
+        <method href="#zoneBoot"/>
+    </resource_type> 
+
+    <resource_type id="SelectZone">
+        <doc xml:lang="EN" title="Select a zone">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Select a zone
+            </p>
+        </doc>
+        <method href="#zoneSelect"/>
+    </resource_type>
+
+    <!--*******************************************************-->
+    <!--               All Methods                             -->
+    <!--*******************************************************-->
+    
+    <!-- Users -->
+    <method name="POST" id="createUser">
+        <doc xml:lang="EN" title="Create User">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Creates a new server.
+            </p>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="osapi:user">
+                <param name="user" style="plain" required="true"
+                    type="osapi:user"
+                    path="/osapi:user"/>
+            </representation>
+            <representation mediaType="application/json" />
+        </request>
+        <response status="202"/>        
+        <!-- All other common faults except build in progess -->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &buildFaults;
+    </method>
+    
+    <method name="GET" id="listUsers">
+        <doc xml:lang="EN" title="List Users">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                List users
+            </p>
+        </doc>
+        <response status="200 203"><!-- TODO(nati): detailed representation is needed -->
+            <representation mediaType="application/xml" element="osapi:users"/>
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+    
+    <method name="GET" id="getUser">
+        <doc xml:lang="EN" title="Get user">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                List details of a user
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" element="osapi:user"/>
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common and GET Faults-->
+        &commonFaults;
+        &getFaults;
+    </method>
+    
+    <method name="DELETE" id="deleteUser">
+        <doc xml:lang="EN" title="Delete User">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Deletes the specified user.
+            </p>
+        </doc>
+        <response status="204"/>
+        <!-- Common and GET Faults -->
+        &commonFaults;
+        &getFaults;
+    </method>
+
+    <method name="GET" id="detailListUsers">
+        <doc xml:lang="EN" title="List Detail Users">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                List all users (all details).
+            </p>
+        </doc>
+        <request>
+            &serverListParameters;
+        </request>
+        <response status="200 203">
+            <representation mediaType="application/xml" element="osapi:users"/>
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+
+    <method name="PUT" id="updateUser">
+        <doc xml:lang="EN" title="Update a user">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Update the specified server's name and/or
+                administrative password.
+            </p>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="osapi:user">
+                <param name="server" style="plain" required="true"
+                    type="osapi:user"/>
+            </representation>
+            <representation mediaType="application/json" />
+        </request>
+        <response status="200">
+            <representation mediaType="application/xml" element="osapi:user"/>
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common, GET, POST/PUT, inProgress Faults-->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &inProgressFault;
+    </method>
+
+    <!-- Accounts -->
+    <method name="GET" id="getAccount">
+        <doc xml:lang="EN" title="Get an account">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                List details of an account
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" element="osapi:account"/>
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common and GET Faults-->
+        &commonFaults;
+        &getFaults;
+    </method>
+    
+    <method name="DELETE" id="deleteAccount">
+        <doc xml:lang="EN" title="Delete User">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Deletes the specified account.
+            </p>
+        </doc>
+        <response status="204"/>
+        <!-- Common and GET Faults -->
+        &commonFaults;
+        &getFaults;
+    </method>
+    
+    <method name="PUT" id="updateAccount">
+        <doc xml:lang="EN" title="Update a user">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Update the specified server's name and/or
+                administrative password.
+            </p>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="osapi:account">
+                <param name="account" style="plain" required="true"
+                    type="osapi:account"/>
+            </representation>
+            <representation mediaType="application/json" />
+        </request>
+        <response status="200">
+            <representation mediaType="application/xml" element="osapi:account"/>
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common, GET, POST/PUT, inProgress Faults-->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &inProgressFault;
+    </method>
+
+    <!-- Zones --> 
+    
+    <method name="GET" id="getZone">
+        <doc xml:lang="EN" title="Get zone">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                List details of a user
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" element="osapi:zone"/>
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common and GET Faults-->
+        &commonFaults;
+        &getFaults;
+    </method>
+    
+    <method name="DELETE" id="deleteZone">
+        <doc xml:lang="EN" title="Delete Zone">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Deletes the specified zone.
+            </p>
+        </doc>
+        <response status="204"/>
+        <!-- Common and GET Faults -->
+        &commonFaults;
+        &getFaults;
+    </method>
+   
+    <method name="POST" id="createZone">
+        <doc xml:lang="EN" title="Create Zone">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Creates a new zone.
+            </p>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="osapi:zone">
+                <param name="zone" style="plain" required="true"
+                    type="osapi:Zone"/>
+            </representation>
+            <representation mediaType="application/json" />
+        </request>
+        <response status="202"/>        
+        <!-- All other common faults except build in progess -->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &buildFaults;
+    </method>
+    
+    <method name="GET" id="listZones">
+        <doc xml:lang="EN" title="List Zones">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                List zones
+            </p>
+        </doc>
+        <response status="200 203"><!-- TODO(nati): detailed representation is needed -->
+            <representation mediaType="application/xml"/>
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+       
+    <method name="GET" id="detailListZones">
+        <doc xml:lang="EN" title="List Detail Zones">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                List all zones (all details).
+            </p>
+        </doc>
+        <request>
+            &serverListParameters;
+        </request>
+        <response status="200 203">
+            <representation mediaType="application/xml"/>
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+    
+    <method name="PUT" id="updateZone">
+        <doc xml:lang="EN" title="Update a zone">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Update a zone
+            </p>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="osapi:zone">
+                <param name="zone" style="plain" required="true"
+                    type="osapi:Zone"/>
+            </representation>
+            <representation mediaType="application/json" />
+        </request>
+        <response status="200">
+            <representation mediaType="application/xml"/>
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common, GET, POST/PUT, inProgress Faults-->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &inProgressFault;
+    </method>
+     
+    <method name="GET" id="zoneInfo">
+        <doc xml:lang="EN" title="Info of a zone">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Return name and capabilities for this zone.
+            </p>
+        </doc>
+        <response status="200">
+            <representation mediaType="application/xml"/>
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common, GET, POST/PUT, inProgress Faults-->
+        &commonFaults;
+        &getFaults;
+        &inProgressFault;
+    </method>
+ 
+    <method name="POST" id="zoneBoot">
+        <doc xml:lang="EN" title="boot instance from a zone">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Update a zone
+            </p>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="osapi:server">
+                <param name="zone" style="plain" required="true"
+                    type="osapi:ServerForCreate"/>
+            </representation>
+            <representation mediaType="application/json" />
+        </request>
+        <response status="200">
+            <representation mediaType="application/xml" element="osapi:zone"/>
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common, GET, POST/PUT, inProgress Faults-->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &inProgressFault;
+    </method>
+
+    <method name="POST" id="zoneSelect">
+        <doc xml:lang="EN" title="Update a zone">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Return name and capabilities for this zone.
+            </p>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="osapi:instance_type">
+                <param name="instance_type" style="plain" required="true"
+                    type="osapi:InstanceType"/>
+            </representation>
+            <representation mediaType="application/json" />
+        </request>
+        <response status="200">
+            <representation mediaType="application/xml" element="osapi:zone"/>
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common, GET, POST/PUT, inProgress Faults-->
+        &commonFaults;
+        &getFaults;
+        &inProgressFault;
+    </method>
+</application>

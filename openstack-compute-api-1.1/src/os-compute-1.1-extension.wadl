@@ -157,7 +157,7 @@
     
     <!-- os-extra_specs -->
     <!-- TODO add description of parameters-->
-    <method name="PUT" id="createFlavorExt">
+    <method name="POST" id="createFlavorExt">
         <doc xml:lang="EN" title="Create Flavor Extension">
             <p xmlns="http://www.w3.org/1999/xhtml">
                 Creates a new flavor extension.
@@ -248,7 +248,7 @@
         &commonFaults;
     </method>
     
-    <method name="POST" id="updateFlavorExt">
+    <method name="PUT" id="updateFlavorExt">
         <doc xml:lang="EN" title="Update a FlavorExt">
             <p xmlns="http://www.w3.org/1999/xhtml">
                 Update a flavlor extension
@@ -270,7 +270,7 @@
     </method>
 
     <!-- Floating IP -->
-    <method name="PUT" id="createFloatingIp">
+    <method name="POST" id="createFloatingIp">
         <doc xml:lang="EN" title="Create FlavorExt">
             <p xmlns="http://www.w3.org/1999/xhtml">
                 Allocate floating Ip
@@ -380,4 +380,889 @@
         &inProgressFault;
     </method>
 
+<<<<<<< HEAD
+=======
+    <method name="POST" id="addFixedIp">
+        <doc xml:lang="EN" title="Adds an IP on a given network to an instance.">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Adds an IP on a given network to an instance.
+            </p>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="osapi:addFixedIp"/>
+            <representation mediaType="application/json" />
+        </request>
+        <response status="202"/>
+        <!-- Common, GET, postput, inProgress Faults-->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &inProgressFault;
+    </method>
+
+    <method name="POST" id="removeFixedIp">
+        <doc xml:lang="EN" title="Removes an IP from an instance.">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Removes an IP from an instance.
+            </p>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="osapi:removeFixedIp"/>
+            <representation mediaType="application/json" />
+        </request>
+        <response status="202"/>
+        <!-- Common, GET, postput, inProgress Faults-->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &inProgressFault;
+    </method>
+
+    <method name="POST" id="rescue">
+        <doc xml:lang="EN" title="Rescue an instance.">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Rescue an instance.
+            </p>
+        </doc>
+        <response status="202"/>
+        <!-- Common, GET, postput, inProgress Faults-->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &inProgressFault;
+    </method>
+
+    <method name="POST" id="unrescue">
+        <doc xml:lang="EN" title="Unrescue an instance.">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Unrescue an instance.
+            </p>
+        </doc>
+        <response status="202"/>
+        <!-- Common, GET, postput, inProgress Faults-->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &inProgressFault;
+    </method>
+
+    <!-- Hosts -->
+    <method name="GET" id="listHosts">
+        <doc xml:lang="EN" title="List Hosts">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                List Hosts
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+
+    <method name="PUT" id="updateHosts">
+        <doc xml:lang="EN" title="Update Hosts">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Update hosts
+                {'status':'enable'} or {'status':'disable'}
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+
+    <method name="GET" id="startupHosts">
+        <doc xml:lang="EN" title="Startup Hosts">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Startup hosts
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+    
+    <method name="GET" id="shutdownHosts">
+        <doc xml:lang="EN" title="Shutdown Hosts">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Shutdown hosts
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+
+    <method name="GET" id="rebootHosts">
+        <doc xml:lang="EN" title="Reboot Hosts">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Reboot hosts
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+    <!-- keypares -->
+    <method name="GET" id="listKeyPairs">
+        <doc xml:lang="EN" title="List KeyPairs">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                List listKeyPairs
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+
+    <method name="PUT" id="createKeyPair">
+        <doc xml:lang="EN" title="Create Keypair">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Create Key pair
+            </p>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="osapi:keypair"/>
+            <representation mediaType="application/json" />
+        </request>
+        <response status="202"/>        
+        <!-- All other common faults except build in progess -->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &buildFaults;
+    </method>
+
+    <method name="DELETE" id="deleteKeyPair">
+        <doc xml:lang="EN" title="Delete Keypair">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Delete Key pair
+            </p>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </request>
+        <response status="202"/>        
+        <!-- All other common faults except build in progess -->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &buildFaults;
+    </method>
+
+    <!-- quota -->
+    <method name="GET" id="quotaDefault">
+        <doc xml:lang="EN" title="Default quota">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Get default quota for project Id
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+    
+    <method name="GET" id="getQuota">
+        <doc xml:lang="EN" title="Get quota">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Get quota for project Id
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+ 
+    <method name="PUT" id="updateQuota">
+        <doc xml:lang="EN" title="Update quota">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Update quota for project Id
+            </p>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="osapi:quota_set"/>
+            <representation mediaType="application/json" />
+        </request>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+    
+    <!-- security group -->
+    <method name="GET" id="listSecurityGroup">
+        <doc xml:lang="EN" title="List security group">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                List security group
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>   
+    
+    <method name="POST" id="createSecurityGroup">
+        <doc xml:lang="EN" title="Create SecurityGroup">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Create a security group
+            </p>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="osapi:security_group"/>
+            <representation mediaType="application/json" />
+        </request>
+        <response status="202"/>        
+        <!-- All other common faults except build in progess -->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &buildFaults;
+    </method>
+
+    <method name="GET" id="getSecurityGroup">
+        <doc xml:lang="EN" title="Get security group">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Get security group
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>  
+    
+    <method name="DELETE" id="deleteSecurityGroup">
+        <doc xml:lang="EN" title="Delete a security group">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Delete a security group
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+
+    <method name="POST" id="createSecurityGroupRule">
+        <doc xml:lang="EN" title="Create SecurityGroup Rule">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Create a security group rule
+            </p>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="osapi:security_group_rule"/>
+            <representation mediaType="application/json" />
+        </request>
+        <response status="202"/>        
+        <!-- All other common faults except build in progess -->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &buildFaults;
+    </method>
+
+    <method name="DELETE" id="deleteSecurityGroupRule">
+        <doc xml:lang="EN" title="Delete a security group rule">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Delete a security group rule
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>  
+    
+    <!-- simple tenant usage-->
+    <method name="GET" id="listSimpleTenantUsage">
+        <doc xml:lang="EN" title="List simple tenant usage">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                List simple tenant usage
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+    
+    <method name="GET" id="getSimpleTenantUsage">
+        <doc xml:lang="EN" title="get simple tenant usage">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Get a simple tenant usage
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+    
+    <!--  server virtual interface -->
+    <method name="GET" id="listServerVirtualInterface">
+        <doc xml:lang="EN" title="A list of server virtual interface">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                A list of server virtual interface
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>    
+    
+    <!--  vsa  -->
+    <method name="GET" id="listVsa">
+        <doc xml:lang="EN" title="A list of vsa">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                A list of vsa
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method> 
+
+    <method name="GET" id="listDetailVsa">
+        <doc xml:lang="EN" title="A list of vsa">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                A list of vsa
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method> 
+
+    <method name="GET" id="getVsa">
+        <doc xml:lang="EN" title="Get a vsa">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Get a vsa
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method> 
+ 
+    <method name="DELETE" id="deleteVsa">
+        <doc xml:lang="EN" title="Delete a vsa">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Delete a vsa
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method> 
+    
+    <method name="POST" id="associateAddress">
+        <doc xml:lang="EN" title="associate address of vsa">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Associate address of vsa
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" element="osapi:ipAddress" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>  
+    
+    <method name="POST" id="disassociateAddress">
+        <doc xml:lang="EN" title="disassociate address of vsa">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Disassociate address of vsa
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" element="osapi:ipAddress" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+
+    <method name="POST" id="createVsa">
+        <doc xml:lang="EN" title="Create Vsa">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Create a Vsa
+            </p>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="osapi:vsa"/>
+            <representation mediaType="application/json" />
+        </request>
+        <response status="202"/>        
+        <!-- All other common faults except build in progess -->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &buildFaults;
+    </method>
+
+    <method name="POST" id="createVsaVolume">
+        <doc xml:lang="EN" title="Create a Vsa volume">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Create a Vsa volume
+            </p>
+        </doc>
+        <request>
+            <representation mediaType="application/xml"/><!--TODO add params-->
+            <representation mediaType="application/json" />
+        </request>
+        <response status="202"/>        
+        <!-- All other common faults except build in progess -->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &buildFaults;
+    </method>
+
+    <method name="GET" id="getVsaVolume">
+        <doc xml:lang="EN" title="Get a vsa volume">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Get a vsa volume
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method> 
+
+    <method name="GET" id="listDetailVsaVolume">
+        <doc xml:lang="EN" title="Detailed list of a vsa volumes">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Detailed list of a vsa volumes
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+
+    <method name="PUT" id="updateVsaVolume">
+        <doc xml:lang="EN" title="update a Vsa Volume">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Update a Vsa volume
+            </p>
+        </doc>
+        <request>
+            <representation mediaType="application/xml"/><!--TODO add params-->
+            <representation mediaType="application/json" />
+        </request>
+        <response status="202"/>        
+        <!-- All other common faults except build in progess -->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &buildFaults;
+    </method>
+
+    <method name="DELETE" id="deleteVsaVolume">
+        <doc xml:lang="EN" title="Delete a vsa volume">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Delete a vsa volume
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method> 
+
+    <method name="GET" id="listVsaInstance">
+        <doc xml:lang="EN" title="list of a vsa instance">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                List vsa instance
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+    
+    <!-- volumes -->
+    <method name="GET" id="listVolume">
+        <doc xml:lang="EN" title="list of volumes">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                List of volumes
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>   
+
+    <method name="GET" id="listDetailVolume">
+        <doc xml:lang="EN" title="list of detailed volumes">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                List of detailed volumes
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method> 
+
+    <method name="POST" id="createVolume">
+        <doc xml:lang="EN" title="Create a volume">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Create a Volume
+            </p>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="osapi:volume"/>
+            <representation mediaType="application/json" />
+        </request>
+        <response status="202"/>        
+        <!-- All other common faults except build in progess -->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &buildFaults;
+    </method>
+
+    <method name="GET" id="getVolume">
+        <doc xml:lang="EN" title="Get a volume">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Get a volume
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method> 
+    
+    <method name="DELETE" id="deleteVolume">
+        <doc xml:lang="EN" title="Delete a volume">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Delete a volume
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+    
+    <!-- volume attachment -->
+    <method name="GET" id="listVolumeAttachment">
+        <doc xml:lang="EN" title="list of volumes">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                List of volume attachment
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>   
+    
+    <method name="GET" id="listDetailVolumeAttachment">
+        <doc xml:lang="EN" title="list of detailed volumes">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                List of detailed volume attachment
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+
+    <method name="POST" id="createVolumeAttachment">
+        <doc xml:lang="EN" title="Create a volume">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Create a Volume attachment
+            </p>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="osapi:volumeAttachment"/>
+            <representation mediaType="application/json" />
+        </request>
+        <response status="202"/>        
+        <!-- All other common faults except build in progess -->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &buildFaults;
+    </method>
+    
+    <method name="GET" id="getVolumeAttachment">
+        <doc xml:lang="EN" title="Get a volume attachment">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Get a volume attachment
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method> 
+    
+    <method name="DELETE" id="deleteVolumeAttachment">
+        <doc xml:lang="EN" title="Delete a volume attachment">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Delete a volume attachment
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+    
+    <method name="POST" id="bootFromVolume">
+        <doc xml:lang="EN" title="Boot from volume">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Creates a new server form volume.
+            </p>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="osapi:server">
+                <param name="server" style="plain" required="true"
+                    type="osapi:BootFromVolume"
+                    path="/osapi:server"/>
+            </representation>
+            <representation mediaType="application/json" />
+        </request>
+        <response status="202">
+            <param name="Location" style="header"
+                required="true" type="xsd:anyURI"/>
+            <representation mediaType="application/xml" element="osapi:server"/>
+            <representation mediaType="application/json" />
+        </response>
+        <!-- All other common faults except build in progess -->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &buildFaults;
+    </method>
+    
+    <!-- volume types -->
+    
+    <method name="POST" id="createVolumeType">
+        <doc xml:lang="EN" title="Create a volume type">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Create volume types
+            </p>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="osapi:volume_type"/>
+            <representation mediaType="application/json" />
+        </request>
+        <response status="202"/>        
+        <!-- All other common faults except build in progess -->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &buildFaults;
+    </method>
+
+    <method name="GET" id="listOSVolumeType">
+        <doc xml:lang="EN" title="List volume types">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                List volume types
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+
+    <method name="GET" id="getVolumeType">
+        <doc xml:lang="EN" title="Get a volume type">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Get a volume type
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method> 
+    
+    <method name="DELETE" id="deleteVolumeType">
+        <doc xml:lang="EN" title="Delete a volume type">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Delete a volume type
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+
+    <!-- extra specs-->
+    <method name="POST" id="createVolumeExtraSpecs">
+        <doc xml:lang="EN" title="Create a volume specs">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Create volume types
+            </p>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="osapi:extra_specs"/>
+            <representation mediaType="application/json" />
+        </request>
+        <response status="202"/>        
+        <!-- All other common faults except build in progess -->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &buildFaults;
+    </method>
+ 
+    <method name="PUT" id="updateVolumeExtraSpecs">
+        <doc xml:lang="EN" title="Create a volume specs">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Create volume types
+            </p>
+        </doc>
+        <request>
+            <representation mediaType="application/xml" element="osapi:extra_specs"/>
+            <representation mediaType="application/json" />
+        </request>
+        <response status="202"/>        
+        <!-- All other common faults except build in progess -->
+        &commonFaults;
+        &getFaults;
+        &postPutFaults;
+        &buildFaults;
+    </method>
+ 
+    <method name="GET" id="listOSVolumeExtraSpecs">
+        <doc xml:lang="EN" title="List volume types">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                List volume extra specs
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+    
+    <method name="GET" id="getVolumeExtraSpecs">
+        <doc xml:lang="EN" title="Get a volume type">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Get a volume extra specs
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method> 
+    
+    <method name="DELETE" id="deleteVolumeExtraSpecs">
+        <doc xml:lang="EN" title="Delete a volume type">
+            <p xmlns="http://www.w3.org/1999/xhtml">
+                Delete a volume extra specs
+            </p>
+        </doc>
+        <response status="200 203">
+            <representation mediaType="application/xml" />
+            <representation mediaType="application/json" />
+        </response>
+        <!-- Common Faults -->
+        &commonFaults;
+    </method>
+>>>>>>> 8cdc035... Fixes bug 881621
 </application>
