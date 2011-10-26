@@ -300,7 +300,7 @@
     </method>
 
     <method name="GET" id="getExtension">
-        <doc xml:lang="EN" title="Get Server Details">
+        <doc xml:lang="EN" title="Get Extension Details">
             <p xmlns="http://www.w3.org/1999/xhtml">
                 Get details about a specific extension.
             </p>

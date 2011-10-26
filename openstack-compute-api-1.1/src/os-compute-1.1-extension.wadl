@@ -380,8 +380,6 @@
         &inProgressFault;
     </method>
 
-<<<<<<< HEAD
-=======
     <method name="POST" id="addFixedIp">
         <doc xml:lang="EN" title="Adds an IP on a given network to an instance.">
             <p xmlns="http://www.w3.org/1999/xhtml">
@@ -1264,5 +1262,4 @@
         <!-- Common Faults -->
         &commonFaults;
     </method>
->>>>>>> 8cdc035... Fixes bug 881621
 </application>
