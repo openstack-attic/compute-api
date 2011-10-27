@@ -108,7 +108,7 @@
                                         <include name="**/*.*" />
                                     </fileset>
                                 </copy>
-                                <copy todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/1.1/xslts">
+                                <copy todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/1.1/xslt">
                                     <fileset dir="${basedir}/src/xslt">
                                         <include name="**/*.*" />
                                     </fileset>
