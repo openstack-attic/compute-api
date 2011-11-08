@@ -41,7 +41,7 @@
       xmlns:m="http://www.w3.org/1998/Math/MathML"
       xmlns:html="http://www.w3.org/1999/xhtml"
       xmlns:db="http://docbook.org/ns/docbook"
-      version="5.0" status="draft"
+      version="5.0" 
     xml:id="os-cs-devguide">
     <title>OpenStack Compute Developer Guide</title>
     <titleabbrev>OpenStack Compute Dev Guide</titleabbrev>
@@ -63,7 +63,7 @@
         </copyright>
         <releaseinfo>API v1.1</releaseinfo>
         <productname>OpenStack Compute</productname>
-        <pubdate>2011-09-08</pubdate>
+        <pubdate>2011-11-08</pubdate>
         <legalnotice role="apache2">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -116,6 +116,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td colspan="1" align="center">November 8, 2011</td>
+                            <td colspan="4">
+                                <para>Removed DRAFT designation.</para>
+                            </td>
+                        </tr>
                         <tr>
                             <td colspan="1" align="center">September 8, 2011</td>
                             <td colspan="4">
