@@ -50,7 +50,7 @@
             <plugin>
                 <groupId>com.rackspace.cloud.api</groupId>
                 <artifactId>clouddocs-maven-plugin</artifactId>
-                <version>1.0.5-SNAPSHOT</version>
+                <version>1.0.7</version>
                 <executions>
                     <execution>
                         <id>goal1</id>
@@ -158,6 +158,7 @@
                     <includes>
                         os-compute-devguide.xml
                     </includes>
+                    <canonicalUrlBase>http://docs.openstack.org/api/openstack-compute/1.1/content/</canonicalUrlBase>
                     <profileSecurity>reviewer</profileSecurity>
                     <branding>openstack</branding>
                 </configuration>

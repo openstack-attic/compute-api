@@ -74,6 +74,376 @@
                 applications using the OpenStack Compute Application Programming Interface
                     (<abbrev>API</abbrev>). </para>
         </abstract>
+        <revhistory>
+            <revision>
+                <!-- ... continue addding more revisions here as you change this document using the markup shown below... -->
+                <date>2011-11-08</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Removed DRAFT designation.</para>
+                        </listitem>
+                        
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            
+            <revision>
+                <date>2011-09-08</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem><para>
+                    Added <parameter>limit</parameter> and
+                    <parameter>marker</parameter>
+                    parameters to list operations.
+                        </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                The rebuild action behaves
+                                just like create: an
+                                imageRef is used and a
+                                password may be specified.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Added tenant and userId
+                                attributes to server and
+                                image.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Added vcpus attribute to
+                                flavors.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                We now use a flavorRef
+                                in the resize action.
+                            </para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2011-07-23</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>
+                                Added missing response
+                                examples for server
+                                update.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Ensure consistent HTTP
+                                status codes for all
+                                resources.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Clarifications on setting
+                                and changing a server
+                                password.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Minor updates to metadata
+                                section for clarity.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Discuss alternate links.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Removed version number
+                                from compute media types
+                                &mdash; use a media type
+                                parameter instead.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Bought back the flavorRef
+                                and imageRef server
+                                attributes these are now
+                                only used when creating a
+                                server.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Made the create image
+                                operation a server
+                                action.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Added minDisk and minRam
+                                filters to flavor lists.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Added minDisk and minRam
+                                attributes to images.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Asynchronous faults may
+                                now contain a timestamp.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Changes-since request
+                                returns an empty list
+                                rather than a 304.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Added DELETED image status.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Fix content length in <xref
+                                    linkend="ImageCreateFullResponse"/>.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Fixed bad request error code in <xref
+                                    linkend="Server_Passwords-d1e2510"/>.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Compact image, server,
+                                and flavor lists should
+                                contain IDs, names, and
+                                links (Any kind of link
+                                may be included &mdash; not
+                                just self links).
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Changed metadata URI from
+                                .../meta to .../metadata
+                                for consistency.
+                            </para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2011-06-29</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>
+                                Renamed Primary IP to
+                                Access IP.
+                            </para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2011-06-23</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>
+                                Many minor updates based
+                                on community feedback.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Removed sections on
+                                Content Compression,
+                                Persistent Connections,
+                                and Caching &mdash; these
+                                are operator
+                                specific. Added section
+                                on HTTP.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                A Location header is
+                                returned when creating
+                                servers/images.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Added filters to
+                                collection of Image,
+                                Servers, and Flavors.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Added asynchronous faults.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Updates to links and
+                                references.  Remove
+                                serverRef, imageRef, and
+                                flavorRef and instead
+                                embed one entity in
+                                another to provide links.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Added primary IP addresses.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Added forbidden fault.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                We now use a single bookmark link per entity regardless of mimetype.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Collections are now sorted by create time.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Previous links are no longer required.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Added the ability to create or update multiple metadata items simultaneously.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Minor cleanups to server and image state machine.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Update to JSON collection format.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Replace integer IDs with UUIDs.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Removed affinityID, this
+                                will likely come in as an
+                                extension.
+                            </para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2011-04-25</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>
+                                Some minor cleanups in
+                                preparation for OpenStack
+                                Summit discussion.
+                            </para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2011-03-11</date>
+                <revdescription><itemizedlist spacing="compact">
+                    <listitem>
+                        <para>
+                            Many minor updates based
+                            on community feedback.
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            Updates to resource linking
+                            and references.
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            Better description of
+                            paginated collections.
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            Metadata supported in
+                            servers and images.
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            Dropped support for
+                            shared IP groups.
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            IPs organized by network
+                            id, vs simply having
+                            public and private IPs.
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            Generalized affinity id.
+                        </para>
+                    </listitem>
+                </itemizedlist></revdescription>
+            </revision>
+            <revision>
+                <date>2011-02-09</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>
+                                Initial release.
+                            </para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+        </revhistory>
+        
+        
     </info>
     <chapter xml:id="Overview-d1e71">
         <title>Overview</title>
@@ -108,378 +478,8 @@
             <para>This version of the Developer Guide replaces and
             obsoletes all previous versions.  The most recent changes
             are described in the table below:</para>
-            <informaltable rules='all'>
-                    <thead>
-                        <tr>
-                            <td align="center" colspan="1">Revision Date</td>
-                            <td align="center" colspan="4">Summary of Changes</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="1" align="center">November 8, 2011</td>
-                            <td colspan="4">
-                                <para>Removed DRAFT designation.</para>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1" align="center">September 8, 2011</td>
-                            <td colspan="4">
-                                <itemizedlist spacing="compact">
-                                    <listitem>
-                                        <para>
-                                            Added <parameter>limit</parameter> and
-                                            <parameter>marker</parameter>
-                                            parameters to list operations.
-                                        </para>
-                                    </listitem>
-                                    <listitem>
-                                        <para>
-                                            The rebuild action behaves
-                                            just like create: an
-                                            imageRef is used and a
-                                            password may be specified.
-                                        </para>
-                                    </listitem>
-                                    <listitem>
-                                        <para>
-                                            Added tenant and userId
-                                            attributes to server and
-                                            image.
-                                        </para>
-                                    </listitem>
-                                    <listitem>
-                                        <para>
-                                            Added vcpus attribute to
-                                            flavors.
-                                        </para>
-                                    </listitem>
-                                    <listitem>
-                                        <para>
-                                            We now use a flavorRef
-                                            in the resize action.
-                                        </para>
-                                    </listitem>
-                                </itemizedlist>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1" align="center">July 23, 2011</td>
-                            <td colspan="4">
-                                 <itemizedlist spacing="compact">
-                                     <listitem>
-                                         <para>
-                                             Added missing response
-                                             examples for server
-                                             update.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Ensure consistent HTTP
-                                             status codes for all
-                                             resources.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Clarifications on setting
-                                             and changing a server
-                                             password.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Minor updates to metadata
-                                             section for clarity.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Discuss alternate links.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Removed version number
-                                             from compute media types
-                                             &mdash; use a media type
-                                             parameter instead.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Bought back the flavorRef
-                                             and imageRef server
-                                             attributes these are now
-                                             only used when creating a
-                                             server.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Made the create image
-                                             operation a server
-                                             action.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Added minDisk and minRam
-                                             filters to flavor lists.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Added minDisk and minRam
-                                             attributes to images.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Asynchronous faults may
-                                             now contain a timestamp.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Changes-since request
-                                             returns an empty list
-                                             rather than a 304.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Added DELETED image status.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Fix content length in <xref
-                                             linkend="ImageCreateFullResponse"/>.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Fixed bad request error code in <xref
-                                             linkend="Server_Passwords-d1e2510"/>.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Compact image, server,
-                                             and flavor lists should
-                                             contain IDs, names, and
-                                             links (Any kind of link
-                                             may be included &mdash; not
-                                             just self links).
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Changed metadata URI from
-                                             .../meta to .../metadata
-                                             for consistency.
-                                         </para>
-                                    </listitem>
-                                 </itemizedlist>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1" align="center">June 29, 2011</td>
-                            <td colspan="4">
-                                 <itemizedlist spacing="compact">
-                                     <listitem>
-                                         <para>
-                                             Renamed Primary IP to
-                                             Access IP.
-                                         </para>
-                                    </listitem>
-                                 </itemizedlist>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1" align="center">June 23, 2011</td>
-                            <td colspan="4">
-                                 <itemizedlist spacing="compact">
-                                     <listitem>
-                                         <para>
-                                             Many minor updates based
-                                             on community feedback.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Removed sections on
-                                             Content Compression,
-                                             Persistent Connections,
-                                             and Caching &mdash; these
-                                             are operator
-                                             specific. Added section
-                                             on HTTP.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             A Location header is
-                                             returned when creating
-                                             servers/images.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Added filters to
-                                             collection of Image,
-                                             Servers, and Flavors.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Added asynchronous faults.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Updates to links and
-                                             references.  Remove
-                                             serverRef, imageRef, and
-                                             flavorRef and instead
-                                             embed one entity in
-                                             another to provide links.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Added primary IP addresses.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Added forbidden fault.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             We now use a single bookmark link per entity regardless of mimetype.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Collections are now sorted by create time.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Previous links are no longer required.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Added the ability to create or update multiple metadata items simultaneously.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Minor cleanups to server and image state machine.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Update to JSON collection format.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Replace integer IDs with UUIDs.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Removed affinityID, this
-                                             will likely come in as an
-                                             extension.
-                                         </para>
-                                    </listitem>
-                                 </itemizedlist>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1" align="center">April 25, 2011</td>
-                            <td colspan="4">
-                                 <itemizedlist spacing="compact">
-                                     <listitem>
-                                         <para>
-                                             Some minor cleanups in
-                                             preparation for OpenStack
-                                             Summit discussion.
-                                         </para>
-                                    </listitem>
-                                 </itemizedlist>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1" align="center">Mar. 1, 2011</td>
-                            <td colspan="4">
-                                 <itemizedlist spacing="compact">
-                                     <listitem>
-                                         <para>
-                                             Many minor updates based
-                                             on community feedback.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Updates to resource linking
-                                             and references.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Better description of
-                                             paginated collections.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Metadata supported in
-                                             servers and images.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Dropped support for
-                                             shared IP groups.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             IPs organized by network
-                                             id, vs simply having
-                                             public and private IPs.
-                                         </para>
-                                    </listitem>
-                                     <listitem>
-                                         <para>
-                                             Generalized affinity id.
-                                         </para>
-                                    </listitem>
-                                </itemizedlist>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1" align="center">Feb. 9, 2011</td>
-                            <td colspan="4">
-                                 <itemizedlist spacing="compact">
-                                     <listitem>
-                                         <para>
-                                             Initial release.
-                                         </para>
-                                    </listitem>
-                                </itemizedlist>
-                            </td>
-                        </tr>
-                    </tbody>
-            </informaltable>
+            <!-- Table generated in output from revision element in the book element -->
+            <para><?rax revhistory?></para>
         </section>
         <?hard-pagebreak?>
         <section xml:id="Additional_Resources-d1e346">
