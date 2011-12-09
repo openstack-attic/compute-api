@@ -2266,14 +2266,7 @@ Host: servers.api.openstack.org/v1.1/
                         </tr>
                     </tbody>
                 </informaltable>
-                <para>This operation deletes a cloud server instance from the system.</para>
-                <note>
-                    <para>
-                        When a server is deleted, all images created
-                        from that server are also removed.
-                    </para>
-                </note>
-                <para>This operation does not require a request or a response body.</para>
+                <para>This operation deletes a cloud server instance from the system. It does not require a request or a response body.</para>
             </section>
         </section>
         <?hard-pagebreak?>
