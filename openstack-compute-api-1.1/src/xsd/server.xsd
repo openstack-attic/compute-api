@@ -539,6 +539,54 @@
       </complexContent>
   </complexType>
 
+  <complexType name="ServerWithOnlyIDLinks">
+      <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+              <p>
+                  The only allowed attribute for this Server type is
+                  the ID, and links. This type is used for for holding
+                  extenal refernecs to servers.
+              </p>
+          </xsd:documentation>
+      </annotation>
+      <complexContent>
+          <restriction base="csapi:Server">
+              <sequence>
+                  <element ref="atom:link" minOccurs="1" maxOccurs="unbounded" />
+                  <any vc:minVersion="1.1" namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+              </sequence>
+              <attribute type="csapi:UUID" name="id"   use="required"/>
+              <attribute type="xsd:string" name="name" use="prohibited"/>
+              <attribute type="xsd:string" name="accessIPv4" use="prohibited"/>
+              <attribute type="xsd:string" name="accessIPv6" use="prohibited" />
+              <attribute type="xsd:string" name="adminPass" use="prohibited"/>
+              <attribute type="xsd:string" name="tenantId" use="prohibited"/>
+              <attribute type="xsd:string" name="userId" use="prohibited"/>
+              <attribute type="xsd:string" name="hostId" use="prohibited"/>
+              <attribute type="csapi:Progress" name="progress"  use="prohibited"/>
+              <attribute type="csapi:ExtensibleServerStatus" name="status" use="prohibited"/>
+              <attribute type="xsd:dateTime" name="updated" use="prohibited"/>
+              <attribute type="xsd:dateTime" name="created" use="prohibited"/>
+              <anyAttribute namespace="##other" processContents="lax"/>
+              <assert vc:minVersion="1.1" test="atom:link[@rel='self']/@href and atom:link[@rel='bookmark']/@href">
+                  <annotation>
+                      <xsd:documentation
+                          xml:lang="EN"
+                          xmlns="http://www.w3.org/1999/xhtml">
+                          <p>
+                              Here the server <strong>MUST</strong>
+                              contain an ID, a bookmark link,
+                              and a self link.
+                          </p>
+                      </xsd:documentation>
+                  </annotation>
+              </assert>
+          </restriction>
+      </complexContent>
+  </complexType>
+
   <complexType name="ServerForCreate">
       <annotation>
           <xsd:documentation
