@@ -110,3 +110,11 @@
             <param xmlns="http://wadl.dev.java.net/2009/02" name="minDisk" style="query" required="false" type="xsd:int"/>
             <param xmlns="http://wadl.dev.java.net/2009/02" name="minRam"  style="query" required="false" type="xsd:int"/>
            '>
+
+     <!-- Useful for describing APIs -->
+
+     <!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
+     <!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
+     <!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
+     <!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
+
