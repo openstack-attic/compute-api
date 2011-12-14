@@ -15,7 +15,9 @@
 <application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
    xmlns="http://wadl.dev.java.net/2009/02"
+   xmlns:db="http://docbook.org/ns/docbook"
    xmlns:osapi="http://docs.openstack.org/compute/api/v1.1"
+   xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
    xmlns:common="http://docs.openstack.org/common/api/v1.0"
    xmlns:atom="http://www.w3.org/2005/Atom"
    xsi:schemaLocation="http://docs.openstack.org/compute/api/v1.1
@@ -192,8 +194,14 @@
         </doc>
         <method href="#setMetadata"/>
         <method href="#updateMetadata"/>
-        <resource path="{key}">
-            <param name="key" style="template" type="osapi:MetadataKey"/>
+        <resource id="MetadataKey" path="{key}">
+            <param name="key" style="template" type="osapi:MetadataKey">
+                <doc xml:lang="EN" title="Get Volume Details">
+                    <db:para>
+                        A string no longer than 255 characters.
+                    </db:para>
+                </doc>
+            </param>
             <method href="#getMetadataItem"/>
             <method href="#setMetadataItem"/>
             <method href="#deleteMetadataItem"/>
@@ -275,7 +283,7 @@
     </method>
 
     <method name="GET" id="getExtension">
-        <doc xml:lang="EN" title="Get Server Details">
+        <doc xml:lang="EN" title="Get Extension">
             <p xmlns="http://www.w3.org/1999/xhtml">
                 Get details about a specific extension.
             </p>
@@ -801,11 +809,14 @@
     <method name="GET" id="listMetadata">
         <doc xml:lang="EN" title="List Metadata">
             <p xmlns="http://www.w3.org/1999/xhtml">
-                List metadata associated with the resoruce.
+                List metadata associated with the resource.
             </p>
         </doc>
         <response status="200 203">
             <representation mediaType="application/xml" element="osapi:metadata">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="samples/metadata.xml" />
+                </doc>
                 <param name="next" style="plain" type="xsd:anyURI"
                        path="/osapi:metadata/atom:link[@rel='next']/@href">
                     <link resource_type="#MetadataList" rel="next"/>
@@ -815,7 +826,11 @@
                     <link resource_type="#MetadataList" rel="previous"/>
                 </param>
             </representation>
-            <representation mediaType="application/json" />
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="samples/metadata.json" />
+                </doc>
+            </representation>
         </response>
         <!-- Common Faults and GET Faults-->
         &commonFaults;
@@ -824,16 +839,35 @@
 
     <method name="POST" id="updateMetadata">
         <doc xml:lang="EN" title="Update Metadata">
-            <p xmlns="http://www.w3.org/1999/xhtml">
+            <db:para role="shortdesc">
                 Update metadata items.
-            </p>
+            </db:para>
+            <db:para>
+                Updates resource metadata. Updates will replace
+                existing metadata items with the same key. Items
+                not explicitly mentioned in the request will not be
+                modified. An overLimit (<db:errorcode>413</db:errorcode>)
+                fault may be thrown if the operation causes the
+                maximum number of metadata items to be exceeded.
+            </db:para>
         </doc>
         <request>
-            <representation mediaType="application/xml" element="osapi:metadata"/>
-            <representation mediaType="application/json" />
+            <representation mediaType="application/xml" element="osapi:metadata">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="samples/metadata-update-req.xml" />
+                </doc>
+            </representation>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="samples/metadata-update-req.json" />
+                </doc>
+            </representation>
         </request>
         <response status="200">
             <representation mediaType="application/xml" element="osapi:metadata">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="samples/metadata-update-resp.xml" />
+                </doc>
                 <param name="next" style="plain" type="xsd:anyURI"
                        path="/osapi:metadata/atom:link[@rel='next']/@href">
                     <link resource_type="#MetadataList" rel="next"/>
@@ -843,7 +877,11 @@
                     <link resource_type="#MetadataList" rel="previous"/>
                 </param>
             </representation>
-            <representation mediaType="application/json" />
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="samples/metadata-update-resp.json" />
+                </doc>
+            </representation>
         </response>
         <!-- Common, GET, POST/PUT, inProgress Faults-->
         &commonFaults;
@@ -854,16 +892,40 @@
 
     <method name="PUT" id="setMetadata">
         <doc xml:lang="EN" title="Create or Replace Metadata">
-            <p xmlns="http://www.w3.org/1999/xhtml">
+            <db:para role="shortdesc">
                 Set metadata.
-            </p>
+            </db:para>
+            <db:para>
+                Sets metadata for the resource. The metadata items set
+                on the resource will be exactly those specified on the
+                requests. Existing metadata items are replaced with
+                the ones provided in the request. Metadata items, set
+                previously, but not sepcifed in the request will
+                be removed.
+            </db:para>
+            <db:para>
+                An overLimit (<db:errorcode>413</db:errorcode>) fault
+                may be thrown if the maximum number of metadata items
+                is exceeded.
+            </db:para>
         </doc>
         <request>
-            <representation mediaType="application/xml" element="osapi:metadata"/>
-            <representation mediaType="application/json" />
+            <representation mediaType="application/xml" element="osapi:metadata">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="samples/metadata.xml" />
+                </doc>
+            </representation>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="samples/metadata.json" />
+                </doc>
+            </representation>
         </request>
         <response status="200">
             <representation mediaType="application/xml" element="osapi:metadata">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="samples/metadata.xml" />
+                </doc>
                 <param name="next" style="plain" type="xsd:anyURI"
                        path="/osapi:metadata/atom:link[@rel='next']/@href">
                     <link resource_type="#MetadataList" rel="next"/>
@@ -873,7 +935,11 @@
                     <link resource_type="#MetadataList" rel="previous"/>
                 </param>
             </representation>
-            <representation mediaType="application/json" />
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="samples/metadata.xml" />
+                </doc>
+            </representation>
         </response>
         <!-- Common, GET, POST/PUT, inProgress Faults-->
         &commonFaults;
@@ -884,13 +950,24 @@
 
     <method name="GET" id="getMetadataItem">
         <doc xml:lang="EN" title="Get Metadata Item">
-            <p xmlns="http://www.w3.org/1999/xhtml">
+            <db:para role="shortdesc">
                 Get a metadata item associated with a resource.
-            </p>
+            </db:para>
+            <db:para>
+                Retrieves a single metadata item by key.
+            </db:para>
         </doc>
         <response status="200 203">
-            <representation mediaType="application/xml" element="osapi:meta"/>
-            <representation mediaType="application/json" />
+            <representation mediaType="application/xml" element="osapi:meta">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="samples/metadata_item.xml" />
+                </doc>
+            </representation>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="samples/metadata_item.json" />
+                </doc>
+            </representation>
         </response>
         <!-- Common Faults and GET Faults-->
         &commonFaults;
@@ -899,17 +976,39 @@
 
     <method name="PUT" id="setMetadataItem">
         <doc xml:lang="EN" title="Create or Update Metadata Item">
-            <p xmlns="http://www.w3.org/1999/xhtml">
+            <db:para role="shortdesc">
                 Set metadata item.
-            </p>
+            </db:para>
+            <db:para>
+                Sets a metadata item by its key.  An overLimit
+                (<db:errorcode>413</db:errorcode>) fault may be thrown if
+                the operation causes the maximum number of metadata
+                items to be exceeded.
+            </db:para>
         </doc>
         <request>
-            <representation mediaType="application/xml" element="osapi:meta"/>
-            <representation mediaType="application/json" />
+            <representation mediaType="application/xml" element="osapi:meta">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="samples/metadata_item.xml" />
+                </doc>
+            </representation>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="samples/metadata_item.json" />
+                </doc>
+            </representation>
         </request>
         <response status="200">
-            <representation mediaType="application/xml" element="osapi:meta"/>
-            <representation mediaType="application/json" />
+            <representation mediaType="application/xml" element="osapi:meta">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="samples/metadata_item.xml" />
+                </doc>
+            </representation>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="samples/metadata_item.json" />
+                </doc>
+            </representation>
         </response>
         <!-- Common, GET, POST/PUT, inProgress Faults-->
         &commonFaults;
