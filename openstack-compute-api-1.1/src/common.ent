@@ -84,6 +84,8 @@
             <param xmlns="http://wadl.dev.java.net/2009/02" name="server" style="query" required="false" type="xsd:anyURI"/>
             <param xmlns="http://wadl.dev.java.net/2009/02" name="name"   style="query" required="false" type="xsd:string"/>
             <param xmlns="http://wadl.dev.java.net/2009/02" name="status" style="query" required="false" type="osapi:ImageStatus"/>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="marker" style="query" required="false" type="osapi:UUID"/>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="limit"  style="query" required="false" type="xsd:int"/>
             <param xmlns="http://wadl.dev.java.net/2009/02" name="type" style="query" required="false" type="xsd:string" default="ALL">
                 <option value="BASE"/>
                 <option value="SERVER"/>
@@ -99,6 +101,8 @@
             <param xmlns="http://wadl.dev.java.net/2009/02" name="image" style="query" required="false" type="xsd:anyURI"/>
             <param xmlns="http://wadl.dev.java.net/2009/02" name="flavor" style="query" required="false" type="xsd:anyURI"/>
             <param xmlns="http://wadl.dev.java.net/2009/02" name="name"   style="query" required="false" type="xsd:string"/>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="marker" style="query" required="false" type="osapi:UUID"/>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="limit"  style="query" required="false" type="xsd:int"/>
             <param xmlns="http://wadl.dev.java.net/2009/02" name="status" style="query" required="false" type="osapi:ServerStatus"/>
            '>
 
@@ -109,4 +113,6 @@
             <param xmlns="http://wadl.dev.java.net/2009/02" name="changes-since" style="query" required="false" type="xsd:dateTime"/>
             <param xmlns="http://wadl.dev.java.net/2009/02" name="minDisk" style="query" required="false" type="xsd:int"/>
             <param xmlns="http://wadl.dev.java.net/2009/02" name="minRam"  style="query" required="false" type="xsd:int"/>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="marker" style="query" required="false" type="osapi:UUID"/>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="limit"  style="query" required="false" type="xsd:int"/>
            '>
