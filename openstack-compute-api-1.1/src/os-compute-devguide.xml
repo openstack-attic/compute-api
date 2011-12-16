@@ -108,7 +108,7 @@
                         </listitem>
                         <listitem>
                             <para>
-                                Added tenant and userId
+                                Added tenant and user_id
                                 attributes to server and
                                 image.
                             </para>

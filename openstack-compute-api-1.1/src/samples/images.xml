@@ -5,8 +5,8 @@
          name="CentOS 5.2"
          updated="2010-10-10T12:00:00Z"
          created="2010-08-10T12:00:00Z"
-         tenantId="12345"
-         userId="joe"
+         tenant_id="12345"
+         user_id="joe"
          status="ACTIVE">
     <metadata>
         <meta key="ImageType">Gold</meta>
@@ -24,8 +24,8 @@
       name="My Server Backup"
       updated="2010-10-10T12:00:00Z"
       created="2010-08-10T12:00:00Z"
-      tenantId="12345"
-      userId="joe"
+      tenant_id="12345"
+      user_id="joe"
       status="SAVING" progress="80"
       minDisk="5" minRam="256">
       <server id="52415800-8b69-11e0-9b19-734f335aa7b3">

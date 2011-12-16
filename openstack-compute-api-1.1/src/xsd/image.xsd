@@ -179,7 +179,7 @@
         </xsd:documentation>
       </annotation>
     </attribute>
-    <attribute type="xsd:string"  name="tenantId" use="optional">
+    <attribute type="xsd:string"  name="tenant_id" use="optional">
       <annotation>
         <xsd:documentation
             xml:lang="EN"
@@ -191,7 +191,7 @@
         </xsd:documentation>
       </annotation>
     </attribute>
-    <attribute type="xsd:string"    name="userId" use="optional">
+    <attribute type="xsd:string"    name="user_id" use="optional">
       <annotation>
         <xsd:documentation
             xml:lang="EN"

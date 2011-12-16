@@ -405,7 +405,7 @@
         </xsd:documentation>
       </annotation>
     </attribute>
-    <attribute type="xsd:string"    name="tenantId" use="optional">
+    <attribute type="xsd:string"    name="tenant_id" use="optional">
       <annotation>
         <xsd:documentation
             xml:lang="EN"
@@ -417,7 +417,7 @@
         </xsd:documentation>
       </annotation>
     </attribute>
-    <attribute type="xsd:string"    name="userId" use="optional">
+    <attribute type="xsd:string"    name="user_id" use="optional">
       <annotation>
         <xsd:documentation
             xml:lang="EN"
@@ -514,8 +514,8 @@
               <attribute type="xsd:string" name="accessIPv4" use="prohibited"/>
               <attribute type="xsd:string" name="accessIPv6" use="prohibited" />
               <attribute type="xsd:string" name="adminPass" use="prohibited"/>
-              <attribute type="xsd:string" name="tenantId" use="prohibited"/>
-              <attribute type="xsd:string" name="userId" use="prohibited"/>
+              <attribute type="xsd:string" name="tenant_id" use="prohibited"/>
+              <attribute type="xsd:string" name="user_id" use="prohibited"/>
               <attribute type="xsd:string" name="hostId" use="prohibited"/>
               <attribute type="csapi:Progress" name="progress"  use="prohibited"/>
               <attribute type="csapi:ExtensibleServerStatus" name="status" use="prohibited"/>
@@ -586,8 +586,8 @@
               <attribute type="xsd:string" name="accessIPv6" use="optional" />
               <attribute type="xsd:string" name="adminPass" use="optional"/>
               <attribute type="csapi:UUID" name="id"   use="prohibited"/>
-              <attribute type="xsd:string" name="tenantId" use="prohibited"/>
-              <attribute type="xsd:string" name="userId" use="prohibited"/>
+              <attribute type="xsd:string" name="tenant_id" use="prohibited"/>
+              <attribute type="xsd:string" name="user_id" use="prohibited"/>
               <attribute type="xsd:string" name="hostId" use="prohibited"/>
               <attribute type="csapi:Progress" name="progress"  use="prohibited"/>
               <attribute type="csapi:ExtensibleServerStatus" name="status" use="prohibited"/>

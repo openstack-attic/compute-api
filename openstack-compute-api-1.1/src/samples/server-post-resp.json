@@ -1,8 +1,8 @@
 {
     "server": {
         "id": "52415800-8b69-11e0-9b19-734f565bc83b",
-        "tenantId": "1234",
-        "userId": "5678",
+        "tenant_id": "1234",
+        "user_id": "5678",
         "name": "new-server-test",
         "created": "2010-11-11T12:00:00Z",
         "hostId": "e4d909c290d0fb1ca068ffaddf22cbd0",

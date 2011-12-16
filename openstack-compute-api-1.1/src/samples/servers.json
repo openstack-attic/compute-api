@@ -2,8 +2,8 @@
     "servers": [
         {
             "id": "52415800-8b69-11e0-9b19-734f6af67565",
-            "tenantId": "1234",
-            "userId": "5678",
+            "tenant_id": "1234",
+            "user_id": "5678",
             "name": "sample-server",
             "updated": "2010-10-10T12:00:00Z",
             "created": "2010-08-10T12:00:00Z",
@@ -85,9 +85,9 @@
         },
         {
             "id": "52415800-8b69-11e0-9b19-734f1f1350e5",
-            "userId": "5678",
+            "user_id": "5678",
             "name": "sample-server2",
-            "tenantId": "1234",
+            "tenant_id": "1234",
             "updated": "2010-10-10T12:00:00Z",
             "created": "2010-08-10T12:00:00Z",
             "hostId": "9e107d9d372bb6826bd81d3542a419d6",

@@ -2,8 +2,8 @@
     "servers": [
         {
             "id": "52415800-8b69-11e0-9b19-734f6af67565",
-            "tenantId": "1234",
-            "userId": "5678",
+            "tenant_id": "1234",
+            "user_id": "5678",
             "name": "sample-server",
             "updated": "2010-10-10T12:00:00Z",
             "created": "2010-08-10T12:00:00Z",
