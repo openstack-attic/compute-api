@@ -1,0 +1,8 @@
+Verified+1: Jenkins
+Code-Review+2: Joe Heck <heckj@mac.com>
+Code-Review+1: Brian Waldon <brian.waldon@rackspace.com>
+Submitted-by: Jenkins
+Submitted-at: Sat, 17 Dec 2011 20:58:20 +0000
+Reviewed-on: https://review.openstack.org/2433
+Project: openstack/compute-api
+Branch: refs/heads/master
