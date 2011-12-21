@@ -305,6 +305,28 @@
                   </xsd:documentation>
               </annotation>
           </attribute>
+          <attribute type="xsd:string" name="accessIPv4" use="optional">
+              <annotation>
+                  <xsd:documentation
+                      xml:lang="EN"
+                      xmlns="http://www.w3.org/1999/xhtml">
+                      <p>
+                          The IPv4 primary IP.
+                      </p>
+                  </xsd:documentation>
+              </annotation>
+          </attribute>
+          <attribute type="xsd:string" name="accessIPv6" use="optional">
+              <annotation>
+                  <xsd:documentation
+                      xml:lang="EN"
+                      xmlns="http://www.w3.org/1999/xhtml">
+                      <p>
+                          The IPv6 primary IP.
+                      </p>
+                  </xsd:documentation>
+              </annotation>
+          </attribute>
       </extension>
     </complexContent>
   </complexType>

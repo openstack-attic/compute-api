@@ -2600,8 +2600,10 @@ Host: servers.api.openstack.org/v1.1/
                     server and replaces it with the specified
                     image. The <property>serverRef</property> and all
                     IP addresses will remain the same. If
-                    <property>name</property> and
-                    <property>metadata</property> are specified, they
+                    <property>name</property>, 
+                    <property>metadata</property>, 
+                    <property>accessIPv4</property>, or
+                    <property>accessIPv6</property> are specified, they
                     will replace existing values, otherwise they will
                     not change. A rebuild operation always removes
                     data injected into the file system via server
