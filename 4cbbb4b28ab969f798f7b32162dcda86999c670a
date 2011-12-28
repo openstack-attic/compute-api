@@ -1,0 +1,9 @@
+Verified+1: Jenkins
+Approved+1: anotherjesse
+Code-Review+2: anotherjesse
+Code-Review+1: Jorge L. Williams
+Submitted-by: Jenkins
+Submitted-at: Wed, 28 Dec 2011 20:36:17 +0000
+Reviewed-on: https://review.openstack.org/2509
+Project: openstack/compute-api
+Branch: refs/heads/master
