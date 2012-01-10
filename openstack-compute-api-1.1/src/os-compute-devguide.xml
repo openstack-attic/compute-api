@@ -578,6 +578,11 @@
             response to a &GET; request.  Clients should be written to
             account for these differences.
         </para>
+        <para>
+            Providers may return information identifying requests in
+            HTTP response headers, for example, to facilitate communication
+            between the provider and client users. 
+        </para>
         <section xml:id="Authentication-d1e444">
             <title>Authentication</title>
             <para>
