@@ -1,0 +1,9 @@
+Verified+1: Jenkins
+Approved+1: Chris Behrens <cbehrens+gerrit@codestud.com>
+Code-Review+2: Chris Behrens <cbehrens+gerrit@codestud.com>
+Code-Review+2: Brian Waldon <brian.waldon@rackspace.com>
+Submitted-by: Jenkins
+Submitted-at: Tue, 10 Jan 2012 18:09:16 +0000
+Reviewed-on: https://review.openstack.org/2936
+Project: openstack/compute-api
+Branch: refs/heads/master
