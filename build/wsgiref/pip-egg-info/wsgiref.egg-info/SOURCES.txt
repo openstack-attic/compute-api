@@ -1,0 +1,12 @@
+README.txt
+setup.cfg
+pip-egg-info/wsgiref.egg-info/PKG-INFO
+pip-egg-info/wsgiref.egg-info/SOURCES.txt
+pip-egg-info/wsgiref.egg-info/dependency_links.txt
+pip-egg-info/wsgiref.egg-info/top_level.txt
+wsgiref/__init__.py
+wsgiref/handlers.py
+wsgiref/headers.py
+wsgiref/simple_server.py
+wsgiref/util.py
+wsgiref/validate.py

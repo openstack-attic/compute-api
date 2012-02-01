@@ -1,0 +1,15 @@
+AUTHORS
+HACKING
+LICENSE
+MANIFEST.in
+README.md
+git-review
+git-review.1
+requirements.txt
+setup.cfg
+tox.ini
+pip-egg-info/git_review.egg-info/PKG-INFO
+pip-egg-info/git_review.egg-info/SOURCES.txt
+pip-egg-info/git_review.egg-info/dependency_links.txt
+pip-egg-info/git_review.egg-info/requires.txt
+pip-egg-info/git_review.egg-info/top_level.txt
