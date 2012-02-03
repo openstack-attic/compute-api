@@ -935,6 +935,17 @@
           </xsd:documentation>
         </annotation>
       </enumeration>
+      <enumeration value="REVERT_RESIZE">
+        <annotation>
+          <xsd:documentation
+              xml:lang="EN"
+              xmlns="http://www.w3.org/1999/xhtml">
+            <p>
+              A resized server is being reverted to its previous size.
+            </p>
+          </xsd:documentation>
+        </annotation>
+      </enumeration>
       <enumeration value="ERROR">
         <annotation>
           <xsd:documentation

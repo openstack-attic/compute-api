@@ -1776,6 +1776,7 @@ Host: servers.api.openstack.org/v1.1/
                     status attribute include: <code>BUILD</code>,
                     <code>REBUILD</code>, <code>SUSPENDED</code>,
                     <code>RESIZE</code>, <code>VERIFY_RESIZE</code>,
+                    <code>REVERT_RESIZE</code>,
                     <code>PASSWORD</code>, <code>REBOOT</code>,
                     <code>HARD_REBOOT</code>, <code>DELETED</code>,
                     <code>UNKNOWN</code>, and <code>ERROR</code>.
@@ -2849,6 +2850,7 @@ Host: servers.api.openstack.org/v1.1/
                             <td colspan="1">Status Transition:</td>
                             <td colspan="3">
                                 <code>VERIFY_RESIZE</code> &ARROW;
+                                <code>REVERT_RESIZE</code> &ARROW;
                                 <code>ACTIVE</code>
                             </td>
                         </tr>
@@ -2856,6 +2858,7 @@ Host: servers.api.openstack.org/v1.1/
                             <td colspan="1" />
                             <td colspan="3">
                                 <code>VERIFY_RESIZE</code> &ARROW;
+                                <code>REVERT_RESIZE</code> &ARROW;
                                 <code>ERROR</code> (on error)
                             </td>
                         </tr>
