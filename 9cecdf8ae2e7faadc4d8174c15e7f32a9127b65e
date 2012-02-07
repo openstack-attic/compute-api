@@ -1,0 +1,10 @@
+Verified+1: Jenkins
+Code-Review+2: Vish Ishaya <vishvananda@gmail.com>
+Approved+1: anotherjesse
+Code-Review+2: anotherjesse
+Code-Review+1: Jorge L. Williams
+Submitted-by: Jenkins
+Submitted-at: Tue, 07 Feb 2012 23:02:12 +0000
+Reviewed-on: https://review.openstack.org/3776
+Project: openstack/compute-api
+Branch: refs/heads/master
