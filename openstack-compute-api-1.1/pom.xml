@@ -138,7 +138,7 @@
                                 </copy>
                                 
                                 <!-- Copies wadl to a folder -->
-                                <copy todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/1.1/wadl/">
+                                <copy todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/1.1/">
                                     <fileset dir="${basedir}/src/">
                                         <include name="**/*.wadl" />
                                     </fileset>
