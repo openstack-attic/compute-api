@@ -137,6 +137,12 @@
                                     </fileset>
                                 </copy>
                                 
+                                <!-- Copies wadl to a folder -->
+                                <copy todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/1.1/wadl/">
+                                    <fileset dir="${basedir}/src/">
+                                        <include name="**/*.wadl" />
+                                    </fileset>
+                                </copy>
                                 <!--Moves PDFs to the needed placement -->
                                 <move failonerror="false"
                                     file="${basedir}/target/docbkx/pdf/os-compute-devguide.pdf"
