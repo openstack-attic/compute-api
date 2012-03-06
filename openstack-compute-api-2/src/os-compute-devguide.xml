@@ -604,7 +604,7 @@
                 credentials. A single deployment may support multiple
                 authentication schemes (OAuth, Basic Auth, Token). The
                 authentication scheme used is determined by the
-                provider of the OpenStack Compute system. Please contact
+                provider of the OpenStack Compute system. Please 
                 contact your provider to determine the best way to
                 authenticate against this API.
             </para>
@@ -733,7 +733,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
             </example>
             <para>
                 For convenience, resources contain links to
-                themselves. This allows a client to easily obtain a
+                themselves. This allows a client to easily obtain
                 resource URIs rather than to construct them.  There
                 are three kinds of link relations associated with
                 resources.  A <code>self</code> link contains a
@@ -1011,7 +1011,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                     10/min.
                 </para>
                 <para>
-                    In the event a request exceed the thresholds
+                    In the event a request exceeds the thresholds
                     established for your account, a
                     <errorcode>413</errorcode> HTTP response will be
                     returned with a <code>Retry-After</code> header to
@@ -1930,7 +1930,7 @@ Host: servers.api.openstack.org/v2/
                         requirements set by your OpenStack Compute
                         provider. The server may enter an
                         <code>ERROR</code> state if the complexity
-                        requirements are not met. In this case, an
+                        requirements are not met. In this case, a
                         client may issue a change password action to
                         reset the server password (see <xref
                         linkend="Change_Password-d1e3234"/>).
@@ -2007,7 +2007,7 @@ Host: servers.api.openstack.org/v2/
                     <title>Server Access Addresses</title>
                     <para>
                         In a hybrid environment, the IP address of a
-                        server may not be controlled by the underling
+                        server may not be controlled by the underlying
                         implementation. Instead, the access IP address
                         may be part of the dedicated hardware; for
                         example, a router/NAT device. In this case,
@@ -2617,7 +2617,7 @@ Host: servers.api.openstack.org/v2/
                     data injected into the file system via server
                     <property>personality</property>.  You may
                     reinsert data into the filesystem during the
-                    rebuild.  The full URL to the rebuild server
+                    rebuild.  The full URL to the rebuilt server
                     is returned via the <code>Location</code> header.
                 </para>
                 <example>
