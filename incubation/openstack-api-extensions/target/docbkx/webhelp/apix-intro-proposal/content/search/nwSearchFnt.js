@@ -84,10 +84,10 @@ function Effectuer_recherche(expressionInput) {
         useCJKTokenizing=false;
     }
     //If Lucene CJKTokenizer was used as the indexer, then useCJKTokenizing will be true. Else, do normal tokenizing.
-    // 2-gram tokenizinghappens in CJKTokenizing,  
+    // 2-gram tokenizinghappens in CJKTokenizing,
     if(useCJKTokenizing){
         finalWordsList = cjkTokenize(wordsList);
-    } else { 
+    } else {
         finalWordsList = tokenize(wordsList);
     }
 
@@ -145,7 +145,7 @@ function Effectuer_recherche(expressionInput) {
     }
 
     var results = "";
-    if (linkTab.length > 0) { 
+    if (linkTab.length > 0) {
         /*writeln ("<p>" + txt_results_for + " " + "<span class=\"searchExpression\">"  + cleanwordsList + "</span>" + "<br/>"+"</p>");*/
         results = "<p>";
         //write("<ul class='searchresult'>");
@@ -157,7 +157,7 @@ function Effectuer_recherche(expressionInput) {
         results = "<p>" + "Your search returned no results for " + "<span class=\"searchExpression\">" + txt_wordsnotfound + "</span>" + "</p>";
     }
     //alert(results);
-    document.getElementById('searchResults').innerHTML = results; 
+    document.getElementById('searchResults').innerHTML = results;
 }
 
 function tokenize(wordsList){
@@ -170,7 +170,7 @@ function tokenize(wordsList){
         } else {
             stemQueryMap[word] = word;
         }
-    } 
+    }
      //stemmedWordsList is the stemmed list of words separated by spaces.
     for (var t in wordsList) {
         wordsList[t] = wordsList[t].replace(/(%22)|^-/g, "");
@@ -201,7 +201,7 @@ function cjkTokenize(wordsList){
         var word = wordsList[j];
         if(getAvgAsciiValue(word) < 127){
             notCJKTokens.push(word);
-        } else { 
+        } else {
             var tokenizer = new CJKTokenizer(word);
             var tokensTmp = tokenizer.getAllTokens();
             allTokens = allTokens.concat(tokensTmp);
@@ -226,7 +226,7 @@ function getAvgAsciiValue(word){
 function CJKTokenizer(input){
     this.input = input;
     this.offset=-1;
-    this.tokens = new Array(); 
+    this.tokens = new Array();
     this.incrementToken = incrementToken;
     this.tokenize = tokenize;
     this.getAllTokens = getAllTokens;
@@ -278,7 +278,7 @@ function CJKTokenizer(input){
 	      r[r.length] = a[i];
 	   }
 	   return r;
-	} 
+	}
 }
 
 
@@ -384,7 +384,7 @@ function onLoadComplete() {
 } */
 
 /* End of scriptloader functions */
- 
+
 // Array.unique( strict ) - Remove duplicate values
 function unique(tab) {
     var a = new Array();

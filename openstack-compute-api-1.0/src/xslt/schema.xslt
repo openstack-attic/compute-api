@@ -254,7 +254,7 @@
                   annotations:  currently just xsdxt:code.
               -->
               <xslt:apply-templates select="xsd:annotation/xsd:documentation/*" mode="Docs"/>
-            
+
               <!--
                   Next comes custom header...
               -->

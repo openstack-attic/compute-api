@@ -3,7 +3,7 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <!-- POM Build file for the OpenStack Extensions Guide -->
     <modelVersion>4.0.0</modelVersion>
-    
+
     <groupId>org.openstack.docs</groupId>
     <artifactId>openstack-guide</artifactId>
     <version>1.0.0-SNAPSHOT</version>
@@ -31,8 +31,8 @@
             </pluginRepositories>
         </profile>
     </profiles>
-    
-    
+
+
     <build>
         <resources>
             <resource>
@@ -47,7 +47,7 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>batik-maven-plugin</artifactId>
                 <version>1.0-beta-1</version>
-                
+
                 <executions>
                 <execution>
                 <goals>
@@ -120,12 +120,12 @@
                         <!--Moves PDF to the needed placement -->
                         <move failonerror="false"
                             file="${basedir}/target/docbkx/pdf/apix-intro-proposal.pdf"
-                            tofile="${basedir}/target/docbkx/webhelp/apix-intro-proposal/apix-intro-proposal-trunk.pdf"/>                 
+                            tofile="${basedir}/target/docbkx/webhelp/apix-intro-proposal/apix-intro-proposal-trunk.pdf"/>
                     </postProcess>
                 </configuration>
-                
+
             </plugin>
-            
+
         </plugins>
     </build>
 </project>

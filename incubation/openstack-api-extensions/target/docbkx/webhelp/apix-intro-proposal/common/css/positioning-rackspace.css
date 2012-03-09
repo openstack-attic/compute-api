@@ -84,7 +84,7 @@ h2 { font: normal 12pt Arial, Helvetica, geneva;
 .highlight { background-color: #c5d3c3; }
 .highlightButton{ font-size: 0; }
 
-#content pre.literallayout, #content pre.programlisting 
+#content pre.literallayout, #content pre.programlisting
 {
     -x-system-font: none;
     background-color: silver;
@@ -179,7 +179,7 @@ h2 { font: normal 12pt Arial, Helvetica, geneva;
 .title, div.toc>p{
 	font-weight: bold;
 	}
-	
+
 p.breadcrumbs {
         display: inline;
 	margin-bottom: 0px;
@@ -233,7 +233,7 @@ a#showHideButton {
 	background: url(../images/sidebar.png) no-repeat left center;
 }
 
-	
+
 .filetree li span a { color: #777; }
 
 #treediv { -webkit-box-shadow: #CCC 0px 1px 2px 0px inset; }
@@ -256,7 +256,7 @@ a#showHideButton {
 
 .remark, .remark .added, .remark .changed, .remark .deleted{
 	background: yellow;
-	} 
+	}
 
 tr th, tr th .internal, tr th .added, tr th .changed
 	{
@@ -298,7 +298,7 @@ tr th, tr th .internal, tr th .added, tr th .changed
 	position: relative;
 	left: 0px;
 }
- 
+
 body p.breadcrumbs {
 	margin: 0px;
 	padding: 0px;

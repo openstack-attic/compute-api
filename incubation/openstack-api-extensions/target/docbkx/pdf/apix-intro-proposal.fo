@@ -156,8 +156,8 @@
                 extension may be applicable to several versions of an API at once. For example, a
                 particular extension may continue to be available as a core API moves from one
                 version to another. In fact, different implementations may decide to include support
-                for an extension at different versions. As explained in 
-                , 
+                for an extension at different versions. As explained in
+                ,
                 when an extension is defined, the minimal version of the core API that is required
                 to run the extension is specified; implementers are free to support the extension in
                 that version or in a later version of the core. Note, however, that because the
@@ -173,8 +173,8 @@
                 base URL (<fo:inline font-family="monospace">/</fo:inline>) of the API endpoint returns information about what
                 versions are available. Similarly, issuing a <fo:inline font-weight="bold">GET</fo:inline> on the API's extensions resource
                     (<fo:inline font-family="monospace">/v1.1/extensions</fo:inline>) returns information about what extensions are
-                available. (See 
-                  
+                available. (See
+
                 for details of such requests.) Note that,
                 since extensions modify a particular version of the API, the <fo:inline font-family="monospace">extensions</fo:inline>
                 resource itself is always accessed at a particular version. </fo:block><fo:block space-before.optimum="1em" space-before.minimum="0.8em" space-before.maximum="1.2em"> Backward-compatible changes in an API usually require a minor version bump. In an

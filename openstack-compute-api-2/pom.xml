@@ -2,9 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    
+
     <modelVersion>4.0.0</modelVersion>
-    
+
     <groupId>org.openstack.docs</groupId>
     <artifactId>openstack-guide</artifactId>
     <version>1.0.0-SNAPSHOT</version>
@@ -35,7 +35,7 @@
             </pluginRepositories>
         </profile>
     </profiles>
-    
+
     <build>
         <resources>
             <resource>
@@ -46,7 +46,7 @@
             </resource>
         </resources>
         <plugins>
-            
+
             <plugin>
                 <groupId>com.rackspace.cloud.api</groupId>
                 <artifactId>clouddocs-maven-plugin</artifactId>
@@ -92,16 +92,16 @@
                             <sectionLabelIncludesComponentLabel>0</sectionLabelIncludesComponentLabel>-->
                             <postProcess>
                                 <!-- Copies the figures to the correct location for webhelp -->
-                                
+
                                 <copy todir="${basedir}/target/docbkx/webhelp/os-compute-devguide/figures">
                                     <fileset dir="${basedir}/src/figures">
                                         <include name="**/*.png" />
                                     </fileset>
                                 </copy>
-                                
+
                                <!-- New stuff -->
                                 <mkdir dir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/"/>
-                                
+
                                 <!-- Copies schema to a folder and styling for the schemas so a browser can display them -->
                                 <copy todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/xsd">
                                     <fileset dir="${basedir}/src/xsd">
@@ -128,7 +128,7 @@
                                         <include name="**/*.*" />
                                     </fileset>
                                 </copy>
-                                                               
+
                                 <copy
                                     todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/">
                                     <fileset
@@ -136,7 +136,7 @@
                                         <include name="**/*" />
                                     </fileset>
                                 </copy>
-                                
+
                                 <!-- Copies wadl to a folder -->
                                 <copy todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/1.1/">
                                     <fileset dir="${basedir}/src/">
@@ -147,12 +147,12 @@
                                 <move failonerror="false"
                                     file="${basedir}/target/docbkx/pdf/os-compute-devguide.pdf"
                                     tofile="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/os-compute-devguide-2.pdf"/>
-                               
-                                                                
+
+
                                 <!--Deletes leftover uneeded directories -->
                                 <delete
                                     dir="${basedir}/target/docbkx/webhelp/os-compute-devguide"/>
-                                
+
                             </postProcess>
                         </configuration>
                     </execution>
@@ -169,7 +169,7 @@
                     <branding>openstack</branding>
                 </configuration>
             </plugin>
-            
+
         </plugins>
     </build>
 </project>

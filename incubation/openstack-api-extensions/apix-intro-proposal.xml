@@ -258,8 +258,8 @@
                 extension may be applicable to several versions of an API at once. For example, a
                 particular extension may continue to be available as a core API moves from one
                 version to another. In fact, different implementations may decide to include support
-                for an extension at different versions. As explained in 
-                <phrase security="draft">the chapter on "Extension Governance and Promotion"</phrase>, 
+                for an extension at different versions. As explained in
+                <phrase security="draft">the chapter on "Extension Governance and Promotion"</phrase>,
                 when an extension is defined, the minimal version of the core API that is required
                 to run the extension is specified; implementers are free to support the extension in
                 that version or in a later version of the core. Note, however, that because the
@@ -279,8 +279,8 @@
                 base URL (<code>/</code>) of the API endpoint returns information about what
                 versions are available. Similarly, issuing a <command>GET</command> on the API's extensions resource
                     (<code>/v1.1/extensions</code>) returns information about what extensions are
-                available. (See 
-                <phrase security="draft">the chapter on "Extensions and ReST"</phrase>  
+                available. (See
+                <phrase security="draft">the chapter on "Extensions and ReST"</phrase>
                 for details of such requests.) Note that,
                 since extensions modify a particular version of the API, the <code>extensions</code>
                 resource itself is always accessed at a particular version. </para>
@@ -466,8 +466,8 @@
             </figure>
         </section>
     </chapter>
-    
-    
-    
-    
+
+
+
+
 </book>

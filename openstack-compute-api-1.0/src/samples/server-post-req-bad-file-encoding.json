@@ -4,13 +4,13 @@
         "imageId" : 1,
         "flavorId" : 1,
         "metadata" : {
-            "My Server Name" : "Apache1" 
+            "My Server Name" : "Apache1"
         },
         "personality" : [
             {
                 "path" : "/etc/banner.txt",
-                "contents" : "*(&)(*^^&%" 
-            } 
-        ] 
+                "contents" : "*(&)(*^^&%"
+            }
+        ]
     }
 }

@@ -328,7 +328,7 @@
             Compute API.
         </para>
         <para> We welcome feedback, comments, and bug reports at <link
-            xlink:href="http://bugs.launchpad.net/nova">bugs.launchpad.net/nova</link>. 
+            xlink:href="http://bugs.launchpad.net/nova">bugs.launchpad.net/nova</link>.
         </para>
         <section>
             <title>Intended Audience</title>
@@ -394,7 +394,7 @@
                 phone, chat, and email.</para>
         </section>
 
-         
+
     </chapter>
     <chapter>
         <title>Concepts</title>
@@ -516,7 +516,7 @@
             <para> The Rackspace Cloud Authentication Service is a ReSTful web service. It is
                 the entry point to all Rackspace Cloud APIs. </para>
             <para> To access the Authentication Service, you must know whether your account is
-                US-based or UK-based: 
+                US-based or UK-based:
             </para>
             <itemizedlist spacing="compact">
                 <listitem>
@@ -533,14 +533,14 @@
             <para>
                 Your account may be based in either the US or the UK; this is not determined
                 by your physical location but by the location of the Rackspace retail site which
-                was used to create your account: 
+                was used to create your account:
             </para>
             <itemizedlist spacing="compact">
                 <listitem>
                     <para>
                         If your account was
                         created via <link xlink:href="http://www.rackspacecloud.com">http://www.rackspacecloud.com</link>, it is a US-based account.
-                    </para>   
+                    </para>
                 </listitem>
                 <listitem>
                     <para>
@@ -875,7 +875,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                 <title>Rate Limits</title>
                 <para>
                     We specify rate limits in terms of
-                    both a human-readable wild-card URI and a machine-processable regular expression. 
+                    both a human-readable wild-card URI and a machine-processable regular expression.
                     The regular expression boundary matcher '^' takes effect after
                     the root URI path. For example, the regular
                     expression ^/servers would match the bolded
@@ -1183,7 +1183,7 @@ Host: servers.api.rackspacecloud.com/v1.0/
             </example>
             <para> The error code is returned in the body of the response for convenience. The
                 message section returns a human-readable message that is appropriate for display to
-                the end user. The details section is optional and may contain information&mdash;for example, a stack trace&mdash;to 
+                the end user. The details section is optional and may contain information&mdash;for example, a stack trace&mdash;to
                 assist in tracking down an error. The detail section may or may not be
                 appropriate for display to an end user. </para>
             <para>

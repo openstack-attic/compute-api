@@ -5,13 +5,13 @@
  *
  */
 
-$(document).ready(function() {  
+$(document).ready(function() {
 
 
-	// When you click on a link to an anchor, scroll down 
+	// When you click on a link to an anchor, scroll down
 	// 105 px to cope with the fact that the banner
 	// hides the top 95px or so of the page.
-	// This code deals with the problem when 
+	// This code deals with the problem when
 	// you click on a link within a page.
 	$('a[href*=#]').click(function() {
 		if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
@@ -54,7 +54,7 @@ $(document).ready(function() {
     $("#tocLoading").attr("style","display:none;");
 //    $("#ulTreeDiv").attr("style","display:block;");
 
-    //.searchButton is the css class applied to 'Go' button 
+    //.searchButton is the css class applied to 'Go' button
     $(function() {
 		$("button", ".searchButton").button();
 
@@ -62,7 +62,7 @@ $(document).ready(function() {
 	});
 
     //'ui-tabs-1' is the cookie name which is used for the persistence of the tabs.(Content/Search tab)
-    if ($.cookie('ui-tabs-1') === '1') {    //search tab is visible 
+    if ($.cookie('ui-tabs-1') === '1') {    //search tab is visible
         if ($.cookie('textToSearch') != undefined && $.cookie('textToSearch').length > 0) {
             document.getElementById('textToSearch').value = $.cookie('textToSearch');
             Verifie('diaSearch_Form');
@@ -74,13 +74,13 @@ $(document).ready(function() {
     syncToc(); //Synchronize the toc tree with the content pane, when loading the page.
     //$("#doSearch").button(); //add jquery button styling to 'Go' button
 
-    // When you click on a link to an anchor, scroll down 
+    // When you click on a link to an anchor, scroll down
     // 105 px to cope with the fact that the banner
     // hides the top 95px or so of the page.
-    // This code deals with the problem when 
-    // you click on a link from another page. 
+    // This code deals with the problem when
+    // you click on a link from another page.
     var hash = window.location.hash;
-    if(hash){ 
+    if(hash){
 	var targetOffset = $(hash).offset().top - 105;
 	$('html,body').animate({scrollTop: targetOffset}, 200);
 	return false;
@@ -89,7 +89,7 @@ $(document).ready(function() {
 });
 
 /**
- * Synchronize with the tableOfContents 
+ * Synchronize with the tableOfContents
  */
 function syncToc(){
     var a = document.getElementById("webhelp-currentid");
@@ -160,7 +160,7 @@ function searchHighlight(searchText) {
     highlightOn = true;
     if (searchText != undefined) {
         var wList;
-        var sList = new Array();    //stem list 
+        var sList = new Array();    //stem list
         //Highlight the search terms
         searchText = searchText.toLowerCase().replace(/<\//g, "_st_").replace(/\$_/g, "_di_").replace(/\.|%2C|%3B|%21|%3A|@|\/|\*/g, " ").replace(/(%20)+/g, " ").replace(/_st_/g, "</").replace(/_di_/g, "%24_")
         searchText = searchText.replace(/  +/g, " ");
@@ -179,7 +179,7 @@ function searchHighlight(searchText) {
             sList = wList;
         }
         $("#content").highlight(sList); //Highlight the search input's all stems
-    } 
+    }
 }
 
 function searchUnhighlight(){
