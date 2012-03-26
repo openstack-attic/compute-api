@@ -44,6 +44,7 @@
       version="5.0" 
     xml:id="os-cs-devguide">
     <title>OpenStack Compute Developer Guide</title>
+    <?rax pdf.url="os-compute-devguide-2.pdf"?>
     <titleabbrev>OpenStack Compute Dev Guide</titleabbrev>
     <info>
         <author>
@@ -76,7 +77,20 @@
                     (<abbrev>API</abbrev>). </para>
         </abstract>
         <revhistory>
-            <revision><!-- ... continue addding more revisions here as you change this document using the markup shown below... -->
+            <revision>
+                <!-- ... continue addding more revisions here as you change this document using the markup shown below... -->
+                <date>2012-03-25</date>
+                <revdescription>
+                    <itemizedlist>
+                        <listitem>
+                            <para>Added descriptions of URI parameters
+                                and request body attributes for API
+                                operations.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+           <revision><!-- ... continue addding more revisions here as you change this document using the markup shown below... -->
                 <date>2012-02-14</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
@@ -468,12 +482,16 @@
                 xlink:href="http://bugs.launchpad.net/nova">bugs.launchpad.net/nova</link>. </para>
         <section xml:id="Intended_Audience-d1e85">
             <title>Intended Audience</title>
-            <para>This Guide is intended to assist software developers who want to develop
-                applications using the OpenStack Compute API. To use the information provided here,
-                you should first have a general understanding of the OpenStack Compute service and
-                have access to an account from an OpenStack Compute provider. You should also be
-                familiar with: </para>
+            <para>This guide is intended to assist software developers
+                who want to develop applications using the OpenStack
+                Compute API. To use this information, you should have
+                access to an account from an OpenStack Compute
+                provider, and you should also be familiar with the
+                following concepts: </para>
             <itemizedlist spacing="compact">
+                <listitem>
+                    <para>OpenStack Compute service</para>
+                </listitem>
                 <listitem>
                     <para>ReSTful web services</para>
                 </listitem>
@@ -481,7 +499,8 @@
                     <para>HTTP/1.1</para>
                 </listitem>
                 <listitem>
-                    <para>JSON and/or XML data serialization formats</para>
+                    <para>JSON and/or XML data serialization
+                        formats</para>
                 </listitem>
             </itemizedlist>
         </section>
@@ -501,14 +520,17 @@
                 website at <link
                     xlink:href="http://docs.openstack.org">
                     http://docs.openstack.org</link>. </para>
-            <para> For more details about the Cloud Servers service that this API is based upon, please refer to <link
-                xlink:href="http://www.rackspacecloud.com/cloud_hosting_products/servers"
-                >http://www.rackspacecloud.com/cloud_hosting_products/servers</link>. Related
-                documents, including an <link
-                    xlink:href="http://docs.rackspacecloud.com/servers/api/cs-bindguide-latest.pdf"
-                    >API Language Binding Guide</link>, are available at the same site, as are links
-                to Rackspace's official support channels, including knowledge base articles, forums,
-                phone, chat, and email.</para>
+            <para>For more details about the Cloud Servers service
+                that this API is based upon, see <link
+                    xlink:href="http://www.rackspacecloud.com/cloud_hosting_products/servers"
+                    >http://www.rackspacecloud.com/cloud_hosting_products/servers</link>.
+                This site also provides related documents and links to
+                official support channels for Rackspace, including
+                    <link
+                    xlink:href="http://www.rackspace.com/knowledge_center/"
+                    >knowledge base articles</link>, <link
+                    xlink:href=" http://beta.forums.rackspace.com/"
+                    >forums</link>, phone, chat, and email.</para>
         </section>
     </chapter>
     <chapter xml:id="Concepts-d1e369">
@@ -910,7 +932,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                 would list all servers that have changed since Mon, 24
                 Jan 2011 17:08:00 UTC. </para>
             <para>
-                In order to allow clients to keep track of changes,
+                To allow clients to keep track of changes,
                 the changes-since filter displays items that have been
                 <emphasis>recently</emphasis> deleted.  Both images
                 and servers contain a <code>DELETED</code> status that
@@ -1669,28 +1691,28 @@ Host: servers.api.openstack.org/v2/
                 </para>
                 <?hard-pagebreak?>
                 <example>
-                    <title>Server In Error Sate: XML</title>
+                    <title>Server In Error State: XML</title>
                     <programlisting language="xml">
 <xi:include href="samples/server-fault.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <?hard-pagebreak?>
                 <example>
-                    <title>Server In Error Sate: JSON</title>
+                    <title>Server In Error State: JSON</title>
                     <programlisting language="javascript">
 <xi:include href="samples/server-fault.json" parse="text"/>
                     </programlisting>
                 </example>
                 <?hard-pagebreak?>
                 <example>
-                    <title>Image In Error Sate: XML</title>
+                    <title>Image In Error State: XML</title>
                     <programlisting language="xml">
 <xi:include href="samples/image-fault.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <?hard-pagebreak?>
                 <example>
-                    <title>Image In Error Sate: JSON</title>
+                    <title>Image In Error State: JSON</title>
                     <programlisting language="javascript">
 <xi:include href="samples/image-fault.json" parse="text"/>
                     </programlisting>
@@ -1722,7 +1744,8 @@ Host: servers.api.openstack.org/v2/
                             <parameter>marker</parameter>=<literal>markerID</literal>&amp;<parameter>limit</parameter>=<literal>int</literal>&amp;
                             <parameter>changes-since</parameter>=<literal>dateTime</literal>
                             </td>
-                            <td colspan="3">List all servers (IDs, names, links)</td>
+                            <td colspan="3">Lists IDs, names, and
+                                links for all servers.</td>
                         </tr>
                         <tr>
                             <td colspan="1">&GET;</td>
@@ -1733,24 +1756,24 @@ Host: servers.api.openstack.org/v2/
                             <parameter>marker</parameter>=<literal>markerID</literal>&amp;<parameter>limit</parameter>=<literal>int</literal>&amp;
                             <parameter>changes-since</parameter>=<literal>dateTime</literal>
                             </td>
-                            <td colspan="3">List all servers (all details)</td>
+                            <td colspan="3">Lists all details for all
+                                servers.</td>
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s):
-                    <returnvalue>200</returnvalue>, <returnvalue>203</returnvalue>
+                <simpara>Normal Response Code(s):
+                        <returnvalue>200</returnvalue>,
+                        <returnvalue>203</returnvalue>
                 </simpara>
-                <simpara>
-                    Error Response Code(s):
-                    computeFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>, &hellip;),
+                <simpara>Error Response Code(s): computeFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>, &hellip;),
                     serviceUnavailable (<errorcode>503</errorcode>),
                     unauthorized (<errorcode>401</errorcode>),
-                    forbidden (<errorcode>403</errorcode>),
-                    badRequest (<errorcode>400</errorcode>),
-                    badMethod (<errorcode>405</errorcode>),
-                    overLimit (<errorcode>413</errorcode>)
-                </simpara>
+                    forbidden (<errorcode>403</errorcode>), badRequest
+                        (<errorcode>400</errorcode>), badMethod
+                        (<errorcode>405</errorcode>), overLimit
+                        (<errorcode>413</errorcode>) </simpara>
                 <annotation annotates="id35836359">
                     <info>
                         <title>Office Annotation</title>
@@ -1761,67 +1784,156 @@ Host: servers.api.openstack.org/v2/
                         </author>
                         <date>2009-06-26T14:30:46</date>
                     </info>
-                    <para>
-                        Well need to revisit.  List all status even
+                    <para>Well need to revisit. List all status even
                         the ones that don't enter into our state
-                        transitions along with descriptions of each.
-                    </para>
+                        transitions along with descriptions of each. </para>
                 </annotation>
-                <para xml:id="id35836359">
-                    This operation provides a list of servers
-                    associated with your account.  Servers that have
-                    been deleted are not included in this list.
-                    Servers contain a status attribute that can be
-                    used as an indication of the current server state.
-                    Servers with an <code>ACTIVE</code> status are
-                    available for use. Other possible values for the
-                    status attribute include: <code>BUILD</code>,
-                    <code>REBUILD</code>, <code>SUSPENDED</code>,
-                    <code>RESIZE</code>, <code>VERIFY_RESIZE</code>,
-                    <code>REVERT_RESIZE</code>,
-                    <code>PASSWORD</code>, <code>REBOOT</code>,
-                    <code>HARD_REBOOT</code>, <code>DELETED</code>,
-                    <code>UNKNOWN</code>, and <code>ERROR</code>.
-                </para>
-                <para>
-                    The list of servers may be filtered by image,
-                    flavor, name, and status via the respective query
-                    parameters. Image and flavor references may be IDs
-                    or full URLs.  When retrieving a list of servers
-                    via the changes-since parameter, the list will
-                    contain servers that have been deleted since the
-                    changes-since time (see <xref
-                    linkend="ChangesSince"/>).
-                </para>
-                <para>
-                    The compute provisioning algorithm has an
-                    anti-affinity property that attempts to spread out
-                    customer VMs across hosts.  Under certain
-                    situations, VMs from the same customer may be
+                <para xml:id="id35836359">You can filter the list of
+                    servers by image, flavor, name, and status through
+                    the respective query parameters. </para>
+                <para>To filter the list of servers returned in the
+                    response body, specify one or more of the
+                    following optional parameters in the request URI:<variablelist>
+                        <varlistentry>
+                            <term>image</term>
+                            <listitem>
+                                <para>The image reference specified as
+                                   an ID or full URL. </para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>flavor</term>
+                            <listitem>
+                                <para>The flavor reference specified
+                                   as an ID or full URL.</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>server</term>
+                            <listitem>
+                                <para>The server name.</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>status</term>
+                            <listitem>
+                                <para>The server status, which is one
+                                   of the following values:<itemizedlist>
+                                   <listitem>
+                                   <para>ACTIVE</para>
+                                   </listitem>
+                                   <listitem>
+                                   <para>BUILD</para>
+                                   </listitem>
+                                   <listitem>
+                                   <para>DELETED</para>
+                                   </listitem>
+                                   <listitem>
+                                   <para>ERROR</para>
+                                   </listitem>
+                                   <listitem>
+                                   <para>HARD_REBOOT</para>
+                                   </listitem>
+                                   <listitem>
+                                   <para>PASSWORD</para>
+                                   </listitem>
+                                   <listitem>
+                                   <para>REBOOT</para>
+                                   </listitem>
+                                   <listitem>
+                                   <para>REBUILD</para>
+                                   </listitem>
+                                   <listitem>
+                                   <para>RESIZE</para>
+                                   </listitem>
+                                   <listitem>
+                                   <para>SUSPENDED</para>
+                                   </listitem>
+                                   <listitem>
+                                   <para>UNKNOWN</para>
+                                   </listitem>
+                                   <listitem>
+                                   <para>VERIFY_RESIZE</para>
+                                   </listitem>
+                                   </itemizedlist></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>marker</term>
+                            <listitem>
+                                <para>The ID of the last item in the
+                                   previous list. See <xref
+                                   linkend="Paginated_Collections-d1e664"
+                                   />.</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>limit</term>
+                            <listitem>
+                                <para>The page size. See <xref
+                                   linkend="Paginated_Collections-d1e664"
+                                   />.</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>changes-since</term>
+                            <listitem>
+                                <para>The changes-since time. The list
+                                   contains servers that have been
+                                   deleted since the changes-since
+                                   time. See <xref
+                                   linkend="ChangesSince"/>.</para>
+                            </listitem>
+                        </varlistentry>
+                    </variablelist></para>
+                <para>This operation does not require a request
+                    body.</para>
+                <para>This operation lists the servers associated with
+                    your account. The list does not include servers
+                    that have been deleted. Servers contain a status
+                    attribute that can be used as an indication of the
+                    current server state. Servers with an
+                        <code>ACTIVE</code> status are available for
+                    use. Other possible values for the status
+                    attribute include: <code>BUILD</code>,
+                        <code>REBUILD</code>, <code>SUSPENDED</code>,
+                        <code>RESIZE</code>,
+                        <code>VERIFY_RESIZE</code>,
+                        <code>PASSWORD</code>, <code>REBOOT</code>,
+                        <code>HARD_REBOOT</code>,
+                    <code>DELETED</code>, <code>UNKNOWN</code>, and
+                        <code>ERROR</code>. </para>
+                <para>The compute provisioning algorithm has an
+                    anti-affinity property that attempts to spread
+                    customer VMs across hosts. Under certain
+                    situations, VMs from the same customer might be
                     placed on the same host.
-                    <property>hostId</property> represents the host
-                    your server runs on and can be used to determine
-                    this scenario if it's relevant to your
-                    application.
-                </para>
+                        <property>hostId</property> represents the
+                    host your server runs on and can be used to
+                    determine this scenario if it is relevant to your
+                    application. </para>
                 <note>
-                    <para>
-                        <property>HostId</property> is unique
-                        <emphasis>per account</emphasis> and is not
-                        globally unique.
-                    </para>
+                    <para><property>HostId</property> is unique
+                            <emphasis>per account</emphasis> and is
+                        not globally unique. </para>
                 </note>
-                <para>This operation does not require a request body.</para>
-                <?hard-pagebreak?>
+               
+                
+            
+                <para>The following examples show an XML and JSON
+                    response for the list servers API
+                    operation:</para>
+               
                 <example>
-                    <title>Servers List Response: XML (detail)</title>
+                    <title>List Servers Response: XML (detail)</title>
                     <programlisting language="xml"><?db-font-size 80%?>
 <xi:include href="samples/servers.xml" parse="text"/>
                     </programlisting>
                 </example>
-                <?hard-pagebreak?>
+              
                 <example>
-                    <title>Servers List Response: JSON (detail)</title>
+                    <title>List Servers Response: JSON
+                        (detail)</title>
                     <programlisting language="javascript"><?db-font-size 80%?>
 <xi:include href="samples/servers.json" parse="text"/>
                     </programlisting>
@@ -1842,27 +1954,26 @@ Host: servers.api.openstack.org/v2/
                         <tr>
                             <td colspan="1">&POST;</td>
                             <td colspan="2">/servers</td>
-                            <td colspan="3">Create a new server</td>
+                            <td colspan="3">Creates a new server.</td>
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s):
-                    <returnvalue>202</returnvalue>
+                <simpara>Normal Response Code(s):
+                        <returnvalue>202</returnvalue>
                 </simpara>
-                <simpara>
-                    Error Response Code(s):
-                    computeFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>, &hellip;),
+                <simpara>Error Response Code(s): computeFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>, &hellip;),
                     serviceUnavailable (<errorcode>503</errorcode>),
                     unauthorized (<errorcode>401</errorcode>),
-                    forbidden (<errorcode>403</errorcode>),
-                    badRequest (<errorcode>400</errorcode>),
-                    badMethod (<errorcode>405</errorcode>),
-                    overLimit (<errorcode>413</errorcode>),
-                    itemNotFound (<errorcode>404</errorcode>),
-                    badMediaType (<errorcode>415</errorcode>),
-                    serverCapacityUnavailable (<errorcode>503</errorcode>)
-                </simpara>
+                    forbidden (<errorcode>403</errorcode>), badRequest
+                        (<errorcode>400</errorcode>), badMethod
+                        (<errorcode>405</errorcode>), overLimit
+                        (<errorcode>413</errorcode>), itemNotFound
+                        (<errorcode>404</errorcode>), badMediaType
+                        (<errorcode>415</errorcode>),
+                    serverCapacityUnavailable
+                        (<errorcode>503</errorcode>) </simpara>
                 <informaltable frame="void">
                         <tbody>
                             <tr>
@@ -1879,26 +1990,84 @@ Host: servers.api.openstack.org/v2/
                             </tr>
                         </tbody>
                 </informaltable>
-                <para>
-                    This operation asynchronously provisions a new
+                <para>This operation asynchronously provisions a new
                     server. The progress of this operation depends on
                     several factors including location of the
                     requested image, network i/o, host load, and the
                     selected flavor. The progress of the request can
                     be checked by performing a &GET; on
-                    /servers/<parameter>id</parameter>, which will
+                        /servers/<parameter>id</parameter>, which will
                     return a progress attribute (0-100% completion).
                     The full URL to the newly created server is
                     returned via the <code>Location</code> header and
                     is available as a <code>self</code> and
-                    <code>bookmark</code> link in the server
+                        <code>bookmark</code> link in the server
                     representation (See <xref
-                    linkend="LinksReferences"/>).  Note that when
+                        linkend="LinksReferences"/>). Note that when
                     creating a server only the server ID, its links,
                     and the admin password are guaranteed to be
-                    returned in the request.  Additional
-                    attributes may be retrieved by performing
-                    subsequent &GET;s on the server.
+                    returned in the request. Additional attributes may
+                    be retrieved by performing subsequent &GET;s on
+                    the server. </para>
+                <para><?rax-fo keep-together?>The following table
+                    describes the required and optional attributes
+                    that you can specify in the request body:</para>
+                <para>
+                    <table rules="all">
+                        <caption>Create Server Request
+                            Attributes</caption>
+                        <col width="20%"/>
+                        <col width="60%"/>
+                        <col width="20%"/>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Required</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>imageRef</td>
+                                <td><para>The image reference, which is the
+                                   endpoint appended with the
+                                   following string:
+                                  <programlisting>/tenant_id/images/<parameter>image_id</parameter></programlisting></para></td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>flavorRef</td>
+                                <td><para>The flavor ID.</para></td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                   <para>name</para>
+                                </td>
+                                <td>
+                                   <para>The server name.</para>
+                                </td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                   <para>metadata</para>
+                                </td>
+                                <td>Metadata key and value pairs.</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td valign="top">
+                                   <para>personality</para>
+                                </td>
+                                <td>
+                                   <para>File path and
+                                   contents.</para>
+                                </td>
+                                <td>No</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </para>
                 <example>
                     <title>Server Create Request: XML</title>
@@ -2085,36 +2254,37 @@ Host: servers.api.openstack.org/v2/
                         <tr>
                             <td colspan="1">&GET;</td>
                             <td colspan="2">/servers/<parameter>id</parameter></td>
-                            <td colspan="3">List details of the specified server</td>
+                            <td colspan="3">Lists details of the
+                                specified server.</td>
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s):
-                    <returnvalue>200</returnvalue>, <returnvalue>203</returnvalue>
+                <simpara>Normal Response Code(s):
+                        <returnvalue>200</returnvalue>,
+                        <returnvalue>203</returnvalue>
                 </simpara>
-                <simpara>
-                    Error Response Code(s):
-                    computeFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>, &hellip;),
+                <simpara>Error Response Code(s): computeFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>, &hellip;),
                     serviceUnavailable (<errorcode>503</errorcode>),
                     unauthorized (<errorcode>401</errorcode>),
-                    forbidden (<errorcode>403</errorcode>),
-                    badRequest (<errorcode>400</errorcode>),
-                    badMethod (<errorcode>405</errorcode>),
-                    overLimit (<errorcode>413</errorcode>),
-                    itemNotFound (<errorcode>404</errorcode>)
-                </simpara>
-                <para>
-                    This operation returns the details of a specific
-                    server by its ID.
-                </para>
-                <para>This operation does not require a request body.</para>
+                    forbidden (<errorcode>403</errorcode>), badRequest
+                        (<errorcode>400</errorcode>), badMethod
+                        (<errorcode>405</errorcode>), overLimit
+                        (<errorcode>413</errorcode>), itemNotFound
+                        (<errorcode>404</errorcode>) </simpara>
+                <para>Specify the server ID as
+                        <parameter>id</parameter> in the URI.</para>
+                <para>This operation does not require a request
+                    body.</para>
+                <para>This operation returns the details of a specific
+                    server by its ID. </para>
                 <?hard-pagebreak?>
                 <example>
                     <title>Server Details Response: XML</title>
                     <programlisting language="xml"><xi:include href="samples/server.xml" parse="text"/></programlisting>
                 </example>
-                <?hard-pagebreak?>
+         
                 <example>
                     <title>Server Details Response: JSON</title>
                     <programlisting language="javascript"><?db-font-size 90%?><xi:include href="samples/server.json" parse="text"/></programlisting>
@@ -2135,28 +2305,27 @@ Host: servers.api.openstack.org/v2/
                         <tr>
                             <td colspan="1">&PUT;</td>
                             <td colspan="2">/servers/<parameter>id</parameter></td>
-                            <td colspan="3">Update the specified
-                            server's editable attributes</td>
+                            <td colspan="3">Updates the editable
+                                attributes for the specified
+                                server.</td>
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s):
-                    <returnvalue>200</returnvalue>
+                <simpara>Normal Response Code(s):
+                        <returnvalue>200</returnvalue>
                 </simpara>
-                <simpara>
-                    Error Response Code(s):
-                    computeFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>, &hellip;),
+                <simpara>Error Response Code(s): computeFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>, &hellip;),
                     serviceUnavailable (<errorcode>503</errorcode>),
                     unauthorized (<errorcode>401</errorcode>),
-                    forbidden (<errorcode>403</errorcode>),
-                    badRequest (<errorcode>400</errorcode>),
-                    badMethod (<errorcode>405</errorcode>),
-                    overLimit (<errorcode>413</errorcode>),
-                    itemNotFound (<errorcode>404</errorcode>),
-                    badMediaType (<errorcode>415</errorcode>),
-                    buildInProgress (<errorcode>409</errorcode>)
-                </simpara>
+                    forbidden (<errorcode>403</errorcode>), badRequest
+                        (<errorcode>400</errorcode>), badMethod
+                        (<errorcode>405</errorcode>), overLimit
+                        (<errorcode>413</errorcode>), itemNotFound
+                        (<errorcode>404</errorcode>), badMediaType
+                        (<errorcode>415</errorcode>), buildInProgress
+                        (<errorcode>409</errorcode>) </simpara>
                 <informaltable frame="void">
                     <tbody>
                         <tr>
@@ -2168,10 +2337,51 @@ Host: servers.api.openstack.org/v2/
                         </tr>
                     </tbody>
                 </informaltable>
-                <para> This operation updates the editable attributes of a server: the name of the
-                    server and the IPv4 and IPv6 access addresses. Note that while the server name
-                    is editable, the operation does not change the server host name. Note also that
-                    server names are not guaranteed to be unique. </para>
+                <para>This operation enables you to update the
+                    editable attributes of a specified server. </para>
+                <para>Specify the server ID as
+                        <parameter>id</parameter> in the URI. </para>
+                <para><?rax-fo keep-together?>The following table describes the attributes
+                    that you can specify in the request body: <table
+                        rules="all">
+                        <caption>Update Server Request Body
+                            Attributes</caption>
+                        <col width="20%"/>
+                        <col width="80%"/>
+                        <thead>
+                            <tr>
+                                <th>Attribute</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>name</td>
+                                <td>The name of the server. If you
+                                   edit the server name, the server
+                                   host name does not change. Also,
+                                   server names are not guaranteed to
+                                   be unique. </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                   <para>accessIPv4</para>
+                                </td>
+                                <td>
+                                   <para>The IP version 4 address. </para>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                   <para>accessIPv6</para>
+                                </td>
+                                <td>
+                                   <para>The IP version 6
+                                   address.</para>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table></para>
                 <example>
                     <title>Server Update Name Request: XML</title>
                     <programlisting language="xml">
@@ -2245,7 +2455,8 @@ Host: servers.api.openstack.org/v2/
                         <tr>
                             <td colspan="1">&DELETE;</td>
                             <td colspan="2">/servers/<parameter>id</parameter></td>
-                            <td colspan="3">Terminate the specified server</td>
+                            <td colspan="3">Deletes the specified
+                                server.</td>
                         </tr>
                     </tbody>
                 </informaltable>
@@ -2283,7 +2494,12 @@ Host: servers.api.openstack.org/v2/
                         </tr>
                     </tbody>
                 </informaltable>
-                <para>This operation deletes a cloud server instance from the system. It does not require a request or a response body.</para>
+                <para>This operation deletes a specified cloud server
+                    instance from the system. </para>
+                <para>Specify the ID for the cloud server instance as
+                        <parameter>id</parameter> in the URI. </para>
+                <para>This operation does not require a request body
+                    or return a response body. </para>
             </section>
         </section>
         <?hard-pagebreak?>
@@ -2303,27 +2519,32 @@ Host: servers.api.openstack.org/v2/
                         <tr>
                             <td colspan="1">&GET;</td>
                             <td colspan="2">/servers/<parameter>id</parameter>/ips</td>
-                            <td colspan="3">List all server addresses</td>
+                            <td colspan="3">Lists all networks and
+                                addresses associated with a specified
+                                server.</td>
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s):
-                    <returnvalue>200</returnvalue>, <returnvalue>203</returnvalue>
+                <simpara>Normal Response Code(s):
+                        <returnvalue>200</returnvalue>,
+                        <returnvalue>203</returnvalue>
                 </simpara>
-                <simpara>
-                    Error Response Code(s):
-                    computeFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>, &hellip;),
+                <simpara>Error Response Code(s): computeFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>, &hellip;),
                     serviceUnavailable (<errorcode>503</errorcode>),
                     unauthorized (<errorcode>401</errorcode>),
-                    forbidden (<errorcode>403</errorcode>),
-                    badRequest (<errorcode>400</errorcode>),
-                    badMethod (<errorcode>405</errorcode>),
-                    overLimit (<errorcode>413</errorcode>),
-                    itemNotFound (<errorcode>404</errorcode>),
-                    buildInProgress (<errorcode>409</errorcode>)
-                </simpara>
-                <para>This operation does not require a request body.</para>
+                    forbidden (<errorcode>403</errorcode>), badRequest
+                        (<errorcode>400</errorcode>), badMethod
+                        (<errorcode>405</errorcode>), overLimit
+                        (<errorcode>413</errorcode>), itemNotFound
+                        (<errorcode>404</errorcode>), buildInProgress
+                        (<errorcode>409</errorcode>) </simpara>
+                <para>This operation lists all networks and addresses
+                    associated with a specified server. </para>
+                <para>Specify the server ID as
+                        <parameter>id</parameter> in the URI. </para>
+                <para>This operation does not require a request body. </para>
                 <?hard-pagebreak?>
                 <example>
                     <title>Addresses List Response: XML </title>
@@ -2352,7 +2573,9 @@ Host: servers.api.openstack.org/v2/
                         <tr>
                             <td colspan="1">&GET;</td>
                             <td colspan="2">/servers/<parameter>id</parameter>/ips/<parameter>networkID</parameter></td>
-                            <td colspan="3">List addresses by Network ID</td>
+                            <td colspan="3">Lists addresses associated
+                                with a specified server and
+                                network.</td>
                         </tr>
                     </tbody>
                 </informaltable>
@@ -2372,15 +2595,50 @@ Host: servers.api.openstack.org/v2/
                     itemNotFound (<errorcode>404</errorcode>),
                     buildInProgress (<errorcode>409</errorcode>)
                 </simpara>
-                <para>This operation does not require a request body.</para>
+                <para>This operation lists all addresses associated
+                    with a specified server and network. </para>
+                <para>The following table describes the required
+                    parameters that you specify in the request URI:
+                        <table rules="all">
+                        <caption>List Addresses by Network URI
+                            Parameters</caption>
+                        <col width="20%"/>
+                        <col width="80%"/>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                   <para>id</para>
+                                </td>
+                                <td>
+                                   <para>The server ID.</para>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                   <para>networkID</para>
+                                </td>
+                                <td>
+                                   <para>The network ID.</para>
+                                </td>
+                            </tr>
+                        </tbody>
+                        </table></para><para>This operation does not require a request body.</para>
                 <example>
-                    <title>List Addresses by Network: XML</title>
+                    <title>List Addresses by Network Response:
+                        XML</title>
                     <programlisting language="xml">
 <xi:include href="samples/public.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
-                    <title>List Addresses by Network: JSON</title>
+                    <title>List Addresses by Network Response:
+                        JSON</title>
                     <programlisting language="javascript">
 <xi:include href="samples/public.json" parse="text"/>
                     </programlisting>
@@ -2391,7 +2649,7 @@ Host: servers.api.openstack.org/v2/
         <section xml:id="Server_Actions-d1e3229">
             <title>Server Actions</title>
             <section xml:id="Change_Password-d1e3234">
-                <title>Change Password</title>
+                <title>Change Administrator Password</title>
                 <informaltable rules="all">
                     <thead>
                         <tr>
@@ -2404,27 +2662,26 @@ Host: servers.api.openstack.org/v2/
                         <tr>
                             <td colspan="1">&POST;</td>
                             <td colspan="2">/servers/<parameter>id</parameter>/action</td>
-                            <td colspan="3">Change a server's password</td>
+                            <td colspan="3">Changes the administrator
+                                password for a specified server.</td>
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s):
-                    <returnvalue>202</returnvalue>
+                <simpara>Normal Response Code(s):
+                        <returnvalue>202</returnvalue>
                 </simpara>
-                <simpara>
-                    Error Response Code(s):
-                    computeFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>, &hellip;),
+                <simpara>Error Response Code(s): computeFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>, &hellip;),
                     serviceUnavailable (<errorcode>503</errorcode>),
                     unauthorized (<errorcode>401</errorcode>),
-                    forbidden (<errorcode>403</errorcode>),
-                    badRequest (<errorcode>400</errorcode>),
-                    badMethod (<errorcode>405</errorcode>),
-                    overLimit (<errorcode>413</errorcode>),
-                    itemNotFound (<errorcode>404</errorcode>),
-                    badMediaType (<errorcode>415</errorcode>),
-                    buildInProgress (<errorcode>409</errorcode>)
-                </simpara>
+                    forbidden (<errorcode>403</errorcode>), badRequest
+                        (<errorcode>400</errorcode>), badMethod
+                        (<errorcode>405</errorcode>), overLimit
+                        (<errorcode>413</errorcode>), itemNotFound
+                        (<errorcode>404</errorcode>), badMediaType
+                        (<errorcode>415</errorcode>), buildInProgress
+                        (<errorcode>409</errorcode>) </simpara>
                 <informaltable frame="void">
                     <tbody>
                         <tr>
@@ -2454,28 +2711,54 @@ Host: servers.api.openstack.org/v2/
                         </tr>
                     </tbody>
                 </informaltable>
-                <para>
-                     This operation changes the server's administrator
-                     password. The specified password must meet the
-                     complexity requirements set by your OpenStack
-                     Compute provider. The server may enter an
-                     <code>ERROR</code> state if the complexity
-                     requirements are not met. In this case, a client
-                     may reissue the change password action.
-                </para>
+                <para>This operation changes the administrator
+                    password for a specified server. </para>
+                <para>Specify the server ID as
+                        <parameter>id</parameter> in the URI. </para>
+                <para>The specified password must meet the complexity
+                    requirements set by your OpenStack Compute
+                    provider. The server might enter an
+                        <code>ERROR</code> state if the complexity
+                    requirements are not met. In this case, a client
+                    may reissue the change password action. </para>
+                <para>In the request body, specify the
+                        <parameter>changePassword</parameter> action
+                    followed by attributes. The following table
+                    describes the attributes that you specify in the
+                    request body:<table rules="all">
+                        <caption>Change Administrator Password Request
+                            Body Attributes</caption>
+                        <col width="20%"/>
+                        <col width="60%"/>
+                        <col width="20%"/>
+                        <thead>
+                            <tr>
+                                <th>Attribute</th>
+                                <th>Description</th>
+                                <th>Required</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>adminPass</td>
+                                <td>The administrator password.</td>
+                                <td>Yes</td>
+                            </tr>
+                        </tbody>
+                    </table></para><para>This operation does not return a response body.</para>
                 <example>
-                    <title>Server Update Request: XML</title>
+                    <title>Action Change Password Request: XML</title>
                     <programlisting language="xml">
 <xi:include href="samples/changepassword.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
-                    <title>Server Update Request: JSON</title>
+                    <title>Action Change Password Request: JSON</title>
                     <programlisting language="javascript">
 <xi:include href="samples/changepassword.json" parse="text"/>
                     </programlisting>
                 </example>
-                <para>This operation does not contain a response body.</para>
+                <para/>
             </section>
             <?hard-pagebreak?>
             <section xml:id="Reboot_Server-d1e3371">
@@ -2492,27 +2775,26 @@ Host: servers.api.openstack.org/v2/
                         <tr>
                             <td colspan="1">&POST;</td>
                             <td colspan="2">/servers/<parameter>id</parameter>/action</td>
-                            <td colspan="3">Reboot the specified server</td>
+                            <td colspan="3">Reboots the specified
+                                server.</td>
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s):
-                    <returnvalue>202</returnvalue>
+                <simpara>Normal Response Code(s):
+                        <returnvalue>202</returnvalue>
                 </simpara>
-                <simpara>
-                    Error Response Code(s):
-                    computeFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>, &hellip;),
+                <simpara>Error Response Code(s): computeFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>, &hellip;),
                     serviceUnavailable (<errorcode>503</errorcode>),
                     unauthorized (<errorcode>401</errorcode>),
-                    forbidden (<errorcode>403</errorcode>),
-                    badRequest (<errorcode>400</errorcode>),
-                    badMethod (<errorcode>405</errorcode>),
-                    overLimit (<errorcode>413</errorcode>),
-                    itemNotFound (<errorcode>404</errorcode>),
-                    badMediaType (<errorcode>415</errorcode>),
-                    buildInProgress (<errorcode>409</errorcode>)
-                </simpara>
+                    forbidden (<errorcode>403</errorcode>), badRequest
+                        (<errorcode>400</errorcode>), badMethod
+                        (<errorcode>405</errorcode>), overLimit
+                        (<errorcode>413</errorcode>), itemNotFound
+                        (<errorcode>404</errorcode>), badMediaType
+                        (<errorcode>415</errorcode>), buildInProgress
+                        (<errorcode>409</errorcode>) </simpara>
                 <informaltable frame="void">
                     <tbody>
                         <tr>
@@ -2533,27 +2815,80 @@ Host: servers.api.openstack.org/v2/
                         </tr>
                     </tbody>
                 </informaltable>
+                <para>This operation enables you to complete either a
+                    soft or hard reboot of a specified server. With a
+                    soft reboot (<code>SOFT</code>), the operating
+                    system is signaled to restart, which allows for a
+                    graceful shutdown of all processes. A hard reboot
+                        (<code>HARD</code>) is the equivalent of power
+                    cycling the server. </para>
+                <para>Specify the server ID as
+                        <parameter>id</parameter> in the URI. </para>
+                <para>In the request body, specify the
+                        <parameter>reboot</parameter> action followed by
+                    attributes. </para>
+                <para>The following table describes the attributes
+                    that you specify in the request body:</para>
                 <para>
-                    The reboot function allows for either a soft or
-                    hard reboot of a server. With a soft reboot
-                    (<code>SOFT</code>), the operating system is signaled to
-                    restart, which allows for a graceful shutdown of
-                    all processes. A hard reboot (<code>HARD</code>) is the
-                    equivalent of power cycling the server.
+                    <table rules="all">
+                        <caption>Reboot Server Request
+                            Attributes</caption>
+                      
+                        <col width="20%"/>
+                        <col width="60%"/>
+                        <col width="20%"/>
+                        <thead>
+                            <tr>
+                                <th>Attribute</th>
+                                <th>Description</th>
+                                <th>Required</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>xmlns</td>
+                                <td>
+                                   <para>The namespace.</para>
+                                </td>
+                                <td>Yes.</td>
+                            </tr>
+                            <tr>
+                                <td>type</td>
+                                <td>
+                                   <para>The type of reboot:<itemizedlist>
+                                   <listitem>
+                                   <para><parameter>SOFT</parameter>.
+                                   The operating system is signaled to
+                                   restart, which allows for a
+                                   graceful shutdown of all
+                                   processes.</para>
+                                   </listitem>
+                                   <listitem>
+                                   <para><parameter>HARD</parameter>.
+                                   Equivalent to power cycling the
+                                   server. </para>
+                                   </listitem>
+                                   </itemizedlist></para>
+                                </td>
+                                <td>No. Default is SOFT.</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </para>
+                <para>This operation does not return a response
+                    body.</para>
                 <example>
-                    <title>Action Reboot: XML </title>
+                    <title>Action Reboot Request: XML </title>
                     <programlisting language="xml">
 <xi:include href="samples/reboot.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
-                    <title>Action Reboot: JSON </title>
+                    <title>Action Reboot Request: JSON </title>
                     <programlisting language="javascript">
 <xi:include href="samples/reboot.json" parse="text"/>
                     </programlisting>
                 </example>
-                <para>This operation does not return a response body.</para>
             </section>
             <?hard-pagebreak?>
             <section xml:id="Rebuild_Server-d1e3538">
@@ -2570,7 +2905,8 @@ Host: servers.api.openstack.org/v2/
                         <tr>
                             <td colspan="1">&POST;</td>
                             <td colspan="2">/servers/<parameter>id</parameter>/action</td>
-                            <td colspan="3">Rebuild the specified server</td>
+                            <td colspan="3">Rebuilds the specified
+                                server.</td>
                         </tr>
                     </tbody>
                 </informaltable>
@@ -2612,22 +2948,92 @@ Host: servers.api.openstack.org/v2/
                         </tr>
                     </tbody>
                 </informaltable>
+                <para>The rebuild operation removes all data on the
+                    server and replaces it with the specified image.
+                    The <property>serverRef</property> and all IP
+                    addresses will remain the same. If
+                        <property>name</property>,
+                        <property>metadata</property>,
+                        <property>accessIPv4</property>, or
+                        <property>accessIPv6</property> are specified,
+                    they will replace existing values, otherwise they
+                    do not change. </para>
+                <para>A rebuild operation always removes data injected
+                    into the file system through server
+                        <property>personality</property>. You can
+                    reinsert data into the file system during the
+                    rebuild. The full URL to the rebuilt server is
+                    returned through the <code>Location</code> header. </para>
+                <para>Specify the server ID as
+                        <parameter>id</parameter> in the URI. </para>
+                <para>In the request body, specify the
+                        <parameter>rebuild</parameter> action followed by
+                    attributes. </para>
+                <para>The following table describes the attributes
+                    that you specify in the request body:</para>
                 <para>
-                    The rebuild function removes all data on the
-                    server and replaces it with the specified
-                    image. The <property>serverRef</property> and all
-                    IP addresses will remain the same. If
-                    <property>name</property>, 
-                    <property>metadata</property>, 
-                    <property>accessIPv4</property>, or
-                    <property>accessIPv6</property> are specified, they
-                    will replace existing values, otherwise they will
-                    not change. A rebuild operation always removes
-                    data injected into the file system via server
-                    <property>personality</property>.  You may
-                    reinsert data into the filesystem during the
-                    rebuild.  The full URL to the rebuilt server
-                    is returned via the <code>Location</code> header.
+                    <table rules="all">
+                        <caption>Rebuild Server Request
+                            Attributes</caption>
+                       <col width="20%"/>
+                        <col width="60%"/>
+                        <col width="20%"/>
+                        <thead>
+                            <tr>
+                                <th>Attribute</th>
+                                <th>Description</th>
+                                <th>Required</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>xmlns</td>
+                                <td>
+                                   <para>The namespace.</para>
+                                </td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>name</td>
+                                <td>The new name for the server.</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>imageRef</td>
+                                <td><para>The image reference, which is the
+                                   endpoint appended with the
+                                   following string:<programlisting><parameter>tenant_id</parameter>/images/<parameter>image_id</parameter></programlisting></para></td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>accessIPv4</td>
+                                <td>The IP version 4 address.</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td>accessIPv6</td>
+                                <td>The IP version 6 address.</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td>adminPass</td>
+                                <td>The administrator password.</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>metadata</td>
+                                <td>A metadata key and value
+                                   pair.</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td>personality</td>
+                                <td>The file path and file
+                                   contents.</td>
+                                <td>No</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </para>
                 <example>
                     <title>Action Rebuild Request: XML </title>
@@ -2668,29 +3074,29 @@ Host: servers.api.openstack.org/v2/
                         <tr>
                             <td colspan="1">&POST;</td>
                             <td colspan="2">/servers/<parameter>id</parameter>/action</td>
-                            <td colspan="3">Resize the specified server</td>
+                            <td colspan="3">Resizes the specified
+                                server.</td>
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s):
-                    <returnvalue>202</returnvalue>
+                <simpara>Normal Response Code(s):
+                        <returnvalue>202</returnvalue>
                 </simpara>
-                <simpara>
-                    Error Response Code(s):
-                    computeFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>, &hellip;),
+                <simpara>Error Response Code(s): computeFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>, &hellip;),
                     resizeNotAllowed (<errorcode>403</errorcode>),
                     serviceUnavailable (<errorcode>503</errorcode>),
                     unauthorized (<errorcode>401</errorcode>),
-                    forbidden (<errorcode>403</errorcode>),
-                    badRequest (<errorcode>400</errorcode>),
-                    badMethod (<errorcode>405</errorcode>),
-                    overLimit (<errorcode>413</errorcode>),
-                    itemNotFound (<errorcode>404</errorcode>),
-                    badMediaType (<errorcode>415</errorcode>),
-                    serverCapacityUnavailable (<errorcode>503</errorcode>),
-                    buildInProgress (<errorcode>409</errorcode>)
-                </simpara>
+                    forbidden (<errorcode>403</errorcode>), badRequest
+                        (<errorcode>400</errorcode>), badMethod
+                        (<errorcode>405</errorcode>), overLimit
+                        (<errorcode>413</errorcode>), itemNotFound
+                        (<errorcode>404</errorcode>), badMediaType
+                        (<errorcode>415</errorcode>),
+                    serverCapacityUnavailable
+                        (<errorcode>503</errorcode>), buildInProgress
+                        (<errorcode>409</errorcode>) </simpara>
                 <informaltable frame="void">
                     <tbody>
                         <tr>
@@ -2711,30 +3117,69 @@ Host: servers.api.openstack.org/v2/
                         </tr>
                     </tbody>
                 </informaltable>
-                <para>
-                    The resize function converts an existing server to
-                    a different flavor, in essence, scaling the server
-                    up or down. The original server is saved for a
-                    period of time to allow rollback if there is a
-                    problem. All resizes should be tested and
+                <para>The resize operation converts an existing server
+                    to a different flavor, in essence, scaling the
+                    server up or down. The original server is saved
+                    for a period of time to allow rollback if there is
+                    a problem. All resizes should be tested and
                     explicitly confirmed, at which time the original
                     server is removed. All resizes are automatically
                     confirmed after 24 hours if they are not
-                    explicitly confirmed or reverted.
-                </para>
+                    explicitly confirmed or reverted. </para>
+                <para>Specify the server ID as
+                        <parameter>id</parameter> in the URI. </para>
+                <para>In the request body, specify the
+                        <parameter>resize</parameter> action followed
+                    by attributes. The following table describes the
+                    attributes that you specify in the request
+                    body:</para>
+                <para>
+                    <table rules="all">
+                        <caption>Resize Server Request
+                            Attributes</caption>
+                       
+                        <col width="20%"/>
+                        <col width="60%"/>
+                        <col width="20%"/>
+                        <thead>
+                            <tr>
+                                <th>Attribute</th>
+                                <th>Description</th>
+                                <th>Required</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>name</td>
+                                <td>The name for the resized
+                                   server.</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>flavorRef</td>
+                                <td>
+                                   <para>The flavor reference, which
+                                   is the endpoint appended with the
+                                   following
+                                   string:<programlisting><parameter>tenant_id</parameter>/flavors/<parameter>flavor_id</parameter></programlisting></para>
+                                </td>
+                                <td>Yes</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </para><para>This operation does not return a response body.</para>
                 <example>
-                    <title>Action Resize: XML</title>
+                    <title>Action Resize Request: XML</title>
                     <programlisting language="xml">
 <xi:include href="samples/resize.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
-                    <title>Action Resize: JSON</title>
+                    <title>Action Resize Request: JSON</title>
                     <programlisting language="javascript">
 <xi:include href="samples/resize.json" parse="text"/>
                     </programlisting>
                 </example>
-                <para>This operation does not return a response body.</para>
             </section>
             <?hard-pagebreak?>
             <section xml:id="Confirm_Resized_Server-d1e3868">
@@ -2751,29 +3196,29 @@ Host: servers.api.openstack.org/v2/
                         <tr>
                             <td colspan="1">&POST;</td>
                             <td colspan="2">/servers/<parameter>id</parameter>/action</td>
-                            <td colspan="3">Confirm a pending resize action</td>
+                            <td colspan="3">Confirms a pending resize
+                                action.</td>
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s):
-                    <returnvalue>204</returnvalue>
+                <simpara>Normal Response Code(s):
+                        <returnvalue>204</returnvalue>
                 </simpara>
-                <simpara>
-                    Error Response Code(s):
-                    computeFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>, &hellip;),
+                <simpara>Error Response Code(s): computeFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>, &hellip;),
                     resizeNotAllowed (<errorcode>403</errorcode>),
                     serviceUnavailable (<errorcode>503</errorcode>),
                     unauthorized (<errorcode>401</errorcode>),
-                    forbidden (<errorcode>403</errorcode>),
-                    badRequest (<errorcode>400</errorcode>),
-                    badMethod (<errorcode>405</errorcode>),
-                    overLimit (<errorcode>413</errorcode>),
-                    itemNotFound (<errorcode>404</errorcode>),
-                    badMediaType (<errorcode>415</errorcode>),
-                    serverCapacityUnavailable (<errorcode>503</errorcode>),
-                    buildInProgress (<errorcode>409</errorcode>)
-                </simpara>
+                    forbidden (<errorcode>403</errorcode>), badRequest
+                        (<errorcode>400</errorcode>), badMethod
+                        (<errorcode>405</errorcode>), overLimit
+                        (<errorcode>413</errorcode>), itemNotFound
+                        (<errorcode>404</errorcode>), badMediaType
+                        (<errorcode>415</errorcode>),
+                    serverCapacityUnavailable
+                        (<errorcode>503</errorcode>), buildInProgress
+                        (<errorcode>409</errorcode>) </simpara>
                 <informaltable frame="void">
                     <tbody>
                         <tr>
@@ -2792,30 +3237,33 @@ Host: servers.api.openstack.org/v2/
                         </tr>
                     </tbody>
                 </informaltable>
-                <para>
-                    During a resize operation, the original server is
-                    saved for a period of time to allow roll back if
-                    there is a problem.  Once the newly resized server
+                <para>During a resize operation, the original server
+                    is saved for a period of time to allow roll back
+                    if a problem exists. Once the newly resized server
                     is tested and has been confirmed to be functioning
                     properly, use this operation to confirm the
-                    resize.  After confirmation, the original server
-                    is removed and cannot be rolled back to.  All
-                    resizes are automatically confirmed after 24 hours
-                    if they are not explicitly confirmed or reverted.
-                </para>
+                    resize. After confirmation, the original server is
+                    removed and cannot be rolled back to. All resizes
+                    are automatically confirmed after 24 hours if they
+                    are not explicitly confirmed or reverted. </para>
+                <para>Specify the server ID as
+                        <parameter>id</parameter> in the URI. </para>
+                <para>In the request body, specify the
+                        <parameter>confirmResize</parameter> action. </para>
+                <para>This operation does not return a response
+                    body.</para>
                 <example>
-                    <title>Action Confirm Resize: XML</title>
+                    <title>Action Confirm Resize Request: XML</title>
                     <programlisting language="xml">
 <xi:include href="samples/confirmresize.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
-                    <title>Action Confirm Resize: JSON</title>
+                    <title>Action Confirm Resize Request: JSON</title>
                     <programlisting language="javascript">
 <xi:include href="samples/confirmresize.json" parse="text"/>
                     </programlisting>
                 </example>
-                <para>This operation does not return a response body.</para>
             </section>
             <?hard-pagebreak?>
             <section xml:id="Revert_Resized_Server-d1e4024">
@@ -2832,29 +3280,29 @@ Host: servers.api.openstack.org/v2/
                         <tr>
                             <td colspan="1">&POST;</td>
                             <td colspan="2">/servers/<parameter>id</parameter>/action</td>
-                            <td colspan="3">Cancel and revert a pending resize action</td>
+                            <td colspan="3">Cancels and reverts a
+                                pending resize action.</td>
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s):
-                    <returnvalue>202</returnvalue>
+                <simpara>Normal Response Code(s):
+                        <returnvalue>202</returnvalue>
                 </simpara>
-                <simpara>
-                    Error Response Code(s):
-                    computeFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>, &hellip;),
+                <simpara>Error Response Code(s): computeFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>, &hellip;),
                     resizeNotAllowed (<errorcode>403</errorcode>),
                     serviceUnavailable (<errorcode>503</errorcode>),
                     unauthorized (<errorcode>401</errorcode>),
-                    forbidden (<errorcode>403</errorcode>),
-                    badRequest (<errorcode>400</errorcode>),
-                    badMethod (<errorcode>405</errorcode>),
-                    overLimit (<errorcode>413</errorcode>),
-                    itemNotFound (<errorcode>404</errorcode>),
-                    badMediaType (<errorcode>415</errorcode>),
-                    serverCapacityUnavailable (<errorcode>503</errorcode>),
-                    buildInProgress (<errorcode>409</errorcode>)
-                </simpara>
+                    forbidden (<errorcode>403</errorcode>), badRequest
+                        (<errorcode>400</errorcode>), badMethod
+                        (<errorcode>405</errorcode>), overLimit
+                        (<errorcode>413</errorcode>), itemNotFound
+                        (<errorcode>404</errorcode>), badMediaType
+                        (<errorcode>415</errorcode>),
+                    serverCapacityUnavailable
+                        (<errorcode>503</errorcode>), buildInProgress
+                        (<errorcode>409</errorcode>) </simpara>
                 <informaltable frame="void">
                     <tbody>
                         <tr>
@@ -2875,24 +3323,30 @@ Host: servers.api.openstack.org/v2/
                         </tr>
                     </tbody>
                 </informaltable>
-                <para>
-                    During a resize operation, the original server is
-                    saved for a period of time to allow for roll back
-                    if there is a problem. If you determine there is a
-                    problem with a newly resized server, use this
-                    operation to revert the resize and roll back to
-                    the original server. All resizes are automatically
-                    confirmed after 24 hours if they have not already
-                    been confirmed explicitly or reverted.
-                </para>
+                <para>During a resize operation, the original server
+                    is saved for a period of time to allow for roll
+                    back if there is a problem. If you determine there
+                    is a problem with a newly resized server, use the
+                    revert resize operation to revert the resize and
+                    roll back to the original server. All resizes are
+                    automatically confirmed after 24 hours if they
+                    have not already been confirmed explicitly or
+                    reverted. </para>
+                <para>Specify the server ID as
+                        <parameter>id</parameter> in the URI. </para>
+                <para>In the request body, specify the
+                        <parameter>revertResize</parameter> action
+                    followed by attributes.</para>
+                <para>This operation does not return a response
+                    body.</para>
                 <example>
-                    <title>Action Revert Resize: XML</title>
+                    <title>Action Revert Resize Request: XML</title>
                     <programlisting language="xml">
 <xi:include href="samples/revertresize.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
-                    <title>Action Revert Resize: JSON</title>
+                    <title>Action Revert Resize Request: JSON</title>
                     <programlisting language="javascript">
 <xi:include href="samples/revertresize.json" parse="text"/>
                     </programlisting>
@@ -2918,26 +3372,26 @@ Host: servers.api.openstack.org/v2/
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s):
-                    <returnvalue>202</returnvalue>
+                <simpara>Normal Response Code(s):
+                        <returnvalue>202</returnvalue>
                 </simpara>
-                <simpara>
-                    Error Response Code(s):
-                    computeFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>, &hellip;),
-                    backupOrResizeInProgress (<errorcode>409</errorcode>),
-                    resizeNotAllowed (<errorcode>403</errorcode>),
+                <simpara>Error Response Code(s): computeFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>, &hellip;),
+                    backupOrResizeInProgress
+                        (<errorcode>409</errorcode>), resizeNotAllowed
+                        (<errorcode>403</errorcode>),
                     serviceUnavailable (<errorcode>503</errorcode>),
                     unauthorized (<errorcode>401</errorcode>),
-                    forbidden (<errorcode>403</errorcode>),
-                    badRequest (<errorcode>400</errorcode>),
-                    badMethod (<errorcode>405</errorcode>),
-                    overLimit (<errorcode>413</errorcode>),
-                    itemNotFound (<errorcode>404</errorcode>),
-                    badMediaType (<errorcode>415</errorcode>),
-                    serverCapacityUnavailable (<errorcode>503</errorcode>),
-                    buildInProgress (<errorcode>409</errorcode>)
-                </simpara>
+                    forbidden (<errorcode>403</errorcode>), badRequest
+                        (<errorcode>400</errorcode>), badMethod
+                        (<errorcode>405</errorcode>), overLimit
+                        (<errorcode>413</errorcode>), itemNotFound
+                        (<errorcode>404</errorcode>), badMediaType
+                        (<errorcode>415</errorcode>),
+                    serverCapacityUnavailable
+                        (<errorcode>503</errorcode>), buildInProgress
+                        (<errorcode>409</errorcode>) </simpara>
                  <informaltable frame="void">
                         <tbody>
                             <tr>
@@ -2954,44 +3408,79 @@ Host: servers.api.openstack.org/v2/
                             </tr>
                         </tbody>
                  </informaltable>
-                <para>
-                    This action creates a new image for the given
+                <para>This operation creates a new image for the given
                     server. Once complete, a new image will be
                     available that can be used to rebuild or create
-                    servers.  The full URL to the newly created image
+                    servers. The full URL to the newly created image
                     is returned via the <code>Location</code> header,
                     additional attributes for the image including
                     creation status may be retrieved by performing a
                     subsequent &GET; on that URL. See <xref
-                    linkend="Get_Image_Details-d1e4848"/> for details.
-                </para>
+                        linkend="Get_Image_Details-d1e4848"/> for
+                    details. </para>
+                <para>Custom image metadata can also be supplied when
+                    creating an image. See <xref
+                        linkend="MetadataSection"/> for details on
+                    working with metadata. The maximum size of the
+                    metadata key and value is 255 bytes each. The
+                    maximum number of key-value pairs that can be
+                    supplied per image is determined by the compute
+                    provider and may be queried through the
+                    maxImageMeta absolute limit. </para>
+                <para>Specify the server ID as
+                        <parameter>id</parameter> in the URI. </para>
+                <para>In the request body, specify the
+                        <parameter>createImage</parameter> action followed
+                    by attributes. The following table describes the
+                    attributes that you specify in the request
+                    body:</para>
                 <para>
-                    Custom image metadata can also be supplied when
-                    creating an image.  See <xref
-                    linkend="MetadataSection"/> for details on working
-                    with metadata.  The maximum size of the metadata
-                    key and value is 255 bytes each.  The maximum
-                    number of key-value pairs that can be supplied per
-                    image is determined by the compute provider and
-                    may be queried via the maxImageMeta absolute
-                    limit.
+                    <table rules="all">
+                        <caption>Create Image Request
+                            Attributes</caption>
+                        <col width="20%"/>
+                        <col width="60%"/>
+                        <col width="20%"/>
+                    
+                        <thead>
+                            <tr>
+                                <th>Attribute</th>
+                                <th>Description</th>
+                                <th>Required</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>name</td>
+                                <td>The name for the new image.</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>metadata</td>
+                                <td>
+                                   <para>Key and value pairs for
+                                   metadata.</para>
+                                </td>
+                                <td>No</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </para>
-                <para>This operation does not return a response body.</para>
+                <para>This operation does not return a response
+                    body.</para>
                 <note>
-                    <para>
-                        At present, image creation is an asynchronous
-                        operation, so coordinating the creation with
-                        data quiescence, etc. is currently not
-                        possible.
-                    </para>
+                    <para>At present, image creation is an
+                        asynchronous operation, so coordinating the
+                        creation with data quiescence, and so on is
+                        currently not possible. </para>
                 </note>
                 <example>
-                    <title>Action Create Image: XML</title>
+                    <title>Action Create Image Request: XML</title>
                     <programlisting language="xml"><xi:include href="samples/createimage.xml" parse="text"/></programlisting>
                 </example>
                 <?hard-pagebreak?>
                 <example>
-                    <title>Action Create Image: JSON</title>
+                    <title>Action Create Image Request: JSON</title>
                     <programlisting language="javascript"><xi:include href="samples/createimage.json" parse="text"/></programlisting>
                 </example>
             </section>
@@ -2999,11 +3488,9 @@ Host: servers.api.openstack.org/v2/
         <?hard-pagebreak?>
         <section xml:id="Flavors-d1e4180">
             <title>Flavors</title>
-            <para>
-                A flavor is an available hardware configuration for a
-                server.  Each flavor has a unique combination of disk
-                space and memory capacity.
-            </para>
+            <para>A flavor is an available hardware configuration for
+                a server. Each flavor has a unique combination of disk
+                space and memory capacity. </para>
             <section xml:id="List_Flavors-d1e4188">
                 <title>List Flavors</title>
                 <informaltable rules="all">
@@ -3022,7 +3509,8 @@ Host: servers.api.openstack.org/v2/
                             <parameter>minRam</parameter>=<literal>minRamInMB</literal>&amp;
                              <parameter>marker</parameter>=<literal>markerID</literal>&amp;<parameter>limit</parameter>=<literal>int</literal>
                             </td>
-                            <td colspan="3">List available flavors (IDs, names, links)</td>
+                            <td colspan="3">Lists IDs, names, and
+                                links for all available flavors.</td>
                         </tr>
                         <tr>
                             <td colspan="1">&GET;</td>
@@ -3030,37 +3518,68 @@ Host: servers.api.openstack.org/v2/
                                 colspan="2">/flavors/detail?<parameter>minDisk</parameter>=<literal>minDiskInGB</literal>&amp;
                             <parameter>minRam</parameter>=<literal>minRamInMB</literal>&amp;
                             <parameter>marker</parameter>=<literal>markerID</literal>&amp;<parameter>limit</parameter>=<literal>int</literal></td>
-                            <td colspan="3">List available flavors (all details)</td>
+                            <td colspan="3">Lists all details for all
+                                available flavors.</td>
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s):
-                    <returnvalue>200</returnvalue>, <returnvalue>203</returnvalue>
+                <simpara>Normal Response Code(s):
+                        <returnvalue>200</returnvalue>,
+                        <returnvalue>203</returnvalue>
                 </simpara>
-                <simpara>
-                    Error Response Code(s):
-                    computeFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>, &hellip;),
+                <simpara>Error Response Code(s): computeFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>, &hellip;),
                     serviceUnavailable (<errorcode>503</errorcode>),
                     unauthorized (<errorcode>401</errorcode>),
-                    forbidden (<errorcode>403</errorcode>),
-                    badRequest (<errorcode>400</errorcode>),
-                    badMethod (<errorcode>405</errorcode>),
-                    overLimit (<errorcode>413</errorcode>)
-                </simpara>
+                    forbidden (<errorcode>403</errorcode>), badRequest
+                        (<errorcode>400</errorcode>), badMethod
+                        (<errorcode>405</errorcode>), overLimit
+                        (<errorcode>413</errorcode>) </simpara>
+                <para>This operation lists information for all
+                    available flavors. </para>
+                <para>To filter the list of flavors returned in the
+                    response body, you can specify the following
+                    optional parameters in the URI:</para>
                 <para>
-                    This operation will list all available flavors.
-                    The <parameter>minDisk</parameter> parameter can
-                    narrow the list of flavors to those which contain
-                    at least the specified number of gigabytes of disk
-                    storage. The <parameter>minRam</parameter>
-                    parameter narrows the list of flavors to those
-                    that contain at least the specified amount of RAM
-                    in megabytes.
+                    <variablelist>
+                        <varlistentry>
+                            <term><parameter>minDisk</parameter>=<literal>minDiskInGB</literal>&amp;</term>
+                            <listitem>
+                                <para>Filters the list of flavors to
+                                   those with the specified minimum
+                                   number of gigabytes of disk
+                                   storage.</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><parameter>minRam</parameter>=<literal>minRamInMB</literal>&amp;</term>
+                            <listitem>
+                                <para>Filters the list of flavors to
+                                   those with the specified minimum
+                                   amount of RAM in megabytes. </para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><parameter>marker</parameter>=<literal>markerID</literal>&amp;</term>
+                            <listitem>
+                                <para>The ID of the last item in the
+                                   previous list. See <xref
+                                   linkend="Paginated_Collections-d1e664"
+                                   />.</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><parameter>limit</parameter>=<literal>int</literal></term>
+                            <listitem>
+                                <para>Sets the page size. See <xref
+                                   linkend="Paginated_Collections-d1e664"
+                                   />.</para>
+                            </listitem>
+                        </varlistentry>
+                    </variablelist>
                 </para>
-                <para>
-                    This operation does not require a request body.
-                </para>
+                <para>This operation does not require a request body. </para>
                 <example>
                     <title>Flavors List Response: XML (detail) </title>
                     <programlisting language="xml"><xi:include href="samples/flavors.xml" parse="text"/></programlisting>
@@ -3085,27 +3604,31 @@ Host: servers.api.openstack.org/v2/
                         <tr>
                             <td colspan="1">&GET;</td>
                             <td colspan="2">/flavors/<parameter>id</parameter></td>
-                            <td colspan="3">List details of the specified flavor</td>
+                            <td colspan="3">Lists details of the
+                                specified flavor.</td>
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s):
-                    <returnvalue>200</returnvalue>, <returnvalue>203</returnvalue>
+                <simpara>Normal Response Code(s):
+                        <returnvalue>200</returnvalue>,
+                        <returnvalue>203</returnvalue>
                 </simpara>
-                <simpara>
-                    Error Response Code(s):
-                    computeFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>, &hellip;),
+                <simpara>Error Response Code(s): computeFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>, &hellip;),
                     serviceUnavailable (<errorcode>503</errorcode>),
                     unauthorized (<errorcode>401</errorcode>),
-                    forbidden (<errorcode>403</errorcode>),
-                    badRequest (<errorcode>400</errorcode>),
-                    badMethod (<errorcode>405</errorcode>),
-                    overLimit (<errorcode>413</errorcode>),
-                    itemNotFound (<errorcode>404</errorcode>)
-                </simpara>
-                <para>This operation returns details of the specified flavor.</para>
-                <para>This operation does not require a request body.</para>
+                    forbidden (<errorcode>403</errorcode>), badRequest
+                        (<errorcode>400</errorcode>), badMethod
+                        (<errorcode>405</errorcode>), overLimit
+                        (<errorcode>413</errorcode>), itemNotFound
+                        (<errorcode>404</errorcode>) </simpara>
+                <para>Specify the flavor ID as
+                        <parameter>id</parameter> in the URI. </para>
+                <para>This operation does not require a request
+                    body.</para>
+                <para>This operation returns details of the specified
+                    flavor in the response body.</para>
                 <example>
                     <title>Flavor Details Response: XML</title>
                     <programlisting language="xml">
@@ -3124,11 +3647,9 @@ Host: servers.api.openstack.org/v2/
         <?hard-pagebreak?>
         <section xml:id="Images-d1e4427">
             <title>Images</title>
-            <para>
-                An image is a collection of files you use to create or
-                rebuild a server. Operators provide pre-built OS
-                images by default. You may also create custom images.
-            </para>
+            <para>An image is a collection of files you use to create
+                or rebuild a server. Operators provide pre-built OS
+                images by default. You may also create custom images. </para>
             <section xml:id="List_Images-d1e4435">
                 <title>List Images</title>
                 <informaltable rules="all">
@@ -3149,7 +3670,8 @@ Host: servers.api.openstack.org/v2/
                             <parameter>marker</parameter>=<literal>markerID</literal>&amp;<parameter>limit</parameter>=<literal>int</literal>&amp;
                             <parameter>type</parameter>=(<constant>BASE</constant>|<constant>SERVER</constant>)
                             </td>
-                            <td colspan="3">List available images (IDs, names, links)</td>
+                            <td colspan="3">Lists IDs, names, and
+                                links for all available images.</td>
                         </tr>
                         <tr>
                             <td colspan="1">&GET;</td>
@@ -3160,57 +3682,104 @@ Host: servers.api.openstack.org/v2/
                             <parameter>marker</parameter>=<literal>markerID</literal>&amp;<parameter>limit</parameter>=<literal>int</literal>&amp;
                             <parameter>type</parameter>=(<constant>BASE</constant>|<constant>SERVER</constant>)
                             </td>
-                            <td colspan="3">List available images (all details)</td>
+                            <td colspan="3">Lists all details for all
+                                available images.</td>
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s):
-                    <returnvalue>200</returnvalue>, <returnvalue>203</returnvalue>
+                <simpara>Normal Response Code(s):
+                        <returnvalue>200</returnvalue>,
+                        <returnvalue>203</returnvalue>
                 </simpara>
-                <simpara>
-                    Error Response Code(s):
-                    computeFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>, &hellip;),
+                <simpara>Error Response Code(s): computeFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>, &hellip;),
                     serviceUnavailable (<errorcode>503</errorcode>),
                     unauthorized (<errorcode>401</errorcode>),
-                    forbidden (<errorcode>403</errorcode>),
-                    badRequest (<errorcode>400</errorcode>),
-                    badMethod (<errorcode>405</errorcode>),
-                    overLimit (<errorcode>413</errorcode>)
-                </simpara>
+                    forbidden (<errorcode>403</errorcode>), badRequest
+                        (<errorcode>400</errorcode>), badMethod
+                        (<errorcode>405</errorcode>), overLimit
+                        (<errorcode>413</errorcode>) </simpara>
+                <para>This operation lists all images visible by the
+                    account. </para>
+                <para>To filter the list of images returned in the
+                    response body, you can specify the following
+                    optional parameters in the URI:</para>
                 <para>
-                    This operation will list all images visible by the
-                    account.
+                    <variablelist>
+                        <varlistentry>
+                            <term><parameter>server</parameter>=<literal>serverRef</literal>&amp;</term>
+                            <listitem>
+                                <para>Filters the list of images by
+                                   server. Specify the server
+                                   reference by ID or by full
+                                   URL.</para>
+                            </listitem>
+                        </varlistentry><varlistentry>
+                            <term><parameter>name</parameter>=<literal>imageName</literal>&amp;</term>
+                            <listitem>
+                                <para>Filters the list of images by
+                                   image name. </para>
+                            </listitem>
+                        </varlistentry><varlistentry>
+                            <term><parameter>status</parameter>=<literal>imageStatus</literal>&amp;</term>
+                            <listitem>
+                                <para>Filters the list of images by
+                                   status. In-flight images will have
+                                   the status attribute set to
+                                   <code>SAVING</code> and the
+                                   conditional progress element
+                                   (0-100% completion) will also be
+                                   returned. Other possible values for
+                                   the status attribute include:
+                                   <code>UNKNOWN</code>,
+                                   <code>ACTIVE</code>,
+                                   <code>SAVING</code>,
+                                   <code>ERROR</code>, and
+                                   <code>DELETED</code>. Images with
+                                   an <code>ACTIVE</code> status are
+                                   available for install. </para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><parameter>changes-since</parameter>=<literal>dateTime</literal>&amp;</term>
+                            <listitem>
+                                <para>Filters the list of images to
+                                   those that have changed since the
+                                   changes-since time. See <xref
+                                   linkend="ChangesSince"/> for
+                                   details. </para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><parameter>marker</parameter>=<literal>markerID</literal>&amp;</term>
+                            <listitem>
+                                <para>The ID of the last item in the
+                                   previous list. See <xref
+                                   linkend="Paginated_Collections-d1e664"
+                                   />.</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><parameter>limit</parameter>=<literal>int</literal></term>
+                            <listitem>
+                                <para>Sets the page size. See <xref
+                                   linkend="Paginated_Collections-d1e664"
+                                   />.</para>
+                            </listitem>
+                        </varlistentry><varlistentry>
+                            <term><parameter>type</parameter>={BASE|SERVER}</term>
+                            <listitem>
+                                <para>Filters base images or server
+                                   backups.</para>
+                            </listitem>
+                        </varlistentry>
+                    </variablelist>
                 </para>
-                <para>
-                    In-flight images will have the status attribute
-                    set to <code>SAVING</code> and the conditional
-                    progress element (0-100% completion) will also be
-                    returned.  Other possible values for the status
-                    attribute include: <code>UNKNOWN</code>,
-                    <code>ACTIVE</code>, <code>SAVING</code>,
-                    <code>ERROR</code>, and
-                    <code>DELETED</code>. Images with an
-                    <code>ACTIVE</code> status are available for
-                    install.  The optional minDisk and minRam
-                    attributes set the minimum disk and RAM
-                    requirements needed to create a server with the
-                    image.
-                </para>
-                <para>
-                    The list of images may be filtered by server,
-                    name, and status via the respective query
-                    parameters. A server reference may be specified by
-                    ID or with a full URL. The
-                    <parameter>type</parameter> parameter will select
-                    only base images (<constant>BASE</constant>) or
-                    server backups (<constant>SERVER</constant>).
-                    When using the changes-since parameter
-                    the list of images will contain images that have
-                    changed since the changes-since time. See
-                    <xref linkend="ChangesSince"/> for details.
-                </para>
-                <para>This operation does not require a request body.</para>
+                <para>This operation does not require a request body.
+                    The optional minDisk and minRam attributes set the
+                    minimum disk and RAM requirements needed to create
+                    a server with the image. </para>
                 <?hard-pagebreak?>
                 <example>
                     <title>Images List Response: XML (detail)</title>
@@ -3238,27 +3807,30 @@ Host: servers.api.openstack.org/v2/
                         <tr>
                             <td colspan="1">&GET;</td>
                             <td colspan="2">/images/<parameter>id</parameter></td>
-                            <td colspan="3">List details of the specified image</td>
+                            <td colspan="3">Lists details of the
+                                specified image.</td>
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s):
-                    <returnvalue>200</returnvalue>, <returnvalue>203</returnvalue>
+                <simpara>Normal Response Code(s):
+                        <returnvalue>200</returnvalue>,
+                        <returnvalue>203</returnvalue>
                 </simpara>
-                <simpara>
-                    Error Response Code(s):
-                    computeFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>, &hellip;),
+                <simpara>Error Response Code(s): computeFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>, &hellip;),
                     serviceUnavailable (<errorcode>503</errorcode>),
                     unauthorized (<errorcode>401</errorcode>),
-                    forbidden (<errorcode>403</errorcode>),
-                    badRequest (<errorcode>400</errorcode>),
-                    badMethod (<errorcode>405</errorcode>),
-                    overLimit (<errorcode>413</errorcode>),
-                    itemNotFound (<errorcode>404</errorcode>)
-                </simpara>
-                <para>This operation returns details of the specified image.</para>
+                    forbidden (<errorcode>403</errorcode>), badRequest
+                        (<errorcode>400</errorcode>), badMethod
+                        (<errorcode>405</errorcode>), overLimit
+                        (<errorcode>413</errorcode>), itemNotFound
+                        (<errorcode>404</errorcode>) </simpara>
+                <para>Specify the image ID as
+                        <parameter>id</parameter> in the URI. </para>
                 <para>This operation does not require a request body.</para>
+                <db:para>This operation returns details of the
+                    specified image in the response body.</db:para>
                 <example>
                     <title>Image Details Response: XML</title>
                     <programlisting language="xml">
@@ -3292,21 +3864,19 @@ Host: servers.api.openstack.org/v2/
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s):
-                    <returnvalue>204</returnvalue>
+                <simpara>Normal Response Code(s):
+                        <returnvalue>204</returnvalue>
                 </simpara>
-                <simpara>
-                    Error Response Code(s):
-                    computeFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>, &hellip;),
+                <simpara>Error Response Code(s): computeFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>, &hellip;),
                     serviceUnavailable (<errorcode>503</errorcode>),
                     unauthorized (<errorcode>401</errorcode>),
-                    forbidden (<errorcode>403</errorcode>),
-                    badRequest (<errorcode>400</errorcode>),
-                    badMethod (<errorcode>405</errorcode>),
-                    overLimit (<errorcode>413</errorcode>),
-                    itemNotFound (<errorcode>404</errorcode>)
-                </simpara>
+                    forbidden (<errorcode>403</errorcode>), badRequest
+                        (<errorcode>400</errorcode>), badMethod
+                        (<errorcode>405</errorcode>), overLimit
+                        (<errorcode>413</errorcode>), itemNotFound
+                        (<errorcode>404</errorcode>) </simpara>
                 <informaltable frame="void">
                         <tbody>
                             <tr>
@@ -3323,14 +3893,16 @@ Host: servers.api.openstack.org/v2/
                             </tr>
                         </tbody>
                 </informaltable>
-                <para>This operation deletes an image from the system.</para>
-                <para>
-                    Images are immediately removed.  Currently, there
+                <para>This operation deletes the specified image from
+                    the system. </para>
+                <para>Specify the image ID as
+                        <parameter>id</parameter> in the URI. </para>
+                <para>Images are immediately removed. Currently, there
                     are no state transitions to track the delete
-                    operation.
-                </para>
+                    operation. </para>
                 <para>This operation does not require a request body.</para>
-                <para>This operation does not contain a response body.</para>
+                <para>This operation does not return a response
+                    body.</para>
             </section>
         </section>
         <?hard-pagebreak?>
@@ -3354,36 +3926,35 @@ Host: servers.api.openstack.org/v2/
                         <tr>
                             <td colspan="1">&GET;</td>
                             <td colspan="2">/servers/<parameter>id</parameter>/metadata</td>
-                            <td colspan="3">List metadata associated
-                            with a server</td>
+                            <td colspan="3">Lists metadata associated
+                                with a server.</td>
                         </tr>
                         <tr>
                             <td colspan="1">&GET;</td>
                             <td colspan="2">/images/<parameter>id</parameter>/metadata</td>
-                            <td colspan="3">List metadata associated
-                            with an image</td>
+                            <td colspan="3">Lists metadata associated
+                                with an image.</td>
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s):
-                    <returnvalue>200</returnvalue>, <returnvalue>203</returnvalue>
+                <simpara>Normal Response Code(s):
+                        <returnvalue>200</returnvalue>,
+                        <returnvalue>203</returnvalue>
                 </simpara>
-                <simpara>
-                    Error Response Code(s):
-                    computeFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>, &hellip;),
+                <simpara>Error Response Code(s): computeFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>, &hellip;),
                     serviceUnavailable (<errorcode>503</errorcode>),
                     unauthorized (<errorcode>401</errorcode>),
-                    forbidden (<errorcode>403</errorcode>),
-                    badRequest (<errorcode>400</errorcode>),
-                    badMethod (<errorcode>405</errorcode>),
-                    overLimit (<errorcode>413</errorcode>),
-                    itemNotFound (<errorcode>404</errorcode>)
-                </simpara>
-                <para>
-                    Lists all metadata. This operation does not
-                    require a request body.
-                </para>
+                    forbidden (<errorcode>403</errorcode>), badRequest
+                        (<errorcode>400</errorcode>), badMethod
+                        (<errorcode>405</errorcode>), overLimit
+                        (<errorcode>413</errorcode>), itemNotFound
+                        (<errorcode>404</errorcode>) </simpara>
+                <para>Lists all metadata. </para>
+                <para>Specify the server or image ID as
+                        <parameter>id</parameter> in the URI. </para>
+                <para>This operation does not require a request body. </para>
                 <example>
                     <title>Metadata List Response: XML </title>
                     <programlisting language="xml">
@@ -3412,65 +3983,97 @@ Host: servers.api.openstack.org/v2/
                         <tr>
                             <td colspan="1">&PUT;</td>
                             <td colspan="2">/servers/<parameter>id</parameter>/metadata</td>
-                            <td colspan="3">Set metadata</td>
+                            <td colspan="3">Sets metadata for a
+                                specified server.</td>
                         </tr>
                         <tr>
                             <td colspan="1">&PUT;</td>
                             <td colspan="2">/images/<parameter>id</parameter>/metadata</td>
-                            <td colspan="3">Set metadata</td>
+                            <td colspan="3">Sets metadata for a
+                                specified image.</td>
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s):
-                    <returnvalue>200</returnvalue>
+                <simpara>Normal Response Code(s):
+                        <returnvalue>200</returnvalue>
                 </simpara>
-                <simpara>
-                    Error Response Code(s):
-                    computeFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>, &hellip;),
+                <simpara>Error Response Code(s): computeFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>, &hellip;),
                     serviceUnavailable (<errorcode>503</errorcode>),
                     unauthorized (<errorcode>401</errorcode>),
-                    forbidden (<errorcode>403</errorcode>),
-                    badRequest (<errorcode>400</errorcode>),
-                    badMethod (<errorcode>405</errorcode>),
-                    overLimit (<errorcode>413</errorcode>),
-                    itemNotFound (<errorcode>404</errorcode>),
-                    badMediaType (<errorcode>415</errorcode>),
-                    buildInProgress (<errorcode>409</errorcode>)
-                </simpara>
+                    forbidden (<errorcode>403</errorcode>), badRequest
+                        (<errorcode>400</errorcode>), badMethod
+                        (<errorcode>405</errorcode>), overLimit
+                        (<errorcode>413</errorcode>), itemNotFound
+                        (<errorcode>404</errorcode>), badMediaType
+                        (<errorcode>415</errorcode>), buildInProgress
+                        (<errorcode>409</errorcode>) </simpara>
+                <para>Sets metadata for the specified image or server. </para>
+                <para>Specify the image or server ID as
+                        <parameter>id</parameter> in the URI. </para>
+                <para>In the request body, specify the
+                        <parameter>metadata</parameter> element followed
+                    by attributes. The following table describes the
+                    attributes that you specify in the request
+                    body:</para>
                 <para>
-                   Sets metadata for the resource. Existing metadata
-                   items are replaced with the ones provided in the
-                   request. An overLimit (<errorcode>413</errorcode>)
-                   fault may be thrown if the maximum number of
-                   metadata items is exceeded. The maximum number of
-                   key-value pairs that can be supplied per server is
-                   determined by the compute provider and may be
-                   queried via the maxServerMeta absolute limit. The
-                   maximum number of key-value pairs for an image may
-                   be queried via the maxImageMeta absolute limit.
+                    <table rules="all">
+                        <caption>Set Metadata Request
+                            Attributes</caption>
+                        <col width="20%"/>
+                        <col width="60%"/>
+                        <col width="20%"/>
+                        <thead>
+                            <tr>
+                                <th>Attribute</th>
+                                <th>Description</th>
+                                <th>Required</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>meta</td>
+                                <td>
+                                   <para>Key and value pairs for
+                                   metadata.</para>
+                                </td>
+                                <td>Yes</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </para>
+                <para>Existing metadata items are replaced with the
+                    ones provided in the request. An overLimit
+                        (<errorcode>413</errorcode>) fault may be
+                    thrown if the maximum number of metadata items is
+                    exceeded. The maximum number of key-value pairs
+                    that can be supplied per server is determined by
+                    the compute provider and may be queried via the
+                    maxServerMeta absolute limit. The maximum number
+                    of key-value pairs for an image may be queried via
+                    the maxImageMeta absolute limit. </para>
                 <example>
-                    <title>Metadata Reset Request: XML </title>
+                    <title>Set Metadata Request: XML </title>
                     <programlisting language="xml">
 <xi:include href="samples/metadata.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
-                    <title>Metadata Reset Request: JSON </title>
+                    <title>Set Metadata Request: JSON </title>
                     <programlisting language="javascript">
 <xi:include href="samples/metadata.json" parse="text"/>
                     </programlisting>
                 </example>
                 <?hard-pagebreak?>
                 <example>
-                    <title>Metadata Reset Response: XML </title>
+                    <title>Set Metadata Response: XML </title>
                     <programlisting language="xml">
 <xi:include href="samples/metadata.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
-                    <title>Metadata Reset Response: JSON </title>
+                    <title>Set Metadata Response: JSON </title>
                     <programlisting language="javascript">
 <xi:include href="samples/metadata.json" parse="text"/>
                     </programlisting>
@@ -3491,67 +4094,99 @@ Host: servers.api.openstack.org/v2/
                         <tr>
                             <td colspan="1">&POST;</td>
                             <td colspan="2">/servers/<parameter>id</parameter>/metadata</td>
-                            <td colspan="3">Update metadata items</td>
+                            <td colspan="3">Updates metadata items for
+                                the specified server.</td>
                         </tr>
                         <tr>
                             <td colspan="1">&POST;</td>
                             <td colspan="2">/images/<parameter>id</parameter>/metadata</td>
-                            <td colspan="3">Update metadata items</td>
+                            <td colspan="3">Updates metadata items for
+                                the specified image.</td>
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s):
-                    <returnvalue>200</returnvalue>
+                <simpara>Normal Response Code(s):
+                        <returnvalue>200</returnvalue>
                 </simpara>
-                <simpara>
-                    Error Response Code(s):
-                    computeFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>, &hellip;),
+                <simpara>Error Response Code(s): computeFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>, &hellip;),
                     serviceUnavailable (<errorcode>503</errorcode>),
                     unauthorized (<errorcode>401</errorcode>),
-                    forbidden (<errorcode>403</errorcode>),
-                    badRequest (<errorcode>400</errorcode>),
-                    badMethod (<errorcode>405</errorcode>),
-                    overLimit (<errorcode>413</errorcode>),
-                    itemNotFound (<errorcode>404</errorcode>),
-                    badMediaType (<errorcode>415</errorcode>),
-                    buildInProgress (<errorcode>409</errorcode>)
-                </simpara>
+                    forbidden (<errorcode>403</errorcode>), badRequest
+                        (<errorcode>400</errorcode>), badMethod
+                        (<errorcode>405</errorcode>), overLimit
+                        (<errorcode>413</errorcode>), itemNotFound
+                        (<errorcode>404</errorcode>), badMediaType
+                        (<errorcode>415</errorcode>), buildInProgress
+                        (<errorcode>409</errorcode>) </simpara>
+                <para>Updates resource metadata. </para>
+                <para>Specify the image or server ID as
+                        <parameter>id</parameter> in the URI. </para>
+                <para>In the request body, specify the
+                        <parameter>metadata</parameter> element followed
+                    by attributes. The following table describes the
+                    attributes that you specify in the request
+                    body:</para>
                 <para>
-                   Updates resource metadata. Updates will replace
-                   existing metadata items with the same key. Items
-                   not explicitly mentioned in the request will not be
-                   modified. An overLimit (<errorcode>413</errorcode>)
-                   fault may be thrown if the operation causes the
-                   maximum number of metadata items to be exceeded.
-                   The maximum number of key-value pairs that can be
-                   supplied per server is determined by the compute
-                   provider and may be queried via the maxServerMeta
-                   absolute limit. The maximum number of key-value
-                   pairs for an image may be queried via the
-                   maxImageMeta absolute limit.
+                    <table rules="all">
+                        <caption>Update Metadata Request
+                            Attributes</caption>
+                        <col width="20%"/>
+                        <col width="60%"/>
+                        <col width="20%"/>
+                        <thead>
+                            <tr>
+                                <th>Attribute</th>
+                                <th>Description</th>
+                                <th>Required</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>meta</td>
+                                <td>
+                                   <para>Key and value pairs for
+                                   metadata.</para>
+                                </td>
+                                <td>Yes</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </para>
+                <para>Updates will replace existing metadata items
+                    with the same key. Items not explicitly mentioned
+                    in the request will not be modified. An overLimit
+                        (<errorcode>413</errorcode>) fault may be
+                    thrown if the operation causes the maximum number
+                    of metadata items to be exceeded. The maximum
+                    number of key-value pairs that can be supplied per
+                    server is determined by the compute provider and
+                    may be queried via the maxServerMeta absolute
+                    limit. The maximum number of key-value pairs for
+                    an image may be queried via the maxImageMeta
+                    absolute limit. </para>
                 <example>
-                    <title>Metadata Update Request: XML </title>
+                    <title>Update Metadata Request: XML </title>
                     <programlisting language="xml">
 <xi:include href="samples/metadata-update-req.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
-                    <title>Metadata Update Request: JSON </title>
+                    <title>Update Metadata Request: JSON </title>
                     <programlisting language="javascript">
 <xi:include href="samples/metadata-update-req.json" parse="text"/>
                     </programlisting>
                 </example>
                 <?hard-pagebreak?>
                 <example>
-                    <title>Metadata Update Response: XML </title>
+                    <title>Update Metadata Response: XML </title>
                     <programlisting language="xml">
 <xi:include href="samples/metadata-update-resp.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
-                    <title>Metadata Update Response: JSON </title>
+                    <title>Update Metadata Response: JSON </title>
                     <programlisting language="javascript">
 <xi:include href="samples/metadata-update-resp.json" parse="text"/>
                     </programlisting>
@@ -3572,38 +4207,36 @@ Host: servers.api.openstack.org/v2/
                         <tr>
                             <td colspan="1">&GET;</td>
                             <td colspan="2">/servers/<parameter>id</parameter>/metadata/<parameter>key</parameter></td>
-                            <td colspan="3">Get metadata item
-                            associated
-                            with a server</td>
+                            <td colspan="3">Gets a metadata item
+                                associated with a server.</td>
                         </tr>
                         <tr>
                             <td colspan="1">&GET;</td>
                             <td colspan="2">/images/<parameter>id</parameter>/metadata/<parameter>key</parameter></td>
-                            <td colspan="3">Get metadata item
-                            associated
-                            with an image</td>
+                            <td colspan="3">Gets a metadata item
+                                associated with an image.</td>
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s):
-                    <returnvalue>200</returnvalue>, <returnvalue>203</returnvalue>
+                <simpara>Normal Response Code(s):
+                        <returnvalue>200</returnvalue>,
+                        <returnvalue>203</returnvalue>
                 </simpara>
-                <simpara>
-                    Error Response Code(s):
-                    computeFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>, &hellip;),
+                <simpara>Error Response Code(s): computeFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>, &hellip;),
                     serviceUnavailable (<errorcode>503</errorcode>),
                     unauthorized (<errorcode>401</errorcode>),
-                    forbidden (<errorcode>403</errorcode>),
-                    badRequest (<errorcode>400</errorcode>),
-                    badMethod (<errorcode>405</errorcode>),
-                    overLimit (<errorcode>413</errorcode>),
-                    itemNotFound (<errorcode>404</errorcode>)
-                </simpara>
-                <para>
-                    Retrieves a single metadata item by key. The
-                    operation does not require a request body.
-                </para>
+                    forbidden (<errorcode>403</errorcode>), badRequest
+                        (<errorcode>400</errorcode>), badMethod
+                        (<errorcode>405</errorcode>), overLimit
+                        (<errorcode>413</errorcode>), itemNotFound
+                        (<errorcode>404</errorcode>) </simpara>
+                <para>Retrieves a single metadata item by key. </para>
+                <para>In the URI, specify the image or server ID as
+                        <parameter>id</parameter> and the key as
+                        <parameter>key</parameter>.</para>
+                <para>This operation does not require a request body. </para>
                 <example>
                     <title>Metadata Item Response: XML </title>
                     <programlisting language="xml">
@@ -3632,64 +4265,94 @@ Host: servers.api.openstack.org/v2/
                         <tr>
                             <td colspan="1">&PUT;</td>
                             <td colspan="2">/servers/<parameter>id</parameter>/metadata/<parameter>key</parameter></td>
-                            <td colspan="3">Set a metadata item</td>
+                            <td colspan="3">Sets a metadata item for a
+                                specified server.</td>
                         </tr>
                         <tr>
                             <td colspan="1">&PUT;</td>
                             <td colspan="2">/images/<parameter>id</parameter>/metadata/<parameter>key</parameter></td>
-                            <td colspan="3">Set a metadata item</td>
+                            <td colspan="3">Sets a metadata item for a
+                                specified image.</td>
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s):
-                    <returnvalue>200</returnvalue>
+                <simpara>Normal Response Code(s):
+                        <returnvalue>200</returnvalue>
                 </simpara>
-                <simpara>
-                    Error Response Code(s):
-                    computeFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>, &hellip;),
+                <simpara>Error Response Code(s): computeFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>, &hellip;),
                     serviceUnavailable (<errorcode>503</errorcode>),
                     unauthorized (<errorcode>401</errorcode>),
-                    forbidden (<errorcode>403</errorcode>),
-                    badRequest (<errorcode>400</errorcode>),
-                    badMethod (<errorcode>405</errorcode>),
-                    overLimit (<errorcode>413</errorcode>),
-                    itemNotFound (<errorcode>404</errorcode>),
-                    badMediaType (<errorcode>415</errorcode>),
-                    buildInProgress (<errorcode>409</errorcode>)
-                </simpara>
-                <para>
-                    Sets a metadata item by its key.  An overLimit
-                    (<errorcode>413</errorcode>) fault may be thrown
-                    if the operation causes the maximum number of
-                    metadata items to be exceeded. The maximum number
-                    of key-value pairs that can be supplied per server
-                    is determined by the compute provider and may be
-                    queried via the maxServerMeta absolute limit. The
-                    maximum number of key-value pairs for an image may
-                    be queried via the maxImageMeta absolute limit.
-                </para>
+                    forbidden (<errorcode>403</errorcode>), badRequest
+                        (<errorcode>400</errorcode>), badMethod
+                        (<errorcode>405</errorcode>), overLimit
+                        (<errorcode>413</errorcode>), itemNotFound
+                        (<errorcode>404</errorcode>), badMediaType
+                        (<errorcode>415</errorcode>), buildInProgress
+                        (<errorcode>409</errorcode>) </simpara>
+                <para>Sets a metadata item by its key. </para>
+                <para>In the URI, specify the image or server ID as
+                        <parameter>id</parameter> and the key as
+                        <parameter>key</parameter>.</para>
+                <para>In the request body, specify the
+                        <parameter>metadata</parameter> element followed
+                    by attributes. The following table describes the
+                    attributes that you specify in the request
+                    body:</para>
+                <para><table rules="all">
+                        <caption>Set Metadata Item Request
+                            Attributes</caption>
+                        <col width="20%"/>
+                        <col width="60%"/>
+                        <col width="20%"/>
+                        <thead>
+                            <tr>
+                                <th>Attribute</th>
+                                <th>Description</th>
+                                <th>Required</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>meta</td>
+                                <td>
+                                   <para>Key and value pairs for
+                                   metadata.</para>
+                                </td>
+                                <td>Yes</td>
+                            </tr>
+                        </tbody>
+                    </table>An overLimit (<errorcode>413</errorcode>)
+                    fault may be thrown if the operation causes the
+                    maximum number of metadata items to be exceeded.
+                    The maximum number of key-value pairs that can be
+                    supplied per server is determined by the compute
+                    provider and may be queried via the maxServerMeta
+                    absolute limit. The maximum number of key-value
+                    pairs for an image may be queried via the
+                    maxImageMeta absolute limit. </para>
                 <example>
-                    <title>Metadata Item Update Request: XML </title>
+                    <title>Set Metadata Item Request: XML </title>
                     <programlisting language="xml">
 <xi:include href="samples/metadata_item.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
-                    <title>Metadata Item Update Request: JSON </title>
+                    <title>Set Metadata Item Request: JSON </title>
                     <programlisting language="javascript">
 <xi:include href="samples/metadata_item.json" parse="text"/>
                     </programlisting>
                 </example>
                 <?hard-pagebreak?>
                 <example>
-                    <title>Metadata Item Update Response: XML </title>
+                    <title>Set Metadata Item Response: XML </title>
                     <programlisting language="xml">
 <xi:include href="samples/metadata_item.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
-                    <title>Metadata Item Update Response: JSON </title>
+                    <title>Set Metadata Item Response: JSON </title>
                     <programlisting language="javascript">
 <xi:include href="samples/metadata_item.json" parse="text"/>
                     </programlisting>
@@ -3710,12 +4373,14 @@ Host: servers.api.openstack.org/v2/
                         <tr>
                             <td colspan="1">&DELETE;</td>
                             <td colspan="2">/servers/<parameter>id</parameter>/metadata/<parameter>key</parameter></td>
-                            <td colspan="3">Deletes a metadata item</td>
+                            <td colspan="3">Deletes a metadata item
+                                for the specified server.</td>
                         </tr>
                         <tr>
                             <td colspan="1">&DELETE;</td>
                             <td colspan="2">/images/<parameter>id</parameter>/metadata/<parameter>key</parameter></td>
-                            <td colspan="3">Deletes a metadata item</td>
+                            <td colspan="3">Deletes a metadata item
+                                for the specified image.</td>
                         </tr>
                     </tbody>
                 </informaltable>
@@ -3735,11 +4400,12 @@ Host: servers.api.openstack.org/v2/
                     itemNotFound (<errorcode>404</errorcode>),
                     buildInProgress (<errorcode>409</errorcode>)
                 </simpara>
-                <para>
-                    Deletes a metadata item. The operation does not
-                    require a request body and does not contain a
-                    response body.
-                </para>
+                <para>Deletes a metadata item. </para>
+                <para>In the URI, specify the image or server ID as
+                        <parameter>id</parameter> and the key as
+                        <parameter>key</parameter>.</para>
+                <para>The operation does not require a request body. </para>
+                <para>The operation does not return a response body. </para>
             </section>
         </section>
     </chapter>
