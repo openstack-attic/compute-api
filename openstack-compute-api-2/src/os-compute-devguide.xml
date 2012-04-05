@@ -1820,40 +1820,114 @@ Host: servers.api.openstack.org/v2/
                                 <para>The server status, which is one
                                    of the following values:<itemizedlist>
                                    <listitem>
-                                   <para>ACTIVE</para>
+                                   <para>ACTIVE. The server is
+                                   active.</para>
                                    </listitem>
                                    <listitem>
-                                   <para>BUILD</para>
+                                   <para>BUILD. The server has not
+                                   finished the original build
+                                   process.</para>
                                    </listitem>
                                    <listitem>
-                                   <para>DELETED</para>
+                                   <para>DELETE_IP. An IP address is
+                                   being removed from the
+                                   server.</para>
                                    </listitem>
                                    <listitem>
-                                   <para>ERROR</para>
+                                   <para>DELETED. The server is
+                                   deleted.</para>
                                    </listitem>
                                    <listitem>
-                                   <para>HARD_REBOOT</para>
+                                   <para>ERROR. The server is in
+                                   error.</para>
                                    </listitem>
                                    <listitem>
-                                   <para>PASSWORD</para>
+                                   <para>HARD_REBOOT. The server is
+                                   hard rebooting. This is equivalent
+                                   to pulling the power plug on a
+                                   physical server, plugging it back
+                                   in, and rebooting it.</para>
                                    </listitem>
                                    <listitem>
-                                   <para>REBOOT</para>
+                                   <para>PASSWORD. The password is
+                                   being reset on the server.</para>
                                    </listitem>
                                    <listitem>
-                                   <para>REBUILD</para>
+                                   <para>PREP_RESIZE. The server is
+                                   performing the initial copy of data
+                                   to its new host. Server should
+                                   still be active at this
+                                   time.</para>
                                    </listitem>
                                    <listitem>
-                                   <para>RESIZE</para>
+                                   <para>QUEUE_RESIZE. The server is
+                                   in the queue pending a resize or
+                                   migration. Server should still be
+                                   active at this time.</para>
                                    </listitem>
                                    <listitem>
-                                   <para>SUSPENDED</para>
+                                   <para>REBOOT. The server is in a
+                                   soft reboot state. A reboot command
+                                   was passed to the operating
+                                   system.</para>
                                    </listitem>
                                    <listitem>
-                                   <para>UNKNOWN</para>
+                                   <para>REBUILD. The server is
+                                   currently being rebuilt from an
+                                   image.</para>
                                    </listitem>
                                    <listitem>
-                                   <para>VERIFY_RESIZE</para>
+                                   <para>RESCUE = The server is in
+                                   rescue mode. See <link
+                                   xlink:href="#rescue_mode_extension"
+                                   /> and <link
+                                   xlink:href="http://www.rackspace.com/knowledge_center/content/managing-your-server-4-rescue-mode"
+                                   >Managing Your Server 4 - Rescue
+                                   Mode</link>.</para>
+                                   </listitem>
+                                   <listitem>
+                                   <para>RESIZE. Server is performing
+                                   the differential copy of data that
+                                   changed during its initial copy.
+                                   Server is down for this
+                                   stage.</para>
+                                   </listitem>
+                                   <listitem>
+                                   <para>SHARE_IP. An IP address is
+                                   currently being shared with or from
+                                   this server. The network
+                                   configuration for this server will
+                                   change, perhaps requiring an IP
+                                   address. </para>
+                                   </listitem>
+                                   <listitem>
+                                   <para>SHARE_IP_NO_CONFIG. The host
+                                   is being reconfigured to allow your
+                                   server to use an IP from another
+                                   machine. No configuration change
+                                   should occur on your guest server,
+                                   however it might reboot if the
+                                   kernel is not compatible with the
+                                   pause state that the hypervisor
+                                   requests during the process.</para>
+                                   </listitem>
+                                   <listitem>
+                                   <para>SUSPENDED. The server is
+                                   suspended, either by request or for
+                                   necessity. Review support tickets
+                                   or contact support to determine why
+                                   the server is in this state.</para>
+                                   </listitem>
+                                   <listitem>
+                                   <para>UNKNOWN. The state of the
+                                   server is unknown. Contact
+                                   support.</para>
+                                   </listitem>
+                                   <listitem>
+                                   <para>VERIFY_RESIZE. System is
+                                   awaiting confirmation that the
+                                   server is operational after a move
+                                   or resize.</para>
                                    </listitem>
                                    </itemizedlist></para>
                             </listitem>
@@ -1894,15 +1968,8 @@ Host: servers.api.openstack.org/v2/
                     attribute that can be used as an indication of the
                     current server state. Servers with an
                         <code>ACTIVE</code> status are available for
-                    use. Other possible values for the status
-                    attribute include: <code>BUILD</code>,
-                        <code>REBUILD</code>, <code>SUSPENDED</code>,
-                        <code>RESIZE</code>,
-                        <code>VERIFY_RESIZE</code>,
-                        <code>PASSWORD</code>, <code>REBOOT</code>,
-                        <code>HARD_REBOOT</code>,
-                    <code>DELETED</code>, <code>UNKNOWN</code>, and
-                        <code>ERROR</code>. </para>
+                    use. See the definition of the <parameter>status</parameter> attribute
+                    for a list of possible statuses.</para>
                 <para>The compute provisioning algorithm has an
                     anti-affinity property that attempts to spread
                     customer VMs across hosts. Under certain
@@ -3878,9 +3945,7 @@ Host: servers.api.openstack.org/v2/
                     the system. </para>
                 <para>Specify the image ID as
                         <parameter>id</parameter> in the URI. </para>
-                <para>Images are immediately removed. Currently, there
-                    are no state transitions to track the delete
-                    operation. </para>
+                <para>Images are immediately removed. </para>
                 <para>This operation does not require a request body.</para>
                 <para>This operation does not return a response
                     body.</para>
