@@ -44,7 +44,7 @@
       version="5.0" 
     xml:id="os-cs-devguide">
     <title>OpenStack Compute Developer Guide</title>
-    <?rax pdf.url="os-compute-devguide-2.pdf"?>
+    <?rax pdf.url="../os-compute-devguide-2.pdf"?>
     <titleabbrev>OpenStack Compute Dev Guide</titleabbrev>
     <info>
         <author>
