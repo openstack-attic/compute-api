@@ -3139,10 +3139,8 @@ Host: servers.api.openstack.org/v2/
                             <tr>
                                 <td>flavorRef</td>
                                 <td>
-                                   <para>The flavor reference, which
-                                   is the endpoint appended with the
-                                   following
-                                   string:<programlisting><parameter>tenant_id</parameter>/flavors/<parameter>flavor_id</parameter></programlisting></para>
+                                   <para>The flavor ID
+                                        :<programlisting><parameter>flavor_id</parameter></programlisting></para>
                                 </td>
                                 <td>Yes</td>
                             </tr>
