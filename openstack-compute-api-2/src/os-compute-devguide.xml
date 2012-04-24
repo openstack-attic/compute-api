@@ -65,7 +65,7 @@
         </copyright>
         <releaseinfo>API v2</releaseinfo>
         <productname>OpenStack Compute</productname>
-        <pubdate>2012-02-14</pubdate>
+        <pubdate>2012-04-24</pubdate>
         <legalnotice role="apache2">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -78,6 +78,18 @@
         </abstract>
         <revhistory>
             <revision>
+                <!-- ... continue addding more revisions here as you change this document using the markup shown below... -->
+                <date>2012-04-24</date>
+                <revdescription>
+                    <itemizedlist>
+                        <listitem>
+                            <para>Updated to use color-coded syntax
+                                formatting in request and response
+                                examples.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision> <revision>
                 <!-- ... continue addding more revisions here as you change this document using the markup shown below... -->
                 <date>2012-03-25</date>
                 <revdescription>
@@ -95,8 +107,8 @@
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
-                            <para>Changed the name of the API version
-                            from v1.1 to v2.</para>
+                            <para>Updated the API version from v1.1 to
+                                v2.</para>
                         </listitem>
                         <listitem>
                             <para>No longer use mimetype parameters to
@@ -482,12 +494,11 @@
                 xlink:href="http://bugs.launchpad.net/nova">bugs.launchpad.net/nova</link>. </para>
         <section xml:id="Intended_Audience-d1e85">
             <title>Intended Audience</title>
-            <para>This guide is intended to assist software developers
-                who want to develop applications using the OpenStack
-                Compute API. To use this information, you should have
-                access to an account from an OpenStack Compute
-                provider, and you should also be familiar with the
-                following concepts: </para>
+            <para>This guide assists software developers who want to
+                develop applications using the OpenStack Compute API.
+                To use this information, you should have access to an
+                account from an OpenStack Compute provider, and you
+                should also be familiar with the following concepts: </para>
             <itemizedlist spacing="compact">
                 <listitem>
                     <para>OpenStack Compute service</para>
@@ -511,7 +522,6 @@
             obsoletes all previous versions.  The most recent changes
             are described in the table below:</para>
             <!-- Table generated in output from revision element in the book element -->
-            <para><?rax revhistory?></para>
         </section>
         <?hard-pagebreak?>
         <section xml:id="Additional_Resources-d1e346">
@@ -690,7 +700,7 @@ Content-Type: application/json
 Accept: application/xml
 X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                 </literallayout>
-                <programlisting language="javascript"><xi:include href="samples/server-post-req.json" parse="text"/></programlisting>
+                <programlisting language="json"><xi:include href="samples/server-post-req.json" parse="text"/></programlisting>
             </example>
             <?hard-pagebreak?>
             <example xml:id="ImageCreateFullResponse">
@@ -721,7 +731,7 @@ Host: servers.api.openstack.org
 Content-Type: application/json
 X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                 </literallayout>
-                <programlisting language="javascript"><xi:include href="samples/server-post-req.json" parse="text"/></programlisting>
+                <programlisting language="json"><xi:include href="samples/server-post-req.json" parse="text"/></programlisting>
             </example>
         </section>
         <?hard-pagebreak?>
@@ -742,7 +752,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
             <?hard-pagebreak?>
             <example>
                 <title>ID Image Reference: JSON</title>
-                <programlisting language="javascript"><xi:include href="samples/server-post-req-short.json" parse="text"/></programlisting>
+                <programlisting language="json"><xi:include href="samples/server-post-req-short.json" parse="text"/></programlisting>
             </example>
             <example>
                 <title>Full Image Reference: XML</title>
@@ -751,7 +761,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
             <?hard-pagebreak?>
             <example>
                 <title>Full Image Reference: JSON</title>
-                <programlisting language="javascript"><xi:include href="samples/server-post-req.json" parse="text"/></programlisting>
+                <programlisting language="json"><xi:include href="samples/server-post-req.json" parse="text"/></programlisting>
             </example>
             <para>For convenience, resources contain links to
                 themselves. This allows a client to easily obtain
@@ -786,7 +796,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
             <?hard-pagebreak?>
             <example>
                 <title>Server with Self Links: JSON</title>
-                <programlisting language="javascript"><?db-font-size 90%?><xi:include href="samples/server-simple.json" parse="text"/></programlisting>
+                <programlisting language="json"><?db-font-size 90%?><xi:include href="samples/server-simple.json" parse="text"/></programlisting>
             </example>
             <example>
                 <title>Image with Alternate Link: XML</title>
@@ -795,7 +805,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
             <?hard-pagebreak?>
             <example>
                 <title>Server with Alternate Link: JSON</title>
-                <programlisting language="javascript"><?db-font-size 90%?><xi:include href="samples/image-simple.json" parse="text"/></programlisting>
+                <programlisting language="json"><?db-font-size 90%?><xi:include href="samples/image-simple.json" parse="text"/></programlisting>
             </example>
         </section>
         <?hard-pagebreak?>
@@ -851,7 +861,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
             </example>
             <example>
                 <title>Images Collection, First Page: JSON</title>
-                <programlisting language="javascript"><xi:include
+                <programlisting language="json"><xi:include
                 href="samples/images-page1.json" parse="text"/></programlisting>
             </example>
             <?hard-pagebreak?>
@@ -863,7 +873,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
             </example>
             <example>
                 <title>Images Collection, Second Page: JSON</title>
-                <programlisting language="javascript"><xi:include
+                <programlisting language="json"><xi:include
                 href="samples/images-page2.json" parse="text"/></programlisting>
             </example>
             <?hard-pagebreak?>
@@ -875,7 +885,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
             </example>
             <example>
                 <title>Images Collection, Last Page: JSON</title>
-                <programlisting language="javascript"><xi:include
+                <programlisting language="json"><xi:include
                 href="samples/images-page3.json" parse="text"/></programlisting>
             </example>
             <para>
@@ -906,7 +916,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
             </example>
             <example>
                 <title>Paginated Metadata in an Image: JSON</title>
-                <programlisting language="javascript"><xi:include
+                <programlisting language="json"><xi:include
                 href="samples/image-meta-page1.json" parse="text"/></programlisting>
             </example>
         </section>
@@ -1152,7 +1162,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                 <?hard-pagebreak?>
                 <example>
                     <title>Limit Response: JSON</title>
-                    <programlisting language="javascript"><?db-font-size 75% ?><xi:include
+                    <programlisting language="json"><?db-font-size 75% ?><xi:include
                     href="samples/limits.json" parse="text"/></programlisting>
                 </example>
             </section>
@@ -1214,7 +1224,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
             <?hard-pagebreak?>
             <example>
                 <title>Multiple Choices Response: JSON</title>
-                <programlisting language="javascript"><?db-font-size 90%?><xi:include
+                <programlisting language="json"><?db-font-size 90%?><xi:include
                 href="samples/choices.json" parse="text"/></programlisting>
             </example>
             <?hard-pagebreak?>
@@ -1280,7 +1290,7 @@ Host: servers.api.openstack.org
             </example>
             <example>
                 <title>Versions List Response: JSON</title>
-                <programlisting language="javascript"><?db-font-size 80% ?><xi:include href="samples/versions.json" parse="text"/></programlisting>
+                <programlisting language="json"><?db-font-size 80% ?><xi:include href="samples/versions.json" parse="text"/></programlisting>
             </example>
             <?hard-pagebreak?>
             <para> You can also obtain additional information about a
@@ -1335,7 +1345,7 @@ Host: servers.api.openstack.org/v2/
             <?hard-pagebreak?>
             <example>
                 <title>Version Details Response: JSON</title>
-                <programlisting language="javascript"><?db-font-size 90%?><xi:include href="samples/version.json" parse="text"/></programlisting>
+                <programlisting language="json"><?db-font-size 90%?><xi:include href="samples/version.json" parse="text"/></programlisting>
             </example>
             <para>
                 The detailed version response contains pointers to
@@ -1411,7 +1421,7 @@ Host: servers.api.openstack.org/v2/
             <?hard-pagebreak?>
             <example>
                 <title>Extensions Response: JSON</title>
-                <programlisting language="javascript"><?db-font-size 90%?><xi:include
+                <programlisting language="json"><?db-font-size 90%?><xi:include
                 href="samples/extensions.json" parse="text"/></programlisting>
             </example>
             <?hard-pagebreak?>
@@ -1462,7 +1472,7 @@ Host: servers.api.openstack.org/v2/
             </example>
             <example>
                 <title>Extension Response: JSON</title>
-                <programlisting language="javascript"><?db-font-size 80%?><xi:include
+                <programlisting language="json"><?db-font-size 80%?><xi:include
                 href="samples/extension.json" parse="text"/></programlisting>
             </example>
             <para>
@@ -1505,7 +1515,7 @@ Host: servers.api.openstack.org/v2/
             </example>
             <example xml:id="ServersCBSJ">
                 <title>Extended Server Response: JSON</title>
-                <programlisting language="javascript"><?db-font-size 90%?><xi:include
+                <programlisting language="json"><?db-font-size 90%?><xi:include
                 href="samples/ext-servers.json" parse="text"/></programlisting>
             </example>
             <example xml:id="CBSAX">
@@ -1516,7 +1526,7 @@ Host: servers.api.openstack.org/v2/
             </example>
             <example xml:id="CBSAJ">
                 <title>Extended Action: JSON</title>
-                <programlisting language="javascript"><?db-font-size 90%?><xi:include
+                <programlisting language="json"><?db-font-size 90%?><xi:include
                 href="samples/ext-action.json" parse="text"/></programlisting>
             </example>
         </section>
@@ -1540,7 +1550,7 @@ Host: servers.api.openstack.org/v2/
                 </example>
                 <example>
                     <title>Fault Response: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/fault.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -1646,7 +1656,7 @@ Host: servers.api.openstack.org/v2/
                 </example>
                 <example>
                     <title>Fault Response, Item Not Found: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/notfound.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -1674,7 +1684,7 @@ Host: servers.api.openstack.org/v2/
                 </example>
                 <example>
                     <title>Fault Response, Over Limit: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/overlimit.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -1703,7 +1713,7 @@ Host: servers.api.openstack.org/v2/
                 <?hard-pagebreak?>
                 <example>
                     <title>Server In Error State: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/server-fault.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -1717,7 +1727,7 @@ Host: servers.api.openstack.org/v2/
                 <?hard-pagebreak?>
                 <example>
                     <title>Image In Error State: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/image-fault.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -2025,7 +2035,7 @@ Host: servers.api.openstack.org/v2/
                 <example>
                     <title>List Servers Response: JSON
                         (detail)</title>
-                    <programlisting language="javascript"><?db-font-size 80%?>
+                    <programlisting language="json"><?db-font-size 80%?>
 <xi:include href="samples/servers.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -2164,7 +2174,7 @@ Host: servers.api.openstack.org/v2/
                 <?hard-pagebreak?>
                 <example>
                     <title>Server Create Request: JSON</title>
-                    <programlisting language="javascript"><xi:include href="samples/server-post-req.json" parse="text"/></programlisting>
+                    <programlisting language="json"><xi:include href="samples/server-post-req.json" parse="text"/></programlisting>
                 </example>
                 <?hard-pagebreak?>
                 <example>
@@ -2174,7 +2184,7 @@ Host: servers.api.openstack.org/v2/
                 <?hard-pagebreak?>
                 <example>
                     <title>Server Create Response: JSON</title>
-                    <programlisting language="javascript"><?db-font-size 90%?><xi:include href="samples/server-post-resp.json" parse="text"/></programlisting>
+                    <programlisting language="json"><?db-font-size 90%?><xi:include href="samples/server-post-resp.json" parse="text"/></programlisting>
                 </example>
                 <?hard-pagebreak?>
                 <section xml:id="Server_Passwords-d1e2510">
@@ -2300,7 +2310,7 @@ Host: servers.api.openstack.org/v2/
                     </example>
                     <example>
                         <title>Creating a Server with a Access IP: JSON</title>
-                        <programlisting language="javascript">
+                        <programlisting language="json">
 <xi:include href="samples/server-post-req-pip.json" parse="text"/>
                         </programlisting>
                     </example>
@@ -2321,7 +2331,7 @@ Host: servers.api.openstack.org/v2/
                     <?hard-pagebreak?>
                     <example>
                         <title>Creating a Server with Multiple Access IPs: JSON</title>
-                        <programlisting language="javascript">
+                        <programlisting language="json">
 <xi:include href="samples/server-post-req-pip2.json" parse="text"/>
                         </programlisting>
                     </example>
@@ -2375,7 +2385,7 @@ Host: servers.api.openstack.org/v2/
          
                 <example>
                     <title>Server Details Response: JSON</title>
-                    <programlisting language="javascript"><?db-font-size 90%?><xi:include href="samples/server.json" parse="text"/></programlisting>
+                    <programlisting language="json"><?db-font-size 90%?><xi:include href="samples/server.json" parse="text"/></programlisting>
                 </example>
             </section>
             <?hard-pagebreak?>
@@ -2478,7 +2488,7 @@ Host: servers.api.openstack.org/v2/
                 </example>
                 <example>
                     <title>Server Update Name Request: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/server-put-req.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -2492,7 +2502,7 @@ Host: servers.api.openstack.org/v2/
                 <?hard-pagebreak?>
                 <example>
                     <title>Server Update Name Response: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/server-put-resp.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -2509,7 +2519,7 @@ Host: servers.api.openstack.org/v2/
                 </example>
                 <example>
                     <title>Server Update Access Address Request: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/server-put-req-ad.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -2523,7 +2533,7 @@ Host: servers.api.openstack.org/v2/
                 <?hard-pagebreak?>
                 <example>
                     <title>Server Update Access Address Response: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/server-put-resp-ad.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -2642,7 +2652,7 @@ Host: servers.api.openstack.org/v2/
                 </example>
                 <example>
                     <title>Addresses List Response: JSON </title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/addresses.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -2727,7 +2737,7 @@ Host: servers.api.openstack.org/v2/
                 <example>
                     <title>List Addresses by Network Response:
                         JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/public.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -2842,7 +2852,7 @@ Host: servers.api.openstack.org/v2/
                 </example>
                 <example>
                     <title>Action Change Password Request: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/changepassword.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -2966,7 +2976,7 @@ Host: servers.api.openstack.org/v2/
                 </example>
                 <example>
                     <title>Action Reboot Request: JSON </title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/reboot.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -3116,7 +3126,7 @@ Host: servers.api.openstack.org/v2/
                 <?hard-pagebreak?>
                 <example>
                     <title>Action Rebuild Request: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/rebuild_all.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -3128,7 +3138,7 @@ Host: servers.api.openstack.org/v2/
                 <?hard-pagebreak?>
                 <example>
                     <title>Action Rebuild Response: JSON</title>
-                    <programlisting language="javascript"><?db-font-size 90%?><xi:include href="samples/rebuild-resp.json" parse="text"/></programlisting>
+                    <programlisting language="json"><?db-font-size 90%?><xi:include href="samples/rebuild-resp.json" parse="text"/></programlisting>
                 </example>
             </section>
             <?hard-pagebreak?>
@@ -3246,7 +3256,7 @@ Host: servers.api.openstack.org/v2/
                 </example>
                 <example>
                     <title>Action Resize Request: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/resize.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -3330,7 +3340,7 @@ Host: servers.api.openstack.org/v2/
                 </example>
                 <example>
                     <title>Action Confirm Resize Request: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/confirmresize.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -3417,7 +3427,7 @@ Host: servers.api.openstack.org/v2/
                 </example>
                 <example>
                     <title>Action Revert Resize Request: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/revertresize.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -3551,10 +3561,9 @@ Host: servers.api.openstack.org/v2/
                 <?hard-pagebreak?>
                 <example>
                     <title>Action Create Image Request: JSON</title>
-                    <programlisting language="javascript"><xi:include href="samples/createimage.json" parse="text"/></programlisting>
+                    <programlisting language="json"><xi:include href="samples/createimage.json" parse="text"/></programlisting>
                 </example>
-            </section>
-        </section>
+            </section> </section>
         <?hard-pagebreak?>
         <section xml:id="Flavors-d1e4180">
             <title>Flavors</title>
@@ -3656,7 +3665,7 @@ Host: servers.api.openstack.org/v2/
                 </example>
                 <example>
                     <title>Flavors List Response: JSON (detail)</title>
-                    <programlisting language="javascript"><?db-font-size 90% ?><xi:include href="samples/flavors.json" parse="text"/></programlisting>
+                    <programlisting language="json"><?db-font-size 90% ?><xi:include href="samples/flavors.json" parse="text"/></programlisting>
                 </example>
             </section>
             <?hard-pagebreak?>
@@ -3708,7 +3717,7 @@ Host: servers.api.openstack.org/v2/
                 <?hard-pagebreak?>
                 <example>
                     <title>Flavor Details Response: JSON </title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/flavor.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -3860,7 +3869,7 @@ Host: servers.api.openstack.org/v2/
                 <?hard-pagebreak?>
                 <example>
                     <title>Images List Response: JSON (detail)</title>
-                    <programlisting language="javascript"><?db-font-size 80%?><xi:include href="samples/images.json" parse="text"/></programlisting>
+                    <programlisting language="json"><?db-font-size 80%?><xi:include href="samples/images.json" parse="text"/></programlisting>
                 </example>
             </section>
             <section xml:id="Get_Image_Details-d1e4848">
@@ -3910,7 +3919,7 @@ Host: servers.api.openstack.org/v2/
                 <?hard-pagebreak?>
                 <example>
                     <title>Image Details Response: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/image.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -4031,7 +4040,7 @@ Host: servers.api.openstack.org/v2/
                 </example>
                 <example>
                     <title>Metadata List Response: JSON </title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/metadata.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -4129,7 +4138,7 @@ Host: servers.api.openstack.org/v2/
                 </example>
                 <example>
                     <title>Set Metadata Request: JSON </title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/metadata.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -4142,7 +4151,7 @@ Host: servers.api.openstack.org/v2/
                 </example>
                 <example>
                     <title>Set Metadata Response: JSON </title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/metadata.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -4242,7 +4251,7 @@ Host: servers.api.openstack.org/v2/
                 </example>
                 <example>
                     <title>Update Metadata Request: JSON </title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/metadata-update-req.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -4255,7 +4264,7 @@ Host: servers.api.openstack.org/v2/
                 </example>
                 <example>
                     <title>Update Metadata Response: JSON </title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/metadata-update-resp.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -4313,7 +4322,7 @@ Host: servers.api.openstack.org/v2/
                 </example>
                 <example>
                     <title>Metadata Item Response: JSON </title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/metadata_item.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -4408,7 +4417,7 @@ Host: servers.api.openstack.org/v2/
                 </example>
                 <example>
                     <title>Set Metadata Item Request: JSON </title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/metadata_item.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -4421,7 +4430,7 @@ Host: servers.api.openstack.org/v2/
                 </example>
                 <example>
                     <title>Set Metadata Item Response: JSON </title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/metadata_item.json" parse="text"/>
                     </programlisting>
                 </example>
