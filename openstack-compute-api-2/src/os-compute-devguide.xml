@@ -1751,24 +1751,28 @@ Host: servers.api.openstack.org/v2/
                     <tbody>
                         <tr>
                             <td colspan="1">&GET;</td>
-                            <td colspan="2">/servers?<parameter>image</parameter>=<literal>imageRef</literal>&amp;
-                            <parameter>flavor</parameter>=<literal>flavorRef</literal>&amp;
-                            <parameter>name</parameter>=<literal>serverName</literal>&amp;
-                            <parameter>status</parameter>=<literal>serverStatus</literal>&amp;
-                            <parameter>marker</parameter>=<literal>markerID</literal>&amp;<parameter>limit</parameter>=<literal>int</literal>&amp;
-                            <parameter>changes-since</parameter>=<literal>dateTime</literal>
+                            <td colspan="2"
+                                   >/servers?<parameter>image</parameter>=<literal>imageRef</literal>&amp;
+                                   <parameter>flavor</parameter>=<literal>flavorRef</literal>&amp;
+                                   <parameter>name</parameter>=<literal>serverName</literal>&amp;
+                                   <parameter>status</parameter>=<literal>serverStatus</literal>&amp;
+                                   <parameter>marker</parameter>=<literal>markerID</literal>&amp;
+                                   <parameter>limit</parameter>=<literal>int</literal>&amp;
+                                   <parameter>changes-since</parameter>=<literal>dateTime</literal>
                             </td>
                             <td colspan="3">Lists IDs, names, and
                                 links for all servers.</td>
                         </tr>
                         <tr>
                             <td colspan="1">&GET;</td>
-                            <td colspan="2">/servers/detail?<parameter>image</parameter>=<literal>imageRef</literal>&amp;
-                            <parameter>flavor</parameter>=<literal>flavorRef</literal>&amp;
-                            <parameter>name</parameter>=<literal>serverName</literal>&amp;
-                            <parameter>status</parameter>=<literal>serverStatus</literal>&amp;
-                            <parameter>marker</parameter>=<literal>markerID</literal>&amp;<parameter>limit</parameter>=<literal>int</literal>&amp;
-                            <parameter>changes-since</parameter>=<literal>dateTime</literal>
+                            <td colspan="2"
+                                   >/servers/detail?<parameter>image</parameter>=<literal>imageRef</literal>&amp;
+                                   <parameter>flavor</parameter>=<literal>flavorRef</literal>&amp;
+                                   <parameter>name</parameter>=<literal>serverName</literal>&amp;
+                                   <parameter>status</parameter>=<literal>serverStatus</literal>&amp;
+                                   <parameter>marker</parameter>=<literal>markerID</literal>&amp;
+                                   <parameter>limit</parameter>=<literal>int</literal>&amp;
+                                   <parameter>changes-since</parameter>=<literal>dateTime</literal>
                             </td>
                             <td colspan="3">Lists all details for all
                                 servers.</td>
@@ -1805,9 +1809,144 @@ Host: servers.api.openstack.org/v2/
                 <para xml:id="id35836359">You can filter the list of
                     servers by image, flavor, name, and status through
                     the respective query parameters. </para>
+                <para>This operation does not require a request
+                    body.</para>
+                <para>This operation lists the servers associated with
+                    your account. The list does not include deleted
+                    servers. Servers contain a status attribute that
+                    indicates the current server state. The server
+                    status is one of the following values:</para>
+                <para>
+                    <itemizedlist xml:id="server_status">
+                        <title>Server Status Values</title>
+                        <listitem>
+                            <para><code>ACTIVE</code>. The server is
+                                active.</para>
+                        </listitem>
+                        <listitem>
+                            <para><code>BUILD</code>. The server has
+                                not finished the original build
+                                process.</para>
+                        </listitem>
+                        <!--<listitem>
+                                   <para>DELETE_IP. An IP address is
+                                   being removed from the
+                                   server.</para>
+                                   </listitem> -->
+                        <listitem>
+                            <para><code>DELETED</code>. The server is
+                                deleted.</para>
+                        </listitem>
+                        <listitem>
+                            <para><code>ERROR</code>. The server is in
+                                error.</para>
+                        </listitem>
+                        <listitem>
+                            <para><code>HARD_REBOOT</code>. The server
+                                is hard rebooting. This is equivalent
+                                to pulling the power plug on a
+                                physical server, plugging it back in,
+                                and rebooting it.</para>
+                        </listitem>
+                        <listitem>
+                            <para><code>PASSWORD</code>. The password
+                                is being reset on the server.</para>
+                        </listitem>
+                        <!--     <listitem>
+                              <para>PREP_RESIZE. The server is
+                                   performing the initial copy of data
+                                   to its new host. Server should
+                                   still be active at this
+                                   time.</para>
+                                   </listitem> -->
+                        <!--   <listitem>
+                                   <para>QUEUE_RESIZE. The server is
+                                   in the queue pending a resize or
+                                   migration. Server should still be
+                                   active at this time.</para>
+                                   </listitem> -->
+                        <listitem>
+                            <para><code>REBOOT</code>. The server is
+                                in a soft reboot state. A reboot
+                                command was passed to the operating
+                                system.</para>
+                        </listitem>
+                        <listitem>
+                            <para><code>REBUILD</code>. The server is
+                                currently being rebuilt from an
+                                image.</para>
+                        </listitem>
+                        <listitem>
+                            <para><code>RESCUE</code>. The server is
+                                in rescue mode. </para>
+                        </listitem>
+                        <listitem>
+                            <para><code>RESIZE</code>. Server is
+                                performing the differential copy of
+                                data that changed during its initial
+                                copy. Server is down for this
+                                stage.</para>
+                        </listitem>
+                        <listitem>
+                            <para><code>REVERT_RESIZE</code>. The
+                                resize or migration of a server failed
+                                for some reason. The destination
+                                server is being cleaned up and the
+                                original source server is restarting.
+                            </para>
+                        </listitem>
+                        <!-- <listitem>
+                                   <para>SHARE_IP. An IP address is
+                                   currently being shared with or from
+                                   this server. The network
+                                   configuration for this server will
+                                   change, perhaps requiring an IP
+                                   address. </para>
+                                   </listitem>
+                                   <listitem>
+                                   <para>SHARE_IP_NO_CONFIG. The host
+                                   is being reconfigured to allow your
+                                   server to use an IP from another
+                                   machine. No configuration change
+                                   should occur on your guest server,
+                                   however it might reboot if the
+                                   kernel is not compatible with the
+                                   pause state that the hypervisor
+                                   requests during the process.</para>
+                                   </listitem> -->
+                        <listitem>
+                            <para><code>SHUTOFF</code>. The
+                                server is shut off for some
+                                reason.</para>
+                        </listitem>
+                        <listitem>
+                            <para><code>SUSPENDED</code>. The server
+                                is suspended, either by request or
+                                necessity. This status appears for
+                                only the following hypervisors:
+                                XenServer/XCP, KVM, and ESXi. Review
+                                support tickets or contact Rackspace
+                                support to determine why the server is
+                                in this state.</para>
+                        </listitem>
+                        <listitem>
+                            <para><code>UNKNOWN</code>. The state of
+                                the server is unknown. Contact your
+                                cloud provider.</para>
+                        </listitem>
+                        <listitem>
+                            <para><code>VERIFY_RESIZE</code>. System
+                                is awaiting confirmation that the
+                                server is operational after a move or
+                                resize.</para>
+                        </listitem>
+                    </itemizedlist>
+                </para>
                 <para>To filter the list of servers returned in the
                     response body, specify one or more of the
-                    following optional parameters in the request URI:<variablelist>
+                    following optional URI parameters:</para>
+                <para>
+                    <variablelist><title>List Servers URI Parameters</title>
                         <varlistentry>
                             <term>image</term>
                             <listitem>
@@ -1831,139 +1970,9 @@ Host: servers.api.openstack.org/v2/
                         <varlistentry>
                             <term>status</term>
                             <listitem>
-                                <para>The server status, which is one
-                                   of the following values:<itemizedlist>
-                                   <listitem>
-                                   <para><emphasis role="bold"
-                                   >ACTIVE</emphasis>. The server is
-                                   active.</para>
-                                   </listitem>
-                                   <listitem>
-                                   <para><emphasis role="bold"
-                                   >BUILD</emphasis>. The server has
-                                   not finished the original build
-                                   process.</para>
-                                   </listitem>
-                                   <!--<listitem>
-                                   <para>DELETE_IP. An IP address is
-                                   being removed from the
-                                   server.</para>
-                                   </listitem> -->
-                                   <listitem>
-                                   <para><emphasis role="bold"
-                                   >DELETED</emphasis>. The server is
-                                   deleted.</para>
-                                   </listitem>
-                                   <listitem>
-                                   <para><emphasis role="bold"
-                                   >ERROR</emphasis>. The server is in
-                                   error.</para>
-                                   </listitem>
-                                   <listitem>
-                                   <para><emphasis role="bold"
-                                   >HARD_REBOOT</emphasis>. The server
-                                   is hard rebooting. This is
-                                   equivalent to pulling the power
-                                   plug on a physical server, plugging
-                                   it back in, and rebooting
-                                   it.</para>
-                                   </listitem>
-                                   <listitem>
-                                   <para><emphasis role="bold"
-                                   >PASSWORD</emphasis>. The password
-                                   is being reset on the
-                                   server.</para>
-                                   </listitem>
-                                       <!--     <listitem>
-                              <para>PREP_RESIZE. The server is
-                                   performing the initial copy of data
-                                   to its new host. Server should
-                                   still be active at this
-                                   time.</para>
-                                   </listitem> -->
-                                <!--   <listitem>
-                                   <para>QUEUE_RESIZE. The server is
-                                   in the queue pending a resize or
-                                   migration. Server should still be
-                                   active at this time.</para>
-                                   </listitem> -->
-                                   <listitem>
-                                   <para><emphasis role="bold"
-                                   >REBOOT</emphasis>. The server is
-                                   in a soft reboot state. A reboot
-                                   command was passed to the operating
-                                   system.</para>
-                                   </listitem>
-                                   <listitem>
-                                   <para><emphasis role="bold"
-                                   >REBUILD</emphasis>. The server is
-                                   currently being rebuilt from an
-                                   image.</para>
-                                   </listitem>
-                                   <listitem>
-                                   <para><emphasis role="bold"
-                                   >RESCUE</emphasis>. The server is
-                                   in rescue mode. </para>
-                                   </listitem>
-                                   <listitem>
-                                   <para><emphasis role="bold"
-                                   >RESIZE</emphasis>. Server is
-                                   performing the differential copy of
-                                   data that changed during its
-                                   initial copy. Server is down for
-                                   this stage.</para>
-                                   </listitem>
-                                   <listitem>
-                                   <para><emphasis role="bold"
-                                   >REVERT_RESIZE</emphasis>. The
-                                   resize or migration of a server
-                                   failed for some reason. The
-                                   destination server is being cleaned
-                                   up and the original source server
-                                   is restarting. </para>
-                                   </listitem>
-                                  <!-- <listitem>
-                                   <para>SHARE_IP. An IP address is
-                                   currently being shared with or from
-                                   this server. The network
-                                   configuration for this server will
-                                   change, perhaps requiring an IP
-                                   address. </para>
-                                   </listitem>
-                                   <listitem>
-                                   <para>SHARE_IP_NO_CONFIG. The host
-                                   is being reconfigured to allow your
-                                   server to use an IP from another
-                                   machine. No configuration change
-                                   should occur on your guest server,
-                                   however it might reboot if the
-                                   kernel is not compatible with the
-                                   pause state that the hypervisor
-                                   requests during the process.</para>
-                                   </listitem> -->
-                                   <listitem>
-                                   <para><emphasis role="bold"
-                                   >SUSPENDED</emphasis>. The server
-                                   is suspended, either by request or
-                                   for necessity. Review support
-                                   tickets or contact your cloud
-                                   provider to determine why the
-                                   server is in this state.</para>
-                                   </listitem>
-                                   <listitem>
-                                   <para><emphasis role="bold"
-                                   >UNKNOWN</emphasis>. The state of
-                                   the server is unknown. Contact your
-                                   cloud provider.</para>
-                                   </listitem>
-                                   <listitem>
-                                   <para><emphasis role="bold"
-                                   >VERIFY_RESIZE</emphasis>. System
-                                   is awaiting confirmation that the
-                                   server is operational after a move
-                                   or resize.</para>
-                                   </listitem>
-                                   </itemizedlist></para>
+                                <para>The server status. See <xref
+                                    linkend="server_status"
+                                />. </para>
                             </listitem>
                         </varlistentry>
                         <varlistentry>
@@ -1993,7 +2002,8 @@ Host: servers.api.openstack.org/v2/
                                    linkend="ChangesSince"/>.</para>
                             </listitem>
                         </varlistentry>
-                    </variablelist></para>
+                    </variablelist>
+                </para>
                 <para>This operation does not require a request
                     body.</para>
                 <para>This operation lists the servers associated with
