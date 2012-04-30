@@ -3565,7 +3565,377 @@ Host: servers.api.openstack.org/v2/
                 </example>
             </section> </section>
         <?hard-pagebreak?>
+       <section xml:id="Volume_Attachment_Actions">
+                <title>Volume Attachment Actions</title>
+                <para>Use the following API operations to attach
+                    volumes to servers and manage volume attachments: <itemizedlist>
+                        <listitem>
+                            <para><link
+                                   xlink:href="#Attach_Volume_to_Server"
+                                   >Attach volume to server</link>
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para><link
+                                   xlink:href="#List_Volume_Attachments"
+                                   >List volume attachments</link>
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para><link
+                                   xlink:href="#Get_Volume_Attachment_Details"
+                                   >Get volume attachment
+                                   details</link>
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para><link
+                                   xlink:href="#Delete_Volume_Attachment"
+                                   >Delete volume attachment</link>
+                            </para>
+                        </listitem>
+                    </itemizedlist></para>
+                <section xml:id="Attach_Volume_to_Server">
+                    <title>Attach Volume to Server</title>
+                    <informaltable rules="all" width="65%">
+                        <thead>
+                            <tr>
+                                <td colspan="1">Verb</td>
+                                <td colspan="2">URI</td>
+                                <td colspan="3">Description</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="1">&POST;</td>
+                                <td colspan="2"
+                                   >/servers/<parameter>id</parameter>/os-volume_attachments
+                                   <remark security="reviewer">This is
+                                   the OpenStack call - do we have a
+                                   Rackspace-specific version of
+                                   this?</remark></td>
+                                <td colspan="3">Attaches a volume to
+                                   the specified server.</td>
+                            </tr>
+                        </tbody>
+                    </informaltable>
+                    <simpara>
+                        <remark security="reviewer">Are the following
+                            status codes correct for this
+                            call?</remark>
+                    </simpara>
+                    <simpara>Normal Response Code(s):
+                            <returnvalue>202</returnvalue>
+                    </simpara>
+                    <simpara>Error Response Code(s): computeFault
+                            (<errorcode>400</errorcode>,
+                            <errorcode>500</errorcode>, &hellip;),
+                        backupOrResizeInProgress
+                            (<errorcode>409</errorcode>),
+                        resizeNotAllowed (<errorcode>403</errorcode>),
+                        serviceUnavailable
+                        (<errorcode>503</errorcode>), unauthorized
+                            (<errorcode>401</errorcode>), forbidden
+                            (<errorcode>403</errorcode>), badRequest
+                            (<errorcode>400</errorcode>), badMethod
+                            (<errorcode>405</errorcode>), overLimit
+                            (<errorcode>413</errorcode>), itemNotFound
+                            (<errorcode>404</errorcode>), badMediaType
+                            (<errorcode>415</errorcode>),
+                        serverCapacityUnavailable
+                            (<errorcode>503</errorcode>),
+                        buildInProgress (<errorcode>409</errorcode>) </simpara>
+                    <!--   <informaltable frame="void">
+                    <tbody>
+                        <tr>
+                            <td colspan="1">Image Status Transition:</td>
+                            <td colspan="3">
+                                <code>SAVING</code> &ARROW; <code>ACTIVE</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1" />
+                            <td colspan="3">
+                                <code>SAVING</code> &ARROW; <code>ERROR</code> (on error)
+                            </td>
+                        </tr>
+                    </tbody>
+                </informaltable> -->
+                    <para>This operation attaches a volume to the
+                        specified server. </para>
+                    <para>
+                        <remark security="reviewer">Can you attach
+                            multiple volumes to a server
+                            instance?</remark>
+                    </para>
+                    <para>Specify the server ID as
+                            <parameter>id</parameter> in the URI. </para>
+                    <para>
+                        <remark security="reviewer">Is a request body
+                            required? If not and you don't specify
+                            one, what happens?</remark>
+                    </para>
+                    <para>The following table describes the attributes
+                        that you specify in the request body:</para>
+                    <para>
+                        <table rules="all" width="75%">
+                            <caption>Attach Volume Request
+                                Attributes</caption>
+                            <col width="20%"/>
+                            <col width="60%"/>
+                            <col width="20%"/>
+                            <thead>
+                                <tr>
+                                   <th>Attribute</th>
+                                   <th>Description</th>
+                                   <th>Required</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                   <td>volume_ID</td>
+                                   <td>The ID of the volume that you
+                                   want to attach to the server
+                                   instance.</td>
+                                   <td>Yes</td>
+                                </tr>
+                                <tr>
+                                   <td>device</td>
+                                   <td>
+                                   <para>The name of the device.
+                                   <remark security="reviewer">?? What
+                                   do you specify
+                                   here?</remark></para>
+                                   </td>
+                                   <td>
+                                   <remark security="reviewer"
+                                   >??</remark>
+                                   </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </para>
+                    <para>This operation returns a response
+                        body.</para>
+                    <example>
+                        <title>Attach Volume Request: XML</title>
+                        <programlisting language="xml"><xi:include href="samples/attachvolume.xml" parse="text"/></programlisting>
+                    </example>
+                    <?hard-pagebreak?>
+                    <example>
+                        <title>Attach Volume Request: JSON</title>
+                        <programlisting language="json"><xi:include href="samples/attachvolume.json" parse="text"/></programlisting>
+                    </example>
+                    <para>
+                        <remark security="reviewer">This doesn't look
+                            like the correct response - wouldn't the
+                            response return an attachment ID?</remark>
+                    </para>
+                    <example>
+                        <title>Attach Volume Response: XML</title>
+                        <programlisting language="xml"><xi:include href="samples/attachvolume.xml" parse="text"/></programlisting>
+                    </example>
+                    <?hard-pagebreak?>
+                    <example>
+                        <title>Attach Volume Response: JSON</title>
+                        <programlisting language="json"><xi:include href="samples/attachvolume.json" parse="text"/></programlisting>
+                    </example>
+                </section>
+                <section xml:id="List_Volume_Attachments">
+                    <title>List Volume Attachments</title>
+                    <informaltable rules="all" width="100%">
+                        <thead>
+                            <tr>
+                                <td colspan="1">Verb</td>
+                                <td colspan="2">URI</td>
+                                <td colspan="3">Description</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="1">&GET;</td>
+                                <td colspan="2"
+                                   >/servers/<parameter>id</parameter>/os-volume_attachments</td>
+                                <td colspan="3">Lists the volume
+                                   attachments for the specified
+                                   server.</td>
+                            </tr>
+                        </tbody>
+                    </informaltable>
+                    <simpara>Normal Response Code(s):
+                            <returnvalue>200</returnvalue>,
+                            <returnvalue>203</returnvalue>,
+                            <returnvalue>300</returnvalue>
+                    </simpara>
+                    <simpara>Error Response Code(s): computeFault
+                            (<errorcode>400</errorcode>,
+                            <errorcode>500</errorcode>, &hellip;),
+                        serviceUnavailable
+                        (<errorcode>503</errorcode>), unauthorized
+                            (<errorcode>401</errorcode>), forbidden
+                            (<errorcode>403</errorcode>), badRequest
+                            (<errorcode>400</errorcode>), badMethod
+                            (<errorcode>405</errorcode>), overLimit
+                            (<errorcode>413</errorcode>) </simpara>
+                    <para>This operation does not require a request
+                        body. </para>
+                    <para>This operation returns a response body that
+                        lists the volume attachments for the specified
+                        server. </para>
+                    <para>Specify the server ID as
+                            <parameter>id</parameter> in the URI. </para>
+                    <para>The response body returns the attachment IDs
+                        for the attached volumes. </para>
+                    <?hard-pagebreak?>
+                    <para>The following examples show an XML and JSON
+                        response for this operation:</para>
+                    <example>
+                        <title>List Volume Attachments Response:
+                            XML</title>
+                        <remark security="reviewer">Need
+                            examples</remark>
+                        <programlisting language="xml">XX
+                        </programlisting>
+                    </example>
+                    <?hard-pagebreak?>
+                    <example>
+                        <title>List Volume Attachments Response:
+                            JSON</title>
+                        <programlisting language="json"><?db-font-size 80%?>XX</programlisting>
+                    </example>
+                </section>
+                <section xml:id="Get_Volume_Attachment_Details">
+                    <title>Get Volume Attachment Details</title>
+                    <informaltable rules="all" width="85%">
+                        <thead>
+                            <tr>
+                                <td colspan="1">Verb</td>
+                                <td colspan="2">URI</td>
+                                <td colspan="3">Description</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="1">&GET;</td>
+                                <td colspan="2"
+                                   >/servers/<parameter>id</parameter>/os-volume_attachments/<parameter>attachment_id</parameter></td>
+                                <td colspan="3">Lists volume details
+                                   for the specified volume attachment
+                                   ID.</td>
+                            </tr>
+                        </tbody>
+                    </informaltable>
+                    <simpara>Normal Response Code(s):
+                            <returnvalue>200</returnvalue>,
+                            <returnvalue>203</returnvalue>,
+                            <returnvalue>300</returnvalue>
+                    </simpara>
+                    <simpara>Error Response Code(s): computeFault
+                            (<errorcode>400</errorcode>,
+                            <errorcode>500</errorcode>, &hellip;),
+                        serviceUnavailable
+                        (<errorcode>503</errorcode>), unauthorized
+                            (<errorcode>401</errorcode>), forbidden
+                            (<errorcode>403</errorcode>), badRequest
+                            (<errorcode>400</errorcode>), badMethod
+                            (<errorcode>405</errorcode>), overLimit
+                            (<errorcode>413</errorcode>), itemNotFound
+                            (<errorcode>404</errorcode>) </simpara>
+                    <para>This operation returns the volume details of
+                        a specified volume attachment ID for a
+                        specified server. </para>
+                    <para>Specify the server ID as
+                            <parameter>id</parameter> and the volume
+                        attachment ID as
+                            <parameter>attachment_ID</parameter> in
+                        the URI.</para>
+                    <para>This operation does not require a request
+                        body.</para>
+                    <remark security="reviewer">Need response
+                        examples:</remark>
+                    <?hard-pagebreak?>
+                    <example>
+                        <title>Get Volume Attachment Details Response:
+                            XML</title>
+                        <programlisting language="xml">Need example</programlisting>
+                    </example>
+                    <?hard-pagebreak?>
+                    <example>
+                        <title>Get Volume Attachment Details Response:
+                            JSON</title>
+                        <programlisting language="json"><?db-font-size 90%?>Need example</programlisting>
+                    </example>
+                </section>
+                <section xml:id="Delete_Volume_Attachment">
+                    <title>Delete Volume Attachment</title>
+                    <informaltable rules="all" width="65%">
+                        <thead>
+                            <tr>
+                                <td colspan="1">Verb</td>
+                                <td colspan="2">URI</td>
+                                <td colspan="3">Description</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="1">&DELETE;</td>
+                                <td colspan="2"
+                                   >/servers/<parameter>id</parameter>/os-volume_attachments/<parameter>attachment_id</parameter></td>
+                                <td colspan="3">Deletes the specified
+                                   volume attachment from the
+                                   specified server.</td>
+                            </tr>
+                        </tbody>
+                    </informaltable>
+                    <simpara>Normal Response Code(s):
+                            <returnvalue>204</returnvalue>
+                    </simpara>
+                    <simpara>Error Response Code(s): computeFault
+                            (<errorcode>400</errorcode>,
+                            <errorcode>500</errorcode>, &hellip;),
+                        serviceUnavailable
+                        (<errorcode>503</errorcode>), unauthorized
+                            (<errorcode>401</errorcode>), forbidden
+                            (<errorcode>403</errorcode>), badRequest
+                            (<errorcode>400</errorcode>), badMethod
+                            (<errorcode>405</errorcode>), overLimit
+                            (<errorcode>413</errorcode>), itemNotFound
+                            (<errorcode>404</errorcode>),
+                        buildInProgress (<errorcode>409</errorcode>) </simpara>
+                    <informaltable frame="void">
+                        <tbody>
+                            <tr>
+                                <td colspan="1">Status
+                                   Transition:</td>
+                                <td colspan="3">
+                                   <code>ACTIVE</code> &ARROW;
+                                   <code>DELETED</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="1"/>
+                                <td colspan="3">
+                                   <code>ERROR</code> &ARROW;
+                                   <code>DELETED</code>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </informaltable>
+                    <para>This operation deletes a specified volume
+                        attachment from a specified server instance. </para>
+                    <para>Specify the ID for the server as
+                            <parameter>id</parameter> in the URI. </para>
+                    <para>Specify the volume attachment ID as
+                            <parameter>attachment_id</parameter> in
+                        the URI. </para>
+                    <para>This operation does not require a request
+                        body.</para>
+                    <para>This operation does not return a response
+                        body. </para>
+                </section>
+       </section><?hard-pagebreak?>
         <section xml:id="Flavors-d1e4180">
+            
             <title>Flavors</title>
             <para>A flavor is an available hardware configuration for
                 a server. Each flavor has a unique combination of disk
