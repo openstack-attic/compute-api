@@ -828,8 +828,8 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                 client requests a <parameter>limit</parameter> beyond
                 that which is supported by the deployment an overLimit
                 (<errorcode>413</errorcode>) fault may be thrown. A
-                marker with an invalid ID will return an itemNotFound
-                (<errorcode>404</errorcode>) fault.
+                marker with an invalid ID will return a badRequest
+                (<errorcode>400</errorcode>) fault.
             </para>
             <note>
                 <para>
