@@ -65,7 +65,7 @@
         </copyright>
         <releaseinfo>API v2</releaseinfo>
         <productname>OpenStack Compute</productname>
-        <pubdate>2012-05-02</pubdate>
+        <pubdate>2012-05-30</pubdate>
         <legalnotice role="apache2">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -77,6 +77,17 @@
                     (<abbrev>API</abbrev>). </para>
         </abstract>
         <revhistory>
+            <revision>
+                <!-- ... continue addding more revisions here as you change this document using the markup shown below... -->
+                <date>2012-05-30</date>
+                <revdescription>
+                    <itemizedlist>
+                        <listitem>
+                            <para>Added more descriptive information about the request body attributes to the create server API operation.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>   
             <revision>
                 <!-- ... continue addding more revisions here as you change this document using the markup shown below... -->
                 <date>2012-05-02</date>
@@ -1167,10 +1178,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                 </simpara>
                 <para>This operation does not require a request body.</para>
                 <example>
-                    <title>Limit Response: XML</title>
-                    <programlisting language="xml">
-<xi:include href="samples/limits.xml" parse="text"/>
-                    </programlisting>
+                    <title>Limit Response: XML</title><programlisting language="xml"><xi:include href="samples/limits.xml" parse="text"/></programlisting>
                 </example>
                 <?hard-pagebreak?>
                 <example>
@@ -1556,16 +1564,10 @@ Host: servers.api.openstack.org/v2/
                     of the response.
                 </para>
                 <example>
-                    <title>Fault Response: XML</title>
-                    <programlisting language="xml">
-<xi:include href="samples/fault.xml" parse="text"/>
-                    </programlisting>
+                    <title>Fault Response: XML</title><programlisting language="xml"><xi:include href="samples/fault.xml" parse="text"/></programlisting>
                 </example>
                 <example>
-                    <title>Fault Response: JSON</title>
-                    <programlisting language="json">
-<xi:include href="samples/fault.json" parse="text"/>
-                    </programlisting>
+                    <title>Fault Response: JSON</title><programlisting language="json"><xi:include href="samples/fault.json" parse="text"/></programlisting>
                 </example>
                 <para> The error code is returned in the body of the response for convenience. The
                 message section returns a human-readable message that is appropriate for display to
@@ -1662,16 +1664,10 @@ Host: servers.api.openstack.org/v2/
                     </tbody>
                 </table>
                 <example>
-                    <title>Fault Response, Item Not Found: XML</title>
-                    <programlisting language="xml">
-<xi:include href="samples/notfound.xml" parse="text"/>
-                    </programlisting>
+                    <title>Fault Response, Item Not Found: XML</title><programlisting language="xml"><xi:include href="samples/notfound.xml" parse="text"/></programlisting>
                 </example>
                 <example>
-                    <title>Fault Response, Item Not Found: JSON</title>
-                    <programlisting language="json">
-<xi:include href="samples/notfound.json" parse="text"/>
-                    </programlisting>
+                    <title>Fault Response, Item Not Found: JSON</title><programlisting language="json"><xi:include href="samples/notfound.json" parse="text"/></programlisting>
                 </example>
                 <para>
                     From an XML schema perspective, all API faults are
@@ -1690,16 +1686,10 @@ Host: servers.api.openstack.org/v2/
                     Schema 1.0 date/time format.
                 </para>
                 <example>
-                    <title>Fault Response, Over Limit: XML</title>
-                    <programlisting language="xml">
-<xi:include href="samples/overlimit.xml" parse="text"/>
-                    </programlisting>
+                    <title>Fault Response, Over Limit: XML</title><programlisting language="xml"><xi:include href="samples/overlimit.xml" parse="text"/></programlisting>
                 </example>
                 <example>
-                    <title>Fault Response, Over Limit: JSON</title>
-                    <programlisting language="json">
-<xi:include href="samples/overlimit.json" parse="text"/>
-                    </programlisting>
+                    <title>Fault Response, Over Limit: JSON</title><programlisting language="json"><xi:include href="samples/overlimit.json" parse="text"/></programlisting>
                 </example>
             </section>
             <section xml:id="Asynchronous_Faults-d1e2009">
@@ -1718,31 +1708,19 @@ Host: servers.api.openstack.org/v2/
                     occurred. </para>
                 <?hard-pagebreak?>
                 <example>
-                    <title>Server In Error State: XML</title>
-                    <programlisting language="xml">
-<xi:include href="samples/server-fault.xml" parse="text"/>
-                    </programlisting>
+                    <title>Server In Error State: XML</title><programlisting language="xml"><xi:include href="samples/server-fault.xml" parse="text"/></programlisting>
                 </example>
                 <?hard-pagebreak?>
                 <example>
-                    <title>Server In Error State: JSON</title>
-                    <programlisting language="json">
-<xi:include href="samples/server-fault.json" parse="text"/>
-                    </programlisting>
+                    <title>Server In Error State: JSON</title><programlisting language="json"><xi:include href="samples/server-fault.json" parse="text"/></programlisting>
                 </example>
                 <?hard-pagebreak?>
                 <example>
-                    <title>Image In Error State: XML</title>
-                    <programlisting language="xml">
-<xi:include href="samples/image-fault.xml" parse="text"/>
-                    </programlisting>
+                    <title>Image In Error State: XML</title><programlisting language="xml"><xi:include href="samples/image-fault.xml" parse="text"/></programlisting>
                 </example>
                 <?hard-pagebreak?>
                 <example>
-                    <title>Image In Error State: JSON</title>
-                    <programlisting language="json">
-<xi:include href="samples/image-fault.json" parse="text"/>
-                    </programlisting>
+                    <title>Image In Error State: JSON</title><programlisting language="json"><xi:include href="samples/image-fault.json" parse="text"/></programlisting>
                 </example>
             </section>
         </section>
@@ -2048,15 +2026,13 @@ Host: servers.api.openstack.org/v2/
                
                 <example>
                     <title>List Servers Response: XML (detail)</title>
-                    <programlisting language="xml"><?db-font-size 80%?><xi:include href="samples/servers.xml" parse="text"/>
-                    </programlisting>
+                    <programlisting language="xml"><?db-font-size 80%?><xi:include href="samples/servers.xml" parse="text"/></programlisting>
                 </example>
               
                 <example>
                     <title>List Servers Response: JSON
                         (detail)</title>
-                    <programlisting language="json"><?db-font-size 80%?><xi:include href="samples/servers.json" parse="text"/>
-                    </programlisting>
+                    <programlisting language="json"><?db-font-size 80%?><xi:include href="samples/servers.json" parse="text"/></programlisting>
                 </example>
             </section>
             <?hard-pagebreak?>
@@ -2149,12 +2125,24 @@ Host: servers.api.openstack.org/v2/
                         <tbody>
                             <tr>
                                 <td>imageRef</td>
-                                <td><para>The image reference. Specify as an ID or full URL. </para></td>
+                                <td><para>The image reference for the desired image for your server
+                                   instance. </para>
+                                   <para>Specify as an ID or full URL.
+                                   To get a list of available images,
+                                   see <xref
+                                   linkend="List_Images-d1e4435"
+                                   />.</para></td>
                                 <td>Yes</td>
                             </tr>
                             <tr>
                                 <td>flavorRef</td>
-                                <td><para>The flavor reference. Specify as an ID or full URL. </para></td>
+                                <td><para>The flavor reference for the desired flavor for your server
+                                   instance. </para>
+                                   <para>Specify as an ID or full URL.
+                                   To get a list of available flavors,
+                                   see <xref
+                                   linkend="List_Flavors-d1e4188"
+                                   />.</para></td>
                                 <td>Yes</td>
                             </tr>
                             <tr>
@@ -2162,7 +2150,8 @@ Host: servers.api.openstack.org/v2/
                                    <para>name</para>
                                 </td>
                                 <td>
-                                   <para>The server name.</para>
+                                   <para>The server name. Choose any
+                                   name you like.</para>
                                 </td>
                                 <td>Yes</td>
                             </tr>
@@ -2170,7 +2159,10 @@ Host: servers.api.openstack.org/v2/
                                 <td>
                                    <para>metadata</para>
                                 </td>
-                                <td>Metadata key and value pairs.</td>
+                                <td>Metadata key and value pairs. For
+                                   information, see <xref
+                                   linkend="Server_Metadata-d1e2529"
+                                   />.</td>
                                 <td>No</td>
                             </tr>
                             <tr>
@@ -2178,8 +2170,10 @@ Host: servers.api.openstack.org/v2/
                                    <para>personality</para>
                                 </td>
                                 <td>
-                                   <para>File path and
-                                   contents.</para>
+                                   <para>File path and contents. For
+                                   information, see <xref
+                                   linkend="Server_Personality-d1e2543"
+                                   />.</para>
                                 </td>
                                 <td>No</td>
                             </tr>
@@ -2208,91 +2202,109 @@ Host: servers.api.openstack.org/v2/
                 <?hard-pagebreak?>
                 <section xml:id="Server_Passwords-d1e2510">
                     <title>Server Passwords</title>
-                    <para>
-                        A password may be specified when creating the
-                        server via the optional
-                        <property>adminPass</property> attribute.  The
-                        specified password must meet the complexity
-                        requirements set by your OpenStack Compute
-                        provider. The server may enter an
-                        <code>ERROR</code> state if the complexity
+                    <para>A password may be specified when creating
+                        the server via the optional
+                            <property>adminPass</property> attribute.
+                        The specified password must meet the
+                        complexity requirements set by your OpenStack
+                        Compute provider. The server may enter an
+                            <code>ERROR</code> state if the complexity
                         requirements are not met. In this case, a
                         client may issue a change password action to
                         reset the server password (see <xref
-                        linkend="Change_Password-d1e3234"/>).
-                    </para>
-                    <para>
-                        If a password is not specified, a randomly
+                            linkend="Change_Password-d1e3234"/>). </para>
+                    <para>If a password is not specified, a randomly
                         generated password will be assigned and
                         returned in the response object. This password
-                        is guaranteed to meet the security requirements
-                        set by the compute provider. For security
-                        reasons, the password will not be returned in
-                        subsequent &GET; calls.
-                    </para>
+                        is guaranteed to meet the security
+                        requirements set by the compute provider. For
+                        security reasons, the password will not be
+                        returned in subsequent &GET; calls. </para>
                 </section>
                 <section xml:id="Server_Metadata-d1e2529">
                     <title>Server Metadata</title>
-                    <para>
-                        Custom server metadata can also be supplied at
-                        launch time.  See <xref
-                        linkend="MetadataSection"/> for details on
-                        working with metadata.  The maximum size of
-                        the metadata key and value is 255 bytes each.
-                        The maximum number of key-value pairs that can
-                        be supplied per server is determined by the
+                    <para>Custom server metadata can also be supplied
+                        at launch time. See <xref
+                            linkend="MetadataSection"/> for details on
+                        working with metadata. The maximum size of the
+                        metadata key and value is 255 bytes each. The
+                        maximum number of key-value pairs that can be
+                        supplied per server is determined by the
                         compute provider and may be queried via the
-                        maxServerMeta absolute limit.
-                    </para>
+                        maxServerMeta absolute limit. </para>
                 </section>
                 <section xml:id="Server_Personality-d1e2543">
                     <title>Server Personality</title>
-                    <para>
-                        You may further customize a server by
-                        injecting data into the file system of the
-                        server itself. This is useful, for example,
-                        for inserting ssh keys, setting configuration
-                        files, or storing data that you want to
-                        retrieve from within the instance itself. It
-                        is intended to provide a minimal amount of
-                        launch-time personalization. If significant
-                        customization is required, a custom image
-                        should be created. The max size of the file
-                        path data is 255 bytes. The max size of the
-                        file contents is determined by the compute
-                        provider and may vary based on the image that
-                        is used to create the server.  The absolute
-                        limit maxPersonalitySize is a byte limit that
-                        is guaranteed to apply to all images in the
-                        deployment. Providers may set additional
-                        per-image personality limits.  Note that file
-                        contents should be encoded as a Base64 string
-                        and these limits refer to the number of
-                        bytes in the decoded data not the number of
-                        characters in the encoded data.  The maximum
-                        number of file path/content pairs that can be
-                        supplied is also determined by the compute
-                        provider and is denoted by the maxPersonality
-                        absolute limit.
-                    </para>
-                    <para>
-                        Any existing files that match the specified
-                        file will be renamed to include the extension
-                        bak followed by a time stamp.  For example,
-                        the file /etc/passwd will be backed up as
-                        /etc/passwd.bak.1246036261.5785. Personality
-                        files will be accessible only to system
-                        administrators.  For example, in Linux files
-                        will have root and the root group as owner and
-                        group owner, respectively and will allow user
-                        and group read access only (
-                        <code>-r--r-----</code> ).
-                    </para>
+                    <para>You can customize the personality of a
+                        server instance by injecting data into its
+                        file system. For example, you might want to
+                        insert ssh keys, set configuration files, or
+                        store data that you want to retrieve from
+                        inside the instance. This feature provides a
+                        minimal amount of launch-time personalization.
+                        If you require significant customization,
+                        create a custom image. </para>
+                    <para>Follow these guidelines when you inject
+                        files: <itemizedlist>
+                            <listitem>
+                                <para>The maximum size of the file
+                                   path data is 255 bytes.</para>
+                            </listitem>
+                            <listitem>
+                                <para>Encode the file contents as a
+                                   Base64 string. The maximum size of
+                                   the file contents is determined by
+                                   the compute provider and may vary
+                                   based on the image that is used to
+                                   create the server</para>
+                                <note>
+                                   <para>The maximum limit refers to
+                                   the number of bytes in the decoded
+                                   data and not the number of
+                                   characters in the encoded
+                                   data.</para>
+                                </note>
+                            </listitem>
+                            <listitem>
+                                <para>You can inject text files only.
+                                   You cannot inject binary or zip
+                                   files into a new build. </para>
+                            </listitem>
+                            <listitem>
+                                <para>The maximum number of file
+                                   path/content pairs that you can
+                                   supply is also determined by the
+                                   compute provider and is defined by
+                                   the maxPersonality absolute limit.
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>The absolute limit,
+                                   maxPersonalitySize, is a byte limit
+                                   that is guaranteed to apply to all
+                                   images in the deployment. Providers
+                                   can set additional per-image
+                                   personality limits.</para>
+                            </listitem>
+                        </itemizedlist></para>
+                    <para>The file injection might not occur until
+                        after the server is built and booted. </para>
+                    <para>During file injection, any existing files
+                        that match specified files are renamed to
+                        include the bak extension appended with a time
+                        stamp. For example, if the file /etc/passwd
+                        exists, it is backed up as
+                        /etc/passwd.bak.1246036261.5785. </para>
+                    <para>After file injection, personality files are
+                        accessible by only system administrators. For
+                        example, on Linux, all files have root and the
+                        root group as the owner and group owner,
+                        respectively, and allow user and group read
+                        access only ( <code>-r--r-----</code> ). </para>
                 </section>
                 <section xml:id="Server_Primary_Addresses-d1e2558">
                     <title>Server Access Addresses</title>
-                    <para>
-                        In a hybrid environment, the IP address of a
+                    <para>In a hybrid environment, the IP address of a
                         server may not be controlled by the underlying
                         implementation. Instead, the access IP address
                         may be part of the dedicated hardware; for
@@ -2300,18 +2312,17 @@ Host: servers.api.openstack.org/v2/
                         the addresses provided by the implementation
                         cannot actually be used to access the server
                         (from outside the local LAN). Here, a separate
-                        <firstterm>access address</firstterm> may be
-                        assigned at creation time to provide access to
-                        the server.  This address may not be directly
-                        bound to a network interface on the server and
-                        may not necessarily appear when a server's
-                        addresses are queried (see <xref
-                        linkend="ServerAddresses"/>).  Nonetheless,
+                            <firstterm>access address</firstterm> may
+                        be assigned at creation time to provide access
+                        to the server. This address may not be
+                        directly bound to a network interface on the
+                        server and may not necessarily appear when a
+                        server's addresses are queried (see <xref
+                            linkend="ServerAddresses"/>). Nonetheless,
                         clients which need to access the server
                         directly are encouraged to do so via an access
-                        address.  In the example below, an IPv4
-                        address is assigned at creation time.
-                    </para>
+                        address. In the example below, an IPv4 address
+                        is assigned at creation time. </para>
                     <example>
                         <title>Creating a Server with a Access IP: XML</title>
                         <programlisting language="xml">
@@ -2492,29 +2503,19 @@ Host: servers.api.openstack.org/v2/
                     </table></para>
                 <example>
                     <title>Server Update Name Request: XML</title>
-                    <programlisting language="xml">
-<xi:include href="samples/server-put-req.xml" parse="text"/>
-                    </programlisting>
+                    <programlisting language="xml"><xi:include href="samples/server-put-req.xml" parse="text"/></programlisting>
                 </example>
                 <example>
-                    <title>Server Update Name Request: JSON</title>
-                    <programlisting language="json">
-<xi:include href="samples/server-put-req.json" parse="text"/>
-                    </programlisting>
+                    <title>Server Update Name Request: JSON</title><programlisting language="json"><xi:include href="samples/server-put-req.json" parse="text"/></programlisting>
                 </example>
                 <?hard-pagebreak?>
                 <example>
                     <title>Server Update Name Response: XML</title>
-                    <programlisting language="xml">
-<xi:include href="samples/server-put-resp.xml" parse="text"/>
-                    </programlisting>
+                    <programlisting language="xml"><xi:include href="samples/server-put-resp.xml" parse="text"/></programlisting>
                 </example>
                 <?hard-pagebreak?>
                 <example>
-                    <title>Server Update Name Response: JSON</title>
-                    <programlisting language="json">
-<xi:include href="samples/server-put-resp.json" parse="text"/>
-                    </programlisting>
+                    <title>Server Update Name Response: JSON</title><programlisting language="json"><xi:include href="samples/server-put-resp.json" parse="text"/></programlisting>
                 </example>
                 <?hard-pagebreak?>
                 <para>
@@ -2522,30 +2523,18 @@ Host: servers.api.openstack.org/v2/
                     illustrated below.
                 </para>
                 <example>
-                    <title>Server Update Access Address Request: XML</title>
-                    <programlisting language="xml">
-<xi:include href="samples/server-put-req-ad.xml" parse="text"/>
-                    </programlisting>
+                    <title>Server Update Access Address Request: XML</title><programlisting language="xml"><xi:include href="samples/server-put-req-ad.xml" parse="text"/></programlisting>
                 </example>
                 <example>
-                    <title>Server Update Access Address Request: JSON</title>
-                    <programlisting language="json">
-<xi:include href="samples/server-put-req-ad.json" parse="text"/>
-                    </programlisting>
+                    <title>Server Update Access Address Request: JSON</title><programlisting language="json"><xi:include href="samples/server-put-req-ad.json" parse="text"/></programlisting>
                 </example>
                 <?hard-pagebreak?>
                 <example>
-                    <title>Server Update Access Address Response: XML</title>
-                    <programlisting language="xml">
-<xi:include href="samples/server-put-resp-ad.xml" parse="text"/>
-                    </programlisting>
+                    <title>Server Update Access Address Response: XML</title><programlisting language="xml"><xi:include href="samples/server-put-resp-ad.xml" parse="text"/></programlisting>
                 </example>
                 <?hard-pagebreak?>
                 <example>
-                    <title>Server Update Access Address Response: JSON</title>
-                    <programlisting language="json">
-<xi:include href="samples/server-put-resp-ad.json" parse="text"/>
-                    </programlisting>
+                    <title>Server Update Access Address Response: JSON</title><programlisting language="json"><xi:include href="samples/server-put-resp-ad.json" parse="text"/></programlisting>
                 </example>
             </section>
             <?hard-pagebreak?>
@@ -2655,16 +2644,10 @@ Host: servers.api.openstack.org/v2/
                 <para>This operation does not require a request body. </para>
                 <?hard-pagebreak?>
                 <example>
-                    <title>Addresses List Response: XML </title>
-                    <programlisting language="xml">
-<xi:include href="samples/addresses.xml" parse="text"/>
-                    </programlisting>
+                    <title>Addresses List Response: XML </title><programlisting language="xml"><xi:include href="samples/addresses.xml" parse="text"/></programlisting>
                 </example>
                 <example>
-                    <title>Addresses List Response: JSON </title>
-                    <programlisting language="json">
-<xi:include href="samples/addresses.json" parse="text"/>
-                    </programlisting>
+                    <title>Addresses List Response: JSON </title><programlisting language="json"><xi:include href="samples/addresses.json" parse="text"/></programlisting>
                 </example>
             </section>
             <section xml:id="List_Addresses_by_Network-d1e3118">
@@ -2739,17 +2722,11 @@ Host: servers.api.openstack.org/v2/
                         </table></para><para>This operation does not require a request body.</para>
                 <example>
                     <title>List Addresses by Network Response:
-                        XML</title>
-                    <programlisting language="xml">
-<xi:include href="samples/public.xml" parse="text"/>
-                    </programlisting>
+                        XML</title><programlisting language="xml"><xi:include href="samples/public.xml" parse="text"/></programlisting>
                 </example>
                 <example>
                     <title>List Addresses by Network Response:
-                        JSON</title>
-                    <programlisting language="json">
-<xi:include href="samples/public.json" parse="text"/>
-                    </programlisting>
+                        JSON</title><programlisting language="json"><xi:include href="samples/public.json" parse="text"/></programlisting>
                 </example>
             </section>
         </section>
@@ -2855,16 +2832,10 @@ Host: servers.api.openstack.org/v2/
                         </tbody>
                     </table></para><para>This operation does not return a response body.</para>
                 <example>
-                    <title>Action Change Password Request: XML</title>
-                    <programlisting language="xml">
-<xi:include href="samples/changepassword.xml" parse="text"/>
-                    </programlisting>
+                    <title>Action Change Password Request: XML</title><programlisting language="xml"><xi:include href="samples/changepassword.xml" parse="text"/></programlisting>
                 </example>
                 <example>
-                    <title>Action Change Password Request: JSON</title>
-                    <programlisting language="json">
-<xi:include href="samples/changepassword.json" parse="text"/>
-                    </programlisting>
+                    <title>Action Change Password Request: JSON</title><programlisting language="json"><xi:include href="samples/changepassword.json" parse="text"/></programlisting>
                 </example>
                 <para/>
             </section>
@@ -2979,16 +2950,10 @@ Host: servers.api.openstack.org/v2/
                 <para>This operation does not return a response
                     body.</para>
                 <example>
-                    <title>Action Reboot Request: XML </title>
-                    <programlisting language="xml">
-<xi:include href="samples/reboot.xml" parse="text"/>
-                    </programlisting>
+                    <title>Action Reboot Request: XML </title><programlisting language="xml"><xi:include href="samples/reboot.xml" parse="text"/></programlisting>
                 </example>
                 <example>
-                    <title>Action Reboot Request: JSON </title>
-                    <programlisting language="json">
-<xi:include href="samples/reboot.json" parse="text"/>
-                    </programlisting>
+                    <title>Action Reboot Request: JSON </title><programlisting language="json"><xi:include href="samples/reboot.json" parse="text"/></programlisting>
                 </example>
             </section>
             <?hard-pagebreak?>
@@ -3128,17 +3093,11 @@ Host: servers.api.openstack.org/v2/
                     </table>
                 </para>
                 <example>
-                    <title>Action Rebuild Request: XML </title>
-                    <programlisting language="xml">
-<xi:include href="samples/rebuild_all.xml" parse="text"/>
-                    </programlisting>
+                    <title>Action Rebuild Request: XML </title><programlisting language="xml"><xi:include href="samples/rebuild_all.xml" parse="text"/></programlisting>
                 </example>
                 <?hard-pagebreak?>
                 <example>
-                    <title>Action Rebuild Request: JSON</title>
-                    <programlisting language="json">
-<xi:include href="samples/rebuild_all.json" parse="text"/>
-                    </programlisting>
+                    <title>Action Rebuild Request: JSON</title><programlisting language="json"><xi:include href="samples/rebuild_all.json" parse="text"/></programlisting>
                 </example>
                 <?hard-pagebreak?>
                 <example>
@@ -3259,16 +3218,10 @@ Host: servers.api.openstack.org/v2/
                     </table>
                 </para><para>This operation does not return a response body.</para>
                 <example>
-                    <title>Action Resize Request: XML</title>
-                    <programlisting language="xml">
-<xi:include href="samples/resize.xml" parse="text"/>
-                    </programlisting>
+                    <title>Action Resize Request: XML</title><programlisting language="xml"><xi:include href="samples/resize.xml" parse="text"/></programlisting>
                 </example>
                 <example>
-                    <title>Action Resize Request: JSON</title>
-                    <programlisting language="json">
-<xi:include href="samples/resize.json" parse="text"/>
-                    </programlisting>
+                    <title>Action Resize Request: JSON</title><programlisting language="json"><xi:include href="samples/resize.json" parse="text"/></programlisting>
                 </example>
             </section>
             <?hard-pagebreak?>
@@ -3343,16 +3296,10 @@ Host: servers.api.openstack.org/v2/
                 <para>This operation does not return a response
                     body.</para>
                 <example>
-                    <title>Action Confirm Resize Request: XML</title>
-                    <programlisting language="xml">
-<xi:include href="samples/confirmresize.xml" parse="text"/>
-                    </programlisting>
+                    <title>Action Confirm Resize Request: XML</title><programlisting language="xml"><xi:include href="samples/confirmresize.xml" parse="text"/></programlisting>
                 </example>
                 <example>
-                    <title>Action Confirm Resize Request: JSON</title>
-                    <programlisting language="json">
-<xi:include href="samples/confirmresize.json" parse="text"/>
-                    </programlisting>
+                    <title>Action Confirm Resize Request: JSON</title><programlisting language="json"><xi:include href="samples/confirmresize.json" parse="text"/></programlisting>
                 </example>
             </section>
             <?hard-pagebreak?>
@@ -3430,16 +3377,10 @@ Host: servers.api.openstack.org/v2/
                 <para>This operation does not return a response
                     body.</para>
                 <example>
-                    <title>Action Revert Resize Request: XML</title>
-                    <programlisting language="xml">
-<xi:include href="samples/revertresize.xml" parse="text"/>
-                    </programlisting>
+                    <title>Action Revert Resize Request: XML</title><programlisting language="xml"><xi:include href="samples/revertresize.xml" parse="text"/></programlisting>
                 </example>
                 <example>
-                    <title>Action Revert Resize Request: JSON</title>
-                    <programlisting language="json">
-<xi:include href="samples/revertresize.json" parse="text"/>
-                    </programlisting>
+                    <title>Action Revert Resize Request: JSON</title><programlisting language="json"><xi:include href="samples/revertresize.json" parse="text"/></programlisting>
                 </example>
                 <para>This operation does not return a response body.</para>
             </section>
@@ -3721,17 +3662,11 @@ Host: servers.api.openstack.org/v2/
                 <para>This operation returns details of the specified
                     flavor in the response body.</para>
                 <example>
-                    <title>Flavor Details Response: XML</title>
-                    <programlisting language="xml">
-<xi:include href="samples/flavor.xml" parse="text"/>
-                    </programlisting>
+                    <title>Flavor Details Response: XML</title><programlisting language="xml"><xi:include href="samples/flavor.xml" parse="text"/></programlisting>
                 </example>
                 <?hard-pagebreak?>
                 <example>
-                    <title>Flavor Details Response: JSON </title>
-                    <programlisting language="json">
-<xi:include href="samples/flavor.json" parse="text"/>
-                    </programlisting>
+                    <title>Flavor Details Response: JSON </title><programlisting language="json"><xi:include href="samples/flavor.json" parse="text"/></programlisting>
                 </example>
             </section>
         </section>
@@ -3873,10 +3808,7 @@ Host: servers.api.openstack.org/v2/
                     a server with the image. </para>
                 <?hard-pagebreak?>
                 <example>
-                    <title>Images List Response: XML (detail)</title>
-                    <programlisting language="xml">
-<xi:include href="samples/images.xml" parse="text"/>
-                    </programlisting>
+                    <title>Images List Response: XML (detail)</title><programlisting language="xml"><xi:include href="samples/images.xml" parse="text"/></programlisting>
                 </example>
                 <?hard-pagebreak?>
                 <example>
@@ -3923,17 +3855,11 @@ Host: servers.api.openstack.org/v2/
                 <db:para>This operation returns details of the
                     specified image in the response body.</db:para>
                 <example>
-                    <title>Image Details Response: XML</title>
-                    <programlisting language="xml">
-<xi:include href="samples/image.xml" parse="text"/>
-                    </programlisting>
+                    <title>Image Details Response: XML</title><programlisting language="xml"><xi:include href="samples/image.xml" parse="text"/></programlisting>
                 </example>
                 <?hard-pagebreak?>
                 <example>
-                    <title>Image Details Response: JSON</title>
-                    <programlisting language="json">
-<xi:include href="samples/image.json" parse="text"/>
-                    </programlisting>
+                    <title>Image Details Response: JSON</title><programlisting language="json"><xi:include href="samples/image.json" parse="text"/></programlisting>
                 </example>
             </section>
             <?hard-pagebreak?>
@@ -4045,16 +3971,10 @@ Host: servers.api.openstack.org/v2/
                         <parameter>id</parameter> in the URI. </para>
                 <para>This operation does not require a request body. </para>
                 <example>
-                    <title>Metadata List Response: XML </title>
-                    <programlisting language="xml">
-<xi:include href="samples/metadata.xml" parse="text"/>
-                    </programlisting>
+                    <title>Metadata List Response: XML </title><programlisting language="xml"><xi:include href="samples/metadata.xml" parse="text"/></programlisting>
                 </example>
                 <example>
-                    <title>Metadata List Response: JSON </title>
-                    <programlisting language="json">
-<xi:include href="samples/metadata.json" parse="text"/>
-                    </programlisting>
+                    <title>Metadata List Response: JSON </title><programlisting language="json"><xi:include href="samples/metadata.json" parse="text"/></programlisting>
                 </example>
             </section>
             <?hard-pagebreak?>
@@ -4143,29 +4063,17 @@ Host: servers.api.openstack.org/v2/
                     of key-value pairs for an image may be queried via
                     the maxImageMeta absolute limit. </para>
                 <example>
-                    <title>Set Metadata Request: XML </title>
-                    <programlisting language="xml">
-<xi:include href="samples/metadata.xml" parse="text"/>
-                    </programlisting>
+                    <title>Set Metadata Request: XML </title><programlisting language="xml"><xi:include href="samples/metadata.xml" parse="text"/></programlisting>
                 </example>
                 <example>
-                    <title>Set Metadata Request: JSON </title>
-                    <programlisting language="json">
-<xi:include href="samples/metadata.json" parse="text"/>
-                    </programlisting>
+                    <title>Set Metadata Request: JSON </title><programlisting language="json"><xi:include href="samples/metadata.json" parse="text"/></programlisting>
                 </example>
                 <?hard-pagebreak?>
                 <example>
-                    <title>Set Metadata Response: XML </title>
-                    <programlisting language="xml">
-<xi:include href="samples/metadata.xml" parse="text"/>
-                    </programlisting>
+                    <title>Set Metadata Response: XML </title><programlisting language="xml"><xi:include href="samples/metadata.xml" parse="text"/></programlisting>
                 </example>
                 <example>
-                    <title>Set Metadata Response: JSON </title>
-                    <programlisting language="json">
-<xi:include href="samples/metadata.json" parse="text"/>
-                    </programlisting>
+                    <title>Set Metadata Response: JSON </title><programlisting language="json"><xi:include href="samples/metadata.json" parse="text"/></programlisting>
                 </example>
             </section>
             <?hard-pagebreak?>
@@ -4256,29 +4164,17 @@ Host: servers.api.openstack.org/v2/
                     an image may be queried via the maxImageMeta
                     absolute limit. </para>
                 <example>
-                    <title>Update Metadata Request: XML </title>
-                    <programlisting language="xml">
-<xi:include href="samples/metadata-update-req.xml" parse="text"/>
-                    </programlisting>
+                    <title>Update Metadata Request: XML </title><programlisting language="xml"><xi:include href="samples/metadata-update-req.xml" parse="text"/></programlisting>
                 </example>
                 <example>
-                    <title>Update Metadata Request: JSON </title>
-                    <programlisting language="json">
-<xi:include href="samples/metadata-update-req.json" parse="text"/>
-                    </programlisting>
+                    <title>Update Metadata Request: JSON </title><programlisting language="json"><xi:include href="samples/metadata-update-req.json" parse="text"/></programlisting>
                 </example>
                 <?hard-pagebreak?>
                 <example>
-                    <title>Update Metadata Response: XML </title>
-                    <programlisting language="xml">
-<xi:include href="samples/metadata-update-resp.xml" parse="text"/>
-                    </programlisting>
+                    <title>Update Metadata Response: XML </title><programlisting language="xml"><xi:include href="samples/metadata-update-resp.xml" parse="text"/></programlisting>
                 </example>
                 <example>
-                    <title>Update Metadata Response: JSON </title>
-                    <programlisting language="json">
-<xi:include href="samples/metadata-update-resp.json" parse="text"/>
-                    </programlisting>
+                    <title>Update Metadata Response: JSON </title><programlisting language="json"><xi:include href="samples/metadata-update-resp.json" parse="text"/></programlisting>
                 </example>
             </section>
             <?hard-pagebreak?>
@@ -4327,16 +4223,10 @@ Host: servers.api.openstack.org/v2/
                         <parameter>key</parameter>.</para>
                 <para>This operation does not require a request body. </para>
                 <example>
-                    <title>Metadata Item Response: XML </title>
-                    <programlisting language="xml">
-<xi:include href="samples/metadata_item.xml" parse="text"/>
-                    </programlisting>
+                    <title>Metadata Item Response: XML </title><programlisting language="xml"><xi:include href="samples/metadata_item.xml" parse="text"/></programlisting>
                 </example>
                 <example>
-                    <title>Metadata Item Response: JSON </title>
-                    <programlisting language="json">
-<xi:include href="samples/metadata_item.json" parse="text"/>
-                    </programlisting>
+                    <title>Metadata Item Response: JSON </title><programlisting language="json"><xi:include href="samples/metadata_item.json" parse="text"/></programlisting>
                 </example>
             </section>
             <?hard-pagebreak?>
@@ -4422,29 +4312,17 @@ Host: servers.api.openstack.org/v2/
                     pairs for an image may be queried via the
                     maxImageMeta absolute limit. </para>
                 <example>
-                    <title>Set Metadata Item Request: XML </title>
-                    <programlisting language="xml">
-<xi:include href="samples/metadata_item.xml" parse="text"/>
-                    </programlisting>
+                    <title>Set Metadata Item Request: XML </title><programlisting language="xml"><xi:include href="samples/metadata_item.xml" parse="text"/></programlisting>
                 </example>
                 <example>
-                    <title>Set Metadata Item Request: JSON </title>
-                    <programlisting language="json">
-<xi:include href="samples/metadata_item.json" parse="text"/>
-                    </programlisting>
+                    <title>Set Metadata Item Request: JSON </title><programlisting language="json"><xi:include href="samples/metadata_item.json" parse="text"/></programlisting>
                 </example>
                 <?hard-pagebreak?>
                 <example>
-                    <title>Set Metadata Item Response: XML </title>
-                    <programlisting language="xml">
-<xi:include href="samples/metadata_item.xml" parse="text"/>
-                    </programlisting>
+                    <title>Set Metadata Item Response: XML </title><programlisting language="xml"><xi:include href="samples/metadata_item.xml" parse="text"/></programlisting>
                 </example>
                 <example>
-                    <title>Set Metadata Item Response: JSON </title>
-                    <programlisting language="json">
-<xi:include href="samples/metadata_item.json" parse="text"/>
-                    </programlisting>
+                    <title>Set Metadata Item Response: JSON </title><programlisting language="json"><xi:include href="samples/metadata_item.json" parse="text"/></programlisting>
                 </example>
             </section>
             <?hard-pagebreak?>
