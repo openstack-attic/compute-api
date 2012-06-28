@@ -383,7 +383,8 @@
           </p>
         </xsd:documentation>
       </annotation>
-    </attribute>    <attribute type="csapi:UUID" name="id"   use="optional">
+    </attribute>
+    <attribute type="csapi:UUID" name="id"   use="optional">
       <annotation>
         <xsd:documentation
             xml:lang="EN"
@@ -599,50 +600,65 @@
           </xsd:documentation>
       </annotation>
       <complexContent>
-          <restriction base="csapi:Server">
-              <sequence>
-                  <element name="metadata" type="csapi:Metadata" minOccurs="0">
-                      <annotation>
-                          <xsd:documentation
-                              xml:lang="EN"
-                              xmlns="http://www.w3.org/1999/xhtml">
-                              <p>
-                                  A collection of meta data items associated with the server.
-                              </p>
-                          </xsd:documentation>
-                      </annotation>
-                  </element>
-                  <element name="personality" type="csapi:Personality" minOccurs="0">
-                      <annotation>
-                          <xsd:documentation
-                              xml:lang="EN"
-                              xmlns="http://www.w3.org/1999/xhtml">
-                              <p>
-                                  A collection of small <a href="#type_File" title="See
-                                  definition of file">files</a> used to personalize a new
-                                  server instance.
-                              </p>
-                          </xsd:documentation>
-                      </annotation>
-                  </element>
-                  <any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
-              </sequence>
-              <attribute type="xsd:string" name="name" use="required"/>
-              <attribute type="xsd:anyURI" name="imageRef" use="required"/>
-              <attribute type="xsd:anyURI" name="flavorRef" use="required"/>
-              <attribute type="xsd:string" name="accessIPv4" use="optional"/>
-              <attribute type="xsd:string" name="accessIPv6" use="optional" />
-              <attribute type="xsd:string" name="adminPass" use="optional"/>
-              <attribute type="csapi:UUID" name="id"   use="prohibited"/>
-              <attribute type="xsd:string" name="tenant_id" use="prohibited"/>
-              <attribute type="xsd:string" name="user_id" use="prohibited"/>
-              <attribute type="xsd:string" name="hostId" use="prohibited"/>
-              <attribute type="csapi:Progress" name="progress"  use="prohibited"/>
-              <attribute type="csapi:ExtensibleServerStatus" name="status" use="prohibited"/>
-              <attribute type="xsd:dateTime" name="updated" use="prohibited"/>
-              <attribute type="xsd:dateTime" name="created" use="prohibited"/>
-              <anyAttribute namespace="##other" processContents="lax"/>
-          </restriction>
+          <extension base="csapi:Server">
+              <attribute type="xsd:int" name="min_count" use="optional">
+                  <annotation>
+                      <xsd:documentation
+                          xml:lang="EN"
+                          xmlns="http://www.w3.org/1999/xhtml">
+                          <p>
+                              The number of servers that you
+                              will accept in the build request,
+                              at a minimum.
+                          </p>
+                      </xsd:documentation>
+                  </annotation>
+              </attribute>
+              <attribute type="xsd:int" name="max_count" use="optional">
+                  <annotation>
+                      <xsd:documentation
+                          xml:lang="EN"
+                          xmlns="http://www.w3.org/1999/xhtml">
+                          <p>
+                              The number of servers that you
+                              want to build in the request.
+                          </p>
+                      </xsd:documentation>
+                  </annotation>
+              </attribute>
+              <assert vc:minVersion="1.1" test="not(@id or @tenant_id or @user_id or @hostId or @progress or
+                                                @status or @updated or @created or csapi:image or
+                                                csapi:flavor or csapi:addresses or csapi:fault)">
+                  <annotation>
+                      <xsd:documentation
+                         xml:lang="EN"
+                         xmlns="http://www.w3.org/1999/xhtml">
+                         <p>
+                             When creating a server.  The server
+                             <strong>MUST NOT</strong> contain an id,
+                             tentant_id, user_id, hostId, progress,
+                             status, updated or created. The server
+                             must also not contain an embeded image an
+                             embeded flavor, addresses, or an asynch
+                             fault.
+                         </p>
+                     </xsd:documentation>
+                 </annotation>
+              </assert>
+              <assert vc:minVersion="1.1" test="@name and @imageRef and @flavorRef">
+                  <annotation>
+                     <xsd:documentation
+                         xml:lang="EN"
+                         xmlns="http://www.w3.org/1999/xhtml">
+                         <p>
+                             When creating a server.  The server
+                             <strong>MUST</strong> contain a name,
+                             imageRef and flavorRef.
+                         </p>
+                     </xsd:documentation>
+                 </annotation>
+              </assert>
+          </extension>
       </complexContent>
   </complexType>
 
