@@ -64,7 +64,7 @@
         </copyright>
         <releaseinfo>API v2</releaseinfo>
         <productname>OpenStack Compute</productname>
-        <pubdate>2012-06-08</pubdate>
+        <pubdate>2012-05-30</pubdate>
         <legalnotice role="apache2">
             <annotation>
                 <remark>Copyright details are filled in by the
@@ -78,19 +78,6 @@
                     (<abbrev>API</abbrev>). </para>
         </abstract>
         <revhistory>
-            <revision>
-                <!-- ... continue addding more revisions here as you change this document using the markup shown below... -->
-                <date>2012-06-08</date>
-                <revdescription>
-                    <itemizedlist>
-                        <listitem>
-                            <para>Added the min_count and max_count
-                                attributes to the create server API
-                                operation.</para>
-                        </listitem>
-                    </itemizedlist>
-                </revdescription>
-            </revision>
             <revision>
                 <!-- ... continue addding more revisions here as you change this document using the markup shown below... -->
                 <date>2012-05-30</date>
@@ -2010,16 +1997,6 @@ Host: servers.api.openstack.org/v2/
                         </thead>
                         <tbody>
                             <tr>
-                                <td>min_count</td>
-                                <td>The number of servers that you
-                                   will accept in the build request,
-                                   at a minimum. The max_count
-                                   attribute specifies the number of
-                                   server you would like to build. </td>
-                                <td>No</td>
-
-                            </tr>
-                            <tr>
                                 <td>imageRef</td>
                                 <td><para>The image reference for the
                                    desired image for your server
@@ -2030,18 +2007,6 @@ Host: servers.api.openstack.org/v2/
                                    linkend="List_Images-d1e4435"
                                    />.</para></td>
                                 <td>Yes</td>
-                            </tr>
-                            <tr>
-                                <td>max_count</td>
-                                <td>The number of servers that you
-                                   want to build in the request. For
-                                   example, if your cloud provider
-                                   account supports it and your quota
-                                   limits will not be exceeded with
-                                   the request, you can specify 50 to
-                                   build 50 servers in a single
-                                   request. </td>
-                                <td>No</td>
                             </tr>
                             <tr>
                                 <td>flavorRef</td>
