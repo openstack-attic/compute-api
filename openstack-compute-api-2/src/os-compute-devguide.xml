@@ -52,7 +52,7 @@
                 <surname/>
             </personname>
             <affiliation>
-                <orgname>Rackspace Cloud</orgname>
+                <orgname>OpenStack LLC</orgname>
             </affiliation>
         </author>
         <copyright>
@@ -60,7 +60,7 @@
             <year>2010</year>
             <year>2011</year>
             <year>2012</year>
-            <holder>Rackspace US, Inc.</holder>
+            <holder>OpenStack LLC</holder>
         </copyright>
         <releaseinfo>API v2</releaseinfo>
         <productname>OpenStack Compute</productname>
@@ -471,17 +471,6 @@
                 document from the OpenStack Docs website at <link
                     xlink:href="http://docs.openstack.org">
                     http://docs.openstack.org</link>. </para>
-            <para>For more details about the Cloud Servers service
-                that this API is based upon, see <link
-                    xlink:href="http://www.rackspacecloud.com/cloud_hosting_products/servers"
-                    >http://www.rackspacecloud.com/cloud_hosting_products/servers</link>.
-                This site also provides related documents and links to
-                official support channels for Rackspace, including
-                    <link
-                    xlink:href="http://www.rackspace.com/knowledge_center/"
-                    >knowledge base articles</link>, <link
-                    xlink:href=" http://beta.forums.rackspace.com/"
-                    >forums</link>, phone, chat, and email.</para>
         </section>
     </chapter>
     <chapter xml:id="Concepts-d1e369">
@@ -1070,9 +1059,9 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
         </section>
         <section xml:id="Versions-d1e1193">
             <title>Versions</title>
-            <para> The OpenStack Compute API uses both a URI and a
-                MIME type versioning scheme. In the URI scheme, the
-                first element of the path contains the target version
+            <para>The OpenStack Compute API uses both a URI and a MIME
+                type versioning scheme. In the URI scheme, the first
+                element of the path contains the target version
                 identifier (e.g. https://servers.api.openstack.org/
                 v1.0/&hellip;). The MIME type versioning scheme uses
                 HTTP content negotiation where the <code>Accept</code>
