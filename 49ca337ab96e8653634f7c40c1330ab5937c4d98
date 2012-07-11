@@ -1,0 +1,8 @@
+Verified+2: Jenkins
+Approved+1: Brian Waldon <brian.waldon@rackspace.com>
+Code-Review+2: Brian Waldon <brian.waldon@rackspace.com>
+Submitted-by: Jenkins
+Submitted-at: Wed, 11 Jul 2012 22:14:13 +0000
+Reviewed-on: https://review.openstack.org/9664
+Project: openstack/compute-api
+Branch: refs/heads/master
