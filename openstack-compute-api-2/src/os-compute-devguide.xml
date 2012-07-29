@@ -740,12 +740,6 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                     (<errorcode>413</errorcode>) fault may be thrown.
                 A marker with an invalid ID will return a badRequest
                     (<errorcode>400</errorcode>) fault. </para>
-            <note>
-                <para> Paginated collections never return itemNotFound
-                        (<errorcode>404</errorcode>) faults when the
-                    collection is empty &mdash; clients should expect
-                    an empty collection. </para>
-            </note>
             <para> For convenience, collections are required to
                 contain atom "next" links. They may optionally also
                 contain "previous" links. The last page in the list
