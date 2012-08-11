@@ -1,0 +1,8 @@
+Verified+2: Jenkins
+Approved+1: Lorin Hochstein <lorin@nimbisservices.com>
+Code-Review+2: Lorin Hochstein <lorin@nimbisservices.com>
+Submitted-by: Jenkins
+Submitted-at: Sat, 11 Aug 2012 21:58:52 +0000
+Reviewed-on: https://review.openstack.org/10488
+Project: openstack/compute-api
+Branch: refs/heads/master
