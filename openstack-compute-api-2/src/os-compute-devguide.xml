@@ -1056,16 +1056,18 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
             <para>The OpenStack Compute API uses both a URI and a MIME
                 type versioning scheme. In the URI scheme, the first
                 element of the path contains the target version
-                identifier (e.g. https://servers.api.openstack.org/
-                v1.0/&hellip;). The MIME type versioning scheme uses
-                HTTP content negotiation where the <code>Accept</code>
-                or <code>Content-Type</code> headers contains a MIME
-                type that identifies the version
-                (application/vnd.openstack.compute.v2+xml). A version
-                MIME type is always linked to a base MIME type
-                (application/xml or application/json). If conflicting
-                versions are specified using both an HTTP header and a
-                URI, the URI takes precedence. </para>
+                identifier such as:</para>
+            <programlisting>https://servers.api.openstack.org/
+                v1.0/&hellip;</programlisting>
+            <para>The MIME type versioning scheme uses HTTP content
+                negotiation where the <code>Accept</code> or
+                    <code>Content-Type</code> headers contains a MIME
+                type that identifies the version:</para>
+            <programlisting>application/vnd.openstack.compute.v2+xml</programlisting>
+            <para>A version MIME type is always linked to a base MIME
+                type (application/xml or application/json). If
+                conflicting versions are specified using both an HTTP
+                header and a URI, the URI takes precedence. </para>
             <example>
                 <title>Request with MIME type versioning</title>
                 <literallayout class="monospaced">
