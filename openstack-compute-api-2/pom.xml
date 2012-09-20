@@ -167,6 +167,7 @@
                     </includes>
                     <canonicalUrlBase>http://docs.openstack.org/api/openstack-compute/2/content/</canonicalUrlBase>
                     <profileSecurity>reviewer</profileSecurity>
+                    <profileOs>openstack</profileOs>
                     <branding>openstack</branding>
                 </configuration>
             </plugin>

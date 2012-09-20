@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section [
+<!-- Some useful entities borrowed from HTML -->
+<!ENTITY ndash  "&#x2013;">
+<!ENTITY mdash  "&#x2014;">
+<!ENTITY hellip "&#x2026;">
+<!ENTITY plusmn "&#xB1;">
+
+<!-- Useful for describing APIs -->
+<!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
+<!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
+<!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
+<!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
+
+<!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+<imageobject role="fo">
+<imagedata fileref="figures/Check_mark_23x20_02.svg"
+format="SVG" scale="60"/>
+</imageobject>
+<imageobject role="html">
+<imagedata fileref="../figures/Check_mark_23x20_02.png"
+format="PNG" />
+</imageobject>
+</inlinemediaobject>'>
+
+<!ENTITY ARROW  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+<imageobject role="fo">
+<imagedata fileref="figures/Arrow_east.svg"
+format="SVG" scale="60"/>
+</imageobject>
+<imageobject role="html">
+<imagedata fileref="../figures/Arrow_east.png"
+format="PNG" />
+</imageobject>
+</inlinemediaobject>'>
+]>
+<section xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
+    xml:id="section_admin_concepts">
+    <?dbhtml stop-chunking?>
+    <title>OpenStack Compute Concepts</title>
+    <para>To use the OpenStack Compute service, you should understand
+        these key concepts: <informaltable rules="all">
+            <col width="15%"/>
+            <col width="85%"/>
+            <thead>
+                <tr>
+                    <th>Concept</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Server</td>
+                    <td>A virtual machine (VM) instance running on a
+                        host. To create a server, you must specify a
+                        name, flavor reference, and image reference.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Flavor</td>
+                    <td>A resource configuration for a server. Each
+                        flavor is a unique combination of disk space,
+                        memory capacity, and priority for CPU
+                        time.</td>
+                </tr>
+                <tr>
+                    <td>Image</td>
+                    <td>A collection of files for a specific operating
+                        system (OS) that you use to create or rebuild
+                        a server. Providers supply pre-built images.
+                        You can also create custom images from servers
+                        that you have launched. Custom images can be
+                        used for data backups or as "gold" images for
+                        additional servers. </td>
+                </tr>
+                <tr>
+                    <td>Reboot</td>
+                    <td>This action performs either a soft or hard
+                        reboot of a server. A soft reboot is a
+                        graceful shutdown and restart of the operating
+                        system on your server. A hard reboot power
+                        cycles your server, which performs an
+                        immediate shutdown and restart. </td>
+                </tr>
+                <tr>
+                    <td>Rebuild</td>
+                    <td>This action removes all data on the server and
+                        replaces it with the specified image. Server
+                        ID and IP addresses on the server remain the
+                        same. </td>
+                </tr>
+                <tr>
+                    <td>Resize</td>
+                    <td>This action converts an existing server to a
+                        different flavor, which scales the server up
+                        or down. The original server is saved for a
+                        period of time to allow rollback if a problem
+                        occurs. You can confirm or revert a resize. A
+                        confirmed resize removes the original server.
+                        A reverted resize restores the original
+                        server. All resizes are automatically
+                        confirmed after 24 hours if you do not
+                        explicitly confirm or revert them. </td>
+                </tr>
+            </tbody>
+        </informaltable></para>
+</section>

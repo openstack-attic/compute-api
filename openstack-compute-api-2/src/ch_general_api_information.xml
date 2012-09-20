@@ -1,0 +1,1181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter [
+<!-- Some useful entities borrowed from HTML -->
+<!ENTITY ndash  "&#x2013;">
+<!ENTITY mdash  "&#x2014;">
+<!ENTITY hellip "&#x2026;">
+<!ENTITY plusmn "&#xB1;">
+
+<!-- Useful for describing APIs -->
+<!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
+<!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
+<!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
+<!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
+
+<!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+<imageobject role="fo">
+<imagedata fileref="figures/Check_mark_23x20_02.svg"
+format="SVG" scale="60"/>
+</imageobject>
+<imageobject role="html">
+<imagedata fileref="../figures/Check_mark_23x20_02.png"
+format="PNG" />
+</imageobject>
+</inlinemediaobject>'>
+
+<!ENTITY ARROW  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+<imageobject role="fo">
+<imagedata fileref="figures/Arrow_east.svg"
+format="SVG" scale="60"/>
+</imageobject>
+<imageobject role="html">
+<imagedata fileref="../figures/Arrow_east.png"
+format="PNG" />
+</imageobject>
+</inlinemediaobject>'>
+]>
+<chapter xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
+    xml:id="ch_general_api_information">
+    <title>General API Information</title>
+    <para>API v2 is defined as a ReSTful HTTP service that uses all
+        aspects of the HTTP protocol, including methods, URIs, media
+        types, and response codes. Providers are free to use existing
+        features of the protocol such as caching, persistent
+        connections, and content compression among others. For
+        example, providers who employ a caching layer can respond with
+        a <returnvalue>203</returnvalue> instead of a
+            <returnvalue>200</returnvalue> when a request is served
+        from the cache. Additionally, providers can offer support for
+        conditional &GET; requests by using ETags, or send a redirect
+        in response to a &GET; request. Providers should write clients
+        to account for these differences. </para>
+    <para os="openstack">Providers can return information identifying
+        requests in HTTP response headers, for example, to facilitate
+        communication between the provider and client users. </para>
+    <para>API v2 supports both the JSON and XML data serialization
+        request and response formats. </para>
+
+
+    <xi:include href="section_concepts.xml"/>
+    <xi:include href="section_auth.xml"/>
+    <section xml:id="Request_Response_Types-d1e459">
+        <title>Request/Response Types</title>
+        <para>API v2 supports both the JSON and XML data serialization
+            request and response formats. </para>
+        <para>You specify the request format in the
+                <code>Content-Type</code> header in the request. This
+            header is required for operations that have a request
+            body. The syntax for the <code>Content-Type</code> header
+            is:
+            <programlisting>Content-Type: application/<parameter>format</parameter></programlisting></para>
+        <para>Where <parameter>format</parameter> is either
+                <literal>json</literal> or
+            <literal>xml</literal>.</para>
+        <para>You specify the response format by using one of the
+            following methods:</para>
+        <itemizedlist>
+            <listitem>
+                <para><code>Accept</code> header. The syntax for the
+                        <code>Accept</code> header is:
+                    <programlisting>Accept: application/<parameter>format</parameter></programlisting></para>
+                <para>Where <parameter>format</parameter> is either
+                        <constant>json</constant> or
+                        <constant>xml</constant>.</para>
+            </listitem>
+            <listitem>
+                <para>Query extension. Add an <literal>.xml</literal>
+                    or <literal>.json</literal> extension to the
+                    request URI. For example, the
+                        <literal>.xml</literal> extension in the
+                    following URI request specifies that the response
+                    body is returned in XML format:
+                    <programlisting>&POST; /v2/010101/servers.xml</programlisting></para>
+
+            </listitem>
+        </itemizedlist>
+        <para>If you do not specify a response format, JSON is the
+            default.</para>
+        <para>If you specify conflicting formats in the
+                <code>Accept</code> header and the query extension,
+            the format specified in the query extension takes
+            precedence. For example, if the query extension is
+                <literal>.xml</literal> and the <code>Accept</code>
+            header specifies <literal>application/json</literal>, the
+            response is returned in XML format.</para>
+
+        <para>You can serialize a response in a different format from
+            the request format. <xref linkend="JSON_req"/> and <xref
+                linkend="ImageCreateFullResponse"/> show a request
+            body in JSON format and a response body in XML format. </para>
+
+
+        <example xml:id="JSON_req">
+            <title>Request with Headers: JSON</title>
+            <programlisting language="json"><?db-font-size 70%?>POST /v2/214412/servers HTTP/1.1
+Host: servers.api.openstack.org
+Content-Type: application/json
+Accept: application/xml
+X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb </programlisting>
+
+            <programlisting os="openstack" language="json"><?db-font-size 70%?><xi:include href="samples/server-post-req.json" parse="text"/></programlisting>
+        </example>
+        <?hard-pagebreak?>
+        <para><xref linkend="ImageCreateFullResponse"/> shows the
+            headers and XML response returned by the JSON
+            request:</para>
+        <example xml:id="ImageCreateFullResponse">
+            <title>Response with Headers: XML</title>
+            <programlisting language="xml"><?db-font-size 70%?>HTTP/1.1 200 OK
+Date: Mon, 12 Nov 2007 15:55:01 GMT
+Server: Apache
+Content-Length: 1863
+Content-Type: application/xml; charset=UTF-           </programlisting>
+
+            <programlisting os="openstack" language="xml"><?db-font-size 70%?><xi:include href="samples/server-post-resp.xml" parse="text"/></programlisting>
+        </example>
+        <para>The following example shows an alternative method of
+            achieving the same result. The following request uses an
+            URI extension of <literal>.xml</literal> instead of an
+                <code>Accept</code> header to request an XML
+            response.</para>
+        <note>
+            <para>The XML response is not shown. </para>
+        </note>
+        <example xml:id="diff_serialization">
+            <title>JSON Request with XML Query Extension for the
+                Response</title>
+            <programlisting language="json"><?db-font-size 70%?>POST /v2/214412/servers.xml HTTP/1.1
+Host: servers.api.openstack.org
+Content-Type: application/json
+X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb               </programlisting>
+
+            <programlisting os="openstack" language="json"><?db-font-size 70%?><xi:include href="samples/server-post-req.json" parse="text"/></programlisting>
+        </example>
+    </section>
+    <?hard-pagebreak?>
+    <section xml:id="LinksReferences">
+        <title>Links and References</title>
+        <para>Resources often need to refer to other resources. For
+            example, when you create a server, you must specify the
+            image from which to build the server. You can specify the
+            image by providing an ID or a URL to a remote image. When
+            you provide an ID for a resource, it is assumed that the
+            resource exists in the current <phrase os="openstack"
+                >Openstack deployment</phrase>.</para>
+
+
+
+        <example>
+            <title>Image Reference in Create Server Request: JSON
+                Request</title>
+
+            <programlisting os="openstack" language="json"><?db-font-size 70%?><xi:include href="samples/server-post-req-short.json" parse="text"/></programlisting>
+        </example>
+        <example>
+            <title>Full Image Reference in Create Server Request: JSON
+                Request</title>
+
+            <programlisting os="openstack" language="json"><xi:include href="samples/server-post-req.json" parse="text"/></programlisting>
+        </example>
+
+        <example>
+            <title>Image Reference in Create Server Request: XML
+                Request</title>
+
+            <programlisting os="openstack" language="xml"><xi:include href="samples/server-post-req-short.xml" parse="text"/></programlisting>
+        </example>
+        <example>
+            <title>Full Image Reference in Create Server Request: XML
+                Request</title>
+
+            <programlisting os="openstack" language="xml"><xi:include href="samples/server-post-req.xml" parse="text"/></programlisting>
+        </example>
+
+
+        <para>For convenience, resources contain links to themselves.
+            This allows a client to easily obtain resource URIs rather
+            than to construct them. The following kinds of link
+            relations are associated with resources:<itemizedlist>
+                <listitem>
+                    <para><code>self</code>. Contains a versioned link
+                        to the resource. Use these links when the link
+                        will be followed immediately. </para>
+                </listitem>
+                <listitem>
+                    <para><code>bookmark</code>. Provides a permanent
+                        link to a resource that is appropriate for
+                        long-term storage. </para>
+                </listitem>
+                <listitem>
+                    <para><code>alternate</code>. Contains an
+                        alternate representation of the resource. For
+                        example, a OpenStack Compute image might have
+                        an alternate representation in the OpenStack
+                        Compute image service. </para>
+                </listitem>
+            </itemizedlist>In the following examples, the
+                <literal>rel</literal> attribute shows the type of
+            representation to expect when following the link. </para>
+
+        <example>
+            <title>Server with Self Links: JSON</title>
+            <programlisting language="json"><?db-font-size 70%?><xi:include href="samples/server-simple.json" parse="text"/></programlisting>
+        </example>
+        <example>
+            <title>Server with Alternate Link: JSON</title>
+            <programlisting language="json"><?db-font-size 70%?><xi:include href="samples/image-simple.json" parse="text"/></programlisting>
+        </example>
+
+        <example>
+            <title>Server with Self Links: XML</title>
+            <programlisting language="xml"><?db-font-size 70%?><xi:include href="samples/server-simple.xml" parse="text"/></programlisting>
+        </example>
+
+
+        <example>
+            <title>Image with Alternate Link: XML</title>
+            <programlisting language="xml"><?db-font-size 70%?><xi:include href="samples/image-simple.xml" parse="text"/></programlisting>
+        </example>
+
+
+    </section>
+    <?hard-pagebreak?>
+    <section xml:id="Paginated_Collections-d1e664">
+        <title>Paginated Collections</title>
+        <para>To reduce load on the service, list operations return a
+            maximum number of items at a time. The maximum number of
+            items returned is determined by the compute
+            provider.</para>
+        <para>To navigate the collection, you can set the
+                <parameter>limit</parameter> and
+                <parameter>marker</parameter> parameters in the URI
+            request. For example:</para>
+        <programlisting>?<parameter>limit</parameter>=100&amp;<parameter>marker</parameter>=1234</programlisting>
+        <para>The <parameter>marker</parameter> parameter is the ID of
+            the last item in the previous list. Items are sorted by
+            create time in descending order. When a create time is not
+            available, the items are sorted by ID. A marker with an ID
+            that is not valid returns an itemNotFound
+                (<errorcode>404</errorcode>) fault. </para>
+        <para>The <parameter>limit</parameter> parameter sets the page
+            size. If the client specifies a
+                <parameter>limit</parameter> value that is greater
+            than the supported limit, an overLimit
+                (<errorcode>413</errorcode>) fault might be thrown. </para>
+        <para>Both parameters are optional. </para>
+        <note>
+            <para>Paginated collections never return itemNotFound
+                    (<errorcode>404</errorcode>) faults when the
+                collection is empty &mdash; clients should expect an
+                empty collection. </para>
+        </note>
+        <para>For convenience, collections contain atom "next" links
+            and can optionally contain "previous" links. The last page
+            in the list contains a "next" link. </para>
+        <para>The following examples show pages in a collection of
+            images. </para>
+        <para>To get the first page, issue a &GET; request to the
+            following endpoint and set the
+                <parameter>limit</parameter> parameter to the page
+            size of a single item:
+            <programlisting>http://dfw.servers.api.rackspacecloud.com/v2/010101/images?limit=1</programlisting></para>
+        <para>Subsequent links honor the initial page size. A client
+            can follow links to traverse a paginated collection. </para>
+        <?hard-pagebreak?>
+
+
+        <section xml:id="json_collection">
+            <title>JSON Collection</title>
+            <para>In JSON, members in a paginated collection are
+                stored in a JSON array named after the collection. A
+                JSON object can also hold members in cases where using
+                an associative array is more practical. Properties
+                about the collection itself, including links, are
+                contained in an array with the name of the entity an
+                underscore (_) and <code>links</code>. The combination
+                of the objects and arrays that start with the name of
+                the collection and an underscore represent the
+                collection in JSON. </para>
+            <para>This approach allows for extensibility of paginated
+                collections by allowing them to be associated with
+                arbitrary properties. It also allows collections to be
+                embedded in other objects.</para>
+            <example>
+                <title>Images Collection &ndash; First Page:
+                    JSON</title>
+                <programlisting language="json"><?db-font-size 70%?><xi:include href="samples/images-page1.json" parse="text"/></programlisting>
+            </example>
+            <example>
+                <title>Images Collection &ndash; Second Page:
+                    JSON</title>
+                <programlisting language="json"><?db-font-size 70%?><xi:include href="samples/images-page2.json" parse="text"/></programlisting>
+            </example>
+
+
+            <example>
+                <title>Images Collection &ndash; Last Page:
+                    JSON</title>
+                <programlisting language="json"><?db-font-size 70%?><xi:include href="samples/images-page3.json" parse="text"/></programlisting>
+            </example>
+        </section>
+        <section xml:id="xml_collection">
+            <title>XML Collection</title>
+            <example>
+                <title>Images Collection &ndash; First Page:
+                    XML</title>
+                <programlisting language="xml"><?db-font-size 70%?><xi:include href="samples/images-page1.xml" parse="text"/></programlisting>
+            </example>
+            <example>
+                <title>Images Collection &ndash; Second Page:
+                    XML</title>
+                <programlisting language="xml"><?db-font-size 70%?><xi:include href="samples/images-page2.xml" parse="text"/></programlisting>
+            </example>
+            <example>
+                <title>Images Collection &ndash; Last Page:
+                    XML</title>
+                <programlisting language="xml"><?db-font-size 70%?><xi:include href="samples/images-page3.xml" parse="text"/></programlisting>
+            </example>
+            
+            <example>
+                <title>Paginated Metadata in an Image: XML</title>
+                <programlisting language="xml"><?db-font-size 70%?><xi:include href="samples/image-meta-page1.xml" parse="text"/></programlisting>
+            </example>
+            
+            <example>
+                <title>Paginated Metadata in an Image: JSON</title>
+                <programlisting language="json"><?db-font-size 70%?><xi:include href="samples/image-meta-page1.json" parse="text"/></programlisting>
+            </example>
+        </section>
+
+
+       
+    </section>
+    <?hard-pagebreak?>
+    <section xml:id="ChangesSince">
+        <title>Efficient Polling with the
+                <parameter>Changes-Since</parameter> Parameter</title>
+        <para>You can poll for the status of certain operations by
+            issuing a &GET; request on various elements. Rather than
+            re-downloading and re-parsing the full status at each
+            polling interval, you can use the
+                <parameter>changes-since</parameter> parameter to
+            check for changes since a previous request. The
+                <parameter>changes-since</parameter> time is specified
+            as an <link
+                xlink:href="http://en.wikipedia.org/wiki/ISO_8601">ISO
+                8601</link> dateTime (2011-01-24T17:08Z). </para>
+        <para>The format for the timestamp
+            is:<programlisting>CCYY-MM-DDThh:mm:ss</programlisting>Optionally,
+            to return the time zone as an offset from UTC, append the
+            following:<programlisting>&plusmn;hh:mm</programlisting>If
+            you omit the time zone (2011-01-24T17:08), the UTC time
+            zone is assumed. </para>
+        <para>If data has changed, only the items changed since the
+            specified time are returned in the response.</para>
+        <para>If date has not changed since the
+                <parameter>changes-since</parameter> time, an empty
+            list is returned. </para>
+        <para>For example, issue a &GET; request against the following
+            endpoint to list all servers that have changed since Mon,
+            24 Jan 2011 17:08:00 UTC:
+            <programlisting>https://api.servers.openstack.org/v2/010101/servers?<parameter>changes-since</parameter>=2011-01-24T17:08:00Z</programlisting></para>
+        <para>To enable you to keep track of changes, the
+                <parameter>changes-since</parameter> filter also
+            displays images and servers that have been deleted
+            provided that the <parameter>changes-since</parameter>
+            filter specifies a date in the last 30 days. Items deleted
+            more than 30 days ago might be returned, but it is not
+            guaranteed.</para>
+    </section>
+    <?hard-pagebreak?>
+    <section xml:id="Limits-d1e846">
+        <title>Limits</title>
+        <para>Accounts are configured with thresholds, or limits, that
+            manage capacity and prevent abuse of the system. </para>
+        <para>The system recognizes the following types of limits: <itemizedlist>
+                <listitem>
+                    <para><firstterm>rate limits</firstterm>. Control
+                        the frequency at which the user can issue
+                        specific API requests. See <xref
+                            linkend="os-Rate_Limits-d1e862"/>.</para>
+                </listitem>
+                <listitem>
+                    <para><firstterm>absolute limits</firstterm>.
+                        Control the total number of specific objects
+                        that the user can possess simultaneously. See
+                            <xref linkend="os-Absolute_Limits-d1e994"
+                        />.</para>
+                </listitem>
+            </itemizedlist></para>
+        <para><phrase os="openstack">Limits are configured by
+                providers and might differ from one deployment of the
+                OpenStack Compute service to another. Contact your
+                provider to determine the limits that apply to your
+                account or </phrase><phrase os="rack">To query the
+                limits programmatically, </phrase>see <xref
+                linkend="ProgrammaticLimits"/>. </para>
+
+        <section os="openstack" xml:id="os-Rate_Limits-d1e862">
+            <title>Rate Limits</title>
+            <para>Rate limits are specified in terms of both a
+                human-readable wild-card URI and a machine-processable
+                regular expression. The human-readable limit is
+                intended for displaying in graphical user interfaces.
+                The machine-processable form is intended to be used
+                directly by client applications. </para>
+            <para>The regular expression boundary matcher "^" for the
+                rate limit takes effect after the root URI path. For
+                example, the regular expression ^/servers would match
+                the bolded portion of the following URI:
+                    https://servers.api.openstack.org/v2/1234<emphasis
+                    role="bold">/servers</emphasis>. </para>
+            <table rules="all">
+                <caption>Sample Rate Limits</caption>
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="2">RegEx</td>
+                        <td colspan="1">Default</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="2">*</td>
+                        <td colspan="2">.*</td>
+                        <td colspan="1">10/min</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="2">*/servers</td>
+                        <td colspan="2">^/servers</td>
+                        <td colspan="1">50/day</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="2">*</td>
+                        <td colspan="2">.*</td>
+                        <td colspan="1">10/min</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2">*changes-since*</td>
+                        <td colspan="2">changes-since</td>
+                        <td colspan="1">3/min</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="2">*</td>
+                        <td colspan="2">.*</td>
+                        <td colspan="1">100/min</td>
+                    </tr>
+                </tbody>
+            </table>
+            <para>Rate limits are applied in order relative to the
+                verb, going from least to most specific. For example,
+                although the threshold for &POST; to */servers is 50
+                per day, one cannot &POST; to */servers more than 10
+                times within a single minute because the rate limits
+                for any &POST; is 10/min. </para>
+            <para>In the event a request exceeds the thresholds
+                established for your account, a
+                    <errorcode>413</errorcode> HTTP response will be
+                returned with a <code>Retry-After</code> header to
+                notify the client when they can attempt to try again.
+            </para>
+        </section>
+        <?hard-pagebreak?>
+
+        <section os="openstack" xml:id="os-Absolute_Limits-d1e994">
+            <title>Absolute Limits</title>
+            <para>Absolute limits are specified as name/value pairs.
+                The name of the absolute limit uniquely identifies the
+                limit within a deployment. Consult your provider for
+                an exhaustive list of absolute value names. An
+                absolute limit value is always specified as an
+                integer. The name of the absolute limit determines the
+                unit type of the integer value. For example, the name
+                    <literal>maxServerMeta</literal> specifies limits
+                for server metadata items. </para>
+            <table rules="all">
+                <caption>Sample Absolute Limits</caption>
+                <thead>
+                    <tr>
+                        <th colspan="2">Name</th>
+                        <th colspan="1" align="right">Value</th>
+                        <th colspan="3">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="2">maxTotalRAMSize</td>
+                        <td colspan="1" align="right">51200</td>
+                        <td colspan="3">Maximum total amount of RAM
+                            (MB)</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">maxServerMeta</td>
+                        <td colspan="1" align="right">5</td>
+                        <td colspan="3">Maximum number of metadata
+                            items associated with a server</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">maxImageMeta</td>
+                        <td colspan="1" align="right">5</td>
+                        <td colspan="3">Maximum number of metadata
+                            items associated with an Image</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">maxPersonality</td>
+                        <td colspan="1" align="right">5</td>
+                        <td colspan="3">The maximum number of file
+                            path/content pairs that can be supplied on
+                            server build</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">maxPersonalitySize</td>
+                        <td colspan="1" align="right">10240</td>
+                        <td colspan="3">The maximum size, in bytes,
+                            for each personality file</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="ProgrammaticLimits">
+            <title>Get Limits</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2">/limits</td>
+                        <td colspan="3">Gets the current rate and
+                            absolute limits for your account.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <simpara>Normal Response Codes:
+                    <returnvalue>200</returnvalue>,
+                    <returnvalue>203</returnvalue>
+            </simpara>
+            <simpara>Error Response Codes: computeFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>, &hellip;),
+                serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), forbidden
+                    (<errorcode>403</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), Method Not Allowed
+                    (<errorcode>405</errorcode>), overLimit
+                    (<errorcode>413</errorcode>) </simpara>
+            <para>Applications can programmatically determine current
+                account limits by using this API operation. </para>
+            <para>This operation does not require a request
+                body.</para>
+            <para>This operation returns a response body.</para>
+
+
+            <example>
+                <title>Get Limits: JSON Response</title>
+
+                <programlisting os="openstack" language="json"><?db-font-size 65% ?><xi:include href="samples/limits.json" parse="text"/></programlisting>
+            </example>
+            <?hard-pagebreak?>
+            <example>
+                <title>Get Limits: XML Response</title>
+
+                <programlisting os="openstack" language="xml"><?db-font-size 70%?><xi:include href="samples/limits.xml" parse="text"/></programlisting>
+            </example>
+        </section>
+    </section>
+
+
+
+
+
+    <?hard-pagebreak?>
+    <section os="openstack" xml:id="os-Versions-d1e1193">
+        <title>Versions</title>
+        <para>The OpenStack Compute API uses both a URI and a MIME
+            type versioning scheme. In the URI scheme, the first
+            element of the path contains the target version identifier
+            (e.g. https://servers.api.openstack.org/ v1.0/&hellip;).
+            The MIME type versioning scheme uses HTTP content
+            negotiation where the <code>Accept</code> or
+                <code>Content-Type</code> headers contains a MIME type
+            that identifies the version
+            (application/vnd.openstack.compute.v2+xml). A version MIME
+            type is always linked to a base MIME type (application/xml
+            or application/json). If conflicting versions are
+            specified using both an HTTP header and a URI, the URI
+            takes precedence. </para>
+        <example>
+            <title>Request with MIME type versioning</title>
+            <literallayout class="monospaced">
+GET /214412/images HTTP/1.1
+Host: servers.api.openstack.org
+Accept: application/vnd.openstack.compute.v2+xml
+X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+                </literallayout>
+        </example>
+        <example>
+            <title>Request with URI versioning</title>
+            <literallayout class="monospaced">
+GET /v2/214412/images HTTP/1.1
+Host: servers.api.openstack.org
+Accept: application/xml
+X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+                </literallayout>
+        </example>
+        <note>
+            <para>The MIME type versioning approach allows for the
+                creating of permanent links, because the version
+                scheme is not specified in the URI path:
+                    <uri>https://api.servers.openstack.org/224532/servers/123</uri>.
+            </para>
+        </note>
+        <?hard-pagebreak?>
+        <para>If a request is made without a version specified in the
+            URI or through HTTP headers, a multiple-choices response
+                (<returnvalue>300</returnvalue>) is returned that
+            provides links and MIME types to available versions. </para>
+
+        <example>
+            <title>Multiple Choices Response: JSON</title>
+            <programlisting language="json"><?db-font-size 90%?><xi:include href="samples/choices.json" parse="text"/></programlisting>
+        </example>
+        <?hard-pagebreak?>
+        <example>
+            <title>Multiple Choices Response: XML</title>
+            <programlisting language="xml"><?db-font-size 90%?><xi:include href="samples/choices.xml" parse="text"/></programlisting>
+        </example>
+        <?hard-pagebreak?>
+        <para>New features and functionality that do not break
+            API-compatibility will be introduced in the current
+            version of the API as extensions (see below) and the URI
+            and MIME types will remain unchanged. Features or
+            functionality changes that would necessitate a break in
+            API-compatibility will require a new version, which will
+            result in URI and MIME type version being updated
+            accordingly. When new API versions are released, older
+            versions will be marked as <code>DEPRECATED</code>.
+            Providers should work with developers and partners to
+            ensure there is adequate time to migrate to the new
+            version before deprecated versions are discontinued. </para>
+        <para>Your application can programmatically determine
+            available API versions by performing a &GET; on the root
+            URL (i.e. with the version and everything to the right of
+            it truncated) returned from the authentication system.
+            Note that an Atom representation of the versions resources
+            is supported when issuing a request with the
+                <code>Accept</code> header containing
+            application/atom+xml or by adding a .atom to the request
+            URI. This allows standard Atom clients to track version
+            changes. </para>
+        <example>
+            <title>Versions List Request</title>
+            <literallayout class="monospaced">
+GET HTTP/1.1
+Host: servers.api.openstack.org
+                </literallayout>
+        </example>
+        <simpara>Normal Response Codes: <returnvalue>200</returnvalue>
+            and <returnvalue>203</returnvalue>
+        </simpara>
+        <simpara>Error Response Codes: <errorcode>400</errorcode>,
+                <errorcode>413</errorcode>,
+            <errorcode>500</errorcode>, <errorcode>503</errorcode>
+        </simpara>
+        <para>This operation does not require a request body.</para>
+
+        <example>
+            <title>Versions List Response: Atom</title>
+            <programlisting language="xml"><?db-font-size 80% ?><xi:include href="samples/versions-atom.xml" parse="text"/></programlisting>
+        </example>
+        <example>
+            <title>Versions List Response: JSON</title>
+            <programlisting language="json"><?db-font-size 80% ?><xi:include href="samples/versions.json" parse="text"/></programlisting>
+        </example>
+        <?hard-pagebreak?>
+        <example>
+            <title>Versions List Response: XML</title>
+            <programlisting language="xml"><?db-font-size 80% ?><xi:include href="samples/versions.xml" parse="text"/></programlisting>
+        </example>
+        <?hard-pagebreak?>
+        <para>You can also obtain additional information about a
+            specific version by performing a &GET; on the base version
+            URL (e.g. https://servers.api.openstack.org/v2/). Version
+            request URLs should always end with a trailing slash (/).
+            If the slash is omitted, the server may respond with a
+                <returnvalue>302</returnvalue> redirection request.
+            Format extensions may be placed after the slash (e.g.
+            https://servers.api.openstack.org/v2/.xml). Note that this
+            is a special case that does not hold true for other API
+            requests. In general, requests such as /servers.xml and
+            /servers/.xml are handled equivalently. </para>
+        <example>
+            <title>Version Details Request</title>
+            <literallayout class="monospaced">
+GET HTTP/1.1
+Host: servers.api.openstack.org/v2/
+                </literallayout>
+        </example>
+        <simpara> Normal Response Code(s):
+                <returnvalue>200</returnvalue>,
+                <returnvalue>203</returnvalue>
+        </simpara>
+        <simpara> Error Response Code(s): computeFault
+                (<errorcode>400</errorcode>,
+                <errorcode>500</errorcode>, &hellip;),
+            serviceUnavailable (<errorcode>503</errorcode>),
+            unauthorized (<errorcode>401</errorcode>), forbidden
+                (<errorcode>403</errorcode>), badRequest
+                (<errorcode>400</errorcode>), badMethod
+                (<errorcode>405</errorcode>), overLimit
+                (<errorcode>413</errorcode>) </simpara>
+        <para>This operation does not require a request body</para>
+
+        <example>
+            <title>Version Details Response: Atom</title>
+            <programlisting language="xml"><xi:include href="samples/version-atom.xml" parse="text"/></programlisting>
+        </example>
+        <?hard-pagebreak?>
+        <example>
+            <title>Version Details Response: JSON</title>
+            <programlisting language="json"><?db-font-size 90%?><xi:include href="samples/version.json" parse="text"/></programlisting>
+        </example>
+        <?hard-pagebreak?>
+        <example>
+            <title>Version Details Response: XML</title>
+            <programlisting language="xml"><xi:include href="samples/version.xml" parse="text"/></programlisting>
+        </example>
+        <para>The detailed version response contains pointers to both
+            a human-readable and a machine-processable description of
+            the API service. The machine-processable description is
+            written in the Web Application Description Language
+            (WADL). </para>
+        <note>
+            <para>If there is a discrepancy between the two
+                specifications, the WADL is authoritative as it
+                contains the most accurate and up-to-date description
+                of the API service. </para>
+        </note>
+    </section>
+    <?hard-pagebreak?>
+    <section xml:id="Extensions-d1e1444">
+        <title>Extensions</title>
+        <para>The OpenStack Compute API is extensible. Extensions
+            serve two purposes: They allow the introduction of new
+            features in the API without requiring a version change and
+            they allow the introduction of vendor specific niche
+            functionality. Applications can programmatically determine
+            what extensions are available by performing a &GET; on the
+            /extensions URI. Note that this is a versioned request
+            &mdash; that is, an extension available in one API version
+            may not be available in another. You can list available
+            extensions and get details for a specific
+            extension.</para>
+        <section xml:id="get_extensions">
+            <title>List Extensions</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2">/extensions</td>
+                        <td colspan="3">Lists available
+                            extensions.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <simpara>Normal Response Codes:
+                    <returnvalue>200</returnvalue>,
+                    <returnvalue>203</returnvalue>
+            </simpara>
+            <simpara>Error Response Codes: computeFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>, &hellip;),
+                serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), forbidden
+                    (<errorcode>403</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), Method Not Allowed
+                    (<errorcode>405</errorcode>), overLimit
+                    (<errorcode>413</errorcode>) </simpara>
+            <para>Applications can programmatically determine which
+                extensions are available by issuing a &GET; on the
+                    <code>/extensions</code> URI. </para>
+
+            <para>This operation does not require a request body. </para>
+            <para>This operation returns a response body. In the
+                response body, each extension is identified by two
+                unique identifiers, a <property>namespace</property>
+                and an <property>alias</property>. Additionally an
+                extension contains documentation links in various
+                formats. </para>
+
+
+
+            <example>
+
+                <title>Get Extensions: JSON Response</title>
+
+                <programlisting os="openstack" language="json"><?db-font-size 70%?><xi:include href="samples/extensions.json" parse="text"/></programlisting>
+            </example>
+            <?hard-pagebreak?>
+
+            <example>
+
+                <title>Get Extensions: XML Response</title>
+
+                <programlisting os="openstack" language="xml"><?db-font-size 70%?><xi:include href="samples/extensions.xml" parse="text"/></programlisting>
+            </example>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="get_extension_details">
+            <title>Get Extension Details</title>
+            <para>You can also query extensions by their unique alias
+                to determine if an extension is available. An
+                unavailable extension issues an itemNotFound
+                    (<errorcode>404</errorcode>) response. </para>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2"
+                                >/extensions/<parameter>alias</parameter></td>
+                        <td colspan="3">Gets details about a specific
+                            extension.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <simpara>Normal Response Codes:
+                    <returnvalue>200</returnvalue>,
+                    <returnvalue>203</returnvalue>
+            </simpara>
+            <simpara>Error Response Codes: computeFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>, &hellip;),
+                serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), forbidden
+                    (<errorcode>403</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), Method Not Allowed
+                    (<errorcode>405</errorcode>), overLimit
+                    (<errorcode>413</errorcode>), itemNotFound
+                    (<errorcode>404</errorcode>) </simpara>
+            <para>This operation does not require a request
+                body.</para>
+            <para>This operation returns a response body.</para>
+            <para>The following examples show how to query the OS-DCF
+                extension:</para>
+
+
+
+            <example>
+                <title>Get Extension: JSON Response</title>
+                <programlisting language="json"><?db-font-size 70%?><xi:include href="samples/extension.json" parse="text"/></programlisting>
+            </example>
+
+
+            <example>
+                <title>Get Extension: XML Response</title>
+                <programlisting language="xml"><?db-font-size 70%?><xi:include href="samples/extension.xml" parse="text"/></programlisting>
+            </example>
+        </section>
+        <section xml:id="extended_actions">
+            <title>Extended Responses and Actions</title>
+            <para>Use extensions to define new data types, parameters,
+                actions, headers, states, and resources. </para>
+            <para>In XML, you can define additional elements and
+                attributes. Define these elements in the namespace for
+                the extension. </para>
+            <para>In JSON, you must use the alias. The volumes element
+                in the <xref linkend="ServersCBSX"
+                    xrefstyle="template: Examples %n"/> and <xref
+                    linkend="ServersCBSJ"
+                    xrefstyle="select:
+                        labelnumber"
+                /> is defined in the <code>RS-CBS</code> namespace. </para>
+            <para>Actions work in exactly the same manner as
+                illustrated in <xref linkend="CBSAX"
+                    xrefstyle="template: Examples %n"/> and <xref
+                    linkend="CBSAJ" xrefstyle="select: labelnumber"/>.
+                Extended headers are always prefixed with
+                    <code>X-</code> followed by the alias and a dash:
+                    (<code>X-RS-CBS-HEADER1</code>). You must prefix
+                states and parameters with the extension alias
+                followed by a colon. For example, an image can be in
+                the <code>RS-PIE:PrepareShare</code> state. </para>
+            <important>
+                <para>Applications should be prepared to ignore
+                    response data that contains extension elements. An
+                    extended state should always be treated as an
+                        <code>UNKNOWN</code> state if the application
+                    does not support the extension. Applications
+                    should also verify that an extension is available
+                    before submitting an extended request. </para>
+            </important>
+
+            <example xml:id="CBSAJ">
+                <title>Extended Action: JSON Request</title>
+                <programlisting language="json"><?db-font-size 70%?><xi:include href="samples/ext-action.json" parse="text"/></programlisting>
+            </example>
+            <example xml:id="ServersCBSJ">
+                <title>Extended Server: JSON Response</title>
+                <programlisting language="json"><?db-font-size 70%?><xi:include href="samples/ext-servers.json" parse="text"/></programlisting>
+            </example>
+            <example xml:id="CBSAX">
+                <title>Extended Action: XML Request</title>
+                <programlisting language="xml"><?db-font-size 70%?><xi:include href="samples/ext-action.xml" parse="text"/></programlisting>
+            </example>
+            <example xml:id="ServersCBSX">
+                <title>Extended Server: XML Response</title>
+                <programlisting language="xml"><?db-font-size 70%?><xi:include href="samples/ext-servers.xml" parse="text"/></programlisting>
+            </example>
+
+
+        </section>
+    </section>
+    <?hard-pagebreak?>
+    <section xml:id="Faults-d1e1724">
+        <title>Faults</title>
+        <para>The API v2 handles the following types of faults: <itemizedlist>
+                <listitem>
+                    <para>Synchronous faults occur at request time.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>Asynchronous faults occur in the background
+                        while a server or image is being built or a
+                        server is executing an action. When an
+                        asynchronous fault occurs, the system places
+                        the server or image in an <code>ERROR</code>
+                        state and embeds the fault in the offending
+                        server or image. </para>
+                </listitem>
+            </itemizedlist>
+        </para>
+        <para>When a synchronous or asynchronous fault occurs, the
+            fault contains an HTTP status code, a human readable
+            message, and optional details about the error.
+            Additionally, an asynchronous fault might also contain a
+            time stamp that indicates when the fault occurred. </para>
+        <section xml:id="Synchronous_Faults-d1e1729">
+            <title>Synchronous Faults</title>
+            <para>Synchronous faults occur at request time. When a
+                synchronous fault occurs, the fault contains an HTTP
+                error response code, a human readable message, and
+                optional details about the error. </para>
+
+            <example>
+                <title>Fault: JSON Response</title>
+                <programlisting language="json"><?db-font-size 70%?><xi:include href="samples/fault.json" parse="text"/></programlisting>
+            </example>
+            <example>
+                <title>Fault: XML Response</title>
+                <programlisting language="xml"><?db-font-size 70%?><xi:include href="samples/fault.xml" parse="text"/></programlisting>
+            </example>
+            <para>The error response code is returned in the body of
+                the response for convenience. The message section
+                returns a human-readable message that is appropriate
+                for display to the end user. The details section is
+                optional and may contain information&mdash;for
+                example, a stack trace&mdash;to assist in tracking
+                down an error. The detail section may or may not be
+                appropriate for display to an end user. </para>
+            <para>The root element of the fault, such as computeFault,
+                may change depending on the type of error. The
+                following table lists possible elements with the
+                associated error response codes:</para>
+            <?hard-pagebreak?>
+            <table rules="all" width="100%">
+                <caption>Fault Elements and Error Response
+                    Codes</caption>
+                <thead>
+                    <tr>
+                        <td>Fault Element</td>
+                        <td>Associated Error Response Code</td>
+                        <td>Expected in All Requests?</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>computeFault</td>
+                        <td>500, 400, other codes possible</td>
+                        <td align="center">&CHECK;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><emphasis role="bold">Client
+                                errors</emphasis></td>
+                    </tr>
+                    <tr>
+                        <td>badRequest</td>
+                        <td>400</td>
+                        <td align="center">&CHECK;</td>
+                    </tr>
+                    <tr>
+                        <td>unauthorized</td>
+                        <td>401</td>
+                        <td align="center">&CHECK;</td>
+                    </tr>
+                    <tr>
+                        <td>forbidden</td>
+                        <td>403</td>
+                        <td align="center">&CHECK;</td>
+                    </tr>
+                    <tr>
+                        <td>resizeNotAllowed</td>
+                        <td>403</td>
+                        <td/>
+                    </tr>
+                    <tr>
+                        <td>itemNotFound</td>
+                        <td>404</td>
+                        <td/>
+                    </tr>
+                    <tr>
+                        <td>Method Not Allowed</td>
+                        <td>405</td>
+                        <td/>
+                    </tr>
+
+                    <tr>
+                        <td>buildInProgress</td>
+                        <td>409</td>
+                        <td/>
+                    </tr>
+                    <tr>
+                        <td>backupOrResizeInProgress</td>
+                        <td>409</td>
+                        <td/>
+                    </tr>
+                    <tr>
+                        <td>overLimit</td>
+                        <td>413</td>
+                        <td align="center">&CHECK;</td>
+                    </tr>
+                    <tr>
+                        <td>badMediaType</td>
+                        <td>415</td>
+                        <td/>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><emphasis role="bold">Server
+                                errors</emphasis></td>
+                    </tr>
+
+                    <tr>
+                        <td>notImplemented</td>
+                        <td>501</td>
+                        <td/>
+                    </tr>
+
+
+                    <tr>
+                        <td>serviceUnavailable</td>
+                        <td>503</td>
+                        <td align="center">&CHECK;</td>
+                    </tr>
+                    <tr>
+                        <td>serverCapacityUnavailable</td>
+                        <td>503</td>
+                        <td/>
+                    </tr>
+
+
+
+                </tbody>
+            </table>
+
+            <example>
+                <title>Fault, Item Not Found: JSON Response</title>
+                <programlisting language="json"><?db-font-size 70%?><xi:include href="samples/notfound.json" parse="text"/></programlisting>
+            </example>
+            <example>
+                <title>Fault, Item Not Found: XML Response</title>
+                <programlisting language="xml"><?db-font-size 70%?><xi:include href="samples/notfound.xml" parse="text"/>
+                    </programlisting>
+            </example>
+            <para>From an XML schema perspective, all API faults are
+                extensions of the base fault type ComputeAPIFault.
+                When working with a system that binds XML to actual
+                classes (such as JAXB), one should be capable of using
+                ComputeAPIFault as a “catch-all” if there's no
+                interest in distinguishing between individual fault
+                types. </para>
+            <para>The OverLimit fault is generated when a rate limit
+                threshold is exceeded. For convenience, the fault adds
+                a <property>retryAt</property> attribute that contains
+                the content of the Retry-After header in XML Schema
+                1.0 date/time format. </para>
+
+            <example>
+                <title>Fault, Over Limit: JSON Response</title>
+                <programlisting language="json"><?db-font-size 70%?><xi:include href="samples/overlimit.json" parse="text"/></programlisting>
+            </example>
+            <example>
+                <title>Fault, Over Limit: XML Response</title>
+                <programlisting language="xml"><?db-font-size 70%?><xi:include href="samples/overlimit.xml" parse="text"/></programlisting>
+            </example>
+        </section>
+        <section xml:id="Asynchronous_Faults-d1e2009">
+            <title>Asynchronous Faults</title>
+            <para>Asynchronous faults occur in the background while a
+                server or image is being built or a server is
+                executing an action. When an asynchronous fault
+                occurs, the system places the server or image in an
+                    <code>ERROR</code> state and embeds the fault in
+                the offending server or image. </para>
+            <para>When an asynchronous fault occurs, the fault
+                contains an HTTP error response code, a human readable
+                message, and optional details about the error. An
+                asynchronous fault might also contain a time stamp
+                that indicates when the fault occurred. </para>
+            <?hard-pagebreak?>
+            <example>
+                <title>Server in Error State: JSON</title>
+                <programlisting language="json"><?db-font-size 70%?><xi:include href="samples/server-fault.json" parse="text"/></programlisting>
+            </example>
+            <?hard-pagebreak?>
+            <example>
+                <title>Server in Error State: XML</title>
+                <programlisting language="xml"><?db-font-size 70%?><xi:include href="samples/server-fault.xml" parse="text"/></programlisting>
+            </example>
+            <?hard-pagebreak?>
+            <example>
+                <title>Image in Error State: JSON</title>
+                <programlisting language="json"><?db-font-size 70%?><xi:include href="samples/image-fault.json" parse="text"/></programlisting>
+            </example>
+            <?hard-pagebreak?>
+            <example>
+                <title>Image in Error State: XML</title>
+                <programlisting language="xml"><?db-font-size 70%?><xi:include href="samples/image-fault.xml" parse="text"/></programlisting>
+            </example>
+
+
+        </section>
+        <?hard-pagebreak?>
+
+    </section>
+</chapter>

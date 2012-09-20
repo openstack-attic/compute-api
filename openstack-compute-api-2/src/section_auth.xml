@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section [
+<!-- Some useful entities borrowed from HTML -->
+<!ENTITY ndash  "&#x2013;">
+<!ENTITY mdash  "&#x2014;">
+<!ENTITY hellip "&#x2026;">
+<!ENTITY plusmn "&#xB1;">
+
+<!-- Useful for describing APIs -->
+<!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
+<!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
+<!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
+<!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
+
+<!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+<imageobject role="fo">
+<imagedata fileref="figures/Check_mark_23x20_02.svg"
+format="SVG" scale="60"/>
+</imageobject>
+<imageobject role="html">
+<imagedata fileref="../figures/Check_mark_23x20_02.png"
+format="PNG" />
+</imageobject>
+</inlinemediaobject>'>
+
+<!ENTITY ARROW  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+<imageobject role="fo">
+<imagedata fileref="figures/Arrow_east.svg"
+format="SVG" scale="60"/>
+</imageobject>
+<imageobject role="html">
+<imagedata fileref="../figures/Arrow_east.png"
+format="PNG" />
+</imageobject>
+</inlinemediaobject>'>
+]>
+
+<section xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
+    xml:id="os-auth">
+    <title>Authenticate</title>
+    <para os="openstack">Each HTTP request against the OpenStack
+        Compute system requires the inclusion of specific
+        authentication credentials. A single deployment might support
+        multiple authentication schemes, such as OAuth, Basic Auth,
+        and Token. The authentication scheme used is determined by the
+        provider of the OpenStack Compute system. Contact your
+        provider to determine the best way to authenticate against
+        this API. </para>
+    <note os="openstack">
+        <para>Some authentication schemes might require that the API
+            operate by using SSL over HTTP (HTTPS). </para>
+    </note>
+</section>
