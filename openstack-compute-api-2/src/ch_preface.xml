@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter [
+<!-- Some useful entities borrowed from HTML -->
+<!ENTITY ndash "&#x2013;">
+<!ENTITY mdash "&#x2014;">
+<!ENTITY hellip "&#x2026;">
+<!ENTITY plusmn "&#xB1;">
+
+<!-- Useful for describing APIs -->
+<!ENTITY GET '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
+<!ENTITY PUT '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
+<!ENTITY POST '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
+<!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
+
+<!ENTITY CHECK '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+<imageobject role="fo">
+<imagedata fileref="figures/Check_mark_23x20_02.svg"
+format="SVG" scale="60"/>
+</imageobject>
+<imageobject role="html">
+<imagedata fileref="../figures/Check_mark_23x20_02.png"
+format="PNG" />
+</imageobject>
+</inlinemediaobject>'>
+
+<!ENTITY ARROW '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+<imageobject role="fo">
+<imagedata fileref="figures/Arrow_east.svg"
+format="SVG" scale="60"/>
+</imageobject>
+<imageobject role="html">
+<imagedata fileref="../figures/Arrow_east.png"
+format="PNG" />
+</imageobject>
+</inlinemediaobject>'>
+]>
+<preface xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
+    xml:id="ch_preface">
+    <title>Preface</title>
+    <para>OpenStack Compute is a compute service that provides server
+        capacity in the cloud. Compute Servers come in different
+        flavors of memory, cores, disk space, and CPU, and can be
+        provisioned in minutes. Interactions with Compute Servers can
+        occur programmatically via the OpenStack Compute API. </para>
+    <para>This document describes the features available with API
+        v2.</para>
+    <para>We welcome feedback, comments, and bug reports at <link
+            xlink:href="http://bugs.launchpad.net/nova"
+            >bugs.launchpad.net/nova</link>.</para>
+    <section xml:id="Intended_Audience-d1e85">
+        <title>Intended Audience</title>
+        <para>This guide assists software developers who want to
+            develop applications by using the OpenStack Compute API.
+            To use this information, you should have access to an
+            account from an OpenStack Compute provider, and you should
+            also be familiar with the following concepts: </para>
+        <itemizedlist spacing="compact">
+            <listitem>
+                <para>OpenStack Compute service</para>
+            </listitem>
+            <listitem>
+                <para>RESTful web services</para>
+            </listitem>
+            <listitem>
+                <para>HTTP/1.1</para>
+            </listitem>
+            <listitem>
+                <para>JSON and/or XML data serialization
+                    formats</para>
+            </listitem>
+        </itemizedlist>
+    </section>
+    <?hard-pagebreak?>
+    <section xml:id="Document_Change_History-d1e118">
+        <title>Document Change History</title>
+        <para>This version of the document replaces and obsoletes all
+            previous versions. The following table describes recent
+            changes:</para>
+        <?rax revhistory?>
+        <!-- Table generated in output from revision element in the book element -->
+    </section>
+    <?hard-pagebreak?>
+    <section xml:id="Additional_Resources-d1e346">
+        <title>Resources</title>
+        <para>For the latest version of this guide, see the <link
+                os="openstack" xlink:href="http://docs.openstack.org"
+                >OpenStack Docs website</link>.</para>
+
+    </section>
+
+</preface>
