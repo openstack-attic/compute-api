@@ -442,7 +442,11 @@
                 reboot of a server. With a soft reboot, the operating
                 system is signaled to restart, which allows for a
                 graceful shutdown of all processes. A hard reboot is
-                the equivalent of power cycling the server.
+                the equivalent of power cycling the server. The
+                virtualization platform should ensure that the reboot
+                action has completed successfully even in cases in
+                which the underlying domain/vm is paused or
+                halted/stopped.
             </para>
         </section>
         <section>
