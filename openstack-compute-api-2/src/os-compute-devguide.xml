@@ -509,6 +509,9 @@
                 operating system is signaled to restart, which allows
                 for a graceful shutdown of all processes. A hard
                 reboot is the equivalent of power cycling the server.
+                The virtualization platform should ensure that the
+                reboot action work even if the underlying domain/vm
+                is paused or halted/stopped.
             </para>
         </section>
         <section xml:id="Rebuild-d1e416">
