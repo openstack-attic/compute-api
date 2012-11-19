@@ -25,7 +25,6 @@
                        http://docs.openstack.org/common/api/v1.0
                        xsd/api-common.xsd
                        ">
-
     <grammars>
         <include href="xsd/api.xsd" />
         <include href="xsd/api-common.xsd" />
