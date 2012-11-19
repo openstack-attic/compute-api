@@ -25,6 +25,7 @@
                        http://docs.openstack.org/common/api/v1.0
                        xsd/api-common.xsd
                        ">
+
     <grammars>
         <include href="xsd/api.xsd" />
         <include href="xsd/api-common.xsd" />
@@ -590,7 +591,7 @@
         <response status="202"/>
         <response status="403">
             <representation mediaType="application/xml" element="osapi:resizeNotAllowed"/>
-            <representation mediaType="applicaiton/json"/>
+            <representation mediaType="application/json"/>
         </response>
         <!-- All other faults, build, common, get, post/put, and inProgress -->
         &commonFaults;
@@ -613,7 +614,7 @@
         <response status="204"/>
         <response status="403">
             <representation mediaType="application/xml" element="osapi:resizeNotAllowed"/>
-            <representation mediaType="applicaiton/json"/>
+            <representation mediaType="application/json"/>
         </response>
         <!-- All other faults, build, common, get, post/put, and inProgress -->
         &commonFaults;
@@ -636,7 +637,7 @@
         <response status="202"/>
         <response status="403">
             <representation mediaType="application/xml" element="osapi:resizeNotAllowed"/>
-            <representation mediaType="applicaiton/json"/>
+            <representation mediaType="application/json"/>
         </response>
         <!-- All other faults, build, common, get, post/put, and inProgress -->
         &commonFaults;
@@ -662,11 +663,11 @@
         </response>
         <response status="409">
             <representation mediaType="application/xml" element="osapi:backupOrResizeInProgress"/>
-            <representation mediaType="applicaiton/json"/>
+            <representation mediaType="application/json"/>
         </response>
         <response status="403">
             <representation mediaType="application/xml" element="osapi:resizeNotAllowed"/>
-            <representation mediaType="applicaiton/json"/>
+            <representation mediaType="application/json"/>
         </response>
         <!-- All other faults, build, common, get, post/put, and inProgress -->
         &commonFaults;
