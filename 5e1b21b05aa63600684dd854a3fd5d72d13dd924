@@ -1,0 +1,8 @@
+Verified+2: Jenkins
+Approved+1: Sean Dague <sdague@linux.vnet.ibm.com>
+Code-Review+2: Sean Dague <sdague@linux.vnet.ibm.com>
+Submitted-by: Jenkins
+Submitted-at: Thu, 29 Nov 2012 19:57:19 +0000
+Reviewed-on: https://review.openstack.org/17142
+Project: openstack/compute-api
+Branch: refs/heads/master
