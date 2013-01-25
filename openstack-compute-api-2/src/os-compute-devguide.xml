@@ -1530,7 +1530,7 @@ Host: servers.api.openstack.org/v2/
                     distinguishing between individual fault types. </para>
                 <para> The OverLimit fault is generated when a rate
                     limit threshold is exceeded. For convenience, the
-                    fault adds a <property>retryAt</property>
+                    fault adds a <property>retryAfter</property>
                     attribute that contains the content of the
                     Retry-After header in XML Schema 1.0 date/time
                     format. </para>
