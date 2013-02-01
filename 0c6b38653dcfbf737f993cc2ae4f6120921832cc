@@ -1,0 +1,8 @@
+Verified+2: Jenkins
+Approved+1: Tom Fifield
+Code-Review+2: Tom Fifield
+Submitted-by: Jenkins
+Submitted-at: Fri, 01 Feb 2013 03:09:37 +0000
+Reviewed-on: https://review.openstack.org/20509
+Project: openstack/compute-api
+Branch: refs/heads/master
