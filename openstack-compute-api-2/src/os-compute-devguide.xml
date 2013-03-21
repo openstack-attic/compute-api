@@ -532,6 +532,14 @@
                 are automatically confirmed after 24 hours if they are
                 not confirmed or reverted. </para>
         </section>
+        <section xml:id="Evacuate-d1e500">
+            <title>Evacuate</title>
+            <para> The evacuate function evacuates the server to the
+                specified host. If shared storage is configured the disk
+                data will be kept, otherwise it will be wiped and replaced
+                with the original image. Attached volumes, Server ID and IP
+                addresses remain the same. </para>
+        </section>
     </chapter>
     <chapter xml:id="General_API_Information-d1e436">
         <title>General API Information</title>
@@ -3419,6 +3427,132 @@ Host: servers.api.openstack.org/v2/
                     <programlisting language="json"><xi:include href="samples/createimage.json" parse="text"/></programlisting>
                 </example>
             </section>
+            <?hard-pagebreak?>
+            <section xml:id="Evacuate_Server-d1e5234">
+                <title>Evacuate Server</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="2">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&POST;</td>
+                            <td colspan="2"
+                                   >/servers/<parameter>id</parameter>/action</td>
+                            <td colspan="3">Evacuate the specified
+                                server.</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <simpara> Normal Response Code(s):
+                        <returnvalue>202</returnvalue>
+                </simpara>
+                <simpara> Error Response Code(s): computeFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>, &hellip;),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    forbidden (<errorcode>403</errorcode>), badRequest
+                        (<errorcode>400</errorcode>), badMethod
+                        (<errorcode>405</errorcode>), overLimit
+                        (<errorcode>413</errorcode>), itemNotFound
+                        (<errorcode>404</errorcode>), badMediaType
+                        (<errorcode>415</errorcode>),
+                    serverCapacityUnavailable
+                        (<errorcode>503</errorcode>), buildInProgress
+                        (<errorcode>409</errorcode>) </simpara>
+                <informaltable frame="void">
+                    <tbody>
+                        <tr>
+                            <td colspan="1">Status Transition:</td>
+                            <td colspan="3">
+                                <code>ACTIVE</code> &ARROW;
+                                   <code>REBUILD</code> &ARROW;
+                                   <code>ACTIVE</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1"/>
+                            <td colspan="3">
+                                <code>ACTIVE</code> &ARROW;
+                                   <code>REBUILD</code> &ARROW;
+                                   <code>ERROR</code> (on error) </td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>The evacuate operation rebuilds server on specified host.
+                    The server disk will be preserved with the data in case when server disk
+                    located on shared storage. The <property>serverRef</property>,
+                    volume attachments, passwords and all IP addresses will remain the same.</para>
+                <para>If the shared storage is not configured the disk data will be wiped out
+                    and the server will be rebuilded using original image. In this case 
+                    <property>adminPass</property> can be specified, otherwise it will
+                    be generated. The <property>serverRef</property>,volume attachments and IP
+                    addresses will remain the same.</para>
+                <para>Specify the server ID as
+                        <parameter>id</parameter> in the URI. </para>
+                <para>In the request body, specify the
+                        <parameter>evacuate</parameter> action followed
+                    by attributes. </para>
+                <para>The following table describes the attributes
+                    that you specify in the request body:</para>
+                <para>
+                    <table rules="all">
+                        <caption>Evacuate Server Request
+                            Attributes</caption>
+                        <col width="20%"/>
+                        <col width="60%"/>
+                        <col width="20%"/>
+                        <thead>
+                            <tr>
+                                <th>Attribute</th>
+                                <th>Description</th>
+                                <th>Required</th>
+                            </tr>
+                        </thead>
+                        <tbody>                            
+                            <tr>
+                                <td>host</td>
+                                <td><para>The name or ID of the host where the
+                                   server will be evacuated.</para></td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>adminPass</td>
+                                <td><para>The administrator password. Not 
+                                    specified with on-shared-storage.
+                                    </para></td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td>onSharedStorage</td>
+                                <td>Required if server on shared storage</td>
+                                <td>No</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </para>
+                <example>
+                    <title>Action Evacuate Request: XML </title>
+                    <programlisting language="xml"><xi:include href="samples/server-evacuate-req.xml" parse="text"/></programlisting>
+                </example>
+                <example>
+                    <title>Action Evacuate Request: JSON</title>
+                    <programlisting language="json"><xi:include href="samples/server-evacuate-req.json" parse="text"/></programlisting>
+                </example>
+                <example>
+                    <title>Action Evacuate Response: XML</title>
+                    <programlisting language="xml"><xi:include href="samples/server-evacuate-resp.xml" parse="text"/></programlisting>
+                </example>
+                <example>
+                    <title>Action Evacuate Response: JSON</title>
+                    <programlisting language="json"><?db-font-size 90%?><xi:include href="samples/server-evacuate-resp.json" parse="text"/></programlisting>
+                </example>
+            </section>            
         </section>
         <?hard-pagebreak?>
 
