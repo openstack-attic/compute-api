@@ -13,24 +13,16 @@
         <!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
 
         <!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
-                 <imageobject role="fo">
+                 <imageobject>
                   <imagedata fileref="figures/Check_mark_23x20_02.svg"
                              format="SVG" scale="60"/>
-                </imageobject>
-                 <imageobject role="html">
-                  <imagedata fileref="../figures/Check_mark_23x20_02.png"
-                             format="PNG" />
                 </imageobject>
               </inlinemediaobject>'>
 
         <!ENTITY ARROW  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
-                 <imageobject role="fo">
+                 <imageobject>
                   <imagedata fileref="figures/Arrow_east.svg"
                              format="SVG" scale="60"/>
-                </imageobject>
-                 <imageobject role="html">
-                  <imagedata fileref="../figures/Arrow_east.png"
-                             format="PNG" />
                 </imageobject>
               </inlinemediaobject>'>
 ]>

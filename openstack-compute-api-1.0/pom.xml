@@ -13,57 +13,17 @@
     <!-- ################################################ -->
     <!-- USE "mvn clean generate-sources" to run this POM -->
     <!-- ################################################ -->
-    <profiles>
-        <profile>
-            <id>Rackspace Research Repositories</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <repositories>
-                <repository>
-                    <id>rackspace-research</id>
-                    <name>Rackspace Research Repository</name>
-                    <url>http://maven.research.rackspacecloud.com/content/groups/public/</url>
-                </repository>
-            </repositories>
-            <pluginRepositories>
-                <pluginRepository>
-                    <id>rackspace-research</id>
-                    <name>Rackspace Research Repository</name>
-                    <url>http://maven.research.rackspacecloud.com/content/groups/public/</url>
-                </pluginRepository>
-            </pluginRepositories>
-        </profile>
-    </profiles>
     
     <build>
-        <resources>
-            <resource>
-                <directory>target/docbkx/pdf</directory>
-                <excludes>
-                    <exclude>**/*.fo</exclude>
-                </excludes>
-            </resource>
-        </resources>
         <plugins>
             
             <plugin>
                 <groupId>com.rackspace.cloud.api</groupId>
                 <artifactId>clouddocs-maven-plugin</artifactId>
-                <version>1.0.5-SNAPSHOT</version>
+                <version>1.7.2</version>
                 <executions>
                     <execution>
-                        <id>goal1</id>
-                        <goals>
-                            <goal>generate-pdf</goal>
-                        </goals>
-                        <phase>generate-sources</phase>
-                        <configuration>
-                            <highlightSource>false</highlightSource>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>goal2</id>
+                        <id>generate-webhelp</id>
                         <goals>
                             <goal>generate-webhelp</goal>
                         </goals>
@@ -90,32 +50,28 @@
                             <!-- The following elements sets the autonumbering of sections in output for chapter numbers but no numbered sections-->
                             <sectionAutolabel>0</sectionAutolabel>
                             <sectionLabelIncludesComponentLabel>0</sectionLabelIncludesComponentLabel>
+                            
+                            <webhelpDirname>openstack-compute-api-1.0</webhelpDirname>
+                            <targetDirectory>${basedir}/target/docbkx/webhelp/trunk/openstack-compute/developer</targetDirectory>
+                            <includeDateInPdfFilename>0</includeDateInPdfFilename>
+                            
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>cleanup</id>
+                        <goals>
+                            <goal>generate-webhelp</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <includes>dummy.xml</includes>
                             <postProcess>
-                                <!-- Copies the figures to the correct location for webhelp -->
-                                
-                                <!-- Why is this necessary? -->
-                                <mkdir dir="${basedir}/target/docbkx/webhelp/openstack-compute-api-1.0/cs-devguide"/>
-                                <copy
-                                    todir="${basedir}/target/docbkx/webhelp/trunk/openstack-compute/developer/openstack-compute-api-1.0">
-                                    <fileset
-                                        dir="${basedir}/target/docbkx/webhelp/openstack-compute-api-1.0/cs-devguide/">
-                                        <include name="**/*" />
+                                <delete includeemptydirs="true" verbose="true">
+                                    <fileset dir="${basedir}/target/docbkx" >
+                                        <include name="**/*"/>
+                                        <exclude name="webhelp/**"/>
                                     </fileset>
-                                </copy>
-                                
-                                <!--Moves PDFs to the needed placement -->
-                                <move failonerror="false"
-                                    file="${basedir}/target/docbkx/pdf/openstack-compute-api-1.0/cs-devguide.pdf"
-                                    tofile="${basedir}/target/docbkx/webhelp/trunk/openstack-compute/developer/openstack-compute-api-1.0/cs-devguide-trunk.pdf"/>
-                                
-                                                                
-                                <!--Deletes leftover uneeded directories -->
-                                
-                                <delete
-                                    dir="${basedir}/target/docbkx/webhelp/openstack-compute-api-1.0"/>
-                                
-                                
-                                
+                                </delete>
                             </postProcess>
                         </configuration>
                     </execution>
@@ -134,4 +90,26 @@
             
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>Rackspace Research Repositories</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <repositories>
+                <repository>
+                    <id>rackspace-research</id>
+                    <name>Rackspace Research Repository</name>
+                    <url>http://maven.research.rackspacecloud.com/content/groups/public/</url>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>rackspace-research</id>
+                    <name>Rackspace Research Repository</name>
+                    <url>http://maven.research.rackspacecloud.com/content/groups/public/</url>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
 </project>
