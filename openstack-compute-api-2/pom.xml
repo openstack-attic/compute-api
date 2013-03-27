@@ -50,7 +50,7 @@
             <plugin>
                 <groupId>com.rackspace.cloud.api</groupId>
                 <artifactId>clouddocs-maven-plugin</artifactId>
-                <version>1.5.2</version>
+                <version>1.7.2</version>
                 <executions>
                     <execution>
                         <id>goal1</id>
@@ -90,14 +90,17 @@
                             <!-- The following elements sets the autonumbering of sections in output for chapter numbers but no numbered sections-->
                             <!--<sectionAutolabel>0</sectionAutolabel>
                             <sectionLabelIncludesComponentLabel>0</sectionLabelIncludesComponentLabel>-->
+                            <targetDirectory>target/docbkx/webhelp/openstack-compute</targetDirectory>
+                            <webhelpDirname>2</webhelpDirname>
+                            <pdfFilenameBase>bk-compute-devguide-2</pdfFilenameBase>
                             <postProcess>
                                 <!-- Copies the figures to the correct location for webhelp -->
-                                
+                                <!--
                                 <copy todir="${basedir}/target/docbkx/webhelp/os-compute-devguide/figures">
                                     <fileset dir="${basedir}/src/figures">
                                         <include name="**/*.png" />
                                     </fileset>
-                                </copy>
+                                </copy>-->
                                 
                                <!-- New stuff -->
                                 <mkdir dir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/"/>
@@ -129,13 +132,13 @@
                                     </fileset>
                                 </copy>
                                                                
-                                <copy
+                              <!--  <copy
                                     todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/">
                                     <fileset
                                         dir="${basedir}/target/docbkx/webhelp/os-compute-devguide/">
                                         <include name="**/*" />
                                     </fileset>
-                                </copy>
+                                </copy>-->
                                 
                                 <!-- Copies wadl to a folder -->
                                 <copy todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/1.1/">
@@ -144,10 +147,10 @@
                                     </fileset>
                                 </copy>
                                 <!--Moves PDFs to the needed placement -->
-                                <move failonerror="false"
+                                <!--<move failonerror="false"
                                     file="${basedir}/target/docbkx/pdf/os-compute-devguide.pdf"
                                     tofile="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/os-compute-devguide-2.pdf"/>
-                               
+                               -->
                                                                 
                                 <!--Deletes leftover uneeded directories -->
                                 <delete
@@ -164,7 +167,6 @@
                     <includes>
                         os-compute-devguide.xml
                     </includes>
-                    <canonicalUrlBase>http://docs.openstack.org/api/openstack-compute/2/content/</canonicalUrlBase>
                     <profileSecurity>reviewer</profileSecurity>
                     <branding>openstack</branding>
                 </configuration>
