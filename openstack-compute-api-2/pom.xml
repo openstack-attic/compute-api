@@ -58,18 +58,251 @@
                             <goal>generate-pdf</goal>
                         </goals>
                         <phase>generate-sources</phase>
+                        <!-- OS Compute Dev Guide PDF -->
                         <configuration>
+                            <includes> os-compute-devguide.xml </includes>
                             <highlightSource>false</highlightSource>
                         </configuration>
+
                     </execution>
-                    <execution>
+                   <execution>
                         <id>goal2</id>
+                        <goals>
+                            <goal>generate-pdf</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+
+                        <configuration>
+                            <includes> os-compute-ext-devguide.xml </includes>
+                            <highlightSource>false</highlightSource>
+                        </configuration>
+                    </execution> 
+                    <execution>
+                        <id>goal3</id>
                         <goals>
                             <goal>generate-webhelp</goal>
                         </goals>
                         <phase>generate-sources</phase>
+                        <!-- OS Compute Dev Guide webhelp -->
                         <configuration>
                             <!-- These parameters only apply to webhelp -->
+                            <includes> os-compute-devguide.xml </includes>
+                            <enableDisqus>1</enableDisqus>
+                            <disqusShortname>openstackdocs</disqusShortname>
+                            <enableGoogleAnalytics>1</enableGoogleAnalytics>
+                            <googleAnalyticsId>UA-17511903-1</googleAnalyticsId>
+                            <generateToc> appendix toc,title
+                                article/appendix nop 
+                                article toc,title
+                                book title,figure,table,example,equation
+                                chapter toc,title 
+                                section toc, title
+                                part toc,title
+                                preface toc,title 
+                                qandadiv toc
+                                qandaset toc 
+                                reference toc,title 
+                                set toc,title </generateToc>
+                            <!-- The following elements sets the autonumbering of sections in output for chapter numbers but no numbered sections-->
+                            <!--<sectionAutolabel>0</sectionAutolabel>
+                            <sectionLabelIncludesComponentLabel>0</sectionLabelIncludesComponentLabel>-->
+                            <tocSectionDepth>1</tocSectionDepth>
+                            <tocChapterDepth>1</tocChapterDepth>
+                            <targetDirectory>target/docbkx/webhelp/openstack-compute</targetDirectory>
+                            <webhelpDirname>2</webhelpDirname>
+                            <pdfFilenameBase>bk-compute-devguide-2</pdfFilenameBase>
+                            <postProcess>
+                                <!-- Copies the figures to the correct location for webhelp -->
+                                <!--
+                                <copy todir="${basedir}/target/docbkx/webhelp/os-compute-devguide/figures">
+                                    <fileset dir="${basedir}/src/figures">
+                                        <include name="**/*.png" />
+                                    </fileset>
+                                </copy>-->
+                                
+                                <!-- New stuff -->
+                                <mkdir
+                                    dir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/"/>
+                                
+                                <!-- Copies schema to a folder and styling for the schemas so a browser can display them -->
+                                <copy
+                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/xsd">
+                                    <fileset dir="${basedir}/src/xsd">
+                                        <include name="**/*.*"/>
+                                    </fileset>
+                                </copy>
+                                <copy
+                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/xslt">
+                                    <fileset dir="${basedir}/src/xslt">
+                                        <include name="**/*.*"/>
+                                    </fileset>
+                                </copy>
+                                <copy
+                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/style">
+                                    <fileset dir="${basedir}/src/style">
+                                        <include name="**/*.*"/>
+                                    </fileset>
+                                </copy>
+                                <copy
+                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/js">
+                                    <fileset dir="${basedir}/src/js">
+                                        <include name="**/*.*"/>
+                                    </fileset>
+                                </copy>
+                                <copy
+                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/samples">
+                                    <fileset
+                                        dir="${basedir}/src/samples">
+                                        <include name="**/*.*"/>
+                                    </fileset>
+                                </copy>
+                                
+                                <!--  <copy
+                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/">
+                                    <fileset
+                                        dir="${basedir}/target/docbkx/webhelp/os-compute-devguide/">
+                                        <include name="**/*" />
+                                    </fileset>
+                                </copy>-->
+                                
+                                <!-- Copies wadl to a folder -->
+                                <copy
+                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/1.1/">
+                                    <fileset dir="${basedir}/src/">
+                                        <include name="**/*.wadl"/>
+                                    </fileset>
+                                </copy>
+                                <!--Moves PDFs to the needed placement -->
+                                <!--<move failonerror="false"
+                                    file="${basedir}/target/docbkx/pdf/os-compute-devguide.pdf"
+                                    tofile="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/os-compute-devguide-2.pdf"/>
+                               -->
+                                
+                                <!--Deletes leftover uneeded directories -->
+                                <delete
+                                    dir="${basedir}/target/docbkx/webhelp/os-compute-devguide"/>
+                                
+                            </postProcess>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>goal4</id>
+                        <goals>
+                            <goal>generate-webhelp</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <!-- OS Compute Dev Extensions Guide webhelp -->
+                        <configuration>
+                            <!-- These parameters only apply to webhelp -->
+                            <includes> os-compute-ext-devguide.xml </includes>
+                            <enableDisqus>1</enableDisqus>
+                            <disqusShortname>openstackdocs</disqusShortname>
+                            <enableGoogleAnalytics>1</enableGoogleAnalytics>
+                            <googleAnalyticsId>UA-17511903-1</googleAnalyticsId>
+                            <generateToc> appendix toc,title
+                                article/appendix nop 
+                                article toc,title
+                                book title,figure,table,example,equation
+                                chapter toc,title 
+                                section toc,title
+                                part toc,title
+                                preface toc,title 
+                                qandadiv toc
+                                qandaset toc 
+                                reference toc,title 
+                                set toc,title </generateToc>
+                            <!-- The following elements sets the autonumbering of sections in output for chapter numbers but no numbered sections-->
+                            <!--<sectionAutolabel>0</sectionAutolabel>
+                            <sectionLabelIncludesComponentLabel>0</sectionLabelIncludesComponentLabel>-->
+                            <tocSectionDepth>1</tocSectionDepth>
+                            <tocChapterDepth>1</tocChapterDepth>
+                            <targetDirectory>target/docbkx/webhelp/openstack-compute-ext</targetDirectory>
+                            <webhelpDirname>2</webhelpDirname>
+                            <pdfFilenameBase>bk-compute-ext-devguide-2</pdfFilenameBase>
+                            <postProcess>
+                                <!-- Copies the figures to the correct location for webhelp -->
+                                <!--
+                                <copy todir="${basedir}/target/docbkx/webhelp/os-compute-devguide/figures">
+                                    <fileset dir="${basedir}/src/figures">
+                                        <include name="**/*.png" />
+                                    </fileset>
+                                </copy>-->
+                                
+                                <!-- New stuff -->
+                                <mkdir
+                                    dir="${basedir}/target/docbkx/webhelp/api/openstack-compute-ext/2/"/>
+                                
+                                <!-- Copies schema to a folder and styling for the schemas so a browser can display them -->
+                                <copy
+                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute-ext/2/xsd">
+                                    <fileset dir="${basedir}/src/xsd">
+                                        <include name="**/*.*"/>
+                                    </fileset>
+                                </copy>
+                                <copy
+                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute-ext/2/xslt">
+                                    <fileset dir="${basedir}/src/xslt">
+                                        <include name="**/*.*"/>
+                                    </fileset>
+                                </copy>
+                                <copy
+                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute-ext/2/style">
+                                    <fileset dir="${basedir}/src/style">
+                                        <include name="**/*.*"/>
+                                    </fileset>
+                                </copy>
+                                <copy
+                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute-ext/2/js">
+                                    <fileset dir="${basedir}/src/js">
+                                        <include name="**/*.*"/>
+                                    </fileset>
+                                </copy>
+                                <copy
+                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute-ext/2/samples">
+                                    <fileset
+                                        dir="${basedir}/src/samples">
+                                        <include name="**/*.*"/>
+                                    </fileset>
+                                </copy>
+                                
+                                <!--  <copy
+                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/">
+                                    <fileset
+                                        dir="${basedir}/target/docbkx/webhelp/os-compute-devguide/">
+                                        <include name="**/*" />
+                                    </fileset>
+                                </copy>-->
+                                
+                                <!-- Copies wadl to a folder -->
+                                <copy
+                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute-ext/1.1/">
+                                    <fileset dir="${basedir}/src/">
+                                        <include name="**/*.wadl"/>
+                                    </fileset>
+                                </copy>
+                                <!--Moves PDFs to the needed placement -->
+                                <!--<move failonerror="false"
+                                    file="${basedir}/target/docbkx/pdf/os-compute-devguide.pdf"
+                                    tofile="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/os-compute-devguide-2.pdf"/>
+                               -->
+                                
+                                <!--Deletes leftover uneeded directories -->
+                                <delete
+                                    dir="${basedir}/target/docbkx/webhelp/os-compute-ext-devguide"/>
+                                
+                            </postProcess>
+                        </configuration>
+                    </execution>  
+                    <!--<execution>
+                        <id>goal4</id>
+                        <goals>
+                            <goal>generate-webhelp</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                      
+                        <configuration>
+                            
+                            <includes> os-compute-ext-devguide.xml </includes>
                             <enableDisqus>1</enableDisqus>
                             <disqusShortname>openstackdocs</disqusShortname>
                             <enableGoogleAnalytics>1</enableGoogleAnalytics>
@@ -86,93 +319,69 @@
                                 qandaset toc 
                                 reference toc,title 
                                 set toc,title </generateToc>
-                            <!-- The following elements sets the autonumbering of sections in output for chapter numbers but no numbered sections-->
-                            <!--<sectionAutolabel>0</sectionAutolabel>
-                            <sectionLabelIncludesComponentLabel>0</sectionLabelIncludesComponentLabel>-->
+                            
                             <tocSectionDepth>1</tocSectionDepth>
-                            <targetDirectory>target/docbkx/webhelp/openstack-compute</targetDirectory>
+                            <targetDirectory>target/docbkx/webhelp/openstack-compute-ext</targetDirectory>
                             <webhelpDirname>2</webhelpDirname>
                             <pdfFilenameBase>bk-compute-devguide-2</pdfFilenameBase>
                             <postProcess>
-                                <!-- Copies the figures to the correct location for webhelp -->
-                                <!--
-                                <copy todir="${basedir}/target/docbkx/webhelp/os-compute-devguide/figures">
-                                    <fileset dir="${basedir}/src/figures">
-                                        <include name="**/*.png" />
-                                    </fileset>
-                                </copy>-->
-
-                                <!-- New stuff -->
+                               
                                 <mkdir
-                                   dir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/"/>
+                                   dir="${basedir}/target/docbkx/webhelp/api/openstack-compute-ext/2/"/>
 
-                                <!-- Copies schema to a folder and styling for the schemas so a browser can display them -->
+                               
                                 <copy
-                                   todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/xsd">
+                                   todir="${basedir}/target/docbkx/webhelp/api/openstack-compute-ext/2/xsd">
                                    <fileset dir="${basedir}/src/xsd">
                                    <include name="**/*.*"/>
                                    </fileset>
                                 </copy>
                                 <copy
-                                   todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/xslt">
+                                   todir="${basedir}/target/docbkx/webhelp/api/openstack-compute-ext/2/xslt">
                                    <fileset dir="${basedir}/src/xslt">
                                    <include name="**/*.*"/>
                                    </fileset>
                                 </copy>
                                 <copy
-                                   todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/style">
+                                   todir="${basedir}/target/docbkx/webhelp/api/openstack-compute-ext/2/style">
                                    <fileset dir="${basedir}/src/style">
                                    <include name="**/*.*"/>
                                    </fileset>
                                 </copy>
                                 <copy
-                                   todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/js">
+                                   todir="${basedir}/target/docbkx/webhelp/api/openstack-compute-ext/2/js">
                                    <fileset dir="${basedir}/src/js">
                                    <include name="**/*.*"/>
                                    </fileset>
                                 </copy>
                                 <copy
-                                   todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/samples">
+                                   todir="${basedir}/target/docbkx/webhelp/api/openstack-compute-ext/2/samples">
                                    <fileset
                                    dir="${basedir}/src/samples">
                                    <include name="**/*.*"/>
                                    </fileset>
                                 </copy>
 
-                                <!--  <copy
-                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/">
-                                    <fileset
-                                        dir="${basedir}/target/docbkx/webhelp/os-compute-devguide/">
-                                        <include name="**/*" />
-                                    </fileset>
-                                </copy>-->
-
-                                <!-- Copies wadl to a folder -->
+                               
                                 <copy
-                                   todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/1.1/">
+                                   todir="${basedir}/target/docbkx/webhelp/api/openstack-compute-ext/1.1/">
                                    <fileset dir="${basedir}/src/">
                                    <include name="**/*.wadl"/>
                                    </fileset>
                                 </copy>
-                                <!--Moves PDFs to the needed placement -->
-                                <!--<move failonerror="false"
-                                    file="${basedir}/target/docbkx/pdf/os-compute-devguide.pdf"
-                                    tofile="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/os-compute-devguide-2.pdf"/>
-                               -->
-
-                                <!--Deletes leftover uneeded directories -->
+                                
                                 <delete
-                                   dir="${basedir}/target/docbkx/webhelp/os-compute-devguide"/>
+                                   dir="${basedir}/target/docbkx/webhelp/os-compute-devguide-ext"/>
 
                             </postProcess>
                         </configuration>
-                    </execution>
+                    </execution> -->
                 </executions>
                 <configuration>
                     <!-- These parameters apply to pdf and webhelp -->
                     <xincludeSupported>true</xincludeSupported>
                     <sourceDirectory>src</sourceDirectory>
-                    <includes> os-compute-devguide.xml </includes>
+                    <includes> os-compute-devguide.xml, os-compute-ext-devguide.xml </includes>
                     <profileSecurity>reviewer</profileSecurity>
                     <branding>openstack</branding>
                 </configuration>

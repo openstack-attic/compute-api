@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+        <!-- Some useful entities borrowed from HTML -->
+        <!ENTITY ndash  "&#x2013;">
+        <!ENTITY mdash  "&#x2014;">
+        <!ENTITY hellip "&#x2026;">
+        <!ENTITY plusmn "&#xB1;">
+
+        <!-- Useful for describing APIs -->
+        <!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
+        <!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
+        <!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
+        <!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
+
+        <!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+                 <imageobject>
+                  <imagedata fileref="figures/Check_mark_23x20_02.svg"
+                             format="SVG" scale="60"/>
+                </imageobject>
+              </inlinemediaobject>'>
+
+        <!ENTITY ARROW  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+                 <imageobject>
+                  <imagedata fileref="figures/Arrow_east.svg"
+                             format="SVG" scale="60"/>
+                </imageobject>
+              </inlinemediaobject>'>
+]>
+<book xmlns="http://docbook.org/ns/docbook"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:m="http://www.w3.org/1998/Math/MathML"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:db="http://docbook.org/ns/docbook" version="5.0"
+    xml:id="os-cs-ext-devguide">
+    <title>OpenStack Compute Extensions Developer Guide</title>
+    <titleabbrev>OpenStack Compute Extensions Dev Guide</titleabbrev>
+    <info>
+        <author>
+            <personname>
+                <firstname/>
+                <surname/>
+            </personname>
+            <affiliation>
+                <orgname>OpenStack Foundation</orgname>
+            </affiliation>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <year>2012</year>
+            <year>2013</year>
+            <holder>OpenStack Foundation</holder>
+        </copyright>
+        <releaseinfo>API v2</releaseinfo>
+        <productname>OpenStack Compute Extensions</productname>
+        <pubdate/>
+        <legalnotice role="apache2">
+            <annotation>
+                <remark>Copyright details are filled in by the
+                    template.</remark>
+            </annotation>
+        </legalnotice>
+        <abstract>
+            <para>This document is for software developers who develop
+                applications by using the OpenStack Compute
+                    <abbrev>API</abbrev> and the Compute API
+                extensions. </para>
+        </abstract>
+        <revhistory>
+            <revision>
+                <!-- ... continue addding more revisions here as you change this document using the markup shown below... -->
+                <date>2013-04-23</date>
+                <revdescription>
+                    <itemizedlist>
+                        <listitem>
+                            <para>First edition of this book.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+        </revhistory>
+
+
+    </info>
+    <xi:include href="preface.xml"/>
+    <xi:include href="ch_general_api_information.xml"/>
+    <chapter xml:id="ext-compute" role="api-reference"
+        xmlns="http://docbook.org/ns/docbook"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns:wadl="http://wadl.dev.java.net/2009/02">
+        <title>Compute Extensions</title>
+        <para>The OpenStack Compute API is extensible. Extensions let
+            you introduce API features without a version change and
+            vendor-specific niche functionality. </para>
+        <para>For the core compute API operations, see the <link
+                xlink:href="http://docs.openstack.org/api/openstack-compute/2/content/"
+                    ><citetitle>OpenStack Compute Developer
+                    Guide</citetitle></link>.</para>
+            <section xml:id="ext_overview">
+                <title>Overview</title><para>To programmatically determine which extensions are available,
+                        perform the following operation:</para>
+                <programlisting>&GET; /extensions</programlisting>
+                <note><para>An extension that is available in one API version might not be
+                    available in another API version. </para></note>
+                <para>You can also get details for a specified
+                    extension.</para>
+                <section xml:id="get_extensions">
+                    <title>List Extensions</title>
+                    <informaltable rules="all">
+                        <thead>
+                            <tr>
+                                <td colspan="1">Verb</td>
+                                <td colspan="2">URI</td>
+                                <td colspan="3">Description</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="1">&GET;</td>
+                                <td colspan="2">/extensions</td>
+                                <td colspan="3">Lists available
+                                    extensions.</td>
+                            </tr>
+                        </tbody>
+                    </informaltable>
+                    <simpara>Normal Response Codes:
+                        <returnvalue>200</returnvalue>,
+                        <returnvalue>203</returnvalue>
+                    </simpara>
+                    <simpara>Error Response Codes: computeFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>, &hellip;),
+                        serviceUnavailable (<errorcode>503</errorcode>),
+                        unauthorized (<errorcode>401</errorcode>),
+                        forbidden (<errorcode>403</errorcode>), badRequest
+                        (<errorcode>400</errorcode>), Method Not
+                        Allowed (<errorcode>405</errorcode>), overLimit
+                        (<errorcode>413</errorcode>) </simpara>
+                    <para>Applications can programmatically determine
+                        which extensions are available by issuing a &GET;
+                        on the <code>/extensions</code> URI. </para>
+                    <para>This operation does not require a request body. </para>
+                    <para>This operation returns a response body. In the
+                        response body, each extension is identified by two
+                        unique identifiers, a
+                        <property>namespace</property> and an
+                        <property>alias</property>. Additionally an
+                        extension contains documentation links in various
+                        formats. </para>
+                    <example>
+                        <title>Get Extensions: cURL with JSON
+                            Request</title>
+                        <programlisting language="xml"><?db-font-size 70%?>curl -s https://dfw.servers.api.rackspacecloud.com/v2/$account/extensions \
+     -H "X-Auth-Token: $token" | python -m json.tool </programlisting>
+                    </example>
+                    <example>
+                        <title>Get Extensions: JSON Response</title>
+                        <programlisting language="json"><?db-font-size 70%?><xi:include href="samples/extensions.json" parse="text"/></programlisting>
+                    </example>
+                    <?hard-pagebreak?>
+                    <example>
+                        <title>Get Extensions: cURL with XML
+                            Request</title>
+                        <programlisting language="xml"><?db-font-size 70%?>curl -i https://dfw.servers.api.rackspacecloud.com/v2/$account/extensions.xml \
+     -H "X-Auth-Token: $token" </programlisting>
+                    </example>
+                    <example>
+                        <title>Get Extensions: XML Response</title>
+                        <programlisting language="xml"><?db-font-size 70%?><xi:include href="samples/extensions.xml" parse="text"/></programlisting>
+                    </example>
+                </section>
+                <?hard-pagebreak?>
+                <section xml:id="get_extension_details">
+                    <title>Get Extension Details</title>
+                    <para>You can query extensions by their unique alias
+                        to determine if an extension is available. An
+                        unavailable extension issues an itemNotFound
+                        (<errorcode>404</errorcode>) response. </para>
+                    <informaltable rules="all">
+                        <thead>
+                            <tr>
+                                <td colspan="1">Verb</td>
+                                <td colspan="2">URI</td>
+                                <td colspan="3">Description</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="1">&GET;</td>
+                                <td colspan="2"
+                                    >/extensions/<parameter>alias</parameter></td>
+                                <td colspan="3">Gets details about a
+                                    specified extension.</td>
+                            </tr>
+                        </tbody>
+                    </informaltable>
+                    <simpara>Normal Response Codes:
+                        <returnvalue>200</returnvalue>,
+                        <returnvalue>203</returnvalue>
+                    </simpara>
+                    <simpara>Error Response Codes: computeFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>, &hellip;),
+                        serviceUnavailable (<errorcode>503</errorcode>),
+                        unauthorized (<errorcode>401</errorcode>),
+                        forbidden (<errorcode>403</errorcode>), badRequest
+                        (<errorcode>400</errorcode>), Method Not
+                        Allowed (<errorcode>405</errorcode>), overLimit
+                        (<errorcode>413</errorcode>), itemNotFound
+                        (<errorcode>404</errorcode>) </simpara>
+                    <para>This operation does not require a request
+                        body.</para>
+                    <para>This operation returns a response body.</para>
+                    <para>The following examples show how to query the
+                        OS-DCF extension:</para>
+                    <example>
+                        <title>Get Extension: cURL with JSON
+                            Request</title>
+                        <programlisting language="xml"><?db-font-size 70%?>curl -s https://dfw.servers.api.rackspacecloud.com/v2/$account/extensions/OS-DCF \
+                -H "X-Auth-Token: $token" | python -m json.tool</programlisting>
+                    </example>
+                    <example>
+                        <title>Get Extension: JSON Response</title>
+                        <programlisting language="json"><?db-font-size 70%?><xi:include href="samples/extension.json" parse="text"/></programlisting>
+                    </example>
+                    <example>
+                        <title>Get Extension: cURL with XML
+                            Request</title>
+                        <programlisting language="xml"><?db-font-size 70%?>curl -i https://dfw.servers.api.rackspacecloud.com/v2/$account/extensions/OS-DCF.xml \
+     -H "X-Auth-Token: $token" </programlisting>
+                    </example>
+                    <example>
+                        <title>Get Extension: XML Response</title>
+                        <programlisting language="xml"><?db-font-size 70%?><xi:include href="samples/extension.xml" parse="text"/></programlisting>
+                    </example>
+                </section>
+                <section xml:id="extended_actions">
+                    <title>Extended Responses and Actions</title>
+                    <para>Use extensions to define new data types,
+                        parameters, actions, headers, states, and
+                        resources. </para>
+                    <para>Actions work in exactly the same manner as
+                        illustrated in <xref linkend="CBSAX"
+                            xrefstyle="template: Examples %n"/> and <xref
+                                linkend="CBSAJ"
+                                xrefstyle="select: labelnumber"/>. Extended
+                        headers are always prefixed with <code>X-</code>
+                        followed by the alias and a dash:
+                        (<code>X-RS-CBS-HEADER1</code>). You must
+                        prefix states and parameters with the extension
+                        alias followed by a colon. For example, an image
+                        can be in the <code>RS-PIE:PrepareShare</code>
+                        state. </para>
+                    <important>
+                        <para>Applications should be prepared to ignore
+                            response data that contains extension
+                            elements. An extended state should always be
+                            treated as an <code>UNKNOWN</code> state if
+                            the application does not support the
+                            extension. Applications should also verify
+                            that an extension is available before
+                            submitting an extended request. </para>
+                    </important>
+                    <example xml:id="CBSAJ">
+                        <title>Extended Action: JSON Request</title>
+                        <programlisting language="json"><?db-font-size 70%?><xi:include href="samples/ext-action.json" parse="text"/></programlisting>
+                    </example>
+                    <example xml:id="CBSAX">
+                        <title>Extended Action: XML Request</title>
+                        <programlisting language="xml"><?db-font-size 70%?><xi:include href="samples/ext-action.xml" parse="text"/></programlisting>
+                    </example>
+                <para>In XML, you can define additional elements and
+                    attributes. Define these elements in the namespace
+                    for the extension. In JSON, you must use the
+                    alias. The volumes element in the <xref
+                        linkend="ServersCBSJ"
+                        xrefstyle="select:
+                                labelnumber"
+                    />  and <xref linkend="ServersCBSX"
+                        xrefstyle="template: Examples %n"/> is defined
+                    in the <code>RS-CBS</code> namespace. </para><example xml:id="ServersCBSJ">
+                        <title>Extended Server: JSON Response</title>
+                        <programlisting language="json"><?db-font-size 70%?><xi:include href="samples/ext-servers.json" parse="text"/></programlisting>
+                    </example>
+                    <example xml:id="ServersCBSX">
+                        <title>Extended Server: XML Response</title>
+                        <programlisting language="xml"><?db-font-size 70%?><xi:include href="samples/ext-servers.xml" parse="text"/></programlisting>
+                    </example>
+                </section>
+            </section>
+       
+        <section xml:id="ext-os-admin-actions">
+            <title>Server Admin Actions</title>
+            <para>Permits administrative users to perform actions on
+                servers.</para>
+            <wadl:resources href="xsd/ext/os-admin-actions.wadl"/>
+        </section>
+    </chapter>
+</book>

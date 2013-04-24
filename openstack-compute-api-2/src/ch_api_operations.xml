@@ -1,0 +1,2703 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter [
+        <!-- Some useful entities borrowed from HTML -->
+        <!ENTITY ndash  "&#x2013;">
+        <!ENTITY mdash  "&#x2014;">
+        <!ENTITY hellip "&#x2026;">
+        <!ENTITY plusmn "&#xB1;">
+        
+        <!-- Useful for describing APIs -->
+        <!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
+        <!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
+        <!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
+        <!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
+        
+        <!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+                 <imageobject>
+                  <imagedata fileref="figures/Check_mark_23x20_02.svg"
+                             format="SVG" scale="60"/>
+                </imageobject>
+              </inlinemediaobject>'>
+              
+        <!ENTITY ARROW  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+                 <imageobject>
+                  <imagedata fileref="figures/Arrow_east.svg"
+                             format="SVG" scale="60"/>
+                </imageobject>
+              </inlinemediaobject>'>
+]>
+<chapter xmlns="http://docbook.org/ns/docbook"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:m="http://www.w3.org/1998/Math/MathML"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:db="http://docbook.org/ns/docbook" version="5.0"
+    xml:id="api-operations">
+    <title>API Operations</title>
+    <section xml:id="Servers-d1e2073">
+        <title>Servers</title>
+        <section xml:id="List_Servers-d1e2078">
+            <title>List Servers</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2"
+                                >/servers?<parameter>image</parameter>=<literal>imageRef</literal>&amp;
+                                <parameter>flavor</parameter>=<literal>flavorRef</literal>&amp;
+                                <parameter>name</parameter>=<literal>serverName</literal>&amp;
+                                <parameter>status</parameter>=<literal>serverStatus</literal>&amp;
+                                <parameter>marker</parameter>=<literal>markerID</literal>&amp;<parameter>limit</parameter>=<literal>int</literal>&amp;
+                                <parameter>changes-since</parameter>=<literal>dateTime</literal>
+                        </td>
+                        <td colspan="3">Lists IDs, names, and links
+                            for all servers.</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2"
+                                >/servers/detail?<parameter>image</parameter>=<literal>imageRef</literal>&amp;
+                                <parameter>flavor</parameter>=<literal>flavorRef</literal>&amp;
+                                <parameter>name</parameter>=<literal>serverName</literal>&amp;
+                                <parameter>status</parameter>=<literal>serverStatus</literal>&amp;
+                                <parameter>marker</parameter>=<literal>markerID</literal>&amp;<parameter>limit</parameter>=<literal>int</literal>&amp;
+                                <parameter>changes-since</parameter>=<literal>dateTime</literal>
+                        </td>
+                        <td colspan="3">Lists all details for all
+                            servers.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <simpara>Normal Response Code(s):
+                    <returnvalue>200</returnvalue>,
+                    <returnvalue>203</returnvalue>
+            </simpara>
+            <simpara>Error Response Code(s): computeFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>, &hellip;),
+                serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), forbidden
+                    (<errorcode>403</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), badMethod
+                    (<errorcode>405</errorcode>), overLimit
+                    (<errorcode>413</errorcode>) </simpara>
+            <annotation annotates="id35836359">
+                <info>
+                    <title>Office Annotation</title>
+                    <author>
+                        <personname>
+                            <othername role="full">Jorge
+                                Williams</othername>
+                        </personname>
+                    </author>
+                    <date>2009-06-26T14:30:46</date>
+                </info>
+                <para>Well need to revisit. List all status even the
+                    ones that don't enter into our state transitions
+                    along with descriptions of each. </para>
+            </annotation>
+            <para xml:id="id35836359">You can filter the list of
+                servers by image, flavor, name, and status through the
+                respective query parameters. </para>
+            <para>To filter the list of servers returned in the
+                response body, specify one or more of the following
+                optional parameters in the request URI:<variablelist>
+                    <varlistentry>
+                        <term>image</term>
+                        <listitem>
+                            <para>The image reference specified as an
+                                ID or full URL. </para>
+                        </listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>flavor</term>
+                        <listitem>
+                            <para>The flavor reference specified as an
+                                ID or full URL.</para>
+                        </listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>server</term>
+                        <listitem>
+                            <para>The server name.</para>
+                        </listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>status</term>
+                        <listitem>
+                            <para>The server status. See <xref
+                                   linkend="server_status"/>.</para>
+                        </listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>marker</term>
+                        <listitem>
+                            <para>The ID of the last item in the
+                                previous list. See <xref
+                                   linkend="Paginated_Collections-d1e664"
+                                />.</para>
+                        </listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>limit</term>
+                        <listitem>
+                            <para>The page size. See <xref
+                                   linkend="Paginated_Collections-d1e664"
+                                />.</para>
+                        </listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>changes-since</term>
+                        <listitem>
+                            <para>The changes-since time. The list
+                                contains servers that have been
+                                deleted since the changes-since time.
+                                See <xref linkend="ChangesSince"
+                                />.</para>
+                        </listitem>
+                    </varlistentry>
+                </variablelist></para>
+            <para>This operation does not require a request
+                body.</para>
+            <para>This operation lists the servers associated with
+                your account. The list does not include servers that
+                have been deleted. </para>
+            <para>Servers contain a status attribute that indicates
+                the current server state. You can filter on the server
+                status when you complete a list servers request. The
+                server status is returned in the response body. The
+                server status is one of the following
+                    values:<itemizedlist xml:id="server_status">
+                    <title>Server Status Values</title>
+                    <listitem>
+                        <para><code>ACTIVE</code>. The server is
+                            active.</para>
+                    </listitem>
+                    <listitem>
+                        <para><code>BUILD</code>. The server has not
+                            finished the original build
+                            process.</para>
+                    </listitem>
+
+                    <listitem>
+                        <para><code>DELETED</code>. The server is
+                            deleted.</para>
+                    </listitem>
+                    <listitem>
+                        <para><code>ERROR</code>. The server is in
+                            error.</para>
+                    </listitem>
+                    <listitem>
+                        <para><code>HARD_REBOOT</code>. The server is
+                            hard rebooting. This is equivalent to
+                            pulling the power plug on a physical
+                            server, plugging it back in, and rebooting
+                            it.</para>
+                    </listitem>
+                    <listitem>
+                        <para><code>PASSWORD</code>. The password is
+                            being reset on the server.</para>
+                    </listitem>
+
+                    <listitem>
+                        <para><code>REBOOT</code>. The server is in a
+                            soft reboot state. A reboot command was
+                            passed to the operating system.</para>
+                    </listitem>
+                    <listitem>
+                        <para><code>REBUILD</code>. The server is
+                            currently being rebuilt from an
+                            image.</para>
+                    </listitem>
+                    <listitem>
+                        <para><code>RESCUE</code>. The server is in
+                            rescue mode. </para>
+                    </listitem>
+                    <listitem>
+                        <para><code>RESIZE</code>. Server is
+                            performing the differential copy of data
+                            that changed during its initial copy.
+                            Server is down for this stage.</para>
+                    </listitem>
+                    <listitem>
+                        <para><code>REVERT_RESIZE</code>. The resize
+                            or migration of a server failed for some
+                            reason. The destination server is being
+                            cleaned up and the original source server
+                            is restarting. </para>
+                    </listitem>
+
+                    <listitem>
+                        <para><code>SHUTOFF</code>. The virtual
+                            machine (VM) was powered down by the user,
+                            but not through the OpenStack Compute API.
+                            For example, the user issued a
+                                <code>shutdown -h</code> command from
+                            within the server instance. If the
+                            OpenStack Compute manager detects that the
+                            VM was powered down, it transitions the
+                            server instance to the SHUTOFF status. If
+                            you use the OpenStack Compute API to
+                            restart the instance, the instance might
+                            be deleted first, depending on the value
+                            in the
+                                <parameter>shutdown_terminate</parameter>
+                            database field on the Instance
+                            model.</para>
+                    </listitem>
+                    <listitem>
+                        <para><code>SUSPENDED</code>. The server is
+                            suspended, either by request or necessity.
+                            This status appears for only the following
+                            hypervisors: XenServer/XCP, KVM, and ESXi.
+                            Review support tickets or contact
+                            Rackspace support to determine why the
+                            server is in this state.</para>
+                    </listitem>
+                    <listitem>
+                        <para><code>UNKNOWN</code>. The state of the
+                            server is unknown. Contact your cloud
+                            provider.</para>
+                    </listitem>
+                    <listitem>
+                        <para><code>VERIFY_RESIZE</code>. System is
+                            awaiting confirmation that the server is
+                            operational after a move or resize.</para>
+                    </listitem>
+                </itemizedlist></para>
+            <para>The compute provisioning algorithm has an
+                anti-affinity property that attempts to spread
+                customer VMs across hosts. Under certain situations,
+                VMs from the same customer might be placed on the same
+                host. <property>hostId</property> represents the host
+                your server runs on and can be used to determine this
+                scenario if it is relevant to your application. </para>
+            <note>
+                <para><property>HostId</property> is unique
+                        <emphasis>per account</emphasis> and is not
+                    globally unique. </para>
+            </note>
+
+
+
+            <para>The following examples show an XML and JSON response
+                for the list servers API operation:</para>
+
+            <example>
+                <title>List Servers Response: XML (detail)</title>
+                <programlisting language="xml"><?db-font-size 80%?><xi:include href="samples/servers.xml" parse="text"/></programlisting>
+            </example>
+
+            <example>
+                <title>List Servers Response: JSON (detail)</title>
+                <programlisting language="json"><?db-font-size 80%?><xi:include href="samples/servers.json" parse="text"/></programlisting>
+            </example>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="CreateServers">
+            <title>Create Server</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="2">/servers</td>
+                        <td colspan="3">Creates a new server.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <simpara>Normal Response Code(s):
+                    <returnvalue>202</returnvalue>
+            </simpara>
+            <simpara>Error Response Code(s): computeFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>, &hellip;),
+                serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), forbidden
+                    (<errorcode>403</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), badMethod
+                    (<errorcode>405</errorcode>), overLimit
+                    (<errorcode>413</errorcode>), itemNotFound
+                    (<errorcode>404</errorcode>), badMediaType
+                    (<errorcode>415</errorcode>),
+                serverCapacityUnavailable (<errorcode>503</errorcode>) </simpara>
+            <informaltable frame="void">
+                <tbody>
+                    <tr>
+                        <td colspan="1">Status Transition:</td>
+                        <td colspan="3">
+                            <code>BUILD</code> &ARROW;
+                                <code>ACTIVE</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1"/>
+                        <td colspan="3">
+                            <code>BUILD</code> &ARROW;
+                                <code>ERROR</code> (on error) </td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>This operation asynchronously provisions a new
+                server. The progress of this operation depends on
+                several factors including location of the requested
+                image, network i/o, host load, and the selected
+                flavor. The progress of the request can be checked by
+                performing a &GET; on
+                    /servers/<parameter>id</parameter>, which will
+                return a progress attribute (0-100% completion). The
+                full URL to the newly created server is returned via
+                the <code>Location</code> header and is available as a
+                    <code>self</code> and <code>bookmark</code> link
+                in the server representation (See <xref
+                    linkend="LinksReferences"/>). Note that when
+                creating a server only the server ID, its links, and
+                the admin password are guaranteed to be returned in
+                the request. Additional attributes may be retrieved by
+                performing subsequent &GET;s on the server. </para>
+            <para><?rax-fo keep-together?>The following table
+                describes the required and optional attributes that
+                you can specify in the request body:</para>
+            <para>
+                <table rules="all">
+                    <caption>Create Server Request
+                        Attributes</caption>
+                    <col width="20%"/>
+                    <col width="60%"/>
+                    <col width="20%"/>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Required</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>imageRef</td>
+                            <td>
+                                <para>The image reference for the
+                                   desired image for your server
+                                   instance. </para>
+                                <para>Specify as an ID or full URL. To
+                                   get a list of available images, see
+                                   <xref linkend="List_Images-d1e4435"
+                                   />.</para>
+                            </td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>flavorRef</td>
+                            <td>
+                                <para>The flavor reference for the
+                                   desired flavor for your server
+                                   instance. </para>
+                                <para>Specify as an ID or full URL. To
+                                   get a list of available flavors,
+                                   see <xref
+                                   linkend="List_Flavors-d1e4188"
+                                   />.</para>
+                            </td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <para>name</para>
+                            </td>
+                            <td>
+                                <para>The server name. Choose any name
+                                   you like.</para>
+                            </td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <para>metadata</para>
+                            </td>
+                            <td>Metadata key and value pairs. For
+                                information, see <xref
+                                   linkend="Server_Metadata-d1e2529"
+                                />.</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td valign="top">
+                                <para>personality</para>
+                            </td>
+                            <td>
+                                <para>File path and contents. For
+                                   information, see <xref
+                                   linkend="Server_Personality-d1e2543"
+                                   />.</para>
+                            </td>
+                            <td>No</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </para>
+            <example>
+                <title>Server Create Request: XML</title>
+                <programlisting language="xml"><xi:include href="samples/server-post-req.xml" parse="text"/></programlisting>
+            </example>
+            <?hard-pagebreak?>
+            <example>
+                <title>Server Create Request: JSON</title>
+                <programlisting language="json"><xi:include href="samples/server-post-req.json" parse="text"/></programlisting>
+            </example>
+            <?hard-pagebreak?>
+            <example>
+                <title>Server Create Response: XML</title>
+                <programlisting language="xml"><xi:include href="samples/server-post-resp.xml" parse="text"/></programlisting>
+            </example>
+            <?hard-pagebreak?>
+            <example>
+                <title>Server Create Response: JSON</title>
+                <programlisting language="json"><?db-font-size 90%?><xi:include href="samples/server-post-resp.json" parse="text"/></programlisting>
+            </example>
+            <?hard-pagebreak?>
+            <section xml:id="Server_Passwords-d1e2510">
+                <title>Server Passwords</title>
+                <para>A password may be specified when creating the
+                    server via the optional
+                        <property>adminPass</property> attribute. The
+                    specified password must meet the complexity
+                    requirements set by your OpenStack Compute
+                    provider. The server may enter an
+                        <code>ERROR</code> state if the complexity
+                    requirements are not met. In this case, a client
+                    may issue a change password action to reset the
+                    server password (see <xref
+                        linkend="Change_Password-d1e3234"/>). </para>
+                <para>If a password is not specified, a randomly
+                    generated password will be assigned and returned
+                    in the response object. This password is
+                    guaranteed to meet the security requirements set
+                    by the compute provider. For security reasons, the
+                    password will not be returned in subsequent &GET;
+                    calls. </para>
+            </section>
+            <section xml:id="Server_Metadata-d1e2529">
+                <title>Server Metadata</title>
+                <para>Custom server metadata can also be supplied at
+                    launch time. See <xref linkend="MetadataSection"/>
+                    for details on working with metadata. The maximum
+                    size of the metadata key and value is 255 bytes
+                    each. The maximum number of key-value pairs that
+                    can be supplied per server is determined by the
+                    compute provider and may be queried via the
+                    maxServerMeta absolute limit. </para>
+            </section>
+            <section xml:id="Server_Personality-d1e2543">
+                <title>Server Personality</title>
+                <para>You can customize the personality of a server
+                    instance by injecting data into its file system.
+                    For example, you might want to insert ssh keys,
+                    set configuration files, or store data that you
+                    want to retrieve from inside the instance. This
+                    feature provides a minimal amount of launch-time
+                    personalization. If you require significant
+                    customization, create a custom image. </para>
+                <para>Follow these guidelines when you inject files: <itemizedlist>
+                        <listitem>
+                            <para>The maximum size of the file path
+                                data is 255 bytes.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Encode the file contents as a Base64
+                                string. The maximum size of the file
+                                contents is determined by the compute
+                                provider and may vary based on the
+                                image that is used to create the
+                                server</para>
+                            <note>
+                                <para>The maximum limit refers to the
+                                   number of bytes in the decoded data
+                                   and not the number of characters in
+                                   the encoded data.</para>
+                            </note>
+                        </listitem>
+                        <listitem>
+                            <para>You can inject text files only. You
+                                cannot inject binary or zip files into
+                                a new build. </para>
+                        </listitem>
+                        <listitem>
+                            <para>The maximum number of file
+                                path/content pairs that you can supply
+                                is also determined by the compute
+                                provider and is defined by the
+                                maxPersonality absolute limit. </para>
+                        </listitem>
+                        <listitem>
+                            <para>The absolute limit,
+                                maxPersonalitySize, is a byte limit
+                                that is guaranteed to apply to all
+                                images in the deployment. Providers
+                                can set additional per-image
+                                personality limits.</para>
+                        </listitem>
+                    </itemizedlist></para>
+                <para>The file injection might not occur until after
+                    the server is built and booted. </para>
+                <para>During file injection, any existing files that
+                    match specified files are renamed to include the
+                    bak extension appended with a time stamp. For
+                    example, if the file /etc/passwd exists, it is
+                    backed up as /etc/passwd.bak.1246036261.5785. </para>
+                <para>After file injection, personality files are
+                    accessible by only system administrators. For
+                    example, on Linux, all files have root and the
+                    root group as the owner and group owner,
+                    respectively, and allow user and group read access
+                    only. </para>
+            </section>
+            <section xml:id="Server_Primary_Addresses-d1e2558">
+                <title>Server Access Addresses</title>
+                <para>In a hybrid environment, the IP address of a
+                    server may not be controlled by the underlying
+                    implementation. Instead, the access IP address may
+                    be part of the dedicated hardware; for example, a
+                    router/NAT device. In this case, the addresses
+                    provided by the implementation cannot actually be
+                    used to access the server (from outside the local
+                    LAN). Here, a separate <firstterm>access
+                        address</firstterm> may be assigned at
+                    creation time to provide access to the server.
+                    This address may not be directly bound to a
+                    network interface on the server and may not
+                    necessarily appear when a server's addresses are
+                    queried (see <xref linkend="ServerAddresses"/>).
+                    Nonetheless, clients which need to access the
+                    server directly are encouraged to do so via an
+                    access address. In the example below, an IPv4
+                    address is assigned at creation time. </para>
+                <example>
+                    <title>Creating a Server with a Access IP:
+                        XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/server-post-req-pip.xml" parse="text"/>
+                        </programlisting>
+                </example>
+                <example>
+                    <title>Creating a Server with a Access IP:
+                        JSON</title>
+                    <programlisting language="json">
+<xi:include href="samples/server-post-req-pip.json" parse="text"/>
+                        </programlisting>
+                </example>
+                <para> Note that both IPv4 and IPv6 addresses may be
+                    used as access addresses and both addresses may be
+                    assigned simultaneously as illustrated below.
+                    Access addresses may be updated after a server has
+                    been created. See <xref linkend="ServerUpdate"/>
+                    for more details. </para>
+                <example>
+                    <title>Creating a Server with Multiple Access IPs:
+                        XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/server-post-req-pip2.xml" parse="text"/>
+                        </programlisting>
+                </example>
+                <?hard-pagebreak?>
+                <example>
+                    <title>Creating a Server with Multiple Access IPs:
+                        JSON</title>
+                    <programlisting language="json">
+<xi:include href="samples/server-post-req-pip2.json" parse="text"/>
+                        </programlisting>
+                </example>
+            </section>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="Get_Server_Details-d1e2623">
+            <title>Get Server Details</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2"
+                                >/servers/<parameter>id</parameter></td>
+                        <td colspan="3">Lists details of the specified
+                            server.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <simpara>Normal Response Code(s):
+                    <returnvalue>200</returnvalue>,
+                    <returnvalue>203</returnvalue>
+            </simpara>
+            <simpara>Error Response Code(s): computeFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>, &hellip;),
+                serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), forbidden
+                    (<errorcode>403</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), badMethod
+                    (<errorcode>405</errorcode>), overLimit
+                    (<errorcode>413</errorcode>), itemNotFound
+                    (<errorcode>404</errorcode>) </simpara>
+            <para>Specify the server ID as <parameter>id</parameter>
+                in the URI.</para>
+            <para>This operation does not require a request
+                body.</para>
+            <para>This operation returns the details of a specific
+                server by its ID. </para>
+            <?hard-pagebreak?>
+            <example>
+                <title>Server Details Response: XML</title>
+                <programlisting language="xml"><xi:include href="samples/server.xml" parse="text"/></programlisting>
+            </example>
+
+            <example>
+                <title>Server Details Response: JSON</title>
+                <programlisting language="json"><?db-font-size 90%?><xi:include href="samples/server.json" parse="text"/></programlisting>
+            </example>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="ServerUpdate">
+            <title>Update Server</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="2"
+                                >/servers/<parameter>id</parameter></td>
+                        <td colspan="3">Updates the editable
+                            attributes for the specified server.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <simpara>Normal Response Code(s):
+                    <returnvalue>200</returnvalue>
+            </simpara>
+            <simpara>Error Response Code(s): computeFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>, &hellip;),
+                serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), forbidden
+                    (<errorcode>403</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), badMethod
+                    (<errorcode>405</errorcode>), overLimit
+                    (<errorcode>413</errorcode>), itemNotFound
+                    (<errorcode>404</errorcode>), badMediaType
+                    (<errorcode>415</errorcode>), buildInProgress
+                    (<errorcode>409</errorcode>) </simpara>
+            <informaltable frame="void">
+                <tbody>
+                    <tr>
+                        <td colspan="1">Status Transition:</td>
+                        <td colspan="3">
+                            <code>ACTIVE</code> &ARROW;
+                                <code>ACTIVE</code>
+                        </td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>This operation enables you to update the editable
+                attributes of a specified server. </para>
+            <para>Specify the server ID as <parameter>id</parameter>
+                in the URI. </para>
+            <para><?rax-fo keep-together?>The following table
+                describes the attributes that you can specify in the
+                request body: <table rules="all">
+                    <caption>Update Server Request Body
+                        Attributes</caption>
+                    <col width="20%"/>
+                    <col width="80%"/>
+                    <thead>
+                        <tr>
+                            <th>Attribute</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>name</td>
+                            <td>The name of the server. If you edit
+                                the server name, the server host name
+                                does not change. Also, server names
+                                are not guaranteed to be unique. </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <para>accessIPv4</para>
+                            </td>
+                            <td>
+                                <para>The IP version 4 address.
+                                </para>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <para>accessIPv6</para>
+                            </td>
+                            <td>
+                                <para>The IP version 6 address.</para>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table></para>
+            <example>
+                <title>Server Update Name Request: XML</title>
+                <programlisting language="xml"><xi:include href="samples/server-put-req.xml" parse="text"/></programlisting>
+            </example>
+            <example>
+                <title>Server Update Name Request: JSON</title>
+                <programlisting language="json"><xi:include href="samples/server-put-req.json" parse="text"/></programlisting>
+            </example>
+            <?hard-pagebreak?>
+            <example>
+                <title>Server Update Name Response: XML</title>
+                <programlisting language="xml"><xi:include href="samples/server-put-resp.xml" parse="text"/></programlisting>
+            </example>
+            <?hard-pagebreak?>
+            <example>
+                <title>Server Update Name Response: JSON</title>
+                <programlisting language="json"><xi:include href="samples/server-put-resp.json" parse="text"/></programlisting>
+            </example>
+            <?hard-pagebreak?>
+            <para> Access addresses may simultaneously be updated as
+                illustrated below. </para>
+            <example>
+                <title>Server Update Access Address Request:
+                    XML</title>
+                <programlisting language="xml"><xi:include href="samples/server-put-req-ad.xml" parse="text"/></programlisting>
+            </example>
+            <example>
+                <title>Server Update Access Address Request:
+                    JSON</title>
+                <programlisting language="json"><xi:include href="samples/server-put-req-ad.json" parse="text"/></programlisting>
+            </example>
+            <?hard-pagebreak?>
+            <example>
+                <title>Server Update Access Address Response:
+                    XML</title>
+                <programlisting language="xml"><xi:include href="samples/server-put-resp-ad.xml" parse="text"/></programlisting>
+            </example>
+            <?hard-pagebreak?>
+            <example>
+                <title>Server Update Access Address Response:
+                    JSON</title>
+                <programlisting language="json"><xi:include href="samples/server-put-resp-ad.json" parse="text"/></programlisting>
+            </example>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="Delete_Server-d1e2883">
+            <title>Delete Server</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="2"
+                                >/servers/<parameter>id</parameter></td>
+                        <td colspan="3">Deletes the specified
+                            server.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <simpara> Normal Response Code(s):
+                    <returnvalue>204</returnvalue>
+            </simpara>
+            <simpara> Error Response Code(s): computeFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>, &hellip;),
+                serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), forbidden
+                    (<errorcode>403</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), badMethod
+                    (<errorcode>405</errorcode>), overLimit
+                    (<errorcode>413</errorcode>), itemNotFound
+                    (<errorcode>404</errorcode>), buildInProgress
+                    (<errorcode>409</errorcode>) </simpara>
+            <informaltable frame="void">
+                <tbody>
+                    <tr>
+                        <td colspan="1">Status Transition:</td>
+                        <td colspan="3">
+                            <code>ACTIVE</code> &ARROW;
+                                <code>DELETED</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1"/>
+                        <td colspan="3">
+                            <code>ERROR</code> &ARROW;
+                                <code>DELETED</code>
+                        </td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>This operation deletes a specified cloud server
+                instance from the system. </para>
+            <para>Specify the ID for the cloud server instance as
+                    <parameter>id</parameter> in the URI. </para>
+            <para>This operation does not require a request body or
+                return a response body. </para>
+        </section>
+    </section>
+    <?hard-pagebreak?>
+    <section xml:id="ServerAddresses">
+        <title>Server Addresses</title>
+        <section xml:id="List_Addresses-d1e3014">
+            <title>List Addresses</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2"
+                                >/servers/<parameter>id</parameter>/ips</td>
+                        <td colspan="3">Lists all networks and
+                            addresses associated with a specified
+                            server.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <simpara>Normal Response Code(s):
+                    <returnvalue>200</returnvalue>,
+                    <returnvalue>203</returnvalue>
+            </simpara>
+            <simpara>Error Response Code(s): computeFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>, &hellip;),
+                serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), forbidden
+                    (<errorcode>403</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), badMethod
+                    (<errorcode>405</errorcode>), overLimit
+                    (<errorcode>413</errorcode>), itemNotFound
+                    (<errorcode>404</errorcode>), buildInProgress
+                    (<errorcode>409</errorcode>) </simpara>
+            <para>This operation lists all networks and addresses
+                associated with a specified server. </para>
+            <para>Specify the server ID as <parameter>id</parameter>
+                in the URI. </para>
+            <para>This operation does not require a request body. </para>
+            <?hard-pagebreak?>
+            <example>
+                <title>Addresses List Response: XML </title>
+                <programlisting language="xml"><xi:include href="samples/addresses.xml" parse="text"/></programlisting>
+            </example>
+            <example>
+                <title>Addresses List Response: JSON </title>
+                <programlisting language="json"><xi:include href="samples/addresses.json" parse="text"/></programlisting>
+            </example>
+        </section>
+        <section xml:id="List_Addresses_by_Network-d1e3118">
+            <title>List Addresses by Network</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2"
+                                >/servers/<parameter>id</parameter>/ips/<parameter>networkID</parameter></td>
+                        <td colspan="3">Lists addresses associated
+                            with a specified server and network.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <simpara> Normal Response Code(s):
+                    <returnvalue>200</returnvalue>,
+                    <returnvalue>203</returnvalue>
+            </simpara>
+            <simpara> Error Response Code(s): computeFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>, &hellip;),
+                serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), forbidden
+                    (<errorcode>403</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), badMethod
+                    (<errorcode>405</errorcode>), overLimit
+                    (<errorcode>413</errorcode>), itemNotFound
+                    (<errorcode>404</errorcode>), buildInProgress
+                    (<errorcode>409</errorcode>) </simpara>
+            <para>This operation lists all addresses associated with a
+                specified server and network. </para>
+            <para>The following table describes the required
+                parameters that you specify in the request URI: <table
+                    rules="all">
+                    <caption>List Addresses by Network URI
+                        Parameters</caption>
+                    <col width="20%"/>
+                    <col width="80%"/>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <para>id</para>
+                            </td>
+                            <td>
+                                <para>The server ID.</para>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <para>networkID</para>
+                            </td>
+                            <td>
+                                <para>The network ID.</para>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table></para>
+            <para>This operation does not require a request
+                body.</para>
+            <example>
+                <title>List Addresses by Network Response: XML</title>
+                <programlisting language="xml"><xi:include href="samples/public.xml" parse="text"/></programlisting>
+            </example>
+            <example>
+                <title>List Addresses by Network Response:
+                    JSON</title>
+                <programlisting language="json"><xi:include href="samples/public.json" parse="text"/></programlisting>
+            </example>
+        </section>
+    </section>
+    <?hard-pagebreak?>
+    <section xml:id="Server_Actions-d1e3229">
+        <title>Server Actions</title>
+        <section xml:id="Change_Password-d1e3234">
+            <title>Change Administrator Password</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="2"
+                                >/servers/<parameter>id</parameter>/action</td>
+                        <td colspan="3">Changes the administrator
+                            password for a specified server.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <simpara>Normal Response Code(s):
+                    <returnvalue>202</returnvalue>
+            </simpara>
+            <simpara>Error Response Code(s): computeFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>, &hellip;),
+                serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), forbidden
+                    (<errorcode>403</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), badMethod
+                    (<errorcode>405</errorcode>), overLimit
+                    (<errorcode>413</errorcode>), itemNotFound
+                    (<errorcode>404</errorcode>), badMediaType
+                    (<errorcode>415</errorcode>), buildInProgress
+                    (<errorcode>409</errorcode>) </simpara>
+            <informaltable frame="void">
+                <tbody>
+                    <tr>
+                        <td colspan="1">Status Transition:</td>
+                        <td colspan="3">
+                            <code>ACTIVE</code> &ARROW;
+                                <code>PASSWORD</code> &ARROW;
+                                <code>ACTIVE</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1"/>
+                        <td colspan="3">
+                            <code>ACTIVE</code> &ARROW;
+                                <code>PASSWORD</code> &ARROW;
+                                <code>ERROR</code> (on error) </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1"/>
+                        <td colspan="3">
+                            <code>ERROR</code> &ARROW;
+                                <code>PASSWORD</code> &ARROW;
+                                <code>ACTIVE</code> (password reset
+                            after error) </td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>This operation changes the administrator password
+                for a specified server. </para>
+            <para>Specify the server ID as <parameter>id</parameter>
+                in the URI. </para>
+            <para>The specified password must meet the complexity
+                requirements set by your OpenStack Compute provider.
+                The server might enter an <code>ERROR</code> state if
+                the complexity requirements are not met. In this case,
+                a client may reissue the change password action. </para>
+            <para>In the request body, specify the
+                    <parameter>changePassword</parameter> action
+                followed by attributes. The following table describes
+                the attributes that you specify in the request
+                    body:<table rules="all">
+                    <caption>Change Administrator Password Request
+                        Body Attributes</caption>
+                    <col width="20%"/>
+                    <col width="60%"/>
+                    <col width="20%"/>
+                    <thead>
+                        <tr>
+                            <th>Attribute</th>
+                            <th>Description</th>
+                            <th>Required</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>adminPass</td>
+                            <td>The administrator password.</td>
+                            <td>Yes</td>
+                        </tr>
+                    </tbody>
+                </table></para>
+            <para>This operation does not return a response
+                body.</para>
+            <example>
+                <title>Action Change Password Request: XML</title>
+                <programlisting language="xml"><xi:include href="samples/changepassword.xml" parse="text"/></programlisting>
+            </example>
+            <example>
+                <title>Action Change Password Request: JSON</title>
+                <programlisting language="json"><xi:include href="samples/changepassword.json" parse="text"/></programlisting>
+            </example>
+            <para/>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="Reboot_Server-d1e3371">
+            <title>Reboot Server</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="2"
+                                >/servers/<parameter>id</parameter>/action</td>
+                        <td colspan="3">Reboots the specified
+                            server.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <simpara>Normal Response Code(s):
+                    <returnvalue>202</returnvalue>
+            </simpara>
+            <simpara>Error Response Code(s): computeFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>, &hellip;),
+                serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), forbidden
+                    (<errorcode>403</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), badMethod
+                    (<errorcode>405</errorcode>), overLimit
+                    (<errorcode>413</errorcode>), itemNotFound
+                    (<errorcode>404</errorcode>), badMediaType
+                    (<errorcode>415</errorcode>), buildInProgress
+                    (<errorcode>409</errorcode>) </simpara>
+            <informaltable frame="void">
+                <tbody>
+                    <tr>
+                        <td colspan="1">Status Transition:</td>
+                        <td colspan="3">
+                            <code>ACTIVE</code> &ARROW;
+                                <code>REBOOT</code> &ARROW;
+                                <code>ACTIVE</code> (<property>soft
+                                reboot</property>) </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1"/>
+                        <td colspan="3">
+                            <code>ACTIVE</code> &ARROW;
+                                <code>HARD_REBOOT</code> &ARROW;
+                                <code>ACTIVE</code> (<property>hard
+                                reboot</property>) </td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>This operation enables you to complete either a soft
+                or hard reboot of a specified server. With a soft
+                reboot (<code>SOFT</code>), the operating system is
+                signaled to restart, which allows for a graceful
+                shutdown of all processes. A hard reboot
+                    (<code>HARD</code>) is the equivalent of power
+                cycling the server. </para>
+            <para>Specify the server ID as <parameter>id</parameter>
+                in the URI. </para>
+            <para>In the request body, specify the
+                    <parameter>reboot</parameter> action followed by
+                attributes. </para>
+            <para>The following table describes the attributes that
+                you specify in the request body:</para>
+            <para>
+                <table rules="all">
+                    <caption>Reboot Server Request
+                        Attributes</caption>
+
+                    <col width="20%"/>
+                    <col width="60%"/>
+                    <col width="20%"/>
+                    <thead>
+                        <tr>
+                            <th>Attribute</th>
+                            <th>Description</th>
+                            <th>Required</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>type</td>
+                            <td>
+                                <para>The type of reboot:<itemizedlist>
+                                   <listitem>
+                                   <para><parameter>SOFT</parameter>.
+                                   The operating system is signaled to
+                                   restart, which allows for a
+                                   graceful shutdown of all
+                                   processes.</para>
+                                   </listitem>
+                                   <listitem>
+                                   <para><parameter>HARD</parameter>.
+                                   Equivalent to power cycling the
+                                   server. </para>
+                                   </listitem>
+                                   </itemizedlist></para>
+                            </td>
+                            <td>No. Default is SOFT.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </para>
+            <para>This operation does not return a response
+                body.</para>
+            <example>
+                <title>Action Reboot Request: XML </title>
+                <programlisting language="xml"><xi:include href="samples/reboot.xml" parse="text"/></programlisting>
+            </example>
+            <example>
+                <title>Action Reboot Request: JSON </title>
+                <programlisting language="json"><xi:include href="samples/reboot.json" parse="text"/></programlisting>
+            </example>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="Rebuild_Server-d1e3538">
+            <title>Rebuild Server</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="2"
+                                >/servers/<parameter>id</parameter>/action</td>
+                        <td colspan="3">Rebuilds the specified
+                            server.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <simpara> Normal Response Code(s):
+                    <returnvalue>202</returnvalue>
+            </simpara>
+            <simpara> Error Response Code(s): computeFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>, &hellip;),
+                serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), forbidden
+                    (<errorcode>403</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), badMethod
+                    (<errorcode>405</errorcode>), overLimit
+                    (<errorcode>413</errorcode>), itemNotFound
+                    (<errorcode>404</errorcode>), badMediaType
+                    (<errorcode>415</errorcode>),
+                serverCapacityUnavailable
+                (<errorcode>503</errorcode>), buildInProgress
+                    (<errorcode>409</errorcode>) </simpara>
+            <informaltable frame="void">
+                <tbody>
+                    <tr>
+                        <td colspan="1">Status Transition:</td>
+                        <td colspan="3">
+                            <code>ACTIVE</code> &ARROW;
+                                <code>REBUILD</code> &ARROW;
+                                <code>ACTIVE</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1"/>
+                        <td colspan="3">
+                            <code>ACTIVE</code> &ARROW;
+                                <code>REBUILD</code> &ARROW;
+                                <code>ERROR</code> (on error) </td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>The rebuild operation removes all data on the server
+                and replaces it with the specified image. The
+                    <property>serverRef</property> and all IP
+                addresses will remain the same. If
+                    <property>name</property>,
+                    <property>metadata</property>,
+                    <property>accessIPv4</property>, or
+                    <property>accessIPv6</property> are specified,
+                they will replace existing values, otherwise they do
+                not change. </para>
+            <para>A rebuild operation always removes data injected
+                into the file system through server
+                    <property>personality</property>. You can reinsert
+                data into the file system during the rebuild. The full
+                URL to the rebuilt server is returned through the
+                    <code>Location</code> header. </para>
+            <para>Specify the server ID as <parameter>id</parameter>
+                in the URI. </para>
+            <para>In the request body, specify the
+                    <parameter>rebuild</parameter> action followed by
+                attributes. </para>
+            <para>The following table describes the attributes that
+                you specify in the request body:</para>
+            <para>
+                <table rules="all">
+                    <caption>Rebuild Server Request
+                        Attributes</caption>
+                    <col width="20%"/>
+                    <col width="60%"/>
+                    <col width="20%"/>
+                    <thead>
+                        <tr>
+                            <th>Attribute</th>
+                            <th>Description</th>
+                            <th>Required</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>name</td>
+                            <td>The new name for the server.</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>imageRef</td>
+                            <td>
+                                <para>The image reference. Specify as
+                                   an ID or full URL. </para>
+                            </td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>accessIPv4</td>
+                            <td>The IP version 4 address.</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>accessIPv6</td>
+                            <td>The IP version 6 address.</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>adminPass</td>
+                            <td>The administrator password.</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>metadata</td>
+                            <td>A metadata key and value pair.</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>personality</td>
+                            <td>The file path and file contents.</td>
+                            <td>No</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </para>
+            <example>
+                <title>Action Rebuild Request: XML </title>
+                <programlisting language="xml"><xi:include href="samples/rebuild_all.xml" parse="text"/></programlisting>
+            </example>
+            <?hard-pagebreak?>
+            <example>
+                <title>Action Rebuild Request: JSON</title>
+                <programlisting language="json"><xi:include href="samples/rebuild_all.json" parse="text"/></programlisting>
+            </example>
+            <?hard-pagebreak?>
+            <example>
+                <title>Action Rebuild Response: XML</title>
+                <programlisting language="xml"><xi:include href="samples/rebuild-resp.xml" parse="text"/></programlisting>
+            </example>
+            <?hard-pagebreak?>
+            <example>
+                <title>Action Rebuild Response: JSON</title>
+                <programlisting language="json"><?db-font-size 90%?><xi:include href="samples/rebuild-resp.json" parse="text"/></programlisting>
+            </example>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="Resize_Server-d1e3707">
+            <title>Resize Server</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="2"
+                                >/servers/<parameter>id</parameter>/action</td>
+                        <td colspan="3">Resizes the specified
+                            server.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <simpara>Normal Response Code(s):
+                    <returnvalue>202</returnvalue>
+            </simpara>
+            <simpara>Error Response Code(s): computeFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>, &hellip;),
+                resizeNotAllowed (<errorcode>403</errorcode>),
+                serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), forbidden
+                    (<errorcode>403</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), badMethod
+                    (<errorcode>405</errorcode>), overLimit
+                    (<errorcode>413</errorcode>), itemNotFound
+                    (<errorcode>404</errorcode>), badMediaType
+                    (<errorcode>415</errorcode>),
+                serverCapacityUnavailable
+                (<errorcode>503</errorcode>), buildInProgress
+                    (<errorcode>409</errorcode>) </simpara>
+            <informaltable frame="void">
+                <tbody>
+                    <tr>
+                        <td colspan="1">Status Transition:</td>
+                        <td colspan="3">
+                            <code>ACTIVE</code> &ARROW;
+                                <code>RESIZE</code> &ARROW;
+                                <code>VERIFY_RESIZE</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1"/>
+                        <td colspan="3">
+                            <code>ACTIVE</code> &ARROW;
+                                <code>RESIZE</code> &ARROW;
+                                <code>ACTIVE</code> (on error) </td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>The resize operation converts an existing server to
+                a different flavor, in essence, scaling the server up
+                or down. The original server is saved for a period of
+                time to allow rollback if there is a problem. All
+                resizes should be tested and explicitly confirmed, at
+                which time the original server is removed. All resizes
+                are automatically confirmed after 24 hours if they are
+                not explicitly confirmed or reverted. </para>
+            <para>Specify the server ID as <parameter>id</parameter>
+                in the URI. </para>
+            <para>In the request body, specify the
+                    <parameter>resize</parameter> action followed by
+                attributes. The following table describes the
+                attributes that you specify in the request
+                body:</para>
+            <para>
+                <table rules="all">
+                    <caption>Resize Server Request
+                        Attributes</caption>
+
+                    <col width="20%"/>
+                    <col width="60%"/>
+                    <col width="20%"/>
+                    <thead>
+                        <tr>
+                            <th>Attribute</th>
+                            <th>Description</th>
+                            <th>Required</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>name</td>
+                            <td>The name for the resized server.</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>flavorRef</td>
+                            <td>
+                                <para>The flavor ID
+                                   :<programlisting><parameter>flavor_id</parameter></programlisting></para>
+                            </td>
+                            <td>Yes</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </para>
+            <para>This operation does not return a response
+                body.</para>
+            <example>
+                <title>Action Resize Request: XML</title>
+                <programlisting language="xml"><xi:include href="samples/resize.xml" parse="text"/></programlisting>
+            </example>
+            <example>
+                <title>Action Resize Request: JSON</title>
+                <programlisting language="json"><xi:include href="samples/resize.json" parse="text"/></programlisting>
+            </example>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="Confirm_Resized_Server-d1e3868">
+            <title>Confirm Resized Server</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="2"
+                                >/servers/<parameter>id</parameter>/action</td>
+                        <td colspan="3">Confirms a pending resize
+                            action.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <simpara>Normal Response Code(s):
+                    <returnvalue>204</returnvalue>
+            </simpara>
+            <simpara>Error Response Code(s): computeFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>, &hellip;),
+                resizeNotAllowed (<errorcode>403</errorcode>),
+                serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), forbidden
+                    (<errorcode>403</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), badMethod
+                    (<errorcode>405</errorcode>), overLimit
+                    (<errorcode>413</errorcode>), itemNotFound
+                    (<errorcode>404</errorcode>), badMediaType
+                    (<errorcode>415</errorcode>),
+                serverCapacityUnavailable
+                (<errorcode>503</errorcode>), buildInProgress
+                    (<errorcode>409</errorcode>) </simpara>
+            <informaltable frame="void">
+                <tbody>
+                    <tr>
+                        <td colspan="1">Status Transition:</td>
+                        <td colspan="3">
+                            <code>VERIFY_RESIZE</code> &ARROW;
+                                <code>ACTIVE</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1"/>
+                        <td colspan="3">
+                            <code>VERIFY_RESIZE</code> &ARROW;
+                                <code>ERROR</code> (on error) </td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>During a resize operation, the original server is
+                saved for a period of time to allow roll back if a
+                problem exists. Once the newly resized server is
+                tested and has been confirmed to be functioning
+                properly, use this operation to confirm the resize.
+                After confirmation, the original server is removed and
+                cannot be rolled back to. All resizes are
+                automatically confirmed after 24 hours if they are not
+                explicitly confirmed or reverted. </para>
+            <para>Specify the server ID as <parameter>id</parameter>
+                in the URI. </para>
+            <para>In the request body, specify the
+                    <parameter>confirmResize</parameter> action. </para>
+            <para>This operation does not return a response
+                body.</para>
+            <example>
+                <title>Action Confirm Resize Request: XML</title>
+                <programlisting language="xml"><xi:include href="samples/confirmresize.xml" parse="text"/></programlisting>
+            </example>
+            <example>
+                <title>Action Confirm Resize Request: JSON</title>
+                <programlisting language="json"><xi:include href="samples/confirmresize.json" parse="text"/></programlisting>
+            </example>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="Revert_Resized_Server-d1e4024">
+            <title>Revert Resized Server</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="2"
+                                >/servers/<parameter>id</parameter>/action</td>
+                        <td colspan="3">Cancels and reverts a pending
+                            resize action.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <simpara>Normal Response Code(s):
+                    <returnvalue>202</returnvalue>
+            </simpara>
+            <simpara>Error Response Code(s): computeFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>, &hellip;),
+                resizeNotAllowed (<errorcode>403</errorcode>),
+                serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), forbidden
+                    (<errorcode>403</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), badMethod
+                    (<errorcode>405</errorcode>), overLimit
+                    (<errorcode>413</errorcode>), itemNotFound
+                    (<errorcode>404</errorcode>), badMediaType
+                    (<errorcode>415</errorcode>),
+                serverCapacityUnavailable
+                (<errorcode>503</errorcode>), buildInProgress
+                    (<errorcode>409</errorcode>) </simpara>
+            <informaltable frame="void">
+                <tbody>
+                    <tr>
+                        <td colspan="1">Status Transition:</td>
+                        <td colspan="3">
+                            <code>VERIFY_RESIZE</code> &ARROW;
+                                <code>REVERT_RESIZE</code> &ARROW;
+                                <code>ACTIVE</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1"/>
+                        <td colspan="3">
+                            <code>VERIFY_RESIZE</code> &ARROW;
+                                <code>REVERT_RESIZE</code> &ARROW;
+                                <code>ERROR</code> (on error) </td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>During a resize operation, the original server is
+                saved for a period of time to allow for roll back if
+                there is a problem. If you determine there is a
+                problem with a newly resized server, use the revert
+                resize operation to revert the resize and roll back to
+                the original server. All resizes are automatically
+                confirmed after 24 hours if they have not already been
+                confirmed explicitly or reverted. </para>
+            <para>Specify the server ID as <parameter>id</parameter>
+                in the URI. </para>
+            <para>In the request body, specify the
+                    <parameter>revertResize</parameter> action
+                followed by attributes.</para>
+            <para>This operation does not return a response
+                body.</para>
+            <example>
+                <title>Action Revert Resize Request: XML</title>
+                <programlisting language="xml"><xi:include href="samples/revertresize.xml" parse="text"/></programlisting>
+            </example>
+            <example>
+                <title>Action Revert Resize Request: JSON</title>
+                <programlisting language="json"><xi:include href="samples/revertresize.json" parse="text"/></programlisting>
+            </example>
+            <para>This operation does not return a response
+                body.</para>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="Create_Image-d1e4655">
+            <title>Create Image</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="2"
+                                >/servers/<parameter>id</parameter>/action</td>
+                        <td colspan="3">Creates a new image.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <simpara>Normal Response Code(s):
+                    <returnvalue>202</returnvalue>
+            </simpara>
+            <simpara>Error Response Code(s): computeFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>, &hellip;),
+                backupOrResizeInProgress (<errorcode>409</errorcode>),
+                resizeNotAllowed (<errorcode>403</errorcode>),
+                serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), forbidden
+                    (<errorcode>403</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), badMethod
+                    (<errorcode>405</errorcode>), overLimit
+                    (<errorcode>413</errorcode>), itemNotFound
+                    (<errorcode>404</errorcode>), badMediaType
+                    (<errorcode>415</errorcode>),
+                serverCapacityUnavailable
+                (<errorcode>503</errorcode>), buildInProgress
+                    (<errorcode>409</errorcode>) </simpara>
+            <informaltable frame="void">
+                <tbody>
+                    <tr>
+                        <td colspan="1">Image Status Transition:</td>
+                        <td colspan="3">
+                            <code>SAVING</code> &ARROW;
+                                <code>ACTIVE</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1"/>
+                        <td colspan="3">
+                            <code>SAVING</code> &ARROW;
+                                <code>ERROR</code> (on error) </td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>This operation creates a new image for the given
+                server. Once complete, a new image will be available
+                that can be used to rebuild or create servers. The
+                full URL to the newly created image is returned via
+                the <code>Location</code> header, additional
+                attributes for the image including creation status may
+                be retrieved by performing a subsequent &GET; on that
+                URL. See <xref linkend="Get_Image_Details-d1e4848"/>
+                for details. </para>
+            <para>Custom image metadata can also be supplied when
+                creating an image. See <xref linkend="MetadataSection"
+                /> for details on working with metadata. The maximum
+                size of the metadata key and value is 255 bytes each.
+                The maximum number of key-value pairs that can be
+                supplied per image is determined by the compute
+                provider and may be queried through the maxImageMeta
+                absolute limit. </para>
+            <para>Specify the server ID as <parameter>id</parameter>
+                in the URI. </para>
+            <para>In the request body, specify the
+                    <parameter>createImage</parameter> action followed
+                by attributes. The following table describes the
+                attributes that you specify in the request
+                body:</para>
+            <para>
+                <table rules="all">
+                    <caption>Create Image Request Attributes</caption>
+                    <col width="20%"/>
+                    <col width="60%"/>
+                    <col width="20%"/>
+
+                    <thead>
+                        <tr>
+                            <th>Attribute</th>
+                            <th>Description</th>
+                            <th>Required</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>name</td>
+                            <td>The name for the new image.</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>metadata</td>
+                            <td>
+                                <para>Key and value pairs for
+                                   metadata.</para>
+                            </td>
+                            <td>No</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </para>
+            <para>This operation does not return a response
+                body.</para>
+            <note>
+                <para>At present, image creation is an asynchronous
+                    operation, so coordinating the creation with data
+                    quiescence, and so on is currently not possible.
+                </para>
+            </note>
+            <example>
+                <title>Action Create Image Request: XML</title>
+                <programlisting language="xml"><xi:include href="samples/createimage.xml" parse="text"/></programlisting>
+            </example>
+            <?hard-pagebreak?>
+            <example>
+                <title>Action Create Image Request: JSON</title>
+                <programlisting language="json"><xi:include href="samples/createimage.json" parse="text"/></programlisting>
+            </example>
+        </section>
+    </section>
+    <?hard-pagebreak?>
+
+
+    <section xml:id="Flavors-d1e4180">
+
+        <title>Flavors</title>
+        <para>A flavor is an available hardware configuration for a
+            server. Each flavor has a unique combination of disk space
+            and memory capacity. </para>
+        <section xml:id="List_Flavors-d1e4188">
+            <title>List Flavors</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2"
+                                >/flavors?<parameter>minDisk</parameter>=<literal>minDiskInGB</literal>&amp;
+                                <parameter>minRam</parameter>=<literal>minRamInMB</literal>&amp;
+                                <parameter>marker</parameter>=<literal>markerID</literal>&amp;<parameter>limit</parameter>=<literal>int</literal>
+                        </td>
+                        <td colspan="3">Lists IDs, names, and links
+                            for all available flavors.</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2"
+                                >/flavors/detail?<parameter>minDisk</parameter>=<literal>minDiskInGB</literal>&amp;
+                                <parameter>minRam</parameter>=<literal>minRamInMB</literal>&amp;
+                                <parameter>marker</parameter>=<literal>markerID</literal>&amp;<parameter>limit</parameter>=<literal>int</literal></td>
+                        <td colspan="3">Lists all details for all
+                            available flavors.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <simpara>Normal Response Code(s):
+                    <returnvalue>200</returnvalue>,
+                    <returnvalue>203</returnvalue>
+            </simpara>
+            <simpara>Error Response Code(s): computeFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>, &hellip;),
+                serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), forbidden
+                    (<errorcode>403</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), badMethod
+                    (<errorcode>405</errorcode>), overLimit
+                    (<errorcode>413</errorcode>) </simpara>
+            <para>This operation lists information for all available
+                flavors. </para>
+            <para>To filter the list of flavors returned in the
+                response body, you can specify the following optional
+                parameters in the URI:</para>
+            <para>
+                <variablelist>
+                    <varlistentry>
+                        <term><parameter>minDisk</parameter>=<literal>minDiskInGB</literal>&amp;</term>
+                        <listitem>
+                            <para>Filters the list of flavors to those
+                                with the specified minimum number of
+                                gigabytes of disk storage.</para>
+                        </listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term><parameter>minRam</parameter>=<literal>minRamInMB</literal>&amp;</term>
+                        <listitem>
+                            <para>Filters the list of flavors to those
+                                with the specified minimum amount of
+                                RAM in megabytes. </para>
+                        </listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term><parameter>marker</parameter>=<literal>markerID</literal>&amp;</term>
+                        <listitem>
+                            <para>The ID of the last item in the
+                                previous list. See <xref
+                                   linkend="Paginated_Collections-d1e664"
+                                />.</para>
+                        </listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term><parameter>limit</parameter>=<literal>int</literal></term>
+                        <listitem>
+                            <para>Sets the page size. See <xref
+                                   linkend="Paginated_Collections-d1e664"
+                                />.</para>
+                        </listitem>
+                    </varlistentry>
+                </variablelist>
+            </para>
+            <para>This operation does not require a request body. </para>
+            <example>
+                <title>Flavors List Response: XML (detail) </title>
+                <programlisting language="xml"><xi:include href="samples/flavors.xml" parse="text"/></programlisting>
+            </example>
+            <example>
+                <title>Flavors List Response: JSON (detail)</title>
+                <programlisting language="json"><?db-font-size 90% ?><xi:include href="samples/flavors.json" parse="text"/></programlisting>
+            </example>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="Get_Flavor_Details-d1e4317">
+            <title>Get Flavor Details</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2"
+                                >/flavors/<parameter>id</parameter></td>
+                        <td colspan="3">Lists details of the specified
+                            flavor.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <simpara>Normal Response Code(s):
+                    <returnvalue>200</returnvalue>,
+                    <returnvalue>203</returnvalue>
+            </simpara>
+            <simpara>Error Response Code(s): computeFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>, &hellip;),
+                serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), forbidden
+                    (<errorcode>403</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), badMethod
+                    (<errorcode>405</errorcode>), overLimit
+                    (<errorcode>413</errorcode>), itemNotFound
+                    (<errorcode>404</errorcode>) </simpara>
+            <para>Specify the flavor ID as <parameter>id</parameter>
+                in the URI. </para>
+            <para>This operation does not require a request
+                body.</para>
+            <para>This operation returns details of the specified
+                flavor in the response body.</para>
+            <example>
+                <title>Flavor Details Response: XML</title>
+                <programlisting language="xml"><xi:include href="samples/flavor.xml" parse="text"/></programlisting>
+            </example>
+            <?hard-pagebreak?>
+            <example>
+                <title>Flavor Details Response: JSON </title>
+                <programlisting language="json"><xi:include href="samples/flavor.json" parse="text"/></programlisting>
+            </example>
+        </section>
+    </section>
+    <?hard-pagebreak?>
+    <section xml:id="Images-d1e4427">
+        <title>Images</title>
+        <para>An image is a collection of files you use to create or
+            rebuild a server. Operators provide pre-built OS images by
+            default. You may also create custom images. </para>
+        <section xml:id="List_Images-d1e4435">
+            <title>List Images</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2"
+                                >/images?<parameter>server</parameter>=<literal>serverRef</literal>&amp;
+                                <parameter>name</parameter>=<literal>imageName</literal>&amp;
+                                <parameter>status</parameter>=<literal>imageStatus</literal>&amp;
+                                <parameter>changes-since</parameter>=<literal>dateTime</literal>&amp;
+                                <parameter>marker</parameter>=<literal>markerID</literal>&amp;<parameter>limit</parameter>=<literal>int</literal>&amp;
+                                <parameter>type</parameter>=(<constant>BASE</constant>|<constant>SERVER</constant>) </td>
+                        <td colspan="3">Lists IDs, names, and links
+                            for all available images.</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2"
+                                >/images/detail?<parameter>server</parameter>=<literal>serverRef</literal>&amp;
+                                <parameter>name</parameter>=<literal>imageName</literal>&amp;
+                                <parameter>status</parameter>=<literal>imageStatus</literal>&amp;
+                                <parameter>changes-since</parameter>=<literal>dateTime</literal>&amp;
+                                <parameter>marker</parameter>=<literal>markerID</literal>&amp;<parameter>limit</parameter>=<literal>int</literal>&amp;
+                                <parameter>type</parameter>=(<constant>BASE</constant>|<constant>SERVER</constant>) </td>
+                        <td colspan="3">Lists all details for all
+                            available images.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <simpara>Normal Response Code(s):
+                    <returnvalue>200</returnvalue>,
+                    <returnvalue>203</returnvalue>
+            </simpara>
+            <simpara>Error Response Code(s): computeFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>, &hellip;),
+                serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), forbidden
+                    (<errorcode>403</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), badMethod
+                    (<errorcode>405</errorcode>), overLimit
+                    (<errorcode>413</errorcode>) </simpara>
+            <para>This operation lists all images visible by the
+                account. </para>
+            <para>To filter the list of images returned in the
+                response body, you can specify the following optional
+                parameters in the URI:</para>
+            <para>
+                <variablelist>
+                    <varlistentry>
+                        <term><parameter>server</parameter>=<literal>serverRef</literal>&amp;</term>
+                        <listitem>
+                            <para>Filters the list of images by
+                                server. Specify the server reference
+                                by ID or by full URL.</para>
+                        </listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term><parameter>name</parameter>=<literal>imageName</literal>&amp;</term>
+                        <listitem>
+                            <para>Filters the list of images by image
+                                name. </para>
+                        </listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term><parameter>status</parameter>=<literal>imageStatus</literal>&amp;</term>
+                        <listitem>
+                            <para>Filters the list of images by
+                                status. In-flight images will have the
+                                status attribute set to
+                                   <code>SAVING</code> and the
+                                conditional progress element (0-100%
+                                completion) will also be returned.
+                                Other possible values for the status
+                                attribute include:
+                                   <code>UNKNOWN</code>,
+                                   <code>ACTIVE</code>,
+                                   <code>SAVING</code>,
+                                   <code>ERROR</code>, and
+                                   <code>DELETED</code>. Images with
+                                an <code>ACTIVE</code> status are
+                                available for install. </para>
+                        </listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term><parameter>changes-since</parameter>=<literal>dateTime</literal>&amp;</term>
+                        <listitem>
+                            <para>Filters the list of images to those
+                                that have changed since the
+                                changes-since time. See <xref
+                                   linkend="ChangesSince"/> for
+                                details. </para>
+                        </listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term><parameter>marker</parameter>=<literal>markerID</literal>&amp;</term>
+                        <listitem>
+                            <para>The ID of the last item in the
+                                previous list. See <xref
+                                   linkend="Paginated_Collections-d1e664"
+                                />.</para>
+                        </listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term><parameter>limit</parameter>=<literal>int</literal></term>
+                        <listitem>
+                            <para>Sets the page size. See <xref
+                                   linkend="Paginated_Collections-d1e664"
+                                />.</para>
+                        </listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term><parameter>type</parameter>={BASE|SERVER}</term>
+                        <listitem>
+                            <para>Filters base images or server
+                                backups.</para>
+                        </listitem>
+                    </varlistentry>
+                </variablelist>
+            </para>
+            <para>This operation does not require a request body. The
+                optional minDisk and minRam attributes set the minimum
+                disk and RAM requirements needed to create a server
+                with the image. </para>
+            <?hard-pagebreak?>
+            <example>
+                <title>Images List Response: XML (detail)</title>
+                <programlisting language="xml"><xi:include href="samples/images.xml" parse="text"/></programlisting>
+            </example>
+            <?hard-pagebreak?>
+            <example>
+                <title>Images List Response: JSON (detail)</title>
+                <programlisting language="json"><?db-font-size 80%?><xi:include href="samples/images.json" parse="text"/></programlisting>
+            </example>
+        </section>
+        <section xml:id="Get_Image_Details-d1e4848">
+            <title>Get Image Details</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2"
+                                >/images/<parameter>id</parameter></td>
+                        <td colspan="3">Lists details of the specified
+                            image.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <simpara>Normal Response Code(s):
+                    <returnvalue>200</returnvalue>,
+                    <returnvalue>203</returnvalue>
+            </simpara>
+            <simpara>Error Response Code(s): computeFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>, &hellip;),
+                serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), forbidden
+                    (<errorcode>403</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), badMethod
+                    (<errorcode>405</errorcode>), overLimit
+                    (<errorcode>413</errorcode>), itemNotFound
+                    (<errorcode>404</errorcode>) </simpara>
+            <para>Specify the image ID as <parameter>id</parameter> in
+                the URI. </para>
+            <para>This operation does not require a request
+                body.</para>
+            <db:para>This operation returns details of the specified
+                image in the response body.</db:para>
+            <example>
+                <title>Image Details Response: XML</title>
+                <programlisting language="xml"><xi:include href="samples/image.xml" parse="text"/></programlisting>
+            </example>
+            <?hard-pagebreak?>
+            <example>
+                <title>Image Details Response: JSON</title>
+                <programlisting language="json"><xi:include href="samples/image.json" parse="text"/></programlisting>
+            </example>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="Delete_Image-d1e4957">
+            <title>Delete Image</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="2"
+                                >/images/<parameter>id</parameter></td>
+                        <td colspan="3">Deletes the specified
+                            image.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <simpara>Normal Response Code(s):
+                    <returnvalue>204</returnvalue>
+            </simpara>
+            <simpara>Error Response Code(s): computeFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>, &hellip;),
+                serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), forbidden
+                    (<errorcode>403</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), badMethod
+                    (<errorcode>405</errorcode>), overLimit
+                    (<errorcode>413</errorcode>), itemNotFound
+                    (<errorcode>404</errorcode>) </simpara>
+            <informaltable frame="void">
+                <tbody>
+                    <tr>
+                        <td colspan="1">Status Transition:</td>
+                        <td colspan="3">
+                            <code>ACTIVE</code> &ARROW;
+                                <code>DELETED</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1"/>
+                        <td colspan="3">
+                            <code>ERROR</code> &ARROW;
+                                <code>DELETED</code>
+                        </td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>This operation deletes the specified image from the
+                system. </para>
+            <para>Specify the image ID as <parameter>id</parameter> in
+                the URI. </para>
+            <para>Images are immediately removed. </para>
+            <para>This operation does not require a request
+                body.</para>
+            <para>This operation does not return a response
+                body.</para>
+        </section>
+    </section>
+    <?hard-pagebreak?>
+    <section xml:id="MetadataSection">
+        <title>Metadata</title>
+        <para> The following operations allow access to metadata after
+            a server or image has been created. </para>
+        <section xml:id="List_Metadata-d1e5089">
+            <title>List Metadata</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2"
+                                >/servers/<parameter>id</parameter>/metadata</td>
+                        <td colspan="3">Lists metadata associated with
+                            a server.</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2"
+                                >/images/<parameter>id</parameter>/metadata</td>
+                        <td colspan="3">Lists metadata associated with
+                            an image.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <simpara>Normal Response Code(s):
+                    <returnvalue>200</returnvalue>,
+                    <returnvalue>203</returnvalue>
+            </simpara>
+            <simpara>Error Response Code(s): computeFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>, &hellip;),
+                serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), forbidden
+                    (<errorcode>403</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), badMethod
+                    (<errorcode>405</errorcode>), overLimit
+                    (<errorcode>413</errorcode>), itemNotFound
+                    (<errorcode>404</errorcode>) </simpara>
+            <para>Lists all metadata. </para>
+            <para>Specify the server or image ID as
+                    <parameter>id</parameter> in the URI. </para>
+            <para>This operation does not require a request body. </para>
+            <example>
+                <title>Metadata List Response: XML </title>
+                <programlisting language="xml"><xi:include href="samples/metadata.xml" parse="text"/></programlisting>
+            </example>
+            <example>
+                <title>Metadata List Response: JSON </title>
+                <programlisting language="json"><xi:include href="samples/metadata.json" parse="text"/></programlisting>
+            </example>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="Create_or_Replace_Metadata-d1e5358">
+            <title>Set Metadata</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="2"
+                                >/servers/<parameter>id</parameter>/metadata</td>
+                        <td colspan="3">Sets metadata for a specified
+                            server.</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="2"
+                                >/images/<parameter>id</parameter>/metadata</td>
+                        <td colspan="3">Sets metadata for a specified
+                            image.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <simpara>Normal Response Code(s):
+                    <returnvalue>200</returnvalue>
+            </simpara>
+            <simpara>Error Response Code(s): computeFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>, &hellip;),
+                serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), forbidden
+                    (<errorcode>403</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), badMethod
+                    (<errorcode>405</errorcode>), overLimit
+                    (<errorcode>413</errorcode>), itemNotFound
+                    (<errorcode>404</errorcode>), badMediaType
+                    (<errorcode>415</errorcode>), buildInProgress
+                    (<errorcode>409</errorcode>) </simpara>
+            <para>Sets metadata for the specified image or server. </para>
+            <para>Specify the image or server ID as
+                    <parameter>id</parameter> in the URI. </para>
+            <para>In the request body, specify the
+                    <parameter>metadata</parameter> element followed
+                by attributes. The following table describes the
+                attributes that you specify in the request
+                body:</para>
+            <para>
+                <table rules="all">
+                    <caption>Set Metadata Request Attributes</caption>
+                    <col width="20%"/>
+                    <col width="60%"/>
+                    <col width="20%"/>
+                    <thead>
+                        <tr>
+                            <th>Attribute</th>
+                            <th>Description</th>
+                            <th>Required</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>meta</td>
+                            <td>
+                                <para>Key and value pairs for
+                                   metadata.</para>
+                            </td>
+                            <td>Yes</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </para>
+            <para>Existing metadata items are replaced with the ones
+                provided in the request. An overLimit
+                    (<errorcode>413</errorcode>) fault may be thrown
+                if the maximum number of metadata items is exceeded.
+                The maximum number of key-value pairs that can be
+                supplied per server is determined by the compute
+                provider and may be queried via the maxServerMeta
+                absolute limit. The maximum number of key-value pairs
+                for an image may be queried via the maxImageMeta
+                absolute limit. </para>
+            <example>
+                <title>Set Metadata Request: XML </title>
+                <programlisting language="xml"><xi:include href="samples/metadata.xml" parse="text"/></programlisting>
+            </example>
+            <example>
+                <title>Set Metadata Request: JSON </title>
+                <programlisting language="json"><xi:include href="samples/metadata.json" parse="text"/></programlisting>
+            </example>
+            <?hard-pagebreak?>
+            <example>
+                <title>Set Metadata Response: XML </title>
+                <programlisting language="xml"><xi:include href="samples/metadata.xml" parse="text"/></programlisting>
+            </example>
+            <example>
+                <title>Set Metadata Response: JSON </title>
+                <programlisting language="json"><xi:include href="samples/metadata.json" parse="text"/></programlisting>
+            </example>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="Update_Metadata-d1e5208">
+            <title>Update Metadata</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="2"
+                                >/servers/<parameter>id</parameter>/metadata</td>
+                        <td colspan="3">Updates metadata items for the
+                            specified server.</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="2"
+                                >/images/<parameter>id</parameter>/metadata</td>
+                        <td colspan="3">Updates metadata items for the
+                            specified image.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <simpara>Normal Response Code(s):
+                    <returnvalue>200</returnvalue>
+            </simpara>
+            <simpara>Error Response Code(s): computeFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>, &hellip;),
+                serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), forbidden
+                    (<errorcode>403</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), badMethod
+                    (<errorcode>405</errorcode>), overLimit
+                    (<errorcode>413</errorcode>), itemNotFound
+                    (<errorcode>404</errorcode>), badMediaType
+                    (<errorcode>415</errorcode>), buildInProgress
+                    (<errorcode>409</errorcode>) </simpara>
+            <para>Updates resource metadata. </para>
+            <para>Specify the image or server ID as
+                    <parameter>id</parameter> in the URI. </para>
+            <para>In the request body, specify the
+                    <parameter>metadata</parameter> element followed
+                by attributes. The following table describes the
+                attributes that you specify in the request
+                body:</para>
+            <para>
+                <table rules="all">
+                    <caption>Update Metadata Request
+                        Attributes</caption>
+                    <col width="20%"/>
+                    <col width="60%"/>
+                    <col width="20%"/>
+                    <thead>
+                        <tr>
+                            <th>Attribute</th>
+                            <th>Description</th>
+                            <th>Required</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>meta</td>
+                            <td>
+                                <para>Key and value pairs for
+                                   metadata.</para>
+                            </td>
+                            <td>Yes</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </para>
+            <para>Updates will replace existing metadata items with
+                the same key. Items not explicitly mentioned in the
+                request will not be modified. An overLimit
+                    (<errorcode>413</errorcode>) fault may be thrown
+                if the operation causes the maximum number of metadata
+                items to be exceeded. The maximum number of key-value
+                pairs that can be supplied per server is determined by
+                the compute provider and may be queried via the
+                maxServerMeta absolute limit. The maximum number of
+                key-value pairs for an image may be queried via the
+                maxImageMeta absolute limit. </para>
+            <example>
+                <title>Update Metadata Request: XML </title>
+                <programlisting language="xml"><xi:include href="samples/metadata-update-req.xml" parse="text"/></programlisting>
+            </example>
+            <example>
+                <title>Update Metadata Request: JSON </title>
+                <programlisting language="json"><xi:include href="samples/metadata-update-req.json" parse="text"/></programlisting>
+            </example>
+            <?hard-pagebreak?>
+            <example>
+                <title>Update Metadata Response: XML </title>
+                <programlisting language="xml"><xi:include href="samples/metadata-update-resp.xml" parse="text"/></programlisting>
+            </example>
+            <example>
+                <title>Update Metadata Response: JSON </title>
+                <programlisting language="json"><xi:include href="samples/metadata-update-resp.json" parse="text"/></programlisting>
+            </example>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="Get_Metadata_Item-d1e5507">
+            <title>Get Metadata Item</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2"
+                                >/servers/<parameter>id</parameter>/metadata/<parameter>key</parameter></td>
+                        <td colspan="3">Gets a metadata item
+                            associated with a server.</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2"
+                                >/images/<parameter>id</parameter>/metadata/<parameter>key</parameter></td>
+                        <td colspan="3">Gets a metadata item
+                            associated with an image.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <simpara>Normal Response Code(s):
+                    <returnvalue>200</returnvalue>,
+                    <returnvalue>203</returnvalue>
+            </simpara>
+            <simpara>Error Response Code(s): computeFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>, &hellip;),
+                serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), forbidden
+                    (<errorcode>403</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), badMethod
+                    (<errorcode>405</errorcode>), overLimit
+                    (<errorcode>413</errorcode>), itemNotFound
+                    (<errorcode>404</errorcode>) </simpara>
+            <para>Retrieves a single metadata item by key. </para>
+            <para>In the URI, specify the image or server ID as
+                    <parameter>id</parameter> and the key as
+                    <parameter>key</parameter>.</para>
+            <para>This operation does not require a request body. </para>
+            <example>
+                <title>Metadata Item Response: XML </title>
+                <programlisting language="xml"><xi:include href="samples/metadata_item.xml" parse="text"/></programlisting>
+            </example>
+            <example>
+                <title>Metadata Item Response: JSON </title>
+                <programlisting language="json"><xi:include href="samples/metadata_item.json" parse="text"/></programlisting>
+            </example>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="Create_or_Update_a_Metadata_Item-d1e5633">
+            <title>Set Metadata Item</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="2"
+                                >/servers/<parameter>id</parameter>/metadata/<parameter>key</parameter></td>
+                        <td colspan="3">Sets a metadata item for a
+                            specified server.</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="2"
+                                >/images/<parameter>id</parameter>/metadata/<parameter>key</parameter></td>
+                        <td colspan="3">Sets a metadata item for a
+                            specified image.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <simpara>Normal Response Code(s):
+                    <returnvalue>200</returnvalue>
+            </simpara>
+            <simpara>Error Response Code(s): computeFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>, &hellip;),
+                serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), forbidden
+                    (<errorcode>403</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), badMethod
+                    (<errorcode>405</errorcode>), overLimit
+                    (<errorcode>413</errorcode>), itemNotFound
+                    (<errorcode>404</errorcode>), badMediaType
+                    (<errorcode>415</errorcode>), buildInProgress
+                    (<errorcode>409</errorcode>) </simpara>
+            <para>Sets a metadata item by its key. </para>
+            <para>In the URI, specify the image or server ID as
+                    <parameter>id</parameter> and the key as
+                    <parameter>key</parameter>.</para>
+            <para>In the request body, specify the
+                    <parameter>metadata</parameter> element followed
+                by attributes. The following table describes the
+                attributes that you specify in the request
+                body:</para>
+            <para><table rules="all">
+                    <caption>Set Metadata Item Request
+                        Attributes</caption>
+                    <col width="20%"/>
+                    <col width="60%"/>
+                    <col width="20%"/>
+                    <thead>
+                        <tr>
+                            <th>Attribute</th>
+                            <th>Description</th>
+                            <th>Required</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>meta</td>
+                            <td>
+                                <para>Key and value pairs for
+                                   metadata.</para>
+                            </td>
+                            <td>Yes</td>
+                        </tr>
+                    </tbody>
+                </table>An overLimit (<errorcode>413</errorcode>)
+                fault may be thrown if the operation causes the
+                maximum number of metadata items to be exceeded. The
+                maximum number of key-value pairs that can be supplied
+                per server is determined by the compute provider and
+                may be queried via the maxServerMeta absolute limit.
+                The maximum number of key-value pairs for an image may
+                be queried via the maxImageMeta absolute limit. </para>
+            <example>
+                <title>Set Metadata Item Request: XML </title>
+                <programlisting language="xml"><xi:include href="samples/metadata_item.xml" parse="text"/></programlisting>
+            </example>
+            <example>
+                <title>Set Metadata Item Request: JSON </title>
+                <programlisting language="json"><xi:include href="samples/metadata_item.json" parse="text"/></programlisting>
+            </example>
+            <?hard-pagebreak?>
+            <example>
+                <title>Set Metadata Item Response: XML </title>
+                <programlisting language="xml"><xi:include href="samples/metadata_item.xml" parse="text"/></programlisting>
+            </example>
+            <example>
+                <title>Set Metadata Item Response: JSON </title>
+                <programlisting language="json"><xi:include href="samples/metadata_item.json" parse="text"/></programlisting>
+            </example>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="Delete_Metadata_Item-d1e5790">
+            <title>Delete Metadata Item</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="2"
+                                >/servers/<parameter>id</parameter>/metadata/<parameter>key</parameter></td>
+                        <td colspan="3">Deletes a metadata item for
+                            the specified server.</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="2"
+                                >/images/<parameter>id</parameter>/metadata/<parameter>key</parameter></td>
+                        <td colspan="3">Deletes a metadata item for
+                            the specified image.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <simpara>Normal Response Code(s):
+                    <returnvalue>204</returnvalue>
+            </simpara>
+            <simpara> Error Response Code(s): computeFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>, &hellip;),
+                serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), forbidden
+                    (<errorcode>403</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), badMethod
+                    (<errorcode>405</errorcode>), overLimit
+                    (<errorcode>413</errorcode>), itemNotFound
+                    (<errorcode>404</errorcode>), buildInProgress
+                    (<errorcode>409</errorcode>) </simpara>
+            <para>Deletes a metadata item. </para>
+            <para>In the URI, specify the image or server ID as
+                    <parameter>id</parameter> and the key as
+                    <parameter>key</parameter>.</para>
+            <para>The operation does not require a request body. </para>
+            <para>The operation does not return a response body.
+            </para>
+        </section>
+    </section>
+</chapter>

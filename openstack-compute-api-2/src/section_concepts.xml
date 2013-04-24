@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section [ 
+]>
+<section xmlns="http://docbook.org/ns/docbook"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:m="http://www.w3.org/1998/Math/MathML"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:db="http://docbook.org/ns/docbook" version="5.0"
+    xml:id="concepts">
+    <?dbhtml stop-chunking?>
+    <title>Concepts</title>
+    <para>To use the OpenStack Compute API effectively, you should
+        understand several key concepts: </para>
+    <itemizedlist>
+        <listitem>
+            <para><emphasis role="bold">Server</emphasis>. A virtual
+                machine (VM) instance in the compute system. Flavor
+                and image are required elements when you create a
+                server. </para>
+        </listitem>
+        <listitem xml:id="Flavor-d1e388">
+            <para><emphasis role="bold">Flavor</emphasis>. An
+                available hardware configuration for a server. Each
+                flavor has a unique combination of disk space, memory
+                capacity, and priority for CPU time. </para>
+        </listitem>
+        <listitem xml:id="Image-d1e398">
+            <para><emphasis role="bold">Image</emphasis>. A collection
+                of files used to create or rebuild a server. Operators
+                provide a number of pre-built OS images by default.
+                You may also create custom images from cloud servers
+                you have launched. These custom images are useful for
+                backup purposes or for producing “gold” server images
+                if you plan to deploy a particular server
+                configuration frequently. </para>
+        </listitem>
+        <listitem xml:id="Reboot-d1e407">
+            <para><emphasis role="bold">Reboot</emphasis>. This
+                function enables you to perform a soft or hard reboot
+                of a server. With a soft reboot, the operating system
+                is signaled to restart, which allows for a graceful
+                shutdown of all processes. A hard reboot is the
+                equivalent of power cycling the server. The
+                virtualization platform should ensure that the reboot
+                action has completed successfully even in cases in
+                which the underlying domain/vm is paused or
+                halted/stopped. </para>
+        </listitem>
+        <listitem xml:id="Rebuild-d1e416">
+            <para><emphasis role="bold">Rebuild</emphasis>. This
+                function removes all data on the server and replaces
+                it with the specified image. Server ID and IP
+                addresses remain the same. </para>
+        </listitem>
+        <listitem xml:id="Resize-d1e425">
+            <para><emphasis role="bold">Resize</emphasis>. This
+                function converts an existing server to a different
+                flavor, in essence, scaling the server up or down. The
+                original server is saved for a period of time to allow
+                rollback if there is a problem. All resizes should be
+                tested and explicitly confirmed, at which time the
+                original server is removed. All resizes are
+                automatically confirmed after 24 hours if you do not
+                confirm or revert them. </para>
+        </listitem>
+    </itemizedlist>
+</section>
