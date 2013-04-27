@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema elementFormDefault="qualified"
+  attributeFormDefault="unqualified"
+  targetNamespace="http://docs.openstack.org/database/api/v1.0"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  xmlns:compext="http://docs.rackspacecloud.com/compext/v1.0"
+  xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0">
+  <annotation>
+    <xsd:appinfo xml:lang="EN" xmlns="http://www.w3.org/1999/xhtml">
+      <xsdxt:title>compext</xsdxt:title>
+    </xsd:appinfo>
+    <xsd:documentation xml:lang="EN"
+      xmlns="http://www.w3.org/1999/xhtml">
+      <p>This is the main index XML Schema document for compext API
+        Schema Types Version 1.0. </p>
+    </xsd:documentation>
+  </annotation>
+  <element name="action" type="compext:action">
+    <annotation>
+      <xsd:documentation xml:lang="EN"
+        xmlns="http://www.w3.org/1999/xhtml">
+        <p>A server action.</p>
+      </xsd:documentation>
+    </annotation>
+  </element>
+</schema>

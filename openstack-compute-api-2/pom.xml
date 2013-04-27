@@ -90,7 +90,7 @@
                             <!--<sectionAutolabel>0</sectionAutolabel>
                             <sectionLabelIncludesComponentLabel>0</sectionLabelIncludesComponentLabel>-->
                             <tocSectionDepth>1</tocSectionDepth>
-                            <targetDirectory>target/docbkx/webhelp/openstack-compute</targetDirectory>
+                            <targetDirectory>target/docbkx/webhelp/api/openstack-compute</targetDirectory>
                             <webhelpDirname>2</webhelpDirname>
                             <pdfFilenameBase>bk-compute-devguide-2</pdfFilenameBase>
                             <postProcess>
@@ -114,25 +114,25 @@
                                    </fileset>
                                 </copy>
                                 <copy
-                                   todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/xslt">
+                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/xslt">
                                    <fileset dir="${basedir}/src/xslt">
                                    <include name="**/*.*"/>
                                    </fileset>
                                 </copy>
                                 <copy
-                                   todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/style">
+                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/style">
                                    <fileset dir="${basedir}/src/style">
                                    <include name="**/*.*"/>
                                    </fileset>
                                 </copy>
                                 <copy
-                                   todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/js">
+                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/js">
                                    <fileset dir="${basedir}/src/js">
                                    <include name="**/*.*"/>
                                    </fileset>
                                 </copy>
                                 <copy
-                                   todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/samples">
+                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/samples">
                                    <fileset
                                    dir="${basedir}/src/samples">
                                    <include name="**/*.*"/>
@@ -149,7 +149,7 @@
 
                                 <!-- Copies wadl to a folder -->
                                 <copy
-                                   todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/1.1/">
+                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/">
                                    <fileset dir="${basedir}/src/">
                                    <include name="**/*.wadl"/>
                                    </fileset>

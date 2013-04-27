@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!-- (C) 2013 OpenStack Foundation, All Rights Reserved -->
-
 <application xmlns="http://wadl.dev.java.net/2009/02"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -10,11 +8,9 @@
     xmlns:wadl="http://wadl.dev.java.net/2009/02"
     xmlns:csapi="http://docs.openstack.org/compute/api/v1.1"
     xmlns:compext="http://docs.openstack.org/compute/api/v1.1">
-
     <grammars>
         <include href="../xsd/compext.xsd"/>
     </grammars>
-
     <resources base="https://servers.api.openstack.com">
         <resource id="version" type="#VersionDetails" path="v2/">
             <resource id="tenantID" path="{tenant_id}">
@@ -23,7 +19,6 @@
                     <doc> The ID for the tenant or account in a
                         multi-tenancy cloud. </doc>
                 </param>
-
                 <resource id="Servers" path="servers">
                     <resource path="{server_id}">
                         <param name="server_id" style="template"
@@ -50,7 +45,6 @@
             </resource>
         </resource>
     </resources>
-
     <method name="POST" id="pause">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Pause Server">
@@ -78,7 +72,6 @@
         </request>
         <response status="202"/>
     </method>
-
     <method name="POST" id="unpause">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Unpause Server">
@@ -106,7 +99,6 @@
         </request>
         <response status="202"/>
     </method>
-
     <method name="POST" id="suspend">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Suspend Server">
@@ -134,7 +126,6 @@
         </request>
         <response status="202"/>
     </method>
-
     <method name="POST" id="resume">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Resume Server">
@@ -162,7 +153,6 @@
         </request>
         <response status="202"/>
     </method>
-
     <method name="POST" id="migrate">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Migrate Server">
@@ -182,7 +172,6 @@
         </request>
         <response status="202"/>
     </method>
-
     <method name="POST" id="resetNetwork">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Reset Networking on Server">
@@ -210,7 +199,6 @@
         </request>
         <response status="202"/>
     </method>
-
     <method name="POST" id="injectNetworkInfo">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Inject Network Information">
@@ -238,7 +226,6 @@
         </request>
         <response status="202"/>
     </method>
-
     <method name="POST" id="lock">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Lock Server">
@@ -265,7 +252,6 @@
         </request>
         <response status="202"/>
     </method>
-
     <method name="POST" id="unlock">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Unlock Server">
@@ -292,7 +278,6 @@
         </request>
         <response status="202"/>
     </method>
-
     <method name="POST" id="createBackup">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Back up Server Instance">
@@ -334,7 +319,6 @@
         </request>
         <response status="202"/>
     </method>
-
     <method name="POST" id="os-migrateLive">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Live-Migrate Server">
@@ -374,7 +358,6 @@
         </request>
         <response status="202"/>
     </method>
-
     <method name="POST" id="os-resetState">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Reset Server State">

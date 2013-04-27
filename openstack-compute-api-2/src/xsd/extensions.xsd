@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="../xslt/schema.xsl"?>
 
-<!-- (C) 2011 OpenStack LLC., All Rights Reserved -->
+<!-- (C) 2013 OpenStack Foundation, All Rights Reserved -->
 
 <xsd:schema elementFormDefault="qualified" attributeFormDefault="unqualified"
            targetNamespace="http://docs.openstack.org/common/api/v1.0"
@@ -59,7 +59,7 @@
                 xml:lang="EN"
                 xmlns="http://www.w3.org/1999/xhtml">
                 <p>
-                    Detials about a specific extension.
+                    Details about a specific extension.
                 </p>
             </xsd:documentation>
             <xsd:appinfo>
@@ -99,7 +99,7 @@
                 xml:lang="EN"
                 xmlns="http://www.w3.org/1999/xhtml">
                 <p>
-                    Detials about a specific extension.
+                    Details about a specific extension.
                 </p>
             </xsd:documentation>
         </xsd:annotation>
@@ -125,7 +125,7 @@
                     xml:lang="EN"
                     xmlns="http://www.w3.org/1999/xhtml">
                     <p>
-                        A human reabable extension name.
+                        A human readable extension name.
                     </p>
                 </xsd:documentation>
             </xsd:annotation>
@@ -147,7 +147,7 @@
                     xml:lang="EN"
                     xmlns="http://www.w3.org/1999/xhtml">
                     <p>
-                        A vendor prefix alieas used for non-XML
+                        A vendor prefix alias used for non-XML
                         representations.
                     </p>
                 </xsd:documentation>
@@ -160,7 +160,7 @@
                     xmlns="http://www.w3.org/1999/xhtml">
                     <p>
                         The time that the extension was added or
-                        modifided.
+                        modified.
                     </p>
                 </xsd:documentation>
             </xsd:annotation>
@@ -189,9 +189,9 @@
                 <p>
                     Vendor aliases are used to differentiate
                     extensions in non-XML representations as well as
-                    in HTTP headers and in the URL path.  An alias is
-                    made of a vendor prefix, followed be a a dash (-)
-                    followed be a short extension ID.  For example:
+                    in HTTP headers and in the URL path. An alias is
+                    made of a vendor prefix, followed be a dash (-)
+                    followed be a short extension ID. For example:
                     <code>RAX-PIE</code>.
                 </p>
             </xsd:documentation>
