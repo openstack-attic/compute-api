@@ -34,8 +34,10 @@
     xmlns:html="http://www.w3.org/1999/xhtml"
     xmlns:db="http://docbook.org/ns/docbook" version="5.0"
     xml:id="os-cs-devguide">
-    <title>OpenStack Compute Developer Guide</title>
-    <titleabbrev>OpenStack Compute Dev Guide</titleabbrev>
+    <title>OpenStack Compute and Extensions Developer Guide</title>
+    <?rax title.font.size="32px"?>
+    <titleabbrev>OpenStack Compute and Extensions Dev
+        Guide</titleabbrev>
     <info>
         <author>
             <personname>
@@ -43,7 +45,7 @@
                 <surname/>
             </personname>
             <affiliation>
-                <orgname>OpenStack LLC</orgname>
+                <orgname>OpenStack Foundation</orgname>
             </affiliation>
         </author>
         <copyright>
@@ -55,8 +57,8 @@
             <holder>OpenStack Foundation</holder>
         </copyright>
         <releaseinfo>API v2</releaseinfo>
-        <productname>OpenStack Compute</productname>
-        <pubdate>2012-05-30</pubdate>
+        <productname>OpenStack Compute and Extensions</productname>
+        <pubdate/>
         <legalnotice role="apache2">
             <annotation>
                 <remark>Copyright details are filled in by the
@@ -72,13 +74,27 @@
         <revhistory>
             <revision>
                 <!-- ... continue addding more revisions here as you change this document using the markup shown below... -->
+                <date>2013-04-27</date>
+                <revdescription>
+                    <itemizedlist>
+                        <listitem>
+                            <para>Changed title of this book to
+                                reflect that it contains Compute
+                                extensions.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <!-- ... continue addding more revisions here as you change this document using the markup shown below... -->
                 <date>2013-04-17</date>
                 <revdescription>
                     <itemizedlist>
                         <listitem>
                             <para>Added <xref
-                                   linkend="ext-os-admin-actions"
-                                /> to document the server admin actions extension.</para>
+                                   linkend="ext-os-admin-actions"/> to
+                                document the server admin actions
+                                extension.</para>
                         </listitem>
                     </itemizedlist>
                 </revdescription>
@@ -171,25 +187,25 @@
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
-                            <para> Added <parameter>limit</parameter>
+                            <para>Added <parameter>limit</parameter>
                                 and <parameter>marker</parameter>
                                 parameters to list operations. </para>
                         </listitem>
                         <listitem>
-                            <para> The rebuild action behaves just
+                            <para>The rebuild action behaves just
                                 like create: an imageRef is used and a
                                 password may be specified. </para>
                         </listitem>
                         <listitem>
-                            <para> Added tenant and user_id attributes
+                            <para>Added tenant and user_id attributes
                                 to server and image. </para>
                         </listitem>
                         <listitem>
-                            <para> Added vcpus attribute to flavors.
+                            <para>Added vcpus attribute to flavors.
                             </para>
                         </listitem>
                         <listitem>
-                            <para> We now use a flavorRef in the
+                            <para>We now use a flavorRef in the
                                 resize action. </para>
                         </listitem>
                     </itemizedlist>
@@ -200,78 +216,78 @@
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
-                            <para> Added missing response examples for
+                            <para>Added missing response examples for
                                 server update. </para>
                         </listitem>
                         <listitem>
-                            <para> Ensure consistent HTTP status codes
+                            <para>Ensure consistent HTTP status codes
                                 for all resources. </para>
                         </listitem>
                         <listitem>
-                            <para> Clarifications on setting and
+                            <para>Clarifications on setting and
                                 changing a server password. </para>
                         </listitem>
                         <listitem>
-                            <para> Minor updates to metadata section
+                            <para>Minor updates to metadata section
                                 for clarity. </para>
                         </listitem>
                         <listitem>
-                            <para> Discuss alternate links. </para>
+                            <para>Discuss alternate links. </para>
                         </listitem>
                         <listitem>
-                            <para> Removed version number from compute
+                            <para>Removed version number from compute
                                 media types &mdash; use a media type
                                 parameter instead. </para>
                         </listitem>
                         <listitem>
-                            <para> Bought back the flavorRef and
+                            <para>Bought back the flavorRef and
                                 imageRef server attributes these are
                                 now only used when creating a server.
                             </para>
                         </listitem>
                         <listitem>
-                            <para> Made the create image operation a
+                            <para>Made the create image operation a
                                 server action. </para>
                         </listitem>
                         <listitem>
-                            <para> Added minDisk and minRam filters to
+                            <para>Added minDisk and minRam filters to
                                 flavor lists. </para>
                         </listitem>
                         <listitem>
-                            <para> Added minDisk and minRam attributes
+                            <para>Added minDisk and minRam attributes
                                 to images. </para>
                         </listitem>
                         <listitem>
-                            <para> Asynchronous faults may now contain
+                            <para>Asynchronous faults may now contain
                                 a timestamp. </para>
                         </listitem>
                         <listitem>
-                            <para> Changes-since request returns an
+                            <para>Changes-since request returns an
                                 empty list rather than a 304. </para>
                         </listitem>
                         <listitem>
-                            <para> Added DELETED image status. </para>
+                            <para>Added DELETED image status. </para>
                         </listitem>
                         <listitem>
-                            <para> Fix content length in <xref
+                            <para>Fix content length in <xref
                                    linkend="ImageCreateFullResponse"
                                 />. </para>
                         </listitem>
                         <listitem>
-                            <para> Fixed bad request error code in
+                            <para>Fixed bad request error code in
                                    <xref
                                    linkend="Server_Passwords-d1e2510"
                                 />. </para>
                         </listitem>
                         <listitem>
-                            <para> Compact image, server, and flavor
+                            <para>Compact image, server, and flavor
                                 lists should contain IDs, names, and
                                 links (Any kind of link may be
                                 included &mdash; not just self links).
                             </para>
                         </listitem>
                         <listitem>
-                            <para> Changed metadata URI from .../meta
+                            <para>Changed metadata URI from .../meta
                                 to .../metadata for consistency.
                             </para>
                         </listitem>
@@ -283,7 +299,7 @@
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
-                            <para> Renamed Primary IP to Access IP.
+                            <para>Renamed Primary IP to Access IP.
                             </para>
                         </listitem>
                     </itemizedlist>
@@ -294,71 +310,71 @@
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
-                            <para> Many minor updates based on
+                            <para>Many minor updates based on
                                 community feedback. </para>
                         </listitem>
                         <listitem>
-                            <para> Removed sections on Content
+                            <para>Removed sections on Content
                                 Compression, Persistent Connections,
                                 and Caching &mdash; these are operator
                                 specific. Added section on HTTP.
                             </para>
                         </listitem>
                         <listitem>
-                            <para> A Location header is returned when
+                            <para>A Location header is returned when
                                 creating servers/images. </para>
                         </listitem>
                         <listitem>
-                            <para> Added filters to collection of
+                            <para>Added filters to collection of
                                 Image, Servers, and Flavors. </para>
                         </listitem>
                         <listitem>
-                            <para> Added asynchronous faults. </para>
+                            <para>Added asynchronous faults. </para>
                         </listitem>
                         <listitem>
-                            <para> Updates to links and references.
+                            <para>Updates to links and references.
                                 Remove serverRef, imageRef, and
                                 flavorRef and instead embed one entity
                                 in another to provide links. </para>
                         </listitem>
                         <listitem>
-                            <para> Added primary IP addresses. </para>
+                            <para>Added primary IP addresses. </para>
                         </listitem>
                         <listitem>
-                            <para> Added forbidden fault. </para>
+                            <para>Added forbidden fault. </para>
                         </listitem>
                         <listitem>
-                            <para> We now use a single bookmark link
+                            <para>We now use a single bookmark link
                                 per entity regardless of mimetype.
                             </para>
                         </listitem>
                         <listitem>
-                            <para> Collections are now sorted by
+                            <para>Collections are now sorted by
                                 create time. </para>
                         </listitem>
                         <listitem>
-                            <para> Previous links are no longer
+                            <para>Previous links are no longer
                                 required. </para>
                         </listitem>
                         <listitem>
-                            <para> Added the ability to create or
+                            <para>Added the ability to create or
                                 update multiple metadata items
                                 simultaneously. </para>
                         </listitem>
                         <listitem>
-                            <para> Minor cleanups to server and image
+                            <para>Minor cleanups to server and image
                                 state machine. </para>
                         </listitem>
                         <listitem>
-                            <para> Update to JSON collection format.
+                            <para>Update to JSON collection format.
                             </para>
                         </listitem>
                         <listitem>
-                            <para> Replace integer IDs with UUIDs.
+                            <para>Replace integer IDs with UUIDs.
                             </para>
                         </listitem>
                         <listitem>
-                            <para> Removed affinityID, this will
+                            <para>Removed affinityID, this will
                                 likely come in as an extension.
                             </para>
                         </listitem>
@@ -370,7 +386,7 @@
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
-                            <para> Some minor cleanups in preparation
+                            <para>Some minor cleanups in preparation
                                 for OpenStack Summit discussion.
                             </para>
                         </listitem>
@@ -382,32 +398,32 @@
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
-                            <para> Many minor updates based on
+                            <para>Many minor updates based on
                                 community feedback. </para>
                         </listitem>
                         <listitem>
-                            <para> Updates to resource linking and
+                            <para>Updates to resource linking and
                                 references. </para>
                         </listitem>
                         <listitem>
-                            <para> Better description of paginated
+                            <para>Better description of paginated
                                 collections. </para>
                         </listitem>
                         <listitem>
-                            <para> Metadata supported in servers and
+                            <para>Metadata supported in servers and
                                 images. </para>
                         </listitem>
                         <listitem>
-                            <para> Dropped support for shared IP
+                            <para>Dropped support for shared IP
                                 groups. </para>
                         </listitem>
                         <listitem>
-                            <para> IPs organized by network id, vs
+                            <para>IPs organized by network id, vs
                                 simply having public and private IPs.
                             </para>
                         </listitem>
                         <listitem>
-                            <para> Generalized affinity id. </para>
+                            <para>Generalized affinity id. </para>
                         </listitem>
                     </itemizedlist>
                 </revdescription>
@@ -417,7 +433,7 @@
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
-                            <para> Initial release. </para>
+                            <para>Initial release. </para>
                         </listitem>
                     </itemizedlist>
                 </revdescription>
@@ -426,8 +442,8 @@
 
 
     </info>
-    <chapter xml:id="Overview-d1e71">
-        <title>Overview</title>
+    <preface xml:id="preface">
+        <title>Preface</title>
         <para>OpenStack Compute is a compute service that provides
             server capacity in the cloud. Compute Servers come in
             different flavors of memory, cores, disk space, and CPU,
@@ -477,69 +493,11 @@
                     xlink:href="http://docs.openstack.org">
                     http://docs.openstack.org</link>. </para>
         </section>
-    </chapter>
-    <chapter xml:id="Concepts-d1e369">
-        <?dbhtml stop-chunking?>
-        <title>Concepts</title>
-        <para> To use the OpenStack Compute API effectively, you
-            should understand several key concepts: </para>
-        <section xml:id="Server-d1e379">
-            <title>Server</title>
-            <para> A server is a virtual machine instance in the
-                compute system. Flavor and image are requisite
-                elements when creating a server. </para>
-        </section>
-        <section xml:id="Flavor-d1e388">
-            <title>Flavor</title>
-            <para> A flavor is an available hardware configuration for
-                a server. Each flavor has a unique combination of disk
-                space, memory capacity and priority for CPU time.
-            </para>
-        </section>
-        <section xml:id="Image-d1e398">
-            <title>Image</title>
-            <para> An image is a collection of files used to create or
-                rebuild a server. Operators provide a number of
-                pre-built OS images by default. You may also create
-                custom images from cloud servers you have launched.
-                These custom images are useful for backup purposes or
-                for producing “gold” server images if you plan to
-                deploy a particular server configuration frequently.
-            </para>
-        </section>
-        <section xml:id="Reboot-d1e407">
-            <title>Reboot</title>
-            <para> The reboot function allows for either a soft or
-                hard reboot of a server. With a soft reboot, the
-                operating system is signaled to restart, which allows
-                for a graceful shutdown of all processes. A hard
-                reboot is the equivalent of power cycling the server.
-                The virtualization platform should ensure that the
-                reboot action has completed successfully even in cases
-                in which the underlying domain/vm is paused or
-                halted/stopped. </para>
-        </section>
-        <section xml:id="Rebuild-d1e416">
-            <title>Rebuild</title>
-            <para> The rebuild function removes all data on the server
-                and replaces it with the specified image. Server ID
-                and IP addresses remain the same. </para>
-        </section>
-        <section xml:id="Resize-d1e425">
-            <title>Resize</title>
-            <para> The resize function converts an existing server to
-                a different flavor, in essence, scaling the server up
-                or down. The original server is saved for a period of
-                time to allow rollback if there is a problem. All
-                resizes should be tested and explicitly confirmed, at
-                which time the original server is removed. All resizes
-                are automatically confirmed after 24 hours if they are
-                not confirmed or reverted. </para>
-        </section>
-    </chapter>
+    </preface>
+
     <chapter xml:id="General_API_Information-d1e436">
         <title>General API Information</title>
-        <para> The OpenStack Compute API is defined as a ReSTful HTTP
+        <para>The OpenStack Compute API is defined as a ReSTful HTTP
             service. The API takes advantage of all aspects of the
             HTTP protocol (methods, URIs, media types, response codes,
             etc.) and providers are free to use existing features of
@@ -551,12 +509,13 @@
             &GET; requests using ETags, or they may send a redirect in
             response to a &GET; request. Clients should be written to
             account for these differences. </para>
-        <para> Providers may return information identifying requests
+        <para>Providers can return information identifying requests
             in HTTP response headers, for example, to facilitate
             communication between the provider and client users. </para>
+        <xi:include href="section_concepts.xml"/>
         <section xml:id="Authentication-d1e444">
             <title>Authentication</title>
-            <para> Each HTTP request against the OpenStack Compute
+            <para>Each HTTP request against the OpenStack Compute
                 system requires the inclusion of specific
                 authentication credentials. A single deployment may
                 support multiple authentication schemes (OAuth, Basic
@@ -565,14 +524,14 @@
                 system. Please contact your provider to determine the
                 best way to authenticate against this API. </para>
             <note>
-                <para> Some authentication schemes may require that
+                <para>Some authentication schemes may require that
                     the API operate using SSL over HTTP (HTTPS).
                 </para>
             </note>
         </section>
         <section xml:id="Request_Response_Types-d1e459">
             <title>Request/Response Types</title>
-            <para> The OpenStack Compute API supports both the JSON
+            <para>The OpenStack Compute API supports both the JSON
                 and XML data serialization formats. The request format
                 is specified using the <code>Content-Type</code>
                 header and is required for operations that have a
@@ -635,7 +594,7 @@ Content-Type: application/xml; charset=UTF-8
                 </literallayout>
                 <programlisting language="xml"><?db-font-size 80%?><xi:include href="samples/server-post-resp.xml" parse="text"/></programlisting>
             </example>
-            <para> Notice, in the above example, that the content type
+            <para>Notice, in the above example, that the content type
                 is set to application/json but it asks for an
                 application/xml response with the <code>Accept</code>
                 header. An alternative method of achieving the same
@@ -656,7 +615,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
         <?hard-pagebreak?>
         <section xml:id="LinksReferences">
             <title>Links and References</title>
-            <para> Often resources need to refer to other resources.
+            <para>Often resources need to refer to other resources.
                 For example, when creating a server, you must specify
                 the image from which to build the server. You can
                 specify the image by providing an ID or a URL to a
@@ -729,7 +688,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
         <?hard-pagebreak?>
         <section xml:id="Paginated_Collections-d1e664">
             <title>Paginated Collections</title>
-            <para> To reduce load on the service, list operations will
+            <para>To reduce load on the service, list operations will
                 return a maximum number of items at a time. The
                 maximum number of items returned is determined by the
                 compute provider. To navigate the collection, the
@@ -748,7 +707,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                     (<errorcode>413</errorcode>) fault may be thrown.
                 A marker with an invalid ID will return a badRequest
                     (<errorcode>400</errorcode>) fault. </para>
-            <para> For convenience, collections are required to
+            <para>For convenience, collections are required to
                 contain atom "next" links. They may optionally also
                 contain "previous" links. The last page in the list
                 will not contain a "next" link. The following examples
@@ -794,7 +753,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                 <title>Images Collection, Last Page: JSON</title>
                 <programlisting language="json"><xi:include href="samples/images-page3.json" parse="text"/></programlisting>
             </example>
-            <para> In JSON, members in a paginated collection are
+            <para>In JSON, members in a paginated collection are
                 stored in a JSON array named after the collection. A
                 JSON object may also be used to hold members in cases
                 where using an associative array is more practical.
@@ -828,7 +787,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
             <title>Efficient Polling with the
                     <parameter>Changes-Since</parameter>
                 Parameter</title>
-            <para> The ReST API allows you to poll for the status of
+            <para>The ReST API allows you to poll for the status of
                 certain operations by performing a &GET; on various
                 elements. Rather than re-downloading and re-parsing
                 the full status at each polling interval, your ReST
@@ -853,7 +812,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                     https://api.servers.openstack.org/v2/224532/servers?<parameter>changes-since</parameter>=2011-01-24T17:08Z
                 would list all servers that have changed since Mon, 24
                 Jan 2011 17:08:00 UTC. </para>
-            <para> To allow clients to keep track of changes, the
+            <para>To allow clients to keep track of changes, the
                 changes-since filter displays items that have been
                     <emphasis>recently</emphasis> deleted. Both images
                 and servers contain a <code>DELETED</code> status that
@@ -866,7 +825,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
         <?hard-pagebreak?>
         <section xml:id="Limits-d1e846">
             <title>Limits</title>
-            <para> Accounts may be pre-configured with a set of
+            <para>Accounts may be pre-configured with a set of
                 thresholds (or limits) to manage capacity and prevent
                 abuse of the system. The system recognizes two kinds
                 of limits: <firstterm>rate limits</firstterm> and
@@ -882,14 +841,14 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                 too low. </para>
             <section xml:id="Rate_Limits-d1e862">
                 <title>Rate Limits</title>
-                <para> Rate limits are specified in terms of both a
+                <para>Rate limits are specified in terms of both a
                     human-readable wild-card URI and a
                     machine-processable regular expression. The
                     human-readable limit is intended for displaying in
                     graphical user interfaces. The machine-processable
                     form is intended to be used directly by client
                     applications. </para>
-                <para> The regular expression boundary matcher "^" for
+                <para>The regular expression boundary matcher "^" for
                     the rate limit takes effect after the root URI
                     path. For example, the regular expression
                     ^/servers would match the bolded portion of the
@@ -939,7 +898,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                         </tr>
                     </tbody>
                 </table>
-                <para> Rate limits are applied in order relative to
+                <para>Rate limits are applied in order relative to
                     the verb, going from least to most specific. For
                     example, although the threshold for &POST; to
                     */servers is 50 per day, one cannot &POST; to
@@ -956,7 +915,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
             <?hard-pagebreak?>
             <section xml:id="Absolute_Limits-d1e994">
                 <title>Absolute Limits</title>
-                <para> Absolute limits are specified as name/value
+                <para>Absolute limits are specified as name/value
                     pairs. The name of the absolute limit uniquely
                     identifies the limit within a deployment. Please
                     consult your provider for an exhaustive list of
@@ -1013,7 +972,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
             <?hard-pagebreak?>
             <section xml:id="ProgramaticLimits">
                 <title>Determining Limits Programmatically</title>
-                <para> Applications can programmatically determine
+                <para>Applications can programmatically determine
                     current account limits using the /limits URI as
                     follows: </para>
                 <informaltable rules="all">
@@ -1093,14 +1052,14 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                 </literallayout>
             </example>
             <note>
-                <para> The MIME type versioning approach allows for
+                <para>The MIME type versioning approach allows for
                     the creating of permanent links, because the
                     version scheme is not specified in the URI path:
                     https://api.servers.openstack.org/224532/servers/123.
                 </para>
             </note>
             <?hard-pagebreak?>
-            <para> If a request is made without a version specified in
+            <para>If a request is made without a version specified in
                 the URI or via HTTP headers, then a multiple-choices
                 response (<returnvalue>300</returnvalue>) will follow
                 providing links and MIME types to available versions. </para>
@@ -1116,7 +1075,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                 <programlisting language="json"><?db-font-size 90%?><xi:include href="samples/choices.json" parse="text"/></programlisting>
             </example>
             <?hard-pagebreak?>
-            <para> New features and functionality that do not break
+            <para>New features and functionality that do not break
                 API-compatibility will be introduced in the current
                 version of the API as extensions (see below) and the
                 URI and MIME types will remain unchanged. Features or
@@ -1128,7 +1087,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                 Providers should work with developers and partners to
                 ensure there is adequate time to migrate to the new
                 version before deprecated versions are discontinued. </para>
-            <para> Your application can programmatically determine
+            <para>Your application can programmatically determine
                 available API versions by performing a &GET; on the
                 root URL (i.e. with the version and everything to the
                 right of it truncated) returned from the
@@ -1175,7 +1134,7 @@ Host: servers.api.openstack.org
                 <programlisting language="json"><?db-font-size 80% ?><xi:include href="samples/versions.json" parse="text"/></programlisting>
             </example>
             <?hard-pagebreak?>
-            <para> You can also obtain additional information about a
+            <para>You can also obtain additional information about a
                 specific version by performing a &GET; on the base
                 version URL (e.g.
                 https://servers.api.openstack.org/v2/). Version
@@ -1229,7 +1188,7 @@ Host: servers.api.openstack.org/v2/
                 <title>Version Details Response: JSON</title>
                 <programlisting language="json"><?db-font-size 90%?><xi:include href="samples/version.json" parse="text"/></programlisting>
             </example>
-            <para> The detailed version response contains pointers to
+            <para>The detailed version response contains pointers to
                 both a human-readable and a machine-processable
                 description of the API service. The
                 machine-processable description is written in the Web
@@ -1244,7 +1203,7 @@ Host: servers.api.openstack.org/v2/
         <?hard-pagebreak?>
         <section xml:id="Extensions-d1e1444">
             <title>Extensions</title>
-            <para> The OpenStack Compute API is extensible. Extensions
+            <para>The OpenStack Compute API is extensible. Extensions
                 serve two purposes: They allow the introduction of new
                 features in the API without requiring a version change
                 and they allow the introduction of vendor specific
@@ -1284,7 +1243,7 @@ Host: servers.api.openstack.org/v2/
                     (<errorcode>400</errorcode>), badMethod
                     (<errorcode>405</errorcode>), overLimit
                     (<errorcode>413</errorcode>) </simpara>
-            <para> This operation does not require a request body.
+            <para>This operation does not require a request body.
                 Each extension is identified by two unique
                 identifiers, a <property>namespace</property> and an
                     <property>alias</property>. Additionally an
@@ -1303,7 +1262,7 @@ Host: servers.api.openstack.org/v2/
                 <programlisting language="json"><?db-font-size 90%?><xi:include href="samples/extensions.json" parse="text"/></programlisting>
             </example>
             <?hard-pagebreak?>
-            <para> Extensions may also be queried individually by
+            <para>Extensions may also be queried individually by
                 their unique alias. This provides the simplest method
                 of checking if an extension is available as an
                 unavailable extension will issue an itemNotFound
@@ -1351,7 +1310,7 @@ Host: servers.api.openstack.org/v2/
                 <title>Extension Response: JSON</title>
                 <programlisting language="json"><?db-font-size 80%?><xi:include href="samples/extension.json" parse="text"/></programlisting>
             </example>
-            <para> Extensions may define new data types, parameters,
+            <para>Extensions may define new data types, parameters,
                 actions, headers, states, and resources. In XML,
                 additional elements and attributes may be defined.
                 These elements must be defined in the extension's
@@ -1373,7 +1332,7 @@ Host: servers.api.openstack.org/v2/
                 followed by a colon. For example, an image may be in
                 the <code>RS-PIE:PrepareShare</code> state. </para>
             <important>
-                <para> Applications should be prepared to ignore
+                <para>Applications should be prepared to ignore
                     response data that contains extension elements. An
                     extended state should always be treated as an
                         <code>UNKNOWN</code> state if the application
@@ -1407,7 +1366,7 @@ Host: servers.api.openstack.org/v2/
             <title>Faults</title>
             <section xml:id="Synchronous_Faults-d1e1729">
                 <title>Synchronous Faults</title>
-                <para> When an error occurs at request time, the
+                <para>When an error occurs at request time, the
                     system will return an HTTP error response code
                     denoting the type of error. The system will also
                     return additional information about the fault in
@@ -1420,7 +1379,7 @@ Host: servers.api.openstack.org/v2/
                     <title>Fault Response: JSON</title>
                     <programlisting language="json"><xi:include href="samples/fault.json" parse="text"/></programlisting>
                 </example>
-                <para> The error code is returned in the body of the
+                <para>The error code is returned in the body of the
                     response for convenience. The message section
                     returns a human-readable message that is
                     appropriate for display to the end user. The
@@ -1429,7 +1388,7 @@ Host: servers.api.openstack.org/v2/
                     trace&mdash;to assist in tracking down an error.
                     The detail section may or may not be appropriate
                     for display to an end user. </para>
-                <para> The root element of the fault (e.g.
+                <para>The root element of the fault (e.g.
                     computeFault) may change depending on the type of
                     error. The following is a list of possible
                     elements along with their associated error codes. </para>
@@ -1525,14 +1484,14 @@ Host: servers.api.openstack.org/v2/
                         JSON</title>
                     <programlisting language="json"><xi:include href="samples/notfound.json" parse="text"/></programlisting>
                 </example>
-                <para> From an XML schema perspective, all API faults
+                <para>From an XML schema perspective, all API faults
                     are extensions of the base fault type
                     ComputeAPIFault. When working with a system that
                     binds XML to actual classes (such as JAXB), one
                     should be capable of using ComputeAPIFault as a
                     “catch-all” if there's no interest in
                     distinguishing between individual fault types. </para>
-                <para> The OverLimit fault is generated when a rate
+                <para>The OverLimit fault is generated when a rate
                     limit threshold is exceeded. For convenience, the
                     fault adds a <property>retryAfter</property>
                     attribute that contains the content of the
@@ -1549,7 +1508,7 @@ Host: servers.api.openstack.org/v2/
             </section>
             <section xml:id="Asynchronous_Faults-d1e2009">
                 <title>Asynchronous Faults</title>
-                <para> An error may occur in the background while a
+                <para>An error may occur in the background while a
                     server or image is being built or while a server
                     is executing an action. In these cases, the server
                     or image is placed in an <code>ERROR</code> state
@@ -2208,7 +2167,7 @@ Host: servers.api.openstack.org/v2/
 <xi:include href="samples/server-post-req-pip.json" parse="text"/>
                         </programlisting>
                     </example>
-                    <para> Note that both IPv4 and IPv6 addresses may
+                    <para>Note that both IPv4 and IPv6 addresses may
                         be used as access addresses and both addresses
                         may be assigned simultaneously as illustrated
                         below. Access addresses may be updated after a
@@ -2396,7 +2355,7 @@ Host: servers.api.openstack.org/v2/
                     <programlisting language="json"><xi:include href="samples/server-put-resp.json" parse="text"/></programlisting>
                 </example>
                 <?hard-pagebreak?>
-                <para> Access addresses may simultaneously be updated
+                <para>Access addresses may simultaneously be updated
                     as illustrated below. </para>
                 <example>
                     <title>Server Update Access Address Request:
@@ -3856,7 +3815,7 @@ Host: servers.api.openstack.org/v2/
         <?hard-pagebreak?>
         <section xml:id="MetadataSection">
             <title>Metadata</title>
-            <para> The following operations allow access to metadata
+            <para>The following operations allow access to metadata
                 after a server or image has been created. </para>
             <section xml:id="List_Metadata-d1e5089">
                 <title>List Metadata</title>
