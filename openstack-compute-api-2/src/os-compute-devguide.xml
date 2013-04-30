@@ -529,84 +529,95 @@
         </section>
         <section xml:id="Request_Response_Types-d1e459">
             <title>Request/Response Types</title>
-            <para>The OpenStack Compute API supports both the JSON and
-                XML data serialization formats. The request format is
-                specified using the <code>Content-Type</code> header
-                and is required for operations that have a request
-                body. The response format can be specified in requests
-                using either the <code>Accept</code> header or adding
-                an .xml or .json extension to the request URI. Note
-                that it is possible for a response to be serialized
-                using a format different from the request (see example
-                below). If no response format is specified, JSON is
-                the default. If conflicting formats are specified
-                using both an <code>Accept</code> header and a query
-                extension, the query extension takes precedence. </para>
-            <table rules="all">
-                <caption>JSON and XML Response Formats</caption>
-                <thead>
-                    <tr>
-                        <td>Format</td>
-                        <td>Accept Header</td>
-                        <td>Query Extension</td>
-                        <td>Default</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>JSON</td>
-                        <td>application/json</td>
-                        <td>.json</td>
-                        <td>Yes</td>
-                    </tr>
-                    <tr>
-                        <td>XML</td>
-                        <td>application/xml</td>
-                        <td>.xml</td>
-                        <td>No</td>
-                    </tr>
-                </tbody>
-            </table>
-            <?hard-pagebreak?>
-            <example>
+            <para>The OpenStack Compute API supports both JSON and XML
+                data serialization request and response formats. </para>
+            <para>You specify the request format in the
+                    <code>Content-Type</code> header in the request.
+                This header is required for operations that have a
+                request body. The syntax for the
+                    <code>Content-Type</code> header is:
+                <programlisting>Content-Type: application/<parameter>format</parameter></programlisting></para>
+            <para>Where <parameter>format</parameter> is either
+                    <literal>json</literal> or
+                <literal>xml</literal>.</para>
+            <para>You specify the response format by using one of the
+                following methods:</para>
+            <itemizedlist>
+                <listitem>
+                    <para><code>Accept</code> header. The syntax for
+                        the <code>Accept</code> header is:
+                        <programlisting>Accept: application/<parameter>format</parameter></programlisting></para>
+                    <para>Where <parameter>format</parameter> is
+                        either <constant>json</constant> or
+                            <constant>xml</constant>.</para>
+                    <para>Default is <literal>json</literal>.</para>
+                </listitem>
+                <listitem>
+                    <para>Query extension. Add an
+                            <literal>.xml</literal> or
+                            <literal>.json</literal> extension to the
+                        request URI. For example, the
+                            <literal>.xml</literal> extension in the
+                        following URI request specifies that the
+                        response body is returned in XML
+                        format:</para>
+                    <literallayout role="monospace">&POST; /v2/010101/servers.xml</literallayout>
+                </listitem>
+            </itemizedlist>
+            <para>If you do not specify a response format, JSON is the
+                default.</para>
+            <para>If you specify conflicting formats in the
+                    <code>Accept</code> header and the query
+                extension, the format specified in the query extension
+                takes precedence. For example, if the query extension
+                is <literal>.xml</literal> and the <code>Accept</code>
+                header specifies <literal>application/json</literal>,
+                the response is returned in XML format.</para>
+            <para>You can serialize a response in a different format
+                from the request format. <xref linkend="JSON_req"/>
+                and <xref linkend="ImageCreateFullResponse"/> show a
+                request body in JSON format and a response body in XML
+                format. </para>
+            <example xml:id="JSON_req">
                 <title>Request with Headers: JSON</title>
-                <literallayout class="monospaced">
-POST /v2/214412/servers HTTP/1.1
+                <literallayout role="monospace"><?db-font-size 70%?>POST /v2/010101/servers HTTP/1.1
 Host: servers.api.openstack.org
 Content-Type: application/json
 Accept: application/xml
-X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
-                </literallayout>
-                <programlisting language="json"><xi:include href="samples/server-post-req.json" parse="text"/></programlisting>
+X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb</literallayout>
+                <programlisting language="json"><?db-font-size 70%?><xi:include href="samples/server-post-req.json" parse="text"/></programlisting>
             </example>
             <?hard-pagebreak?>
+            <para><xref linkend="ImageCreateFullResponse"/> shows the
+                headers and XML response returned by the JSON
+                request:</para>
             <example xml:id="ImageCreateFullResponse">
                 <title>Response with Headers: XML</title>
-                <literallayout class="monospaced">
-HTTP/1.1 200 OK
-Date: Mon, 12 Nov 2007 15:55:01 GMT
-Server: Apache
-Content-Length: 1863
-Content-Type: application/xml; charset=UTF-8
-                </literallayout>
-                <programlisting language="xml"><?db-font-size 80%?><xi:include href="samples/server-post-resp.xml" parse="text"/></programlisting>
+                <literallayout role="monospace"><?db-font-size 70%?>HTTP/1.1 202 Accepted
+Date: Mon, 23 Jul 2012 20:24:48 GMT
+Content-Length: 582
+Location: https://servers.api.openstack.org/v2/010101/servers/06dba123-2c7e-4639-bea0-09fbe219b056
+Content-Type: application/xml
+X-Compute-Request-Id: req-ab05045a-452f-4b46-be0d-86494da02a2b
+Server: Jetty(8.0.y.z-SNAPSHOT)</literallayout>
+                <programlisting language="xml"><?db-font-size 70%?><xi:include href="samples/server-post-resp.xml" parse="text"/></programlisting>
             </example>
-            <para>Notice, in the above example, that the content type
-                is set to application/json but it asks for an
-                application/xml response with the <code>Accept</code>
-                header. An alternative method of achieving the same
-                result is illustrated below – this time we utilize a
-                URI extension instead of an <code>Accept</code>
-                header. </para>
-            <example>
-                <title>Request with Extension: JSON</title>
-                <literallayout class="monospaced">
-POST /v2/214412/servers.xml HTTP/1.1
+            <para>The following example shows an alternative method of
+                achieving the same result. The following request uses
+                an URI extension of <literal>.xml</literal> instead of
+                an <code>Accept</code> header to request an XML
+                response.</para>
+            <note>
+                <para>The XML response is not shown. </para>
+            </note>
+            <example xml:id="diff_serialization">
+                <title>JSON Request with XML Query Extension for the
+                    Response</title>
+                <literallayout role="monospace"><?db-font-size 70%?>POST /v2/010101/servers<emphasis role="bold">.xml</emphasis> HTTP/1.1
 Host: servers.api.openstack.org
 Content-Type: application/json
-X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
-                </literallayout>
-                <programlisting language="json"><xi:include href="samples/server-post-req.json" parse="text"/></programlisting>
+X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb</literallayout>
+                <programlisting language="json"><?db-font-size 70%?><xi:include href="samples/server-post-req.json" parse="text"/></programlisting>
             </example>
         </section>
         <?hard-pagebreak?>
@@ -619,24 +630,24 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                 remote image. When providing an ID, it is assumed that
                 the resource exists in the current OpenStack
                 deployment. </para>
-            <example>
-                <title>ID Image Reference: XML</title>
-                <programlisting language="xml"><xi:include href="samples/server-post-req-short.xml" parse="text"/></programlisting>
-            </example>
             <?hard-pagebreak?>
             <example>
                 <title>ID Image Reference: JSON</title>
                 <programlisting language="json"><xi:include href="samples/server-post-req-short.json" parse="text"/></programlisting>
             </example>
             <example>
-                <title>Full Image Reference: XML</title>
-                <programlisting language="xml"><xi:include href="samples/server-post-req.xml" parse="text"/></programlisting>
+                <title>ID Image Reference: XML</title>
+                <programlisting language="xml"><xi:include href="samples/server-post-req-short.xml" parse="text"/></programlisting>
             </example>
-            <?hard-pagebreak?>
             <example>
                 <title>Full Image Reference: JSON</title>
                 <programlisting language="json"><xi:include href="samples/server-post-req.json" parse="text"/></programlisting>
             </example>
+            <example>
+                <title>Full Image Reference: XML</title>
+                <programlisting language="xml"><xi:include href="samples/server-post-req.xml" parse="text"/></programlisting>
+            </example>
+            <?hard-pagebreak?>
             <para>For convenience, resources contain links to
                 themselves. This allows a client to easily obtain
                 rather than construct resource URIs. The following
@@ -663,23 +674,24 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                 </itemizedlist>Note that the type attribute here is
                 used to provide a hint as to the type of
                 representation to expect when following the link. </para>
-            <example>
-                <title>Server with Self Links: XML</title>
-                <programlisting language="xml"><xi:include href="samples/server-simple.xml" parse="text"/></programlisting>
-            </example>
+         
             <?hard-pagebreak?>
             <example>
                 <title>Server with Self Links: JSON</title>
                 <programlisting language="json"><?db-font-size 90%?><xi:include href="samples/server-simple.json" parse="text"/></programlisting>
             </example>
             <example>
-                <title>Image with Alternate Link: XML</title>
-                <programlisting language="xml"><xi:include href="samples/image-simple.xml" parse="text"/></programlisting>
+                <title>Server with Self Links: XML</title>
+                <programlisting language="xml"><xi:include href="samples/server-simple.xml" parse="text"/></programlisting>
             </example>
             <?hard-pagebreak?>
             <example>
                 <title>Server with Alternate Link: JSON</title>
                 <programlisting language="json"><?db-font-size 90%?><xi:include href="samples/image-simple.json" parse="text"/></programlisting>
+            </example>
+            <example>
+                <title>Image with Alternate Link: XML</title>
+                <programlisting language="xml"><xi:include href="samples/image-simple.xml" parse="text"/></programlisting>
             </example>
         </section>
         <?hard-pagebreak?>
@@ -1984,24 +1996,23 @@ Host: servers.api.openstack.org/v2/
                         </tbody>
                     </table>
                 </para>
-                <example>
-                    <title>Server Create Request: XML</title>
-                    <programlisting language="xml"><xi:include href="samples/server-post-req.xml" parse="text"/></programlisting>
-                </example>
                 <?hard-pagebreak?>
                 <example>
                     <title>Server Create Request: JSON</title>
                     <programlisting language="json"><xi:include href="samples/server-post-req.json" parse="text"/></programlisting>
                 </example>
-                <?hard-pagebreak?>
-                <example>
-                    <title>Server Create Response: XML</title>
-                    <programlisting language="xml"><xi:include href="samples/server-post-resp.xml" parse="text"/></programlisting>
-                </example>
-                <?hard-pagebreak?>
                 <example>
                     <title>Server Create Response: JSON</title>
                     <programlisting language="json"><?db-font-size 90%?><xi:include href="samples/server-post-resp.json" parse="text"/></programlisting>
+                </example>
+                <?hard-pagebreak?>
+                <example>
+                    <title>Server Create Request: XML</title>
+                    <programlisting language="xml"><xi:include href="samples/server-post-req.xml" parse="text"/></programlisting>
+                </example>
+                <example>
+                    <title>Server Create Response: XML</title>
+                    <programlisting language="xml"><xi:include href="samples/server-post-resp.xml" parse="text"/></programlisting>
                 </example>
                 <?hard-pagebreak?>
                 <section xml:id="Server_Passwords-d1e2510">
