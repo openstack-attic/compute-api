@@ -58,14 +58,24 @@
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
+<<<<<<< HEAD
                         href="../samples/admin-actions-pause.json"/>
+=======
+                        href="../samples/admin-actions-pause.json"
+                    />
+>>>>>>> a59ebf6... Added information about migration types and billing
                 </doc>
             </representation>
             <representation mediaType="application/xml"
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
+<<<<<<< HEAD
                         href="../samples/admin-actions-pause.xml"/>
+=======
+                        href="../samples/admin-actions-pause.xml"
+                    />
+>>>>>>> a59ebf6... Added information about migration types and billing
                 </doc>
             </representation>
         </request>
@@ -83,14 +93,24 @@
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
+<<<<<<< HEAD
                         href="../samples/admin-actions-unpause.json"/>
+=======
+                        href="../samples/admin-actions-unpause.json"
+                    />
+>>>>>>> a59ebf6... Added information about migration types and billing
                 </doc>
             </representation>
             <representation mediaType="application/xml"
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
+<<<<<<< HEAD
                         href="../samples/admin-actions-unpause.xml"/>
+=======
+                        href="../samples/admin-actions-unpause.xml"
+                    />
+>>>>>>> a59ebf6... Added information about migration types and billing
                 </doc>
             </representation>
         </request>
@@ -108,14 +128,24 @@
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
+<<<<<<< HEAD
                         href="../samples/admin-actions-suspend.json"/>
+=======
+                        href="../samples/admin-actions-suspend.json"
+                    />
+>>>>>>> a59ebf6... Added information about migration types and billing
                 </doc>
             </representation>
             <representation mediaType="application/xml"
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
+<<<<<<< HEAD
                         href="../samples/admin-actions-suspend.xml"/>
+=======
+                        href="../samples/admin-actions-suspend.xml"
+                    />
+>>>>>>> a59ebf6... Added information about migration types and billing
                 </doc>
             </representation>
         </request>
@@ -133,14 +163,24 @@
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
+<<<<<<< HEAD
                         href="../samples/admin-actions-resume.json"/>
+=======
+                        href="../samples/admin-actions-resume.json"
+                    />
+>>>>>>> a59ebf6... Added information about migration types and billing
                 </doc>
             </representation>
             <representation mediaType="application/xml"
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
+<<<<<<< HEAD
                         href="../samples/admin-actions-resume.xml"/>
+=======
+                        href="../samples/admin-actions-resume.xml"
+                    />
+>>>>>>> a59ebf6... Added information about migration types and billing
                 </doc>
             </representation>
         </request>
@@ -149,6 +189,7 @@
     <method name="POST" id="migrate">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Migrate Server">
+<<<<<<< HEAD
             <para role="shortdesc">Migrates a server to a host. The
                 scheduler chooses the host. Specify the
                     <code>migrate</code> action in the request body. </para>
@@ -159,13 +200,31 @@
                 cloud provider, these operations might result in billing you for a
                 snapshot. You can delete the snapshot after you
                 complete the migrate operation.</para>
+=======
+            <para role="shortdesc">Migrates a server to a host. The scheduler chooses
+                the host. Specify the <code>migrate</code> action in
+                the request body. </para>
+            <para>You can complete the following types of migrations:
+                <itemizedlist><listitem><para>Live migrate with block storage migration
+                </para></listitem><listitem><para>Live migrate without block storage migration</para></listitem>
+                    <listitem><para>Non-live migrate (this operation)</para></listitem>
+                    <listitem><para>Resize</para></listitem>
+                </itemizedlist></para>
+            <para>Depending on your cloud provider, this operation might result in billing you for a snapshot. 
+                You can delete the snapshot after you complete this operation.</para>
+>>>>>>> a59ebf6... Added information about migration types and billing
         </wadl:doc>
         <request>
             <representation mediaType="application/xml"
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
+<<<<<<< HEAD
                         href="../samples/admin-actions-migrate.json"/>
+=======
+                        href="../samples/admin-actions-migrate.json"
+                    />
+>>>>>>> a59ebf6... Added information about migration types and billing
                 </doc>
             </representation>
         </request>
@@ -321,6 +380,7 @@
     <method name="POST" id="os-migrateLive">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Live-Migrate Server">
+<<<<<<< HEAD
             <para role="shortdesc">Live-migrates a server to a new
                 host without rebooting. Specify the
                     <code>os-migrateLive</code> action in the request
@@ -333,6 +393,19 @@
                 cloud provider, these operations might result in billing you for a
                 snapshot. You can delete the snapshot after you
                 complete the migrate operation.</para>
+=======
+            <para role="shortdesc">Live-migrates a server to a new host without
+                rebooting. Specify the <code>os-migrateLive</code>
+                action in the request body. </para>
+            <para>You can complete the following types of migrations:
+                <itemizedlist><listitem><para>Live migrate with block storage migration (this operation)
+                </para></listitem><listitem><para>Live migrate without block storage migration (this operation)</para></listitem>
+                    <listitem><para>Non-live migrate</para></listitem>
+                    <listitem><para>Resize</para></listitem>
+                </itemizedlist></para>
+            <para>Depending on your cloud provider, this operation might result in billing you for a snapshot. 
+                You can delete the snapshot after you complete this operation.</para>
+>>>>>>> a59ebf6... Added information about migration types and billing
         </wadl:doc>
         <request>
             <param name="host" style="query" required="true"
@@ -341,8 +414,13 @@
             </param>
             <param name="block_migration" style="query"
                 required="true" type="xsd:boolean">
+<<<<<<< HEAD
                 <doc>If true, block storage is migrated. If false,
                     block storage is not migrated.</doc>
+=======
+                <doc>If true, block storage is migrated. 
+                    If false, block storage is not migrated.</doc>
+>>>>>>> a59ebf6... Added information about migration types and billing
             </param>
             <param name="disk_over_commit" style="query"
                 required="true" type="xsd:boolean">
@@ -400,11 +478,18 @@
         <response status="202"/>
     </method>
     <method name="POST" id="evacuate">
+<<<<<<< HEAD
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Evacuate Server">
             <para>Evacuates a server from failed host. Specify the
                     <code>evacuate</code> action in the request
                 body.</para>
+=======
+        <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN">
+            <p xmlns="http://www.w3.org/1999/xhtml">Evacuates a server
+                from failed host. Specify the <code>evacuate</code>
+                action in the request body.</p>
+>>>>>>> a59ebf6... Added information about migration types and billing
         </wadl:doc>
         <request>
             <param name="host" style="query" required="true"
@@ -429,14 +514,24 @@
             </param>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
+<<<<<<< HEAD
                     <xsdxt:code
                         href="../samples/server-evacuate-req.json"/>
+=======
+                    <xsdxt:code href="../samples/server-evacuate-req.json"
+                    />
+>>>>>>> a59ebf6... Added information about migration types and billing
                 </doc>
             </representation>
             <representation mediaType="application/xml">
                 <doc xml:lang="EN">
+<<<<<<< HEAD
                     <xsdxt:code
                         href="../samples/server-evacuate-req.xml"/>
+=======
+                    <xsdxt:code href="../samples/server-evacuate-req.xml"
+                    />
+>>>>>>> a59ebf6... Added information about migration types and billing
                 </doc>
             </representation>
         </request>
@@ -449,8 +544,13 @@
             </representation>
             <representation mediaType="application/xml">
                 <doc xml:lang="EN">
+<<<<<<< HEAD
                     <xsdxt:code
                         href="../samples/server-evacuate-resp.xml"/>
+=======
+                    <xsdxt:code href="../samples/server-evacuate-resp.xml"
+                    />
+>>>>>>> a59ebf6... Added information about migration types and billing
                 </doc>
             </representation>
         </response>
