@@ -39,6 +39,7 @@
                             <method href="#createBackup"/>
                             <method href="#os-migrateLive"/>
                             <method href="#os-resetState"/>
+                            <method href="#evacuate"/>
                         </resource>
                     </resource>
                 </resource>
@@ -57,7 +58,7 @@
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/os-admin-actions/admin-actions-pause.json"
+                        href="../samples/admin-actions-pause.json"
                     />
                 </doc>
             </representation>
@@ -65,7 +66,7 @@
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/os-admin-actions/admin-actions-pause.xml"
+                        href="../samples/admin-actions-pause.xml"
                     />
                 </doc>
             </representation>
@@ -84,7 +85,7 @@
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/os-admin-actions/admin-actions-unpause.json"
+                        href="../samples/admin-actions-unpause.json"
                     />
                 </doc>
             </representation>
@@ -92,7 +93,7 @@
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/os-admin-actions/admin-actions-unpause.xml"
+                        href="../samples/admin-actions-unpause.xml"
                     />
                 </doc>
             </representation>
@@ -111,7 +112,7 @@
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/os-admin-actions/admin-actions-suspend.json"
+                        href="../samples/admin-actions-suspend.json"
                     />
                 </doc>
             </representation>
@@ -119,7 +120,7 @@
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/os-admin-actions/admin-actions-suspend.xml"
+                        href="../samples/admin-actions-suspend.xml"
                     />
                 </doc>
             </representation>
@@ -138,7 +139,7 @@
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/os-admin-actions/admin-actions-resume.json"
+                        href="../samples/admin-actions-resume.json"
                     />
                 </doc>
             </representation>
@@ -146,7 +147,7 @@
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/os-admin-actions/admin-actions-resume.xml"
+                        href="../samples/admin-actions-resume.xml"
                     />
                 </doc>
             </representation>
@@ -156,16 +157,24 @@
     <method name="POST" id="migrate">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Migrate Server">
-            <para>Migrates a server to a host. The scheduler chooses
+            <para role="shortdesc">Migrates a server to a host. The scheduler chooses
                 the host. Specify the <code>migrate</code> action in
                 the request body. </para>
+            <para>You can complete the following types of migrations:
+                <itemizedlist><listitem><para>Live migrate with block storage migration
+                </para></listitem><listitem><para>Live migrate without block storage migration</para></listitem>
+                    <listitem><para>Non-live migrate (this operation)</para></listitem>
+                    <listitem><para>Resize</para></listitem>
+                </itemizedlist></para>
+            <para>Depending on your cloud provider, this operation might result in billing you for a snapshot. 
+                You can delete the snapshot after you complete this operation.</para>
         </wadl:doc>
         <request>
             <representation mediaType="application/xml"
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/os-admin-actions/admin-actions-migrate.json"
+                        href="../samples/admin-actions-migrate.json"
                     />
                 </doc>
             </representation>
@@ -184,7 +193,7 @@
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/os-admin-actions/admin-actions-reset-network.json"
+                        href="../samples/admin-actions-reset-network.json"
                     />
                 </doc>
             </representation>
@@ -192,7 +201,7 @@
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/os-admin-actions/admin-actions-reset-network.xml"
+                        href="../samples/admin-actions-reset-network.xml"
                     />
                 </doc>
             </representation>
@@ -211,7 +220,7 @@
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/os-admin-actions/admin-actions-inject-network-info.json"
+                        href="../samples/admin-actions-inject-network-info.json"
                     />
                 </doc>
             </representation>
@@ -219,7 +228,7 @@
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/os-admin-actions/admin-actions-inject-network-info.xml"
+                        href="../samples/admin-actions-inject-network-info.xml"
                     />
                 </doc>
             </representation>
@@ -237,7 +246,7 @@
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/os-admin-actions/admin-actions-lock-server.json"
+                        href="../samples/admin-actions-lock-server.json"
                     />
                 </doc>
             </representation>
@@ -245,7 +254,7 @@
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/os-admin-actions/admin-actions-lock-server.xml"
+                        href="../samples/admin-actions-lock-server.xml"
                     />
                 </doc>
             </representation>
@@ -263,7 +272,7 @@
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/os-admin-actions/admin-actions-unlock-server.json"
+                        href="../samples/admin-actions-unlock-server.json"
                     />
                 </doc>
             </representation>
@@ -271,7 +280,7 @@
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/os-admin-actions/admin-actions-unlock-server.xml"
+                        href="../samples/admin-actions-unlock-server.xml"
                     />
                 </doc>
             </representation>
@@ -304,7 +313,7 @@
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/os-admin-actions/admin-actions-backup-server.json"
+                        href="../samples/admin-actions-backup-server.json"
                     />
                 </doc>
             </representation>
@@ -312,7 +321,7 @@
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/os-admin-actions/admin-actions-backup-server.xml"
+                        href="../samples/admin-actions-backup-server.xml"
                     />
                 </doc>
             </representation>
@@ -322,28 +331,37 @@
     <method name="POST" id="os-migrateLive">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Live-Migrate Server">
-            <para>Live-migrates a server to a new host without
+            <para role="shortdesc">Live-migrates a server to a new host without
                 rebooting. Specify the <code>os-migrateLive</code>
                 action in the request body. </para>
+            <para>You can complete the following types of migrations:
+                <itemizedlist><listitem><para>Live migrate with block storage migration (this operation)
+                </para></listitem><listitem><para>Live migrate without block storage migration (this operation)</para></listitem>
+                    <listitem><para>Non-live migrate</para></listitem>
+                    <listitem><para>Resize</para></listitem>
+                </itemizedlist></para>
+            <para>Depending on your cloud provider, this operation might result in billing you for a snapshot. 
+                You can delete the snapshot after you complete this operation.</para>
         </wadl:doc>
         <request>
             <param name="host" style="query" required="true"
                 type="xsd:string">
-                <doc xml:lang="EN"> Name of the new host. </doc>
+                <doc xml:lang="EN">Name of the new host. </doc>
             </param>
             <param name="block_migration" style="query"
                 required="true" type="xsd:boolean">
-                <doc>If true, migration will be blocked. </doc>
+                <doc>If true, block storage is migrated. 
+                    If false, block storage is not migrated.</doc>
             </param>
             <param name="disk_over_commit" style="query"
                 required="true" type="xsd:boolean">
-                <doc>If true, disk over commit is allowed. </doc>
+                <doc>If true, disk over commit is allowed.</doc>
             </param>
             <representation mediaType="application/xml"
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/os-admin-actions/admin-actions-live-migrate.json"
+                        href="../samples/admin-actions-live-migrate.json"
                     />
                 </doc>
             </representation>
@@ -351,7 +369,7 @@
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/os-admin-actions/admin-actions-live-migrate.xml"
+                        href="../samples/admin-actions-live-migrate.xml"
                     />
                 </doc>
             </representation>
@@ -368,14 +386,14 @@
         <request>
             <param name="state" style="query" required="true"
                 type="xsd:string">
-                <doc xml:lang="EN"> The desired state of a server.
+                <doc xml:lang="EN">The desired state of a server.
                 </doc>
             </param>
             <representation mediaType="application/xml"
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/os-admin-actions/admin-actions-reset-server-state.json"
+                        href="../samples/admin-actions-reset-server-state.json"
                     />
                 </doc>
             </representation>
@@ -383,11 +401,66 @@
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/os-admin-actions/admin-actions-reset-server-state.xml"
+                        href="../samples/admin-actions-reset-server-state.xml"
                     />
                 </doc>
             </representation>
         </request>
         <response status="202"/>
+    </method>
+    <method name="POST" id="evacuate">
+        <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN">
+            <p xmlns="http://www.w3.org/1999/xhtml">Evacuates a server
+                from failed host. Specify the <code>evacuate</code>
+                action in the request body.</p>
+        </wadl:doc>
+        <request>
+            <param name="host" style="query" required="true"
+                type="xsd:string">
+                <doc>
+                    <p xmlns="http://www.w3.org/1999/xhtml">The name
+                        or ID of the host where the server is
+                        evacuated.</p>
+                </doc>
+            </param>
+            <param name="onSharedStorage" style="query"
+                type="xsd:string">
+                <doc>
+                    <p xmlns="http://www.w3.org/1999/xhtml">Required
+                        if server is on shared storage.</p>
+                </doc>
+            </param>
+            <param name="adminPass" style="query" type="xsd:string">
+                <doc xml:lang="EN">Not specified with onSharedStorage.
+                    New admin password for the evacuated instance.
+                </doc>
+            </param>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../samples/server-evacuate-req.json"
+                    />
+                </doc>
+            </representation>
+            <representation mediaType="application/xml">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../samples/server-evacuate-req.xml"
+                    />
+                </doc>
+            </representation>
+        </request>
+        <response status="200">
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code
+                        href="../samples/server-evacuate-resp.json"/>
+                </doc>
+            </representation>
+            <representation mediaType="application/xml">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../samples/server-evacuate-resp.xml"
+                    />
+                </doc>
+            </representation>
+        </response>
     </method>
 </application>
