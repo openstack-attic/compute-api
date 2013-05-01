@@ -205,7 +205,7 @@
                             </para>
                         </listitem>
                         <listitem>
-                            <para>We now use a flavorRef in the resize
+                            <para>The flavorRef attribute is now used in the resize
                                 action. </para>
                         </listitem>
                     </itemizedlist>
@@ -2987,7 +2987,7 @@ Host: servers.api.openstack.org/v2/
                     serverCapacityUnavailable
                         (<errorcode>503</errorcode>), buildInProgress
                         (<errorcode>409</errorcode>) </simpara>
-                <informaltable frame="void">
+                <informaltable rules="all">
                     <tbody>
                         <tr>
                             <td colspan="1">Status Transition:</td>
@@ -3010,12 +3010,22 @@ Host: servers.api.openstack.org/v2/
                 <para>The resize operation converts an existing server
                     to a different flavor, in essence, scaling the
                     server up or down. The original server is saved
-                    for a period of time to allow rollback if there is
-                    a problem. All resizes should be tested and
-                    explicitly confirmed, at which time the original
+                    for a period of time to allow rollback if
+                    a problem occurs. You should test and explicitly confirm all resizes. When you confirm a resize, the original
                     server is removed. All resizes are automatically
-                    confirmed after 24 hours if they are not
-                    explicitly confirmed or reverted. </para>
+                    confirmed after 24 hours if you do not explicitly confirm or resize them.
+             </para>
+                <para>You can complete the following types of migrations:
+                    <itemizedlist><listitem><para>Live migrate with block storage migration. In the request body, set 
+                        the block_migration parameter to true.
+                    </para></listitem><listitem><para>Live migrate without block storage migration. 
+                        In the request body, set 
+                        the block_migration parameter to false.</para></listitem>
+                        <listitem><para>Non-live migrate</para></listitem>
+                        <listitem><para>Resize (this operation)</para></listitem>
+                    </itemizedlist></para>
+                <para>These operations bill you for a snapshot. 
+                    You can delete the snapshot after you complete the migrate operation.</para>
                 <para>Specify the server ID as
                         <parameter>id</parameter> in the URI. </para>
                 <para>In the request body, specify the
@@ -3027,7 +3037,6 @@ Host: servers.api.openstack.org/v2/
                     <table rules="all">
                         <caption>Resize Server Request
                             Attributes</caption>
-
                         <col width="20%"/>
                         <col width="60%"/>
                         <col width="20%"/>
