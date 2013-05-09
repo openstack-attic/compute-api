@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- (C) 2011 OpenStack LLC., All Rights Reserved -->
+<!-- (C) 2011-2013 OpenStack Foundation, All Rights Reserved -->
 
 <!--*******************************************************-->
 <!--         Import Common XML Entities                    -->
@@ -581,8 +581,11 @@
     <method name="POST" id="resizeServer">
         <doc xml:lang="EN" title="Resize Server">
             <p xmlns="http://www.w3.org/1999/xhtml">
-                Resize the specified server.
+                Resizes the specified server.
             </p>
+            <p>This operation bills you for a snapshot. 
+                You can delete the snapshot after you complete the resize operation.</p>
+          
         </doc>
         <request>
             <representation mediaType="application/xml" element="osapi:resize"/>
@@ -604,7 +607,7 @@
     <method name="POST" id="confirmServer">
         <doc xml:lang="EN" title="Confirm Resized Server">
             <p xmlns="http://www.w3.org/1999/xhtml">
-                Confirm a pending resize action.
+                Confirms a pending resize action.
             </p>
         </doc>
         <request>
