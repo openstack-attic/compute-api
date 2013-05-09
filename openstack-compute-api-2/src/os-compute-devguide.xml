@@ -3010,12 +3010,13 @@ Host: servers.api.openstack.org/v2/
                 <para>The resize operation converts an existing server
                     to a different flavor, in essence, scaling the
                     server up or down. The original server is saved
-                    for a period of time to allow rollback if there is
-                    a problem. All resizes should be tested and
-                    explicitly confirmed, at which time the original
-                    server is removed. All resizes are automatically
-                    confirmed after 24 hours if they are not
-                    explicitly confirmed or reverted. </para>
+                    for a period of time to allow rollback if a problem occurs.
+You should test and explicitly confirm all resizes. When you confirm a resize, 
+the original server is removed. 
+All resizes are automatically
+                    confirmed after 24 hours if you do not
+                    explicitly confirm or revert them. </para>
+<para>Depending on the cloud provider, this operation might result in billing you for a snapshot. </para>
                 <para>Specify the server ID as
                         <parameter>id</parameter> in the URI. </para>
                 <para>In the request body, specify the
