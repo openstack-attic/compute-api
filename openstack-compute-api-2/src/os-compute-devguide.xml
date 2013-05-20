@@ -34,10 +34,10 @@
     xmlns:html="http://www.w3.org/1999/xhtml"
     xmlns:db="http://docbook.org/ns/docbook" version="5.0"
     xml:id="os-cs-devguide">
-    <title>OpenStack Compute and Extensions Developer Guide</title>
-    <?rax title.font.size="32px"?>
-    <titleabbrev>OpenStack Compute and Extensions Dev
-        Guide</titleabbrev>
+    <title>OpenStack Compute API and Extensions Specification</title>
+    <?rax title.font.size="28px" subtitle.font.size="28px"?>
+    <titleabbrev>OpenStack Compute API and Extensions
+        Specification</titleabbrev>
     <info>
         <author>
             <personname>
@@ -57,7 +57,7 @@
             <holder>OpenStack Foundation</holder>
         </copyright>
         <releaseinfo>API v2</releaseinfo>
-        <productname>OpenStack Compute and Extensions</productname>
+        <productname>OpenStack Compute API and Extensions</productname>
         <pubdate/>
         <legalnotice role="apache2">
             <annotation>
@@ -72,6 +72,18 @@
                     (<abbrev>API</abbrev>). </para>
         </abstract>
         <revhistory>
+            <revision>
+                <!-- ... continue addding more revisions here as you change this document using the markup shown below... -->
+                <date>2013-05-09</date>
+                <revdescription>
+                    <itemizedlist>
+                        <listitem>
+                            <para>Updated the book title for
+                                consistency.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <!-- ... continue addding more revisions here as you change this document using the markup shown below... -->
                 <date>2013-04-27</date>
@@ -674,7 +686,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb</literallayout>
                 </itemizedlist>Note that the type attribute here is
                 used to provide a hint as to the type of
                 representation to expect when following the link. </para>
-         
+
             <?hard-pagebreak?>
             <example>
                 <title>Server with Self Links: JSON</title>
