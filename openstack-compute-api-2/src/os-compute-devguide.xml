@@ -2005,6 +2005,16 @@ Host: servers.api.openstack.org/v2/
                                 </td>
                                 <td>No</td>
                             </tr>
+                            <tr>
+                                <td>
+                                   <para>networks</para>
+                                </td>
+                                <td>List of networks and their attributes. For
+                                   information, see <xref
+                                   linkend="Server_Networks-d1e2530"
+                                   />.</td>
+                                <td>No</td>
+                            </tr>
                         </tbody>
                     </table>
                 </para>
@@ -2059,6 +2069,16 @@ Host: servers.api.openstack.org/v2/
                         supplied per server is determined by the
                         compute provider and may be queried via the
                         maxServerMeta absolute limit. </para>
+                </section>
+                <section xml:id="Server_Networks-d1e2530">
+                    <title>Server Networks</title>
+                    <para>Networks which the server connects to can
+                        also be supplied at launch time. See <xref
+                            linkend="NetworksSection"/> for details on
+                        working with networks. One or more networks can
+                        be specified. User can also specify a specific
+                        port on the network or the fixed IP address to
+                        assign to the server interface.</para>
                 </section>
                 <section xml:id="Server_Personality-d1e2543">
                     <title>Server Personality</title>
@@ -4282,6 +4302,57 @@ All resizes are automatically
                 <para>The operation does not return a response body.
                 </para>
             </section>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="NetworksSection">
+            <title>Networks</title>
+            <para>Networks is a collection of attributes.
+                  The section below outlines the list of
+                  attributes that can be specified for each
+                  network.</para>
+                <section xml:id="NetworkAttributes-d1e5090">
+                <title>Network Attributes</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Name</td>
+                            <td colspan="2">Type</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">uuid</td>
+                            <td colspan="2">uuid</td>
+                            <td colspan="3">The uuid of the
+                                network.</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">fixed_ip</td>
+                            <td colspan="2">IPv4</td>
+                            <td colspan="3">The IP address
+                                to assign to the interface.</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">port</td>
+                            <td colspan="2">uuid</td>
+                            <td colspan="3">The uuid of the
+                                port.</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                  <note>
+                  <para>The parameter fixed_ip is used only when network
+                        uuid is specified; also, when port is specified,
+                        network uuid and fixed_ip are properties of
+                        the port and therefore will be ignored.
+                        A fix for LP bug #1190777 may alter this
+                        behavior, therefore if the request specifies
+                        the port, it is recommended that fixed_ip
+                        and (network) uuid are omitted to avoid
+                        incurring in validation errors.</para>
+                  </note>
+                </section>
         </section>
     </chapter>
     <chapter xml:id="ext-compute" role="api-reference"
