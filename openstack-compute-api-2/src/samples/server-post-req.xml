@@ -18,4 +18,7 @@
       c2VsZiBoaWdoIGVub3VnaCB0byBzZWUgYmV5b25kIGhvcml6
       b25zLiINCg0KLVJpY2hhcmQgQmFjaA== </file>
   </personality>
+  <networks>
+      <network uuid="c6a48469-4638-4346-b755-6e66ed7abdff" fixed_ip="10.0.0.10"></network>
+  </networks>
 </server>
