@@ -49,23 +49,23 @@
     <method name="POST" id="pause">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Pause Server">
-            <para>Pauses a server and changes its status to PAUSED.
+            <para role="shortdesc">Pauses a server and changes its status to PAUSED.
                 Specify the <code>pause</code> action in the request
                 body.</para>
         </wadl:doc>
-        <request>
+        <request>    
             <representation mediaType="application/xml"
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/admin-actions-pause.json"/>
+                        href="../samples/admin-actions-pause.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/xml"
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/admin-actions-pause.xml"/>
+                        href="../samples/admin-actions-pause.json"/>
                 </doc>
             </representation>
         </request>
@@ -74,7 +74,7 @@
     <method name="POST" id="unpause">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Unpause Server">
-            <para>Unpauses a PAUSED server and changes its status to
+            <para role="shortdesc">Unpauses a PAUSED server and changes its status to
                 ACTIVE. Specify the <code>unpause</code> action in the
                 request body. </para>
         </wadl:doc>
@@ -83,14 +83,14 @@
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/admin-actions-unpause.json"/>
+                        href="../samples/admin-actions-unpause.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/xml"
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/admin-actions-unpause.xml"/>
+                        href="../samples/admin-actions-unpause.json"/>
                 </doc>
             </representation>
         </request>
@@ -99,7 +99,7 @@
     <method name="POST" id="suspend">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Suspend Server">
-            <para>Suspends a server and changes its status to
+            <para role="shortdesc">Suspends a server and changes its status to
                 SUSPENDED. Specify the <code>suspend</code> action in
                 the request body.</para>
         </wadl:doc>
@@ -108,14 +108,14 @@
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/admin-actions-suspend.json"/>
+                        href="../samples/admin-actions-suspend.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/xml"
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/admin-actions-suspend.xml"/>
+                        href="../samples/admin-actions-suspend.json"/>
                 </doc>
             </representation>
         </request>
@@ -124,23 +124,23 @@
     <method name="POST" id="resume">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Resume Server">
-            <para>Resumes a SUSPENDED server and changes its status to
+            <para role="shortdesc">Resumes a SUSPENDED server and changes its status to
                 ACTIVE. Specify the <code>resume</code> action in the
                 request body. </para>
         </wadl:doc>
-        <request>
+        <request>    
             <representation mediaType="application/xml"
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/admin-actions-resume.json"/>
+                        href="../samples/admin-actions-resume.xml"/>
                 </doc>
             </representation>
             <representation mediaType="application/xml"
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
-                        href="../samples/admin-actions-resume.xml"/>
+                        href="../samples/admin-actions-resume.json"/>
                 </doc>
             </representation>
         </request>
@@ -162,11 +162,18 @@
                 You can delete the snapshot after you complete this operation.</para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/xml"
+            <representation mediaType="application/json"
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
                         href="../samples/admin-actions-migrate.json"/>
+                </doc>
+            </representation>
+            <representation mediaType="application/xml"
+                element="compext:action">
+                <doc xml:lang="EN">
+                    <xsdxt:code
+                        href="../samples/admin-actions-migrate.xml"/>
                 </doc>
             </representation>
         </request>
@@ -175,12 +182,12 @@
     <method name="POST" id="resetNetwork">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Reset Networking on Server">
-            <para>Resets networking on a server. Specify the
+            <para role="shortdesc">Resets networking on a server. Specify the
                     <code>resetNetwork</code> action in the request
                 body. </para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/xml"
+            <representation mediaType="application/json"
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
@@ -202,12 +209,12 @@
     <method name="POST" id="injectNetworkInfo">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Inject Network Information">
-            <para>Injects network information into a server. Specify
+            <para role="shortdesc">Injects network information into a server. Specify
                 the <code>injectNetworkInfo</code> action in the
                 request body. </para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/xml"
+            <representation mediaType="application/json"
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
@@ -229,11 +236,11 @@
     <method name="POST" id="lock">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Lock Server">
-            <para>Locks a server. Specify the <code>lock</code> action
+            <para role="shortdesc">Locks a server. Specify the <code>lock</code> action
                 in the request body. </para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/xml"
+            <representation mediaType="application/json"
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
@@ -255,11 +262,11 @@
     <method name="POST" id="unlock">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Unlock Server">
-            <para>Unlocks a server. Specify the <code>unlock</code>
+            <para role="shortdesc">Unlocks a server. Specify the <code>unlock</code>
                 action in the request body. </para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/xml"
+            <representation mediaType="application/json"
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
@@ -281,7 +288,7 @@
     <method name="POST" id="createBackup">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Back up Server Instance">
-            <para>Backs up a server instance. Specify the
+            <para role="shortdesc">Backs up a server instance. Specify the
                     <code>createBackup</code> action in the request
                 body. </para>
         </wadl:doc>
@@ -300,7 +307,7 @@
                 <doc xml:lang="EN"> An integer value that represents
                     the number of backups to maintain. </doc>
             </param>
-            <representation mediaType="application/xml"
+            <representation mediaType="application/json"
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
@@ -348,7 +355,7 @@
                 required="true" type="xsd:boolean">
                 <doc>If true, disk over commit is allowed.</doc>
             </param>
-            <representation mediaType="application/xml"
+            <representation mediaType="application/json"
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
@@ -370,7 +377,7 @@
     <method name="POST" id="os-resetState">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Reset Server State">
-            <para>Resets the state of a server to a specified state.
+            <para role="shortdesc">Resets the state of a server to a specified state.
                 Specify the <code>os-resetState</code> action in the
                 request body. </para>
         </wadl:doc>
@@ -380,7 +387,7 @@
                 <doc xml:lang="EN">The desired state of a server.
                 </doc>
             </param>
-            <representation mediaType="application/xml"
+            <representation mediaType="application/json"
                 element="compext:action">
                 <doc xml:lang="EN">
                     <xsdxt:code
@@ -402,7 +409,7 @@
     <method name="POST" id="evacuate">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Evacuate Server">
-            <para>Evacuates a server from failed host. Specify the
+            <para role="shortdesc">Evacuates a server from failed host. Specify the
                     <code>evacuate</code> action in the request
                 body.</para>
         </wadl:doc>
