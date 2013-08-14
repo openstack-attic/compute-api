@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="../xslt/schema.xsl"?>
 
-<!-- (C) 2011 OpenStack LLC., All Rights Reserved -->
+<!-- (C) 2013 OpenStack Foundation, All Rights Reserved -->
 
 
 <schema
@@ -161,27 +161,6 @@
           </xsdxt:sample>
           <xsdxt:sample>
             <xsdxt:code type="application/json" href="../samples/backupInProgress.json" />
-          </xsdxt:sample>
-        </xsdxt:samples>
-      </xsd:appinfo>
-    </annotation>
-  </element>
-  <element name="resizeNotAllowed"    type="csapi:ResizeNotAllowedAPIFault">
-    <annotation>
-      <xsd:documentation
-          xml:lang="EN"
-          xmlns="http://www.w3.org/1999/xhtml">
-        <p>
-          The re-size operation is not permitted.
-        </p>
-      </xsd:documentation>
-      <xsd:appinfo>
-        <xsdxt:samples>
-          <xsdxt:sample>
-            <xsdxt:code type="application/xml" href="../samples/resizeNotAllowed.xml" />
-          </xsdxt:sample>
-          <xsdxt:sample>
-            <xsdxt:code type="application/json" href="../samples/resizeNotAllowed.json" />
           </xsdxt:sample>
         </xsdxt:samples>
       </xsd:appinfo>
