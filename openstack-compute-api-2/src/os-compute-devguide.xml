@@ -2519,18 +2519,18 @@ Host: servers.api.openstack.org/v2/
                         <tr>
                             <td colspan="1">&GET;</td>
                             <td colspan="2"
-                                   >/servers/<parameter>id</parameter>/ips/<parameter>networkID</parameter></td>
+                                   >/servers/<parameter>id</parameter>/ips/<parameter>networkLable</parameter></td>
                             <td colspan="3">Lists addresses associated
-                                with a specified server and
-                                network.</td>
+                                with a specified server ID and network
+                                label.</td>
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara> Normal Response Code(s):
+                <simpara>Normal Response Code(s):
                         <returnvalue>200</returnvalue>,
                         <returnvalue>203</returnvalue>
                 </simpara>
-                <simpara> Error Response Code(s): computeFault
+                <simpara>Error Response Code(s): computeFault
                         (<errorcode>400</errorcode>,
                         <errorcode>500</errorcode>, &hellip;),
                     serviceUnavailable (<errorcode>503</errorcode>),
@@ -2542,7 +2542,7 @@ Host: servers.api.openstack.org/v2/
                         (<errorcode>404</errorcode>), buildInProgress
                         (<errorcode>409</errorcode>) </simpara>
                 <para>This operation lists all addresses associated
-                    with a specified server and network. </para>
+                    with a specified server ID and network label. </para>
                 <para>The following table describes the required
                     parameters that you specify in the request URI:
                         <table rules="all">
@@ -2567,10 +2567,12 @@ Host: servers.api.openstack.org/v2/
                             </tr>
                             <tr>
                                 <td>
-                                   <para>networkID</para>
+                                   <para>networkLabel</para>
                                 </td>
                                 <td>
-                                   <para>The network ID.</para>
+                                   <para>The network label, such as
+                                   <literal>public</literal> or
+                                   <literal>private</literal>.</para>
                                 </td>
                             </tr>
                         </tbody>
@@ -3748,8 +3750,37 @@ All resizes are automatically
                         <parameter>id</parameter> in the URI. </para>
                 <para>This operation does not require a request
                     body.</para>
-                <db:para>This operation returns details of the
-                    specified image in the response body.</db:para>
+                <table frame="all">
+                    <title>test</title>
+                    <tgroup cols="2">
+                        <colspec colname="c1" colnum="1"
+                            colwidth="1.0*"/>
+                        <colspec colname="c2" colnum="2"
+                            colwidth="1.0*"/>
+                        <thead>
+                            <row>
+                                <entry>test</entry>
+                                <entry>test</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>test</entry>
+                                <entry>test</entry>
+                            </row>
+                            <row>
+                                <entry>test</entry>
+                                <entry>test</entry>
+                            </row>
+                            <row>
+                                <entry>test</entry>
+                                <entry>test</entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+                <para>This operation returns details of the
+                    specified image in the response body.</para>
                 <example>
                     <title>Image Details Response: XML</title>
                     <programlisting language="xml"><xi:include href="samples/image.xml" parse="text"/></programlisting>
