@@ -1,0 +1,68 @@
+{
+    "server": {
+        "OS-DCF:diskConfig": "AUTO",
+        "OS-EXT-SRV-ATTR:host": "543330fc7412414094e79c867798cefd",
+        "OS-EXT-SRV-ATTR:hypervisor_hostname": "fake-mini",
+        "OS-EXT-SRV-ATTR:instance_name": "instance-00000001",
+        "OS-EXT-STS:power_state": 1,
+        "OS-EXT-STS:task_state": null,
+        "OS-EXT-STS:vm_state": "active",
+        "accessIPv4": "",
+        "accessIPv6": "",
+        "addresses": {
+            "private": [
+                {
+                    "addr": "192.168.0.3",
+                    "version": 4
+                }
+            ]
+        },
+        "config_drive": "",
+        "created": "2012-11-15T19:28:30Z",
+        "flavor": {
+            "id": "1",
+            "links": [
+                {
+                    "href": "http://openstack.example.com/openstack/flavors/1",
+                    "rel": "bookmark"
+                }
+            ]
+        },
+        "hostId": "edc4f072b6ca46a2d95c717401aa9835a204d3e4e6b148a7faba9ab0",
+        "id": "05c070bf-1c34-4d99-901c-0f97a7239b86",
+        "image": {
+            "id": "70a599e0-31e7-49b7-b260-868f441e862b",
+            "links": [
+                {
+                    "href": "http://openstack.example.com/openstack/images/70a599e0-31e7-49b7-b260-868f441e862b",
+                    "rel": "bookmark"
+                }
+            ]
+        },
+        "key_name": null,
+        "links": [
+            {
+                "href": "http://openstack.example.com/v2/openstack/servers/05c070bf-1c34-4d99-901c-0f97a7239b86",
+                "rel": "self"
+            },
+            {
+                "href": "http://openstack.example.com/openstack/servers/05c070bf-1c34-4d99-901c-0f97a7239b86",
+                "rel": "bookmark"
+            }
+        ],
+        "metadata": {
+            "My Server Name": "Apache1"
+        },
+        "name": "new-server-test",
+        "progress": 0,
+        "security_groups": [
+            {
+                "name": "default"
+            }
+        ],
+        "status": "ACTIVE",
+        "tenant_id": "openstack",
+        "updated": "2012-11-15T19:28:31Z",
+        "user_id": "fake"
+    }
+}
