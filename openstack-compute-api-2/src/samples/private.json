@@ -1,5 +1,5 @@
 {
-    "network" {
+    "network" : {
         "id" : "private",
         "ip" : [
             {"version" : 4, "addr" : "10.176.42.16"},

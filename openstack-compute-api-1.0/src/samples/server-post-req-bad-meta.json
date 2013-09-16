@@ -4,12 +4,12 @@
         "imageId" : 1,
         "flavorId" : 1,
         "metadata" : {
-            "My Server Name" : "Apache1" 
-            "My Server Name2" : "Apache2" 
-            "My Server Name3" : "Apache3" 
-            "My Server Name4" : "Apache4" 
-            "My Server Name5" : "Apache5" 
-            "My Server Name6" : "Apache6" 
+            "My Server Name" : "Apache1",
+            "My Server Name2" : "Apache2",
+            "My Server Name3" : "Apache3",
+            "My Server Name4" : "Apache4",
+            "My Server Name5" : "Apache5",
+            "My Server Name6" : "Apache6"
         },
         "personality" : [
             {
