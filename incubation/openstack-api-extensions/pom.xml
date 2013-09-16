@@ -8,7 +8,7 @@
     <artifactId>openstack-guide</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>OpenStack Guides</name>
+    <name>OpenStack API Extensions</name>
     <profiles>
         <profile>
             <id>Rackspace Research Repositories</id>
