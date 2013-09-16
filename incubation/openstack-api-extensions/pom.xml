@@ -34,6 +34,7 @@
     
     
     <build>
+        <sourceDirectory>.</sourceDirectory>
         <resources>
             <resource>
                 <directory>target/docbkx/pdf</directory>
