@@ -1,0 +1,8 @@
+Verified+2: Jenkins
+Approved+1: Anne Gentle <anne@openstack.org>
+Code-Review+2: Anne Gentle <anne@openstack.org>
+Submitted-by: Jenkins
+Submitted-at: Tue, 17 Sep 2013 20:05:08 +0000
+Reviewed-on: https://review.openstack.org/46765
+Project: openstack/compute-api
+Branch: refs/heads/master
