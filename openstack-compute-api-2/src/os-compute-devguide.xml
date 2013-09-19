@@ -1159,7 +1159,7 @@ Host: servers.api.openstack.org
                 other API requests. In general, requests such as
                 /servers.xml and /servers/.xml are handled
                 equivalently. </para>
-           <example>
+            <example>
                 <title>Version Details Request</title>
                 <literallayout class="monospaced">
 GET HTTP/1.1
@@ -1206,7 +1206,7 @@ Host: servers.api.openstack.org/v2/
                     contains the most accurate and up-to-date
                     description of the API service. </para>
             </note>
-         <!--   <section xml:id="compute_versions">
+            <!--   <section xml:id="compute_versions">
                 <title>Versions</title>
                 <para>Get information about a specific version of the API.</para>
                 <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -1552,267 +1552,12 @@ Host: servers.api.openstack.org/v2/
             </section>
         </section>
     </chapter>
-  <!--  <chapter xml:id="api-operations" role="api-reference"
+    <chapter xml:id="api-operations"
         xmlns="http://docbook.org/ns/docbook"
         xmlns:html="http://www.w3.org/1999/xhtml"
         xmlns:wadl="http://wadl.dev.java.net/2009/02">
-        <title>API Operations</title> -->
-       <!-- <section xml:id="compute_extensions">
-            <title>Extensions</title>
-            <para>Lists all available extensions and gets details for a
-                specified extension. Extensions introduce features and
-                vendor-specific functionality in the API without requiring a
-                version change.</para>
-            <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-                <wadl:resource
-                    href="os-compute-2.wadl#extensions">
-                    <wadl:method href="#listExtensions"/>
-                </wadl:resource>
-                <wadl:resource
-                    href="os-compute-2.wadl#extension">
-                    <wadl:method href="#getExtension"/>
-                </wadl:resource>
-            </wadl:resources>
-        </section>
-        <section xml:id="compute_limits">
-            <title>Limits</title>
-            <para>Gets rate and absolute limits. from one OpenStack Compute
-                service deployment to another.</para>
-            <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-                <wadl:resource
-                    href="os-compute-2.wadl#limits">
-                    <wadl:method href="#listLimits"/>
-                </wadl:resource>
-            </wadl:resources>
-        </section> -->
-    <chapter xml:id="compute_server_operations" role="api-reference"
-        xmlns="http://docbook.org/ns/docbook"
-        xmlns:html="http://www.w3.org/1999/xhtml"
-        xmlns:wadl="http://wadl.dev.java.net/2009/02">
-        <title>Server Operations</title>
-  <section xml:id="compute_servers">
-            <title>Servers</title>
-            <para>Lists, creates, gets details for, updates, and deletes
-                servers.</para>
-      <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-                <wadl:resource
-                    href="os-compute-2.wadl#Servers">
-                  <!--  <wadl:method href="#listServers"/>
-                    <wadl:method href="#createServer"/> -->
-                </wadl:resource>          
-              <!--  <wadl:resource
-                    href="os-compute-2.wadl#server_detail">
-                    <wadl:method href="#listDetailServers"/>
-                </wadl:resource>
-                <wadl:resource
-                    href="os-compute-2.wadl#server_id">
-                    <wadl:method href="#getServer"/>
-                    <wadl:method href="#updateServer"/>
-                    <wadl:method href="#deleteServer"/>
-                </wadl:resource>-->
-            </wadl:resources>
-        </section>
-        <?hard-pagebreak?>
-        <!-- <section xml:id="compute_servers" xmlns="http://docbook.org/ns/docbook"
-            xmlns:html="http://www.w3.org/1999/xhtml"
-            xmlns:wadl="http://wadl.dev.java.net/2009/02" role="api-reference">
-            <title>Servers</title>
-            <para>Lists, creates, gets details for, updates, and deletes
-            servers.</para>
-            <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-            <wadl:resource
-            href="os-compute-2.wadl#Servers">
-            <wadl:method href="#listServers"/>
-            <wadl:method href="#createServer"/>
-            </wadl:resource>            
-            <wadl:resource
-            href="os-compute-2.wadl#server_detail">
-            <wadl:method href="#listDetailServers"/>
-            </wadl:resource>
-            <wadl:resource
-            href="os-compute-2.wadl#server_id">
-            <wadl:method href="#getServer"/>
-            <wadl:method href="#updateServer"/>
-                    <wadl:method href="#deleteServer"/>
-          </wadl:resource>
-            </wadl:resources>
-        </section> -->
-    <!--    <section xml:id="compute_servers">
-            <title>Servers</title>
-            <para>Lists, creates, gets details for, updates, and deletes
-                servers.</para>
-            <wadl:resources
-                xmlns:wadl="http://wadl.dev.java.net/2009/02">
-                <wadl:resource href="os-compute-2.wadl#Servers">
-                    <wadl:method href="#listServers"/>
-                    <wadl:method href="#createServer"/> 
-</wadl:resource>
-                <wadl:resource href="os-compute-2.wadl#server_detail"
-                />
-                <wadl:resource href="os-compute-2.wadl#server_id"
-                />
-            </wadl:resources>
-        </section>-->
-        <section xml:id="Server_Passwords-d1e2510">
-            <title>Server Passwords</title>
-            <para>A password may be specified when creating
-                the server via the optional
-                <property>adminPass</property> attribute.
-                The specified password must meet the
-                complexity requirements set by your OpenStack
-                Compute provider. The server may enter an
-                <code>ERROR</code> state if the complexity
-                requirements are not met. In this case, a
-                client may issue a change password action to
-                reset the server password (see <xref
-                    linkend="Change_Password-d1e3234"/>). </para>
-            <para>If a password is not specified, a randomly
-                generated password will be assigned and
-                returned in the response object. This password
-                is guaranteed to meet the security
-                requirements set by the compute provider. For
-                security reasons, the password will not be
-                returned in subsequent &GET; calls. </para>
-        </section><section xml:id="Server_Metadata-d1e2529">
-            <title>Server Metadata</title>
-            <para>Custom server metadata can also be supplied
-                at launch time. See <xref
-                    linkend="MetadataSection"/> for details on
-                working with metadata. The maximum size of the
-                metadata key and value is 255 bytes each. The
-                maximum number of key-value pairs that can be
-                supplied per server is determined by the
-                compute provider and may be queried via the
-                maxServerMeta absolute limit. </para>
-        </section><section xml:id="Server_Networks-d1e2530">
-            <title>Server Networks</title>
-            <para>Networks which the server connects to can
-                also be supplied at launch time. See <xref
-                    linkend="NetworksSection"/> for details on
-                working with networks. One or more networks
-                can be specified. User can also specify a
-                specific port on the network or the fixed IP
-                address to assign to the server
-                interface.</para>
-        </section><section xml:id="Server_Personality-d1e2543">
-            <title>Server Personality</title>
-            <para>You can customize the personality of a
-                server instance by injecting data into its
-                file system. For example, you might want to
-                insert ssh keys, set configuration files, or
-                store data that you want to retrieve from
-                inside the instance. This feature provides a
-                minimal amount of launch-time personalization.
-                If you require significant customization,
-                create a custom image. </para>
-            <para>Follow these guidelines when you inject
-                files: <itemizedlist>
-                    <listitem>
-                        <para>The maximum size of the file
-                            path data is 255 bytes.</para>
-                    </listitem>
-                    <listitem>
-                        <para>Encode the file contents as a
-                            Base64 string. The maximum size of
-                            the file contents is determined by
-                            the compute provider and may vary
-                            based on the image that is used to
-                            create the server</para>
-                        <note>
-                            <para>The maximum limit refers to
-                                the number of bytes in the decoded
-                                data and not the number of
-                                characters in the encoded
-                                data.</para>
-                        </note>
-                    </listitem>
-                    <listitem>
-                        <para>You can inject text files only.
-                            You cannot inject binary or zip
-                            files into a new build. </para>
-                    </listitem>
-                    <listitem>
-                        <para>The maximum number of file
-                            path/content pairs that you can
-                            supply is also determined by the
-                            compute provider and is defined by
-                            the maxPersonality absolute limit.
-                        </para>
-                    </listitem>
-                    <listitem>
-                        <para>The absolute limit,
-                            maxPersonalitySize, is a byte limit
-                            that is guaranteed to apply to all
-                            images in the deployment. Providers
-                            can set additional per-image
-                            personality limits.</para>
-                    </listitem>
-                </itemizedlist></para>
-            <para>The file injection might not occur until
-                after the server is built and booted. </para>
-            <para>During file injection, any existing files
-                that match specified files are renamed to
-                include the bak extension appended with a time
-                stamp. For example, if the file /etc/passwd
-                exists, it is backed up as
-                /etc/passwd.bak.1246036261.5785. </para>
-            <para>After file injection, personality files are
-                accessible by only system administrators. For
-                example, on Linux, all files have root and the
-                root group as the owner and group owner,
-                respectively, and allow user and group read
-                access only ( ).
-            </para>
-        </section> <section xml:id="Server_Primary_Addresses-d1e2558">
-            <title>Server Access Addresses</title>
-            <para>In a hybrid environment, the IP address of a
-                server may not be controlled by the underlying
-                implementation. Instead, the access IP address
-                may be part of the dedicated hardware; for
-                example, a router/NAT device. In this case,
-                the addresses provided by the implementation
-                cannot actually be used to access the server
-                (from outside the local LAN). Here, a separate
-                <firstterm>access address</firstterm> may
-                be assigned at creation time to provide access
-                to the server. This address may not be
-                directly bound to a network interface on the
-                server and may not necessarily appear when a
-                server's addresses are queried. See <xref
-                    linkend="compute_server-addresses"/>.
-                Nonetheless, clients which need to access the
-                server directly are encouraged to do so via an
-                access address. In the example below, an IPv4
-                address is assigned at creation time. </para>
-            <example>
-                <title>Creating a Server with a Access IP:
-                    XML</title>
-                <programlisting language="xml"><xi:include href="samples/server-post-req-pip.xml" parse="text"/></programlisting>
-            </example>
-            <example>
-                <title>Creating a Server with a Access IP:
-                    JSON</title>
-                <programlisting language="json"><xi:include href="samples/server-post-req-pip.json" parse="text"/></programlisting>
-            </example>
-           <note><para>Both IPv4 and IPv6 addresses may
-                be used as access addresses and both addresses
-                may be assigned simultaneously as illustrated
-                below. Access addresses may be updated after a
-                server has been created. See <xref
-                    linkend="compute_servers"/> for more details. </para></note>
-            <example>
-                <title>Creating a Server with Multiple Access
-                    IPs: XML</title>
-                <programlisting language="xml"><xi:include href="samples/server-post-req-pip2.xml" parse="text"/></programlisting>
-            </example>
-            <?hard-pagebreak?>
-            <example>
-                <title>Creating a Server with Multiple Access
-                    IPs: JSON</title>
-                <programlisting language="json"><xi:include href="samples/server-post-req-pip2.json" parse="text"/></programlisting>
-            </example>
-        </section>
-        <!--<section xml:id="Servers-d1e2073">
+        <title>API Operations</title>
+        <section xml:id="compute_servers">
             <title>Servers</title>
             <section xml:id="List_Servers-d1e2078">
                 <title>List Servers</title>
@@ -1964,7 +1709,7 @@ Host: servers.api.openstack.org/v2/
                             <para><code>BUILD</code>. The server has
                                 not finished the original build
                                 process.</para>
-                        </listitem>    
+                        </listitem>
                         <listitem>
                             <para><code>DELETED</code>. The server is
                                 deleted.</para>
@@ -1983,7 +1728,7 @@ Host: servers.api.openstack.org/v2/
                         <listitem>
                             <para><code>PASSWORD</code>. The password
                                 is being reset on the server.</para>
-                        </listitem>     
+                        </listitem>
                         <listitem>
                             <para><code>REBOOT</code>. The server is
                                 in a soft reboot state. A reboot
@@ -2013,7 +1758,7 @@ Host: servers.api.openstack.org/v2/
                                 server is being cleaned up and the
                                 original source server is restarting.
                             </para>
-                        </listitem>    
+                        </listitem>
                         <listitem>
                             <para><code>SHUTOFF</code>. The virtual
                                 machine (VM) was powered down by the
@@ -2263,9 +2008,172 @@ Host: servers.api.openstack.org/v2/
                     <title>Server Create Response: XML</title>
                     <programlisting language="xml"><xi:include href="samples/server-post-resp.xml" parse="text"/></programlisting>
                 </example>
-                <?hard-pagebreak?>-->      
-           <!-- </section>
-            <?hard-pagebreak?>
+                <section xml:id="Server_Passwords-d1e2510">
+                    <title>Server Passwords</title>
+                    <para>A password may be specified when creating
+                        the server via the optional
+                            <property>adminPass</property> attribute.
+                        The specified password must meet the
+                        complexity requirements set by your OpenStack
+                        Compute provider. The server may enter an
+                            <code>ERROR</code> state if the complexity
+                        requirements are not met. In this case, a
+                        client may issue a change password action to
+                        reset the server password (see <xref
+                            linkend="Change_Password-d1e3234"/>). </para>
+                    <para>If a password is not specified, a randomly
+                        generated password will be assigned and
+                        returned in the response object. This password
+                        is guaranteed to meet the security
+                        requirements set by the compute provider. For
+                        security reasons, the password will not be
+                        returned in subsequent &GET; calls. </para>
+                </section>
+                <section xml:id="Server_Metadata-d1e2529">
+                    <title>Server Metadata</title>
+                    <para>Custom server metadata can also be supplied
+                        at launch time. See <xref
+                            linkend="MetadataSection"/> for details on
+                        working with metadata. The maximum size of the
+                        metadata key and value is 255 bytes each. The
+                        maximum number of key-value pairs that can be
+                        supplied per server is determined by the
+                        compute provider and may be queried via the
+                        maxServerMeta absolute limit. </para>
+                </section>
+                <section xml:id="Server_Networks-d1e2530">
+                    <title>Server Networks</title>
+                    <para>Networks which the server connects to can
+                        also be supplied at launch time. See <xref
+                            linkend="NetworksSection"/> for details on
+                        working with networks. One or more networks
+                        can be specified. User can also specify a
+                        specific port on the network or the fixed IP
+                        address to assign to the server
+                        interface.</para>
+                </section>
+                <section xml:id="Server_Personality-d1e2543">
+                    <title>Server Personality</title>
+                    <para>You can customize the personality of a
+                        server instance by injecting data into its
+                        file system. For example, you might want to
+                        insert ssh keys, set configuration files, or
+                        store data that you want to retrieve from
+                        inside the instance. This feature provides a
+                        minimal amount of launch-time personalization.
+                        If you require significant customization,
+                        create a custom image. </para>
+                    <para>Follow these guidelines when you inject
+                        files: <itemizedlist>
+                            <listitem>
+                                <para>The maximum size of the file
+                                   path data is 255 bytes.</para>
+                            </listitem>
+                            <listitem>
+                                <para>Encode the file contents as a
+                                   Base64 string. The maximum size of
+                                   the file contents is determined by
+                                   the compute provider and may vary
+                                   based on the image that is used to
+                                   create the server</para>
+                                <note>
+                                   <para>The maximum limit refers to
+                                   the number of bytes in the decoded
+                                   data and not the number of
+                                   characters in the encoded
+                                   data.</para>
+                                </note>
+                            </listitem>
+                            <listitem>
+                                <para>You can inject text files only.
+                                   You cannot inject binary or zip
+                                   files into a new build. </para>
+                            </listitem>
+                            <listitem>
+                                <para>The maximum number of file
+                                   path/content pairs that you can
+                                   supply is also determined by the
+                                   compute provider and is defined by
+                                   the maxPersonality absolute limit.
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>The absolute limit,
+                                   maxPersonalitySize, is a byte limit
+                                   that is guaranteed to apply to all
+                                   images in the deployment. Providers
+                                   can set additional per-image
+                                   personality limits.</para>
+                            </listitem>
+                        </itemizedlist></para>
+                    <para>The file injection might not occur until
+                        after the server is built and booted. </para>
+                    <para>During file injection, any existing files
+                        that match specified files are renamed to
+                        include the bak extension appended with a time
+                        stamp. For example, if the file /etc/passwd
+                        exists, it is backed up as
+                        /etc/passwd.bak.1246036261.5785. </para>
+                    <para>After file injection, personality files are
+                        accessible by only system administrators. For
+                        example, on Linux, all files have root and the
+                        root group as the owner and group owner,
+                        respectively, and allow user and group read
+                        access only ( ). </para>
+                </section>
+                <section xml:id="Server_Primary_Addresses-d1e2558">
+                    <title>Server Access Addresses</title>
+                    <para>In a hybrid environment, the IP address of a
+                        server may not be controlled by the underlying
+                        implementation. Instead, the access IP address
+                        may be part of the dedicated hardware; for
+                        example, a router/NAT device. In this case,
+                        the addresses provided by the implementation
+                        cannot actually be used to access the server
+                        (from outside the local LAN). Here, a separate
+                            <firstterm>access address</firstterm> may
+                        be assigned at creation time to provide access
+                        to the server. This address may not be
+                        directly bound to a network interface on the
+                        server and may not necessarily appear when a
+                        server's addresses are queried. See <xref
+                            linkend="compute_server-addresses"/>.
+                        Nonetheless, clients which need to access the
+                        server directly are encouraged to do so via an
+                        access address. In the example below, an IPv4
+                        address is assigned at creation time. </para>
+                    <example>
+                        <title>Creating a Server with a Access IP:
+                            XML</title>
+                        <programlisting language="xml"><xi:include href="samples/server-post-req-pip.xml" parse="text"/></programlisting>
+                    </example>
+                    <example>
+                        <title>Creating a Server with a Access IP:
+                            JSON</title>
+                        <programlisting language="json"><xi:include href="samples/server-post-req-pip.json" parse="text"/></programlisting>
+                    </example>
+                    <note>
+                        <para>Both IPv4 and IPv6 addresses may be used
+                            as access addresses and both addresses may
+                            be assigned simultaneously as illustrated
+                            below. Access addresses may be updated
+                            after a server has been created. See <xref
+                                linkend="compute_servers"/> for more
+                            details. </para>
+                    </note>
+                    <example>
+                        <title>Creating a Server with Multiple Access
+                            IPs: XML</title>
+                        <programlisting language="xml"><xi:include href="samples/server-post-req-pip2.xml" parse="text"/></programlisting>
+                    </example>
+                    <?hard-pagebreak?>
+                    <example>
+                        <title>Creating a Server with Multiple Access
+                            IPs: JSON</title>
+                        <programlisting language="json"><xi:include href="samples/server-post-req-pip2.json" parse="text"/></programlisting>
+                    </example>
+                </section>
+            </section>
             <section xml:id="Get_Server_Details-d1e2623">
                 <title>Get Server Details</title>
                 <informaltable rules="all">
@@ -2514,7 +2422,7 @@ Host: servers.api.openstack.org/v2/
                 <para>This operation does not require a request body
                     or return a response body. </para>
             </section>
-        </section>-->
+        </section>
         <?hard-pagebreak?>
         <section xml:id="compute_server-addresses">
             <title>Server Addresses</title>
@@ -2522,8 +2430,8 @@ Host: servers.api.openstack.org/v2/
                 specified server and network.</para>
             <wadl:resources
                 xmlns:wadl="http://wadl.dev.java.net/2009/02">
-                <wadl:resource href="os-compute-2.wadl#ips"/>
-                <wadl:resource href="os-compute-2.wadl#network_label"
+                <wadl:resource href="wadl/os-compute-2.wadl#ips"/>
+                <wadl:resource href="wadl/os-compute-2.wadl#network_label"
                 />
             </wadl:resources>
         </section>
@@ -3830,8 +3738,8 @@ Host: servers.api.openstack.org/v2/
                         <parameter>id</parameter> in the URI. </para>
                 <para>This operation does not require a request
                     body.</para>
-                <para>This operation returns details of the
-                    specified image in the response body.</para>
+                <para>This operation returns details of the specified
+                    image in the response body.</para>
                 <example>
                     <title>Image Details Response: XML</title>
                     <programlisting language="xml"><xi:include href="samples/image.xml" parse="text"/></programlisting>
