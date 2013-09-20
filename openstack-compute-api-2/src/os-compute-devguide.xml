@@ -74,6 +74,17 @@
         <revhistory>
             <revision>
                 <!-- ... continue addding more revisions here as you change this document using the markup shown below... -->
+                <date>2013-09-10</date>
+                <revdescription>
+                    <itemizedlist>
+                        <listitem>
+                            <para>Added the 422 return code to the reboot server operation.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <!-- ... continue addding more revisions here as you change this document using the markup shown below... -->
                 <date>2013-05-22</date>
                 <revdescription>
                     <itemizedlist>
@@ -2685,7 +2696,6 @@ Host: servers.api.openstack.org/v2/
                         JSON</title>
                     <programlisting language="json"><xi:include href="samples/changepassword.json" parse="text"/></programlisting>
                 </example>
-                <para/>
             </section>
             <?hard-pagebreak?>
             <section xml:id="Reboot_Server-d1e3371">
@@ -2721,7 +2731,9 @@ Host: servers.api.openstack.org/v2/
                         (<errorcode>405</errorcode>), overLimit
                         (<errorcode>413</errorcode>), itemNotFound
                         (<errorcode>404</errorcode>), badMediaType
-                        (<errorcode>415</errorcode>), buildInProgress
+                        (<errorcode>415</errorcode>),
+                    HTTPUnprocessableEntity
+                        (<errorcode>422</errorcode>) buildInProgress
                         (<errorcode>409</errorcode>) </simpara>
                 <informaltable frame="void">
                     <tbody>
@@ -2761,7 +2773,6 @@ Host: servers.api.openstack.org/v2/
                     <table rules="all">
                         <caption>Reboot Server Request
                             Attributes</caption>
-
                         <col width="20%"/>
                         <col width="60%"/>
                         <col width="20%"/>
