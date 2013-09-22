@@ -69,7 +69,7 @@
             <para>This document is intended for software developers
                 interested in developing applications using the
                 OpenStack Compute Application Programming Interface
-                    (<abbrev>API</abbrev>). </para>
+                    (<abbrev>API</abbrev>).</para>
         </abstract>
         <revhistory>
             <revision>
@@ -212,24 +212,24 @@
                         <listitem>
                             <para>Added <parameter>limit</parameter>
                                 and <parameter>marker</parameter>
-                                parameters to list operations. </para>
+                                parameters to list operations.</para>
                         </listitem>
                         <listitem>
                             <para>The rebuild action behaves just like
                                 create: an imageRef is used and a
-                                password may be specified. </para>
+                                password may be specified.</para>
                         </listitem>
                         <listitem>
                             <para>Added tenant and user_id attributes
-                                to server and image. </para>
+                                to server and image.</para>
                         </listitem>
                         <listitem>
                             <para>Added vcpus attribute to flavors.
-                            </para>
+                       </para>
                         </listitem>
                         <listitem>
                             <para>The flavorRef attribute is now used
-                                in the resize action. </para>
+                                in the resize action.</para>
                         </listitem>
                     </itemizedlist>
                 </revdescription>
@@ -240,79 +240,79 @@
                     <itemizedlist spacing="compact">
                         <listitem>
                             <para>Added missing response examples for
-                                server update. </para>
+                                server update.</para>
                         </listitem>
                         <listitem>
                             <para>Ensure consistent HTTP status codes
-                                for all resources. </para>
+                                for all resources.</para>
                         </listitem>
                         <listitem>
                             <para>Clarifications on setting and
-                                changing a server password. </para>
+                                changing a server password.</para>
                         </listitem>
                         <listitem>
                             <para>Minor updates to metadata section
-                                for clarity. </para>
+                                for clarity.</para>
                         </listitem>
                         <listitem>
-                            <para>Discuss alternate links. </para>
+                            <para>Discuss alternate links.</para>
                         </listitem>
                         <listitem>
                             <para>Removed version number from compute
                                 media types &mdash; use a media type
-                                parameter instead. </para>
+                                parameter instead.</para>
                         </listitem>
                         <listitem>
                             <para>Bought back the flavorRef and
                                 imageRef server attributes these are
                                 now only used when creating a server.
-                            </para>
+                       </para>
                         </listitem>
                         <listitem>
                             <para>Made the create image operation a
-                                server action. </para>
+                                server action.</para>
                         </listitem>
                         <listitem>
                             <para>Added minDisk and minRam filters to
-                                flavor lists. </para>
+                                flavor lists.</para>
                         </listitem>
                         <listitem>
                             <para>Added minDisk and minRam attributes
-                                to images. </para>
+                                to images.</para>
                         </listitem>
                         <listitem>
                             <para>Asynchronous faults may now contain
-                                a timestamp. </para>
+                                a timestamp.</para>
                         </listitem>
                         <listitem>
                             <para>Changes-since request returns an
-                                empty list rather than a 304. </para>
+                                empty list rather than a 304.</para>
                         </listitem>
                         <listitem>
-                            <para>Added DELETED image status. </para>
+                            <para>Added DELETED image status.</para>
                         </listitem>
                         <listitem>
                             <para>Fix content length in <xref
                                    linkend="ImageCreateFullResponse"
-                                />. </para>
+                                />.</para>
                         </listitem>
                         <listitem>
                             <para>Fixed bad request error code in
                                    <xref
                                    linkend="Server_Passwords-d1e2510"
-                                />. </para>
+                                />.</para>
                         </listitem>
                         <listitem>
                             <para>Compact image, server, and flavor
                                 lists should contain IDs, names, and
                                 links (Any kind of link may be
                                 included &mdash; not just self links).
-                            </para>
+                       </para>
                         </listitem>
                         <listitem>
                             <para>Changed metadata URI from .../meta
                                 to .../metadata for consistency.
-                            </para>
+                       </para>
                         </listitem>
                     </itemizedlist>
                 </revdescription>
@@ -323,7 +323,7 @@
                     <itemizedlist spacing="compact">
                         <listitem>
                             <para>Renamed Primary IP to Access IP.
-                            </para>
+                       </para>
                         </listitem>
                     </itemizedlist>
                 </revdescription>
@@ -334,71 +334,71 @@
                     <itemizedlist spacing="compact">
                         <listitem>
                             <para>Many minor updates based on
-                                community feedback. </para>
+                                community feedback.</para>
                         </listitem>
                         <listitem>
                             <para>Removed sections on Content
                                 Compression, Persistent Connections,
                                 and Caching &mdash; these are operator
                                 specific. Added section on HTTP.
-                            </para>
+                       </para>
                         </listitem>
                         <listitem>
                             <para>A Location header is returned when
-                                creating servers/images. </para>
+                                creating servers/images.</para>
                         </listitem>
                         <listitem>
                             <para>Added filters to collection of
-                                Image, Servers, and Flavors. </para>
+                                Image, Servers, and Flavors.</para>
                         </listitem>
                         <listitem>
-                            <para>Added asynchronous faults. </para>
+                            <para>Added asynchronous faults.</para>
                         </listitem>
                         <listitem>
                             <para>Updates to links and references.
                                 Remove serverRef, imageRef, and
                                 flavorRef and instead embed one entity
-                                in another to provide links. </para>
+                                in another to provide links.</para>
                         </listitem>
                         <listitem>
-                            <para>Added primary IP addresses. </para>
+                            <para>Added primary IP addresses.</para>
                         </listitem>
                         <listitem>
-                            <para>Added forbidden fault. </para>
+                            <para>Added forbidden fault.</para>
                         </listitem>
                         <listitem>
                             <para>We now use a single bookmark link
                                 per entity regardless of mimetype.
-                            </para>
+                       </para>
                         </listitem>
                         <listitem>
                             <para>Collections are now sorted by create
-                                time. </para>
+                                time.</para>
                         </listitem>
                         <listitem>
                             <para>Previous links are no longer
-                                required. </para>
+                                required.</para>
                         </listitem>
                         <listitem>
                             <para>Added the ability to create or
                                 update multiple metadata items
-                                simultaneously. </para>
+                                simultaneously.</para>
                         </listitem>
                         <listitem>
                             <para>Minor cleanups to server and image
-                                state machine. </para>
+                                state machine.</para>
                         </listitem>
                         <listitem>
                             <para>Update to JSON collection format.
-                            </para>
+                       </para>
                         </listitem>
                         <listitem>
                             <para>Replace integer IDs with UUIDs.
-                            </para>
+                       </para>
                         </listitem>
                         <listitem>
                             <para>Removed affinityID, this will likely
-                                come in as an extension. </para>
+                                come in as an extension.</para>
                         </listitem>
                     </itemizedlist>
                 </revdescription>
@@ -410,7 +410,7 @@
                         <listitem>
                             <para>Some minor cleanups in preparation
                                 for OpenStack Summit discussion.
-                            </para>
+                       </para>
                         </listitem>
                     </itemizedlist>
                 </revdescription>
@@ -421,31 +421,31 @@
                     <itemizedlist spacing="compact">
                         <listitem>
                             <para>Many minor updates based on
-                                community feedback. </para>
+                                community feedback.</para>
                         </listitem>
                         <listitem>
                             <para>Updates to resource linking and
-                                references. </para>
+                                references.</para>
                         </listitem>
                         <listitem>
                             <para>Better description of paginated
-                                collections. </para>
+                                collections.</para>
                         </listitem>
                         <listitem>
                             <para>Metadata supported in servers and
-                                images. </para>
+                                images.</para>
                         </listitem>
                         <listitem>
                             <para>Dropped support for shared IP
-                                groups. </para>
+                                groups.</para>
                         </listitem>
                         <listitem>
                             <para>IPs organized by network ID, versus
                                 showing only public and private IPs.
-                            </para>
+                       </para>
                         </listitem>
                         <listitem>
-                            <para>Generalized affinity ID. </para>
+                            <para>Generalized affinity ID.</para>
                         </listitem>
                     </itemizedlist>
                 </revdescription>
@@ -455,7 +455,7 @@
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
-                            <para>Initial release. </para>
+                            <para>Initial release.</para>
                         </listitem>
                     </itemizedlist>
                 </revdescription>
@@ -471,17 +471,17 @@
             different flavors of memory, cores, disk space, and CPU,
             and can be provisioned in minutes. Interactions with
             Compute Servers can occur programmatically via the
-            OpenStack Compute API. </para>
+            OpenStack Compute API.</para>
         <para>We welcome feedback, comments, and bug reports at <link
                 xlink:href="http://bugs.launchpad.net/nova"
-                >bugs.launchpad.net/nova</link>. </para>
+                >bugs.launchpad.net/nova</link>.</para>
         <section xml:id="Intended_Audience-d1e85">
             <title>Intended Audience</title>
             <para>This guide assists software developers who want to
                 develop applications using the OpenStack Compute API.
                 To use this information, you should have access to an
                 account from an OpenStack Compute provider, and you
-                should also be familiar with the following concepts: </para>
+                should also be familiar with the following concepts:</para>
             <itemizedlist spacing="compact">
                 <listitem>
                     <para>OpenStack Compute service</para>
@@ -513,7 +513,7 @@
             <para>You can download the most current version of this
                 document from the OpenStack Docs website at <link
                     xlink:href="http://docs.openstack.org">
-                    http://docs.openstack.org</link>. </para>
+                    http://docs.openstack.org</link>.</para>
         </section>
     </preface>
 
@@ -530,10 +530,10 @@
             Additionally, providers may offer support for conditional
             &GET; requests using ETags, or they may send a redirect in
             response to a &GET; request. Clients should be written to
-            account for these differences. </para>
+            account for these differences.</para>
         <para>Providers can return information identifying requests in
             HTTP response headers, for example, to facilitate
-            communication between the provider and client users. </para>
+            communication between the provider and client users.</para>
         <xi:include href="section_concepts.xml"/>
         <section xml:id="Authentication-d1e444">
             <title>Authentication</title>
@@ -544,16 +544,16 @@
                 Auth, Token). The authentication scheme used is
                 determined by the provider of the OpenStack Compute
                 system. Please contact your provider to determine the
-                best way to authenticate against this API. </para>
+                best way to authenticate against this API.</para>
             <note>
                 <para>Some authentication schemes may require that the
-                    API operate using SSL over HTTP (HTTPS). </para>
+                    API operate using SSL over HTTP (HTTPS).</para>
             </note>
         </section>
         <section xml:id="Request_Response_Types-d1e459">
             <title>Request/Response Types</title>
             <para>The OpenStack Compute API supports both JSON and XML
-                data serialization request and response formats. </para>
+                data serialization request and response formats.</para>
             <para>You specify the request format in the
                     <code>Content-Type</code> header in the request.
                 This header is required for operations that have a
@@ -600,7 +600,7 @@
                 from the request format. <xref linkend="JSON_req"/>
                 and <xref linkend="ImageCreateFullResponse"/> show a
                 request body in JSON format and a response body in XML
-                format. </para>
+                format.</para>
             <example xml:id="JSON_req">
                 <title>Request with Headers: JSON</title>
                 <literallayout role="monospace"><?db-font-size 70%?>POST /v2/010101/servers HTTP/1.1
@@ -631,7 +631,7 @@ Server: Jetty(8.0.y.z-SNAPSHOT)</literallayout>
                 an <code>Accept</code> header to request an XML
                 response.</para>
             <note>
-                <para>The XML response is not shown. </para>
+                <para>The XML response is not shown.</para>
             </note>
             <example xml:id="diff_serialization">
                 <title>JSON Request with XML Query Extension for the
@@ -652,7 +652,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb</literallayout>
                 specify the image by providing an ID or a URL to a
                 remote image. When providing an ID, it is assumed that
                 the resource exists in the current OpenStack
-                deployment. </para>
+                deployment.</para>
             <?hard-pagebreak?>
             <example>
                 <title>ID Image Reference: JSON</title>
@@ -696,7 +696,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb</literallayout>
                     </listitem>
                 </itemizedlist>Note that the type attribute here is
                 used to provide a hint as to the type of
-                representation to expect when following the link. </para>
+                representation to expect when following the link.</para>
 
             <?hard-pagebreak?>
             <example>
@@ -738,7 +738,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb</literallayout>
                 which is supported by the deployment an overLimit
                     (<errorcode>413</errorcode>) fault may be thrown.
                 A marker with an invalid ID will return a badRequest
-                    (<errorcode>400</errorcode>) fault. </para>
+                    (<errorcode>400</errorcode>) fault.</para>
             <para>For convenience, collections are required to contain
                 atom "next" links. They may optionally also contain
                 "previous" links. The last page in the list will not
@@ -751,7 +751,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb</literallayout>
                 Subsequent links will honor the initial page size.
                 Thus, a client may follow links to traverse a
                 paginated collection without having to input the
-                    <parameter>marker</parameter> parameter. </para>
+                    <parameter>marker</parameter> parameter.</para>
             <?hard-pagebreak?>
             <example>
                 <title>Images Collection, First Page: XML</title>
@@ -797,7 +797,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb</literallayout>
                 objects as illustrated below. Here, a subset of
                 metadata items are presented within the image. Clients
                 must follow the "next" link to retrieve the full set
-                of metadata. </para>
+                of metadata.</para>
             <?hard-pagebreak?>
             <example>
                 <title>Paginated Metadata in an Image: XML</title>
@@ -839,7 +839,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb</literallayout>
                 &GET; against
                     https://api.servers.openstack.org/v2/224532/servers?<parameter>changes-since</parameter>=2011-01-24T17:08Z
                 would list all servers that have changed since Mon, 24
-                Jan 2011 17:08:00 UTC. </para>
+                Jan 2011 17:08:00 UTC.</para>
             <para>To allow clients to keep track of changes, the
                 changes-since filter displays items that have been
                     <emphasis>recently</emphasis> deleted. Both images
@@ -848,7 +848,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb</literallayout>
                 Implementations are not required to keep track of
                 deleted resources indefinitely, so sending a changes
                 since time in the distant past may miss deletions.
-            </para>
+       </para>
         </section>
         <?hard-pagebreak?>
         <section xml:id="Limits-d1e846">
@@ -866,7 +866,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb</literallayout>
                 limits that apply to your account or see <xref
                     linkend="ProgramaticLimits"/>. Your provider may
                 be able to adjust your account's limits if they are
-                too low. </para>
+                too low.</para>
             <section xml:id="Rate_Limits-d1e862">
                 <title>Rate Limits</title>
                 <para>Rate limits are specified in terms of both a
@@ -875,14 +875,14 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb</literallayout>
                     human-readable limit is intended for displaying in
                     graphical user interfaces. The machine-processable
                     form is intended to be used directly by client
-                    applications. </para>
+                    applications.</para>
                 <para>The regular expression boundary matcher "^" for
                     the rate limit takes effect after the root URI
                     path. For example, the regular expression
                     ^/servers would match the bolded portion of the
                     following URI:
                         https://servers.api.openstack.org/v2/3542812<emphasis
-                        role="bold">/servers</emphasis>. </para>
+                        role="bold">/servers</emphasis>.</para>
                 <table rules="all">
                     <caption>Sample Rate Limits</caption>
                     <thead>
@@ -932,13 +932,13 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb</literallayout>
                     */servers is 50 per day, one cannot &POST; to
                     */servers more than 10 times within a single
                     minute because the rate limits for any &POST; is
-                    10/min. </para>
+                    10/min.</para>
                 <para>In the event a request exceeds the thresholds
                     established for your account, a
                         <errorcode>413</errorcode> HTTP response will
                     be returned with a <code>Retry-After</code> header
                     to notify the client when they can attempt to try
-                    again. </para>
+                    again.</para>
             </section>
             <?hard-pagebreak?>
             <section xml:id="Absolute_Limits-d1e994">
@@ -952,7 +952,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb</literallayout>
                     absolute limit determines the unit type of the
                     integer value. For example, the name maxServerMeta
                     implies that the value is in terms of server
-                    metadata items. </para>
+                    metadata items.</para>
                 <table rules="all">
                     <caption>Sample Absolute Limits</caption>
                     <thead>
@@ -1002,7 +1002,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb</literallayout>
                 <title>Determining Limits Programmatically</title>
                 <para>Applications can programmatically determine
                     current account limits using the /limits URI as
-                    follows: </para>
+                    follows:</para>
                 <informaltable rules="all">
                     <thead>
                         <tr>
@@ -1060,7 +1060,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb</literallayout>
                 MIME type is always linked to a base MIME type
                 (application/xml or application/json). If conflicting
                 versions are specified using both an HTTP header and a
-                URI, the URI takes precedence. </para>
+                URI, the URI takes precedence.</para>
             <example>
                 <title>Request with MIME type versioning</title>
                 <literallayout class="monospaced">
@@ -1084,13 +1084,13 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                     creating of permanent links, because the version
                     scheme is not specified in the URI path:
                     https://api.servers.openstack.org/224532/servers/123.
-                </para>
+           </para>
             </note>
             <?hard-pagebreak?>
             <para>If a request is made without a version specified in
                 the URI or via HTTP headers, then a multiple-choices
                 response (<returnvalue>300</returnvalue>) will follow
-                providing links and MIME types to available versions. </para>
+                providing links and MIME types to available versions.</para>
             <example>
                 <title>Multiple Choices Response: XML</title>
                 <programlisting language="xml"><xi:include href="samples/choices.xml" parse="text"/></programlisting>
@@ -1112,7 +1112,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                 versions will be marked as <code>DEPRECATED</code>.
                 Providers should work with developers and partners to
                 ensure there is adequate time to migrate to the new
-                version before deprecated versions are discontinued. </para>
+                version before deprecated versions are discontinued.</para>
             <para>Your application can programmatically determine
                 available API versions by performing a &GET; on the
                 root URL (i.e. with the version and everything to the
@@ -1122,7 +1122,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                 when issuing a request with the <code>Accept</code>
                 header containing application/atom+xml or by adding a
                 .atom to the request URI. This allows standard Atom
-                clients to track version changes. </para>
+                clients to track version changes.</para>
             <example>
                 <title>Versions List Request</title>
                 <literallayout class="monospaced">
@@ -1169,7 +1169,7 @@ Host: servers.api.openstack.org
                 this is a special case that does not hold true for
                 other API requests. In general, requests such as
                 /servers.xml and /servers/.xml are handled
-                equivalently. </para>
+                equivalently.</para>
             <example>
                 <title>Version Details Request</title>
                 <literallayout class="monospaced">
@@ -1210,12 +1210,12 @@ Host: servers.api.openstack.org/v2/
                 both a human-readable and a machine-processable
                 description of the API service. The
                 machine-processable description is written in the Web
-                Application Description Language (WADL). </para>
+                Application Description Language (WADL).</para>
             <note>
                 <para>If a discrepancy exists between the two
                     References, the WADL is authoritative as it
                     contains the most accurate and up-to-date
-                    description of the API service. </para>
+                    description of the API service.</para>
             </note>
             <!--   <section xml:id="compute_versions">
                 <title>Versions</title>
@@ -1240,7 +1240,7 @@ Host: servers.api.openstack.org/v2/
                 a &GET; on the /extensions URI. Note that this is a
                 versioned request &mdash; that is, an extension
                 available in one API version may not be available in
-                another. </para>
+                another.</para>
             <informaltable rules="all">
                 <thead>
                     <tr>
@@ -1276,7 +1276,7 @@ Host: servers.api.openstack.org/v2/
                     <property>namespace</property> and an
                     <property>alias</property>. Additionally an
                 extension contains documentation links in various
-                formats. </para>
+                formats.</para>
             <?hard-pagebreak?>
             <example>
                 <title>Extensions Response: XML</title>
@@ -1292,7 +1292,7 @@ Host: servers.api.openstack.org/v2/
                 unique alias. This provides the simplest method of
                 checking if an extension is available as an
                 unavailable extension will issue an itemNotFound
-                    (<errorcode>404</errorcode>) response. </para>
+                    (<errorcode>404</errorcode>) response.</para>
             <informaltable rules="all">
                 <thead>
                     <tr>
@@ -1354,7 +1354,7 @@ Host: servers.api.openstack.org/v2/
                     (<code>X-RS-CBS-HEADER1</code>). States and
                 parameters must be prefixed with the extension alias
                 followed by a colon. For example, an image may be in
-                the <code>RS-PIE:PrepareShare</code> state. </para>
+                the <code>RS-PIE:PrepareShare</code> state.</para>
             <important>
                 <para>Applications should be prepared to ignore
                     response data that contains extension elements. An
@@ -1362,7 +1362,7 @@ Host: servers.api.openstack.org/v2/
                         <code>UNKNOWN</code> state if the application
                     does not support the extension. Applications
                     should also verify that an extension is available
-                    before submitting an extended request. </para>
+                    before submitting an extended request.</para>
             </important>
             <example xml:id="ServersCBSX">
                 <title>Extended Server Response: XML</title>
@@ -1390,7 +1390,7 @@ Host: servers.api.openstack.org/v2/
                     will return an HTTP error response code denoting
                     the type of error. The system will also return
                     additional information about the fault in the body
-                    of the response. </para>
+                    of the response.</para>
                 <example>
                     <title>Fault Response: XML</title>
                     <programlisting language="xml"><xi:include href="samples/fault.xml" parse="text"/></programlisting>
@@ -1407,11 +1407,11 @@ Host: servers.api.openstack.org/v2/
                     information&mdash;for example, a stack
                     trace&mdash;to assist in tracking down an error.
                     The detail section may or may not be appropriate
-                    for display to an end user. </para>
+                    for display to an end user.</para>
                 <para>The root element of the fault (e.g.
                     computeFault) may change depending on the type of
                     error. The following is a list of possible
-                    elements along with their associated error codes. </para>
+                    elements along with their associated error codes.</para>
                 <?hard-pagebreak?>
                 <table rules="all">
                     <caption>Fault Elements and Error Codes</caption>
@@ -1419,7 +1419,7 @@ Host: servers.api.openstack.org/v2/
                         <tr>
                             <td>Fault Element</td>
                             <td>Associated Error Codes</td>
-                            <td>Expected in All Requests?</td>
+                            <td>Expected in All Requests</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -1429,18 +1429,18 @@ Host: servers.api.openstack.org/v2/
                             <td align="center">&CHECK;</td>
                         </tr>
                         <tr>
+                            <td>notImplemented</td>
+                            <td>501</td>
+                            <td/>
+                        </tr>
+                        <tr>
+                            <td>serverCapacityUnavailable</td>
+                            <td>503</td>
+                            <td/>
+                        </tr>
+                        <tr>
                             <td>serviceUnavailable</td>
                             <td>503</td>
-                            <td align="center">&CHECK;</td>
-                        </tr>
-                        <tr>
-                            <td>unauthorized</td>
-                            <td>401</td>
-                            <td align="center">&CHECK;</td>
-                        </tr>
-                        <tr>
-                            <td>forbidden</td>
-                            <td>403</td>
                             <td align="center">&CHECK;</td>
                         </tr>
                         <tr>
@@ -1448,6 +1448,43 @@ Host: servers.api.openstack.org/v2/
                             <td>400</td>
                             <td align="center">&CHECK;</td>
                         </tr>
+                        <tr>
+                            <td>unauthorized</td>
+                            <td>401</td>
+                            <td align="center">&CHECK;</td>
+                        </tr>
+
+                        <tr>
+                            <td>forbidden</td>
+                            <td>403</td>
+                            <td align="center">&CHECK;</td>
+                        </tr>
+                        <tr>
+                            <td>resizeNotAllowed</td>
+                            <td>403</td>
+                            <td/>
+                        </tr>
+                        <tr>
+                            <td>itemNotFound</td>
+                            <td>404</td>
+                            <td/>
+                        </tr>
+                        <tr>
+                            <td>badMethod</td>
+                            <td>405</td>
+                            <td/>
+                        </tr>
+                        <tr>
+                            <td>backupOrResizeInProgress</td>
+                            <td>409</td>
+                            <td/>
+                        </tr>                  
+                        <tr>
+                            <td>buildInProgress</td>
+                            <td>409</td>
+                            <td/>
+                        </tr>
+                        <tr><td>conflictingRequest</td><td>409</td><td/></tr>
                         <tr>
                             <td>overLimit</td>
                             <td>413</td>
@@ -1457,52 +1494,17 @@ Host: servers.api.openstack.org/v2/
                             <td>badMediaType</td>
                             <td>415</td>
                             <td/>
-                        </tr>
-                        <tr>
-                            <td>badMethod</td>
-                            <td>405</td>
-                            <td/>
-                        </tr>
-                        <tr>
-                            <td>itemNotFound</td>
-                            <td>404</td>
-                            <td/>
-                        </tr>
-                        <tr>
-                            <td>buildInProgress</td>
-                            <td>409</td>
-                            <td/>
-                        </tr>
-                        <tr>
-                            <td>serverCapacityUnavailable</td>
-                            <td>503</td>
-                            <td/>
-                        </tr>
-                        <tr>
-                            <td>backupOrResizeInProgress</td>
-                            <td>409</td>
-                            <td/>
-                        </tr>
-                        <tr>
-                            <td>resizeNotAllowed</td>
-                            <td>403</td>
-                            <td/>
-                        </tr>
-                        <tr>
-                            <td>notImplemented</td>
-                            <td>501</td>
-                            <td/>
-                        </tr>
+                        </tr>                     
                     </tbody>
-                </table>
-                <example>
-                    <title>Fault Response, Item Not Found: XML</title>
-                    <programlisting language="xml"><xi:include href="samples/notfound.xml" parse="text"/></programlisting>
-                </example>
+                </table>         
                 <example>
                     <title>Fault Response, Item Not Found:
                         JSON</title>
                     <programlisting language="json"><xi:include href="samples/notfound.json" parse="text"/></programlisting>
+                </example>
+                <example>
+                    <title>Fault Response, Item Not Found: XML</title>
+                    <programlisting language="xml"><xi:include href="samples/notfound.xml" parse="text"/></programlisting>
                 </example>
                 <para>From an XML schema perspective, all API faults
                     are extensions of the base fault type
@@ -1510,13 +1512,13 @@ Host: servers.api.openstack.org/v2/
                     binds XML to actual classes (such as JAXB), one
                     should be capable of using ComputeAPIFault as a
                     “catch-all” if there's no interest in
-                    distinguishing between individual fault types. </para>
+                    distinguishing between individual fault types.</para>
                 <para>The OverLimit fault is generated when a rate
                     limit threshold is exceeded. For convenience, the
                     fault adds a <property>retryAfter</property>
                     attribute that contains the content of the
                     Retry-After header in XML Schema 1.0 date/time
-                    format. </para>
+                    format.</para>
                 <example>
                     <title>Fault Response, Over Limit: XML</title>
                     <programlisting language="xml"><xi:include href="samples/overlimit.xml" parse="text"/></programlisting>
@@ -1539,7 +1541,7 @@ Host: servers.api.openstack.org/v2/
                     message, and optional details about the error.
                     Additionally, asynchronous faults may also contain
                     a created timestamp that specify when the fault
-                    occurred. </para>
+                    occurred.</para>
                 <?hard-pagebreak?>
                 <example>
                     <title>Server In Error State: XML</title>
@@ -1636,11 +1638,11 @@ Host: servers.api.openstack.org/v2/
                     <para>Well need to revisit. List all status even
                         the ones that don't enter into our state
                         transitions along with descriptions of each.
-                    </para>
+               </para>
                 </annotation>
                 <para xml:id="id35836359">You can filter the list of
                     servers by image, flavor, name, and status through
-                    the respective query parameters. </para>
+                    the respective query parameters.</para>
                 <para>To filter the list of servers returned in the
                     response body, specify one or more of the
                     following optional parameters in the request URI:<variablelist>
@@ -1648,7 +1650,7 @@ Host: servers.api.openstack.org/v2/
                             <term>image</term>
                             <listitem>
                                 <para>The image reference specified as
-                                   an ID or full URL. </para>
+                                   an ID or full URL.</para>
                             </listitem>
                         </varlistentry>
                         <varlistentry>
@@ -1703,7 +1705,7 @@ Host: servers.api.openstack.org/v2/
                     body.</para>
                 <para>This operation lists the servers associated with
                     your account. The list does not include servers
-                    that have been deleted. </para>
+                    that have been deleted.</para>
                 <para>Servers contain a status attribute that
                     indicates the current server state. You can filter
                     on the server status when you complete a list
@@ -1753,7 +1755,7 @@ Host: servers.api.openstack.org/v2/
                         </listitem>
                         <listitem>
                             <para><code>RESCUE</code>. The server is
-                                in rescue mode. </para>
+                                in rescue mode.</para>
                         </listitem>
                         <listitem>
                             <para><code>RESIZE</code>. Server is
@@ -1768,7 +1770,7 @@ Host: servers.api.openstack.org/v2/
                                 for some reason. The destination
                                 server is being cleaned up and the
                                 original source server is restarting.
-                            </para>
+                       </para>
                         </listitem>
                         <listitem>
                             <para><code>SHUTOFF</code>. The virtual
@@ -1819,11 +1821,11 @@ Host: servers.api.openstack.org/v2/
                         <property>hostId</property> represents the
                     host your server runs on and can be used to
                     determine this scenario if it is relevant to your
-                    application. </para>
+                    application.</para>
                 <note>
                     <para><property>HostId</property> is unique
                             <emphasis>per account</emphasis> and is
-                        not globally unique. </para>
+                        not globally unique.</para>
                 </note>
                 <para>The following examples show an XML and JSON
                     response for the list servers API
@@ -1908,7 +1910,7 @@ Host: servers.api.openstack.org/v2/
                     and the admin password are guaranteed to be
                     returned in the request. Additional attributes may
                     be retrieved by performing subsequent &GET;s on
-                    the server. </para>
+                    the server.</para>
                 <para><?rax-fo keep-together?>The following table
                     describes the required and optional attributes
                     that you can specify in the request body:</para>
@@ -1932,7 +1934,7 @@ Host: servers.api.openstack.org/v2/
                                 <td>
                                    <para>The image reference for the
                                    desired image for your server
-                                   instance. </para>
+                                   instance.</para>
                                    <para>Specify as an ID or full URL.
                                    To get a list of available images,
                                    see <xref
@@ -1946,7 +1948,7 @@ Host: servers.api.openstack.org/v2/
                                 <td>
                                    <para>The flavor reference for the
                                    desired flavor for your server
-                                   instance. </para>
+                                   instance.</para>
                                    <para>Specify as an ID or full URL.
                                    To get a list of available flavors,
                                    see <xref
@@ -2000,7 +2002,7 @@ Host: servers.api.openstack.org/v2/
                             </tr>
                         </tbody>
                     </table>
-                </para>
+           </para>
                 <?hard-pagebreak?>
                 <example>
                     <title>Server Create Request: JSON</title>
@@ -2031,14 +2033,14 @@ Host: servers.api.openstack.org/v2/
                         requirements are not met. In this case, a
                         client may issue a change password action to
                         reset the server password (see <xref
-                            linkend="Change_Password-d1e3234"/>). </para>
+                            linkend="Change_Password-d1e3234"/>).</para>
                     <para>If a password is not specified, a randomly
                         generated password will be assigned and
                         returned in the response object. This password
                         is guaranteed to meet the security
                         requirements set by the compute provider. For
                         security reasons, the password will not be
-                        returned in subsequent &GET; calls. </para>
+                        returned in subsequent &GET; calls.</para>
                 </section>
                 <section xml:id="Server_Metadata-d1e2529">
                     <title>Server Metadata</title>
@@ -2050,7 +2052,7 @@ Host: servers.api.openstack.org/v2/
                         maximum number of key-value pairs that can be
                         supplied per server is determined by the
                         compute provider and may be queried via the
-                        maxServerMeta absolute limit. </para>
+                        maxServerMeta absolute limit.</para>
                 </section>
                 <section xml:id="Server_Networks-d1e2530">
                     <title>Server Networks</title>
@@ -2073,7 +2075,7 @@ Host: servers.api.openstack.org/v2/
                         inside the instance. This feature provides a
                         minimal amount of launch-time personalization.
                         If you require significant customization,
-                        create a custom image. </para>
+                        create a custom image.</para>
                     <para>Follow these guidelines when you inject
                         files: <itemizedlist>
                             <listitem>
@@ -2098,7 +2100,7 @@ Host: servers.api.openstack.org/v2/
                             <listitem>
                                 <para>You can inject text files only.
                                    You cannot inject binary or zip
-                                   files into a new build. </para>
+                                   files into a new build.</para>
                             </listitem>
                             <listitem>
                                 <para>The maximum number of file
@@ -2106,7 +2108,7 @@ Host: servers.api.openstack.org/v2/
                                    supply is also determined by the
                                    compute provider and is defined by
                                    the maxPersonality absolute limit.
-                                </para>
+                           </para>
                             </listitem>
                             <listitem>
                                 <para>The absolute limit,
@@ -2118,19 +2120,19 @@ Host: servers.api.openstack.org/v2/
                             </listitem>
                         </itemizedlist></para>
                     <para>The file injection might not occur until
-                        after the server is built and booted. </para>
+                        after the server is built and booted.</para>
                     <para>During file injection, any existing files
                         that match specified files are renamed to
                         include the bak extension appended with a time
                         stamp. For example, if the file /etc/passwd
                         exists, it is backed up as
-                        /etc/passwd.bak.1246036261.5785. </para>
+                        /etc/passwd.bak.1246036261.5785.</para>
                     <para>After file injection, personality files are
                         accessible by only system administrators. For
                         example, on Linux, all files have root and the
                         root group as the owner and group owner,
                         respectively, and allow user and group read
-                        access only ( ). </para>
+                        access only ( ).</para>
                 </section>
                 <section xml:id="Server_Primary_Addresses-d1e2558">
                     <title>Server Access Addresses</title>
@@ -2152,7 +2154,7 @@ Host: servers.api.openstack.org/v2/
                         Nonetheless, clients which need to access the
                         server directly are encouraged to do so via an
                         access address. In the example below, an IPv4
-                        address is assigned at creation time. </para>
+                        address is assigned at creation time.</para>
                     <example>
                         <title>Creating a Server with a Access IP:
                             XML</title>
@@ -2170,7 +2172,7 @@ Host: servers.api.openstack.org/v2/
                             below. Access addresses may be updated
                             after a server has been created. See <xref
                                 linkend="compute_servers"/> for more
-                            details. </para>
+                            details.</para>
                     </note>
                     <example>
                         <title>Creating a Server with Multiple Access
@@ -2224,7 +2226,7 @@ Host: servers.api.openstack.org/v2/
                 <para>This operation does not require a request
                     body.</para>
                 <para>This operation returns the details of a specific
-                    server by its ID. </para>
+                    server by its ID.</para>
                 <?hard-pagebreak?>
                 <example>
                     <title>Server Details Response: XML</title>
@@ -2284,9 +2286,9 @@ Host: servers.api.openstack.org/v2/
                     </tbody>
                 </informaltable>
                 <para>This operation enables you to update the
-                    editable attributes of a specified server. </para>
+                    editable attributes of a specified server.</para>
                 <para>Specify the server ID as
-                        <parameter>id</parameter> in the URI. </para>
+                        <parameter>id</parameter> in the URI.</para>
                 <para><?rax-fo keep-together?>The following table
                     describes the attributes that you can specify in
                     the request body: <table rules="all">
@@ -2315,7 +2317,7 @@ Host: servers.api.openstack.org/v2/
                                 </td>
                                 <td>
                                    <para>The IP version 4 address.
-                                   </para>
+                              </para>
                                 </td>
                             </tr>
                             <tr>
@@ -2349,7 +2351,7 @@ Host: servers.api.openstack.org/v2/
                 </example>
                 <?hard-pagebreak?>
                 <para>Access addresses may simultaneously be updated
-                    as illustrated below. </para>
+                    as illustrated below.</para>
                 <example>
                     <title>Server Update Access Address Request:
                         XML</title>
@@ -2427,11 +2429,11 @@ Host: servers.api.openstack.org/v2/
                     </tbody>
                 </informaltable>
                 <para>This operation deletes a specified cloud server
-                    instance from the system. </para>
+                    instance from the system.</para>
                 <para>Specify the ID for the cloud server instance as
-                        <parameter>id</parameter> in the URI. </para>
+                        <parameter>id</parameter> in the URI.</para>
                 <para>This operation does not require a request body
-                    or return a response body. </para>
+                    or return a response body.</para>
             </section>
         </section>
         <?hard-pagebreak?>
@@ -2485,10 +2487,10 @@ Host: servers.api.openstack.org/v2/
                         (<errorcode>404</errorcode>), buildInProgress
                         (<errorcode>409</errorcode>) </simpara>
                 <para>This operation lists all networks and addresses
-                    for a specified server ID. </para>
+                    for a specified server ID.</para>
                 <para>Specify the server ID as
-                        <parameter>id</parameter> in the URI. </para>
-                <para>This operation does not require a request body. </para>
+                        <parameter>id</parameter> in the URI.</para>
+                <para>This operation does not require a request body.</para>
                 <?hard-pagebreak?>
                 <example>
                     <title>Addresses List Response: XML </title>
@@ -2536,7 +2538,7 @@ Host: servers.api.openstack.org/v2/
                         (<errorcode>404</errorcode>), buildInProgress
                         (<errorcode>409</errorcode>) </simpara>
                 <para>This operation lists all addresses for a
-                    specified server ID and network label. </para>
+                    specified server ID and network label.</para>
                 <para>The following table describes the required
                     parameters that you specify in the request URI:
                         <table rules="all">
@@ -2651,15 +2653,15 @@ Host: servers.api.openstack.org/v2/
                     </tbody>
                 </informaltable>
                 <para>This operation changes the administrator
-                    password for a specified server. </para>
+                    password for a specified server.</para>
                 <para>Specify the server ID as
-                        <parameter>id</parameter> in the URI. </para>
+                        <parameter>id</parameter> in the URI.</para>
                 <para>The specified password must meet the complexity
                     requirements set by your OpenStack Compute
                     provider. The server might enter an
                         <code>ERROR</code> state if the complexity
                     requirements are not met. In this case, a client
-                    may reissue the change password action. </para>
+                    may reissue the change password action.</para>
                 <para>In the request body, specify the
                         <parameter>changePassword</parameter> action
                     followed by attributes. The following table
@@ -2761,12 +2763,12 @@ Host: servers.api.openstack.org/v2/
                     system is signaled to restart, which allows for a
                     graceful shutdown of all processes. A hard reboot
                         (<code>HARD</code>) is the equivalent of power
-                    cycling the server. </para>
+                    cycling the server.</para>
                 <para>Specify the server ID as
-                        <parameter>id</parameter> in the URI. </para>
+                        <parameter>id</parameter> in the URI.</para>
                 <para>In the request body, specify the
                         <parameter>reboot</parameter> action followed
-                    by attributes. </para>
+                    by attributes.</para>
                 <para>The following table describes the attributes
                     that you specify in the request body:</para>
                 <para>
@@ -2798,7 +2800,7 @@ Host: servers.api.openstack.org/v2/
                                    <listitem>
                                    <para><parameter>HARD</parameter>.
                                    Equivalent to power cycling the
-                                   server. </para>
+                                   server.</para>
                                    </listitem>
                                    </itemizedlist></para>
                                 </td>
@@ -2806,7 +2808,7 @@ Host: servers.api.openstack.org/v2/
                             </tr>
                         </tbody>
                     </table>
-                </para>
+           </para>
                 <para>This operation does not return a response
                     body.</para>
                 <example>
@@ -2884,18 +2886,18 @@ Host: servers.api.openstack.org/v2/
                         <property>accessIPv4</property>, or
                         <property>accessIPv6</property> are specified,
                     they will replace existing values, otherwise they
-                    do not change. </para>
+                    do not change.</para>
                 <para>A rebuild operation always removes data injected
                     into the file system through server
                         <property>personality</property>. You can
                     reinsert data into the file system during the
                     rebuild. The full URL to the rebuilt server is
-                    returned through the <code>Location</code> header. </para>
+                    returned through the <code>Location</code> header.</para>
                 <para>Specify the server ID as
-                        <parameter>id</parameter> in the URI. </para>
+                        <parameter>id</parameter> in the URI.</para>
                 <para>In the request body, specify the
                         <parameter>rebuild</parameter> action followed
-                    by attributes. </para>
+                    by attributes.</para>
                 <para>The following table describes the attributes
                     that you specify in the request body:</para>
                 <para>
@@ -2922,7 +2924,7 @@ Host: servers.api.openstack.org/v2/
                                 <td>imageRef</td>
                                 <td>
                                    <para>The image reference. Specify
-                                   as an ID or full URL. </para>
+                                   as an ID or full URL.</para>
                                 </td>
                                 <td>Yes</td>
                             </tr>
@@ -2955,7 +2957,7 @@ Host: servers.api.openstack.org/v2/
                             </tr>
                         </tbody>
                     </table>
-                </para>
+           </para>
                 <example>
                     <title>Action Rebuild Request: XML </title>
                     <programlisting language="xml"><xi:include href="samples/rebuild_all.xml" parse="text"/></programlisting>
@@ -3043,12 +3045,12 @@ Host: servers.api.openstack.org/v2/
                     confirm all resizes. When you confirm a resize,
                     the original server is removed. All resizes are
                     automatically confirmed after 24 hours if you do
-                    not explicitly confirm or revert them. </para>
+                    not explicitly confirm or revert them.</para>
                 <para>Depending on the cloud provider, this operation
-                    might result in billing you for a snapshot. </para>
+                    might result in billing you for a snapshot.</para>
 
                 <para>Specify the server ID as
-                        <parameter>id</parameter> in the URI. </para>
+                        <parameter>id</parameter> in the URI.</para>
                 <para>In the request body, specify the
                         <parameter>resize</parameter> action followed
                     by attributes. The following table describes the
@@ -3085,7 +3087,7 @@ Host: servers.api.openstack.org/v2/
                             </tr>
                         </tbody>
                     </table>
-                </para>
+           </para>
                 <para>This operation does not return a response
                     body.</para>
                 <example>
@@ -3161,11 +3163,11 @@ Host: servers.api.openstack.org/v2/
                     resize. After confirmation, the original server is
                     removed and cannot be rolled back to. All resizes
                     are automatically confirmed after 24 hours if they
-                    are not explicitly confirmed or reverted. </para>
+                    are not explicitly confirmed or reverted.</para>
                 <para>Specify the server ID as
-                        <parameter>id</parameter> in the URI. </para>
+                        <parameter>id</parameter> in the URI.</para>
                 <para>In the request body, specify the
-                        <parameter>confirmResize</parameter> action. </para>
+                        <parameter>confirmResize</parameter> action.</para>
                 <para>This operation does not return a response
                     body.</para>
                 <example>
@@ -3242,14 +3244,14 @@ Host: servers.api.openstack.org/v2/
                     revert the resize and roll back to the original
                     server. All resizes are automatically confirmed
                     after 24 hours if you do not confirm or revert
-                    them. </para>
+                    them.</para>
                 <note>
                     <para>Depending on your cloud provider, this
                         operation might result in billing you for a
                         snapshot.</para>
                 </note>
                 <para>Specify the server ID as
-                        <parameter>id</parameter> in the URI. </para>
+                        <parameter>id</parameter> in the URI.</para>
                 <para>In the request body, specify the
                         <parameter>revertResize</parameter> action
                     followed by attributes.</para>
@@ -3328,12 +3330,12 @@ Host: servers.api.openstack.org/v2/
                     server. Once complete, a new image will be
                     available that can be used to rebuild or create
                     servers. The full URL to the newly created image
-                    is returned via the <code>Location</code> header,
+                    is returned through the <code>Location</code> header,
                     additional attributes for the image including
                     creation status may be retrieved by performing a
                     subsequent &GET; on that URL. See <xref
                         linkend="Get_Image_Details-d1e4848"/> for
-                    details. </para>
+                    details.</para>
                 <para>Custom image metadata can also be supplied when
                     creating an image. See <xref
                         linkend="MetadataSection"/> for details on
@@ -3342,9 +3344,9 @@ Host: servers.api.openstack.org/v2/
                     maximum number of key-value pairs that can be
                     supplied per image is determined by the compute
                     provider and may be queried through the
-                    maxImageMeta absolute limit. </para>
+                    maxImageMeta absolute limit.</para>
                 <para>Specify the server ID as
-                        <parameter>id</parameter> in the URI. </para>
+                        <parameter>id</parameter> in the URI.</para>
                 <para>In the request body, specify the
                         <parameter>createImage</parameter> action
                     followed by attributes. The following table
@@ -3381,14 +3383,14 @@ Host: servers.api.openstack.org/v2/
                             </tr>
                         </tbody>
                     </table>
-                </para>
+           </para>
                 <para>This operation does not return a response
                     body.</para>
                 <note>
                     <para>At present, image creation is an
                         asynchronous operation, so coordinating the
                         creation with data quiescence, and so on is
-                        currently not possible. </para>
+                        currently not possible.</para>
                 </note>
                 <example>
                     <title>Action Create Image Request: XML</title>
@@ -3409,7 +3411,7 @@ Host: servers.api.openstack.org/v2/
             <title>Flavors</title>
             <para>A flavor is an available hardware configuration for
                 a server. Each flavor has a unique combination of disk
-                space and memory capacity. </para>
+                space and memory capacity.</para>
             <section xml:id="List_Flavors-d1e4188">
                 <title>List Flavors</title>
                 <informaltable rules="all">
@@ -3456,7 +3458,7 @@ Host: servers.api.openstack.org/v2/
                         (<errorcode>405</errorcode>), overLimit
                         (<errorcode>413</errorcode>) </simpara>
                 <para>This operation lists information for all
-                    available flavors. </para>
+                    available flavors.</para>
                 <para>To filter the list of flavors returned in the
                     response body, you can specify the following
                     optional parameters in the URI:</para>
@@ -3476,7 +3478,7 @@ Host: servers.api.openstack.org/v2/
                             <listitem>
                                 <para>Filters the list of flavors to
                                    those with the specified minimum
-                                   amount of RAM in megabytes. </para>
+                                   amount of RAM in megabytes.</para>
                             </listitem>
                         </varlistentry>
                         <varlistentry>
@@ -3497,8 +3499,8 @@ Host: servers.api.openstack.org/v2/
                             </listitem>
                         </varlistentry>
                     </variablelist>
-                </para>
-                <para>This operation does not require a request body. </para>
+           </para>
+                <para>This operation does not require a request body.</para>
                 <example>
                     <title>Flavors List Response: XML (detail) </title>
                     <programlisting language="xml"><xi:include href="samples/flavors.xml" parse="text"/></programlisting>
@@ -3545,7 +3547,7 @@ Host: servers.api.openstack.org/v2/
                         (<errorcode>413</errorcode>), itemNotFound
                         (<errorcode>404</errorcode>) </simpara>
                 <para>Specify the flavor ID as
-                        <parameter>id</parameter> in the URI. </para>
+                        <parameter>id</parameter> in the URI.</para>
                 <para>This operation does not require a request
                     body.</para>
                 <para>This operation returns details of the specified
@@ -3566,7 +3568,7 @@ Host: servers.api.openstack.org/v2/
             <title>Images</title>
             <para>An image is a collection of files you use to create
                 or rebuild a server. Operators provide pre-built OS
-                images by default. You may also create custom images. </para>
+                images by default. You may also create custom images.</para>
             <section xml:id="List_Images-d1e4435">
                 <title>List Images</title>
                 <informaltable rules="all">
@@ -3618,7 +3620,7 @@ Host: servers.api.openstack.org/v2/
                         (<errorcode>405</errorcode>), overLimit
                         (<errorcode>413</errorcode>) </simpara>
                 <para>This operation lists all images visible by the
-                    account. </para>
+                    account.</para>
                 <para>To filter the list of images returned in the
                     response body, you can specify the following
                     optional parameters in the URI:</para>
@@ -3637,7 +3639,7 @@ Host: servers.api.openstack.org/v2/
                             <term><parameter>name</parameter>=<literal>imageName</literal>&amp;</term>
                             <listitem>
                                 <para>Filters the list of images by
-                                   image name. </para>
+                                   image name.</para>
                             </listitem>
                         </varlistentry>
                         <varlistentry>
@@ -3657,7 +3659,7 @@ Host: servers.api.openstack.org/v2/
                                    <code>ERROR</code>, and
                                    <code>DELETED</code>. Images with
                                    an <code>ACTIVE</code> status are
-                                   available for install. </para>
+                                   available for install.</para>
                             </listitem>
                         </varlistentry>
                         <varlistentry>
@@ -3667,7 +3669,7 @@ Host: servers.api.openstack.org/v2/
                                    those that have changed since the
                                    changes-since time. See <xref
                                    linkend="ChangesSince"/> for
-                                   details. </para>
+                                   details.</para>
                             </listitem>
                         </varlistentry>
                         <varlistentry>
@@ -3695,11 +3697,11 @@ Host: servers.api.openstack.org/v2/
                             </listitem>
                         </varlistentry>
                     </variablelist>
-                </para>
+           </para>
                 <para>This operation does not require a request body.
                     The optional minDisk and minRam attributes set the
                     minimum disk and RAM requirements needed to create
-                    a server with the image. </para>
+                    a server with the image.</para>
                 <?hard-pagebreak?>
                 <example>
                     <title>Images List Response: XML (detail)</title>
@@ -3746,7 +3748,7 @@ Host: servers.api.openstack.org/v2/
                         (<errorcode>413</errorcode>), itemNotFound
                         (<errorcode>404</errorcode>) </simpara>
                 <para>Specify the image ID as
-                        <parameter>id</parameter> in the URI. </para>
+                        <parameter>id</parameter> in the URI.</para>
                 <para>This operation does not require a request
                     body.</para>
                 <para>This operation returns details of the specified
@@ -3814,10 +3816,10 @@ Host: servers.api.openstack.org/v2/
                     </tbody>
                 </informaltable>
                 <para>This operation deletes the specified image from
-                    the system. </para>
+                    the system.</para>
                 <para>Specify the image ID as
-                        <parameter>id</parameter> in the URI. </para>
-                <para>Images are immediately removed. </para>
+                        <parameter>id</parameter> in the URI.</para>
+                <para>Images are immediately removed.</para>
                 <para>This operation does not require a request
                     body.</para>
                 <para>This operation does not return a response
@@ -3828,7 +3830,7 @@ Host: servers.api.openstack.org/v2/
         <section xml:id="MetadataSection">
             <title>Metadata</title>
             <para>The following operations allow access to metadata
-                after a server or image has been created. </para>
+                after a server or image has been created.</para>
             <section xml:id="List_Metadata-d1e5089">
                 <title>List Metadata</title>
                 <informaltable rules="all">
@@ -3870,10 +3872,10 @@ Host: servers.api.openstack.org/v2/
                         (<errorcode>405</errorcode>), overLimit
                         (<errorcode>413</errorcode>), itemNotFound
                         (<errorcode>404</errorcode>) </simpara>
-                <para>Lists all metadata. </para>
+                <para>Lists all metadata.</para>
                 <para>Specify the server or image ID as
-                        <parameter>id</parameter> in the URI. </para>
-                <para>This operation does not require a request body. </para>
+                        <parameter>id</parameter> in the URI.</para>
+                <para>This operation does not require a request body.</para>
                 <example>
                     <title>Metadata List Response: XML </title>
                     <programlisting language="xml"><xi:include href="samples/metadata.xml" parse="text"/></programlisting>
@@ -3926,9 +3928,9 @@ Host: servers.api.openstack.org/v2/
                         (<errorcode>404</errorcode>), badMediaType
                         (<errorcode>415</errorcode>), buildInProgress
                         (<errorcode>409</errorcode>) </simpara>
-                <para>Sets metadata for the specified image or server. </para>
+                <para>Sets metadata for the specified image or server.</para>
                 <para>Specify the image or server ID as
-                        <parameter>id</parameter> in the URI. </para>
+                        <parameter>id</parameter> in the URI.</para>
                 <para>In the request body, specify the
                         <parameter>metadata</parameter> element
                     followed by attributes. The following table
@@ -3959,17 +3961,17 @@ Host: servers.api.openstack.org/v2/
                             </tr>
                         </tbody>
                     </table>
-                </para>
+           </para>
                 <para>Existing metadata items are replaced with the
                     ones provided in the request. An overLimit
                         (<errorcode>413</errorcode>) fault may be
                     thrown if the maximum number of metadata items is
                     exceeded. The maximum number of key-value pairs
                     that can be supplied per server is determined by
-                    the compute provider and may be queried via the
+                    the compute provider and may be queried through the
                     maxServerMeta absolute limit. The maximum number
-                    of key-value pairs for an image may be queried via
-                    the maxImageMeta absolute limit. </para>
+                    of key-value pairs for an image may be queried through
+                    the maxImageMeta absolute limit.</para>
                 <example>
                     <title>Set Metadata Request: XML </title>
                     <programlisting language="xml"><xi:include href="samples/metadata.xml" parse="text"/></programlisting>
@@ -4031,9 +4033,9 @@ Host: servers.api.openstack.org/v2/
                         (<errorcode>404</errorcode>), badMediaType
                         (<errorcode>415</errorcode>), buildInProgress
                         (<errorcode>409</errorcode>) </simpara>
-                <para>Updates resource metadata. </para>
+                <para>Updates resource metadata.</para>
                 <para>Specify the image or server ID as
-                        <parameter>id</parameter> in the URI. </para>
+                        <parameter>id</parameter> in the URI.</para>
                 <para>In the request body, specify the
                         <parameter>metadata</parameter> element
                     followed by attributes. The following table
@@ -4064,7 +4066,7 @@ Host: servers.api.openstack.org/v2/
                             </tr>
                         </tbody>
                     </table>
-                </para>
+           </para>
                 <para>Updates will replace existing metadata items
                     with the same key. Items not explicitly mentioned
                     in the request will not be modified. An overLimit
@@ -4073,10 +4075,10 @@ Host: servers.api.openstack.org/v2/
                     of metadata items to be exceeded. The maximum
                     number of key-value pairs that can be supplied per
                     server is determined by the compute provider and
-                    may be queried via the maxServerMeta absolute
+                    may be queried through the maxServerMeta absolute
                     limit. The maximum number of key-value pairs for
-                    an image may be queried via the maxImageMeta
-                    absolute limit. </para>
+                    an image may be queried through the maxImageMeta
+                    absolute limit.</para>
                 <example>
                     <title>Update Metadata Request: XML </title>
                     <programlisting language="xml"><xi:include href="samples/metadata-update-req.xml" parse="text"/></programlisting>
@@ -4137,11 +4139,11 @@ Host: servers.api.openstack.org/v2/
                         (<errorcode>405</errorcode>), overLimit
                         (<errorcode>413</errorcode>), itemNotFound
                         (<errorcode>404</errorcode>) </simpara>
-                <para>Retrieves a single metadata item by key. </para>
+                <para>Retrieves a single metadata item by key.</para>
                 <para>In the URI, specify the image or server ID as
                         <parameter>id</parameter> and the key as
                         <parameter>key</parameter>.</para>
-                <para>This operation does not require a request body. </para>
+                <para>This operation does not require a request body.</para>
                 <example>
                     <title>Metadata Item Response: XML </title>
                     <programlisting language="xml"><xi:include href="samples/metadata_item.xml" parse="text"/></programlisting>
@@ -4194,7 +4196,7 @@ Host: servers.api.openstack.org/v2/
                         (<errorcode>404</errorcode>), badMediaType
                         (<errorcode>415</errorcode>), buildInProgress
                         (<errorcode>409</errorcode>) </simpara>
-                <para>Sets a metadata item by its key. </para>
+                <para>Sets a metadata item by its key.</para>
                 <para>In the URI, specify the image or server ID as
                         <parameter>id</parameter> and the key as
                         <parameter>key</parameter>.</para>
@@ -4231,10 +4233,10 @@ Host: servers.api.openstack.org/v2/
                     maximum number of metadata items to be exceeded.
                     The maximum number of key-value pairs that can be
                     supplied per server is determined by the compute
-                    provider and may be queried via the maxServerMeta
+                    provider and may be queried through the maxServerMeta
                     absolute limit. The maximum number of key-value
-                    pairs for an image may be queried via the
-                    maxImageMeta absolute limit. </para>
+                    pairs for an image may be queried through the
+                    maxImageMeta absolute limit.</para>
                 <example>
                     <title>Set Metadata Item Request: XML </title>
                     <programlisting language="xml"><xi:include href="samples/metadata_item.xml" parse="text"/></programlisting>
@@ -4284,7 +4286,7 @@ Host: servers.api.openstack.org/v2/
                 <simpara> Normal Response Code(s):
                         <returnvalue>204</returnvalue>
                 </simpara>
-                <simpara> Error Response Code(s): computeFault
+                <simpara>Error Response Code(s): computeFault
                         (<errorcode>400</errorcode>,
                         <errorcode>500</errorcode>, &hellip;),
                     serviceUnavailable (<errorcode>503</errorcode>),
@@ -4295,24 +4297,22 @@ Host: servers.api.openstack.org/v2/
                         (<errorcode>413</errorcode>), itemNotFound
                         (<errorcode>404</errorcode>), buildInProgress
                         (<errorcode>409</errorcode>) </simpara>
-                <para>Deletes a metadata item. </para>
+                <para>Deletes a metadata item.</para>
                 <para>In the URI, specify the image or server ID as
                         <parameter>id</parameter> and the key as
                         <parameter>key</parameter>.</para>
-                <para>The operation does not require a request body. </para>
+                <para>The operation does not require a request body.</para>
                 <para>The operation does not return a response body.
-                </para>
+           </para>
             </section>
         </section>
         <?hard-pagebreak?>
         <section xml:id="NetworksSection">
             <title>Networks</title>
-            <para>Networks is a collection of attributes. The section
-                below outlines the list of attributes that can be
-                specified for each network.</para>
-            <section xml:id="NetworkAttributes-d1e5090">
-                <title>Network Attributes</title>
-                <informaltable rules="all">
+            <para>You can specify the following attributes for a
+                network.</para>
+                <table rules="all" xml:id="NetworkAttributes-d1e5090">
+                    <caption>Network Attributes</caption>
                     <thead>
                         <tr>
                             <td colspan="1">Name</td>
@@ -4339,20 +4339,17 @@ Host: servers.api.openstack.org/v2/
                             <td colspan="3">The uuid of the port.</td>
                         </tr>
                     </tbody>
-                </informaltable>
+                </table>
                 <note>
                     <para>The parameter fixed_ip is used only when
                         network uuid is specified; also, when port is
                         specified, network uuid and fixed_ip are
-                        properties of the port and therefore will be
-                        ignored. A fix for LP bug #1190777 may alter
-                        this behavior, therefore if the request
-                        specifies the port, it is recommended that
-                        fixed_ip and (network) uuid are omitted to
-                        avoid incurring in validation errors.</para>
+                        properties of the port and are
+                        ignored. Omit
+                        fixed_ip and (network) uuid to
+                        avoid validation errors.</para>
                 </note>
             </section>
-        </section>
     </chapter>
     <chapter xml:id="ext-compute" role="api-reference"
         xmlns="http://docbook.org/ns/docbook"
