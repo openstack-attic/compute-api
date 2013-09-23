@@ -33,6 +33,7 @@
         </profile>
     </profiles>
     <build>
+        <sourceDirectory>src</sourceDirectory>
         <resources>
             <resource>
                 <directory>target/docbkx/pdf</directory>
