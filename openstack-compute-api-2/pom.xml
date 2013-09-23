@@ -6,7 +6,7 @@
     <artifactId>openstack-guide</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-    <name>OpenStack Specifications</name>
+    <name>OpenStack Compute API v2 and Extensions Reference</name>
     <!-- ################################################ -->
     <!-- USE "mvn clean generate-sources" to run this POM -->
     <!-- ################################################ -->
