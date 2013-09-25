@@ -2457,150 +2457,13 @@ Host: servers.api.openstack.org/v2/
                 specified server and network.</para>
             <wadl:resources
                 xmlns:wadl="http://wadl.dev.java.net/2009/02">
-                <wadl:resource href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/wadl/os-compute-2.wadl#ips"/>
                 <wadl:resource
-                    href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/wadl/os-compute-2.wadl#network_label"/>
+                    href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/wadl/os-compute-2.wadl#ips"/>
+                <wadl:resource
+                    href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/wadl/os-compute-2.wadl#network_label"
+                />
             </wadl:resources>
         </section>
-        <!--  <section xml:id="ServerAddresses">
-            <title>Server Addresses</title>
-            <section xml:id="List_Addresses-d1e3014">
-                <title>List Addresses</title>
-                <informaltable rules="all">
-                    <thead>
-                        <tr>
-                            <td colspan="1">Verb</td>
-                            <td colspan="2">URI</td>
-                            <td colspan="3">Description</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="1">&GET;</td>
-                            <td colspan="2"
-                                   >/servers/<parameter>id</parameter>/ips</td>
-                            <td colspan="3">Lists all networks and
-                                addresses for a specified server
-                                ID.</td>
-                        </tr>
-                    </tbody>
-                </informaltable>
-                <simpara>Normal Response Code(s):
-                        <returnvalue>200</returnvalue>,
-                        <returnvalue>203</returnvalue>
-                </simpara>
-                <simpara>Error Response Code(s): computeFault
-                        (<errorcode>400</errorcode>,
-                        <errorcode>500</errorcode>, &hellip;),
-                    serviceUnavailable (<errorcode>503</errorcode>),
-                    unauthorized (<errorcode>401</errorcode>),
-                    forbidden (<errorcode>403</errorcode>), badRequest
-                        (<errorcode>400</errorcode>), badMethod
-                        (<errorcode>405</errorcode>), overLimit
-                        (<errorcode>413</errorcode>), itemNotFound
-                        (<errorcode>404</errorcode>), buildInProgress
-                        (<errorcode>409</errorcode>) </simpara>
-                <para>This operation lists all networks and addresses
-                    for a specified server ID.</para>
-                <para>Specify the server ID as
-                        <parameter>id</parameter> in the URI.</para>
-                <para>This operation does not require a request body.</para>
-                <?hard-pagebreak?>
-                <example>
-                    <title>Addresses List Response: XML </title>
-                    <programlisting language="xml"><xi:include href="samples/addresses.xml" parse="text"/></programlisting>
-                </example>
-                <example>
-                    <title>Addresses List Response: JSON </title>
-                    <programlisting language="json"><xi:include href="samples/addresses.json" parse="text"/></programlisting>
-                </example>
-            </section>
-            <section xml:id="List_Addresses_by_Network-d1e3118">
-                <title>List Addresses by Network</title>
-                <informaltable rules="all">
-                    <thead>
-                        <tr>
-                            <td colspan="1">Verb</td>
-                            <td colspan="2">URI</td>
-                            <td colspan="3">Description</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="1">&GET;</td>
-                            <td colspan="2"
-                                   >/servers/<parameter>id</parameter>/ips/<parameter>networkLabel</parameter></td>
-                            <td colspan="3">Lists addresses for a
-                                specified server ID and network
-                                label.</td>
-                        </tr>
-                    </tbody>
-                </informaltable>
-                <simpara>Normal Response Code(s):
-                        <returnvalue>200</returnvalue>,
-                        <returnvalue>203</returnvalue>
-                </simpara>
-                <simpara>Error Response Code(s): computeFault
-                        (<errorcode>400</errorcode>,
-                        <errorcode>500</errorcode>, &hellip;),
-                    serviceUnavailable (<errorcode>503</errorcode>),
-                    unauthorized (<errorcode>401</errorcode>),
-                    forbidden (<errorcode>403</errorcode>), badRequest
-                        (<errorcode>400</errorcode>), badMethod
-                        (<errorcode>405</errorcode>), overLimit
-                        (<errorcode>413</errorcode>), itemNotFound
-                        (<errorcode>404</errorcode>), buildInProgress
-                        (<errorcode>409</errorcode>) </simpara>
-                <para>This operation lists all addresses for a
-                    specified server ID and network label.</para>
-                <para>The following table describes the required
-                    parameters that you specify in the request URI:
-                        <table rules="all">
-                        <caption>List Addresses by Network URI
-                            Parameters</caption>
-                        <col width="20%"/>
-                        <col width="80%"/>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                   <para>id</para>
-                                </td>
-                                <td>
-                                   <para>The server ID.</para>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                   <para>networkLabel</para>
-                                </td>
-                                <td>
-                                   <para>The network label, such as
-                                   <literal>public</literal> or
-                                   <literal>private</literal>.</para>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table></para>
-                <para>This operation does not require a request
-                    body.</para>
-                <example>
-                    <title>List Addresses by Network Response:
-                        XML</title>
-                    <programlisting language="xml"><xi:include href="samples/public.xml" parse="text"/></programlisting>
-                </example>
-                <example>
-                    <title>List Addresses by Network Response:
-                        JSON</title>
-                    <programlisting language="json"><xi:include href="samples/public.json" parse="text"/></programlisting>
-                </example>
-            </section>
-        </section>-->
         <?hard-pagebreak?>
         <section xml:id="Server_Actions-d1e3229">
             <title>Server Actions</title>
@@ -4371,20 +4234,20 @@ Host: servers.api.openstack.org/v2/
             </note>
         </section>
     </chapter>
-    <chapter xml:id="ext-compute" role="api-reference"
-        xmlns="http://docbook.org/ns/docbook"
-        xmlns:html="http://www.w3.org/1999/xhtml"
-        xmlns:wadl="http://wadl.dev.java.net/2009/02">
-        <title>Compute Extensions</title>
+    <chapter xml:id="ext-compute" role="api-reference">
+        <title>Compute API v2 Extensions</title>
+        <para>Adds capabilities to the core Compute API. Use
+            extensions to add features, MIME types, actions, states,
+            headers, parameters, and resources to the core API. Query
+            the Compute API to list available extensions with a &GET;
+            request to v2/extensions.</para>
         <section xml:id="ext-os-admin-actions">
             <title>Server Admin Actions</title>
-            <para>Permits administrative users to perform actions on
-                servers.</para>
-            <wadl:resources href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/ext/os-admin-actions.wadl"/>
+            <para>Permits administrators to perform actions on a
+                server.</para>
+            <wadl:resources
+                href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/ext/os-admin-actions.wadl"
+                xmlns:wadl="http://wadl.dev.java.net/2009/02"/>
         </section>
-        <section xml:id="ext-os-scheduler-hints">
-            <title>Scheduler Hints</title>
-            <para>Creates a server with scheduler hints.</para>
-            <wadl:resources href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/ext/os-scheduler-hints.wadl"/></section>
     </chapter>
 </book>
