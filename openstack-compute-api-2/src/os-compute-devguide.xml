@@ -4351,7 +4351,7 @@ Host: servers.api.openstack.org/v2/
                 </note>
             </section>
     </chapter>
-    <chapter xml:id="ext-compute" role="api-reference"
+   <!-- <chapter xml:id="ext-compute" role="api-reference"
         xmlns="http://docbook.org/ns/docbook"
         xmlns:html="http://www.w3.org/1999/xhtml"
         xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -4363,5 +4363,21 @@ Host: servers.api.openstack.org/v2/
             <wadl:resources href="wadl/os-admin-actions.wadl"/>
         </section>
         <?hard-pagebreak?>
+    </chapter> -->
+    <chapter xml:id="ext-compute"  role="api-reference">
+        <title>Compute API v2 Extensions</title>
+        <para>Adds capabilities to the core Compute API. Use
+            extensions to add features, MIME types, actions, states,
+            headers, parameters, and resources to the core API. Query
+            the Compute API to list available extensions with a &GET;
+            request to v2/extensions.</para>
+        <section xml:id="ext-os-admin-actions">
+            <title>Server Admin Actions</title>
+            <para>Permits administrators to perform actions on a
+                server.</para>
+            <wadl:resources
+                href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/ext/os-admin-actions.wadl"
+                xmlns:wadl="http://wadl.dev.java.net/2009/02"/>
+        </section> 
     </chapter>
 </book>
