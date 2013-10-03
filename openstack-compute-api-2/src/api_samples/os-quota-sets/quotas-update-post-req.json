@@ -1,5 +1,6 @@
 {
     "quota_set": {
-        "security_groups": 45
+        "security_groups": 45,
+        "tenant_id": <tenant_id>
     }
 }
