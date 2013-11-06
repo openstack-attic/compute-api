@@ -4258,5 +4258,23 @@ Host: servers.api.openstack.org/v2/
                 href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/ext/os-quota-sets.wadl"
                 xmlns:wadl="http://wadl.dev.java.net/2009/02"/>
         </section>
+        <section xml:id="os-security-groups">
+            <title>Security groups (os-security-groups)</title>
+            <para>Lists, shows information for, creates, and deletes
+                security groups.</para>
+            <wadl:resources
+                href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/ext/os-security-groups.wadl"
+                xmlns:wadl="http://wadl.dev.java.net/2009/02"/>
+        </section>
+        <!-- Once https://review.openstack.org/#/c/55438/ is approved, uncomment the following: -->
+       <!-- <section xml:id="os-security-group-default-rules">
+            <title>Default security group rules
+                (os-security-group-default-rules)</title>
+            <para>Lists, shows information for, and creates default
+                security group rules.</para>
+        <wadl:resources
+                href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/ext/os-security-group-default-rules.wadl"
+                xmlns:wadl="http://wadl.dev.java.net/2009/02"/> 
+        </section> -->
     </chapter>
 </book>
