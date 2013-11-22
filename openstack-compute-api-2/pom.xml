@@ -46,7 +46,7 @@
             <plugin>
                 <groupId>com.rackspace.cloud.api</groupId>
                 <artifactId>clouddocs-maven-plugin</artifactId>
-                <version>1.11.1</version>
+                <version>1.12.0</version>
                 <executions>
                     <execution>
                         <id>goal1</id>
@@ -71,16 +71,16 @@
                             <enableGoogleAnalytics>1</enableGoogleAnalytics>
                             <googleAnalyticsId>UA-17511903-1</googleAnalyticsId>
                             <generateToc> appendix toc,title
-                                article/appendix nop 
+                                article/appendix nop
                                 article toc,title
                                 book toc,title,figure,table,example,equation
-                                chapter toc 
+                                chapter toc
                                 section toc
                                 part toc,title
-                                preface toc 
+                                preface toc
                                 qandadiv toc
-                                qandaset toc 
-                                reference toc,title 
+                                qandaset toc
+                                reference toc,title
                                 set toc,title </generateToc>
                             <!-- The following elements sets the autonumbering of sections in output for chapter numbers but no numbered sections-->
                             <!--<sectionAutolabel>0</sectionAutolabel>
@@ -89,7 +89,7 @@
                             <targetDirectory>target/docbkx/webhelp/api/openstack-compute</targetDirectory>
                             <webhelpDirname>2</webhelpDirname>
                             <pdfFilenameBase>bk-compute-devguide-2</pdfFilenameBase>
-                            <postProcess>                           
+                            <postProcess>
                                 <!-- New stuff -->
                                 <mkdir
                                    dir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/"/>
