@@ -5,7 +5,7 @@
         <!ENTITY mdash  "&#x2014;">
         <!ENTITY hellip "&#x2026;">
         <!ENTITY plusmn "&#xB1;">
-        
+
         <!-- Useful for describing APIs -->
         <!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
         <!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
@@ -23,19 +23,19 @@
     <?dbhtml stop-chunking?>
     <title>Concepts</title>
     <para>To use the OpenStack Compute API effectively, you should
-        understand several key concepts: </para>
+        understand several key concepts:</para>
     <itemizedlist>
         <listitem>
             <para><emphasis role="bold">Server</emphasis></para>
             <para>A virtual machine (VM) instance in the compute
                 system. Flavor and image are requisite elements when
-                creating a server. </para>
+                creating a server.</para>
         </listitem>
         <listitem>
             <para><emphasis role="bold">Flavor</emphasis></para>
             <para>An available hardware configuration for a server.
                 Each flavor has a unique combination of disk space,
-                memory capacity and priority for CPU time. </para>
+                memory capacity and priority for CPU time.</para>
         </listitem>
         <listitem>
             <para><emphasis role="bold">Image</emphasis></para>
@@ -45,7 +45,7 @@
                 from cloud servers you have launched. These custom
                 images are useful for backup purposes or for producing
                 “gold” server images if you plan to deploy a
-                particular server configuration frequently. </para>
+                particular server configuration frequently.</para>
         </listitem>
         <listitem>
             <para><emphasis role="bold">Reboot</emphasis></para>
@@ -57,13 +57,13 @@
                 virtualization platform should ensure that the reboot
                 action has completed successfully even in cases in
                 which the underlying domain/VM is paused or
-                halted/stopped. </para>
+                halted/stopped.</para>
         </listitem>
         <listitem>
             <para><emphasis role="bold">Rebuild</emphasis></para>
             <para>Use this function to remove all data on the server and
                 replaces it with the specified image. Server ID and IP
-                addresses remain the same. </para>
+                addresses remain the same.</para>
         </listitem>
         <listitem>
             <para><emphasis role="bold">Resize</emphasis></para>
@@ -73,8 +73,8 @@
                 time to allow rollback if there is a problem. All
                 resizes should be tested and explicitly confirmed, at
                 which time the original server is removed. All resizes
-                are automatically confirmed after 24 hours if you do not 
-                confirm or revert them.  </para>
+                are automatically confirmed after 24 hours if you do not
+                confirm or revert them.</para>
         </listitem>
     </itemizedlist>
 </section>

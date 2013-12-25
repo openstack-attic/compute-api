@@ -28,7 +28,7 @@
                  </imageobject>
                  <imageobject role="html">
                  <imagedata fileref="../figures/Arrow_east.png"
-		          />
+                          />
                 </imageobject>
               </inlinemediaobject>'>
 ]>
@@ -69,7 +69,7 @@
         <abstract>
             <para>This document is intended for software developers interested in developing
                 applications using the OpenStack Compute Application Programming Interface
-                    (<abbrev>API</abbrev>). </para>
+                    (<abbrev>API</abbrev>).</para>
         </abstract>
     <cover>
         <para>this is a placeholder for the front cover</para>
@@ -327,16 +327,16 @@
             Servers can occur programmatically via the OpenStack
             Compute API.
         </para>
-        <para> We welcome feedback, comments, and bug reports at <link
-            xlink:href="http://bugs.launchpad.net/nova">bugs.launchpad.net/nova</link>. 
+        <para>We welcome feedback, comments, and bug reports at <link
+            xlink:href="http://bugs.launchpad.net/nova">bugs.launchpad.net/nova</link>.
         </para>
         <section>
             <title>Intended Audience</title>
-            <para> This Guide is intended to assist software developers who want to develop
+            <para>This Guide is intended to assist software developers who want to develop
                 applications using the Rackspace Cloud Servers API. To use the information provided
                 here, you should first have a general understanding of the Rackspace Cloud Servers
                 service and have access to an active Rackspace Cloud Servers account. You should
-                also be familiar with: </para>
+                also be familiar with:</para>
             <itemizedlist spacing="compact">
                 <listitem>
                     <para>ReSTful web services</para>
@@ -383,8 +383,8 @@
             <para>You can download the most current version of this document from the OpenStack Docs
                 website at <link
                     xlink:href="http://docs.openstack.org">
-                    http://docs.openstack.org</link>. </para>
-            <para> For more details about the Cloud Servers service that this API is based upon, please refer to <link
+                    http://docs.openstack.org</link>.</para>
+            <para>For more details about the Cloud Servers service that this API is based upon, please refer to <link
                 xlink:href="http://www.rackspacecloud.com/cloud_hosting_products/servers"
                 >http://www.rackspacecloud.com/cloud_hosting_products/servers</link>. Related
                 documents, including an <link
@@ -394,11 +394,10 @@
                 phone, chat, and email.</para>
         </section>
 
-         
     </chapter>
     <chapter>
         <title>Concepts</title>
-        <para> To use the Cloud Servers API effectively, you should understand several key concepts: </para>
+        <para>To use the Cloud Servers API effectively, you should understand several key concepts:</para>
         <section>
             <title>Server</title>
             <para>
@@ -500,9 +499,9 @@
     </chapter>
     <chapter>
         <title>General API Information</title>
-        <para> The Cloud Servers API is implemented using a ReSTful web service interface. Like
+        <para>The Cloud Servers API is implemented using a ReSTful web service interface. Like
             other products in the Rackspace Cloud suite, Cloud Servers shares a common token
-            authentication system that allows seamless access between products and services. </para>
+            authentication system that allows seamless access between products and services.</para>
         <note>
             <para>
                 All requests to authenticate and operate against Cloud
@@ -512,15 +511,15 @@
         </note>
         <section>
             <title>Authentication</title>
-            <para> Each ReST request against the Cloud Servers system requires the inclusion of a
+            <para>Each ReST request against the Cloud Servers system requires the inclusion of a
                 specific authorization token HTTP x-header, defined as <code>X-Auth-Token</code>.
                 Clients obtain this token, along with the Cloud Servers API URL, by first using the
                 Rackspace Cloud Authentication Service and supplying a valid username and API access
-                key. </para>
-            <para> The Rackspace Cloud Authentication Service is a ReSTful web service. It is
-                the entry point to all Rackspace Cloud APIs. </para>
-            <para> To access the Authentication Service, you must know whether your account is
-                US-based or UK-based: 
+                key.</para>
+            <para>The Rackspace Cloud Authentication Service is a ReSTful web service. It is
+                the entry point to all Rackspace Cloud APIs.</para>
+            <para>To access the Authentication Service, you must know whether your account is
+                US-based or UK-based:
             </para>
             <itemizedlist spacing="compact">
                 <listitem>
@@ -537,14 +536,14 @@
             <para>
                 Your account may be based in either the US or the UK; this is not determined
                 by your physical location but by the location of the Rackspace retail site which
-                was used to create your account: 
+                was used to create your account:
             </para>
             <itemizedlist spacing="compact">
                 <listitem>
                     <para>
                         If your account was
                         created via <link xlink:href="http://www.rackspacecloud.com">http://www.rackspacecloud.com</link>, it is a US-based account.
-                    </para>   
+                    </para>
                 </listitem>
                 <listitem>
                     <para>
@@ -594,7 +593,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
             </simplesect>
             <simplesect>
                 <title>Response</title>
-                <para>  The Cloud Servers API may return any of the HTTP/1.1 response codes defined
+                <para>The Cloud Servers API may return any of the HTTP/1.1 response codes defined
                     by <link xlink:href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">
                         RFC-2616 Section 10</link>. If authentication is successful, an HTTP status
                         <returnvalue>204 (No Content)</returnvalue> is returned with three cloud
@@ -607,7 +606,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                     and must include the <code>X-Auth-Token</code> header as noted above. The URLs
                     specified in <code>X-Storage-Url</code> and <code>X-CDN-Management-Url</code>
                     are specific to the Cloud Files product and may be ignored for purposes of
-                    interacting with Cloud Servers. </para>
+                    interacting with Cloud Servers.</para>
                 <example>
                     <title>Authentication Response</title>
                     <literallayout class="monospaced">
@@ -841,7 +840,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
         <section>
             <title>Efficient Polling with the
             <parameter>Changes-Since</parameter> Parameter</title>
-            <para> The ReST API allows you to poll for the status of certain operations by
+            <para>The ReST API allows you to poll for the status of certain operations by
                 performing a &GET; on various elements. Rather than re-downloading and re-parsing
                 the full status at each polling interval, your ReST client may use the
                     <parameter>changes-since</parameter> parameter to check for changes since a
@@ -853,7 +852,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                 has changed, only the items changed since the specified time will be returned in the
                 response. For example, performing a &GET; against
                     https://api.servers.rackspacecloud.com/v1.0/224532/servers?<parameter>changes-since</parameter>=1244012982
-                would list all servers that have changed since Wed, 03 Jun 2009 07:09:42 UTC. </para>
+                would list all servers that have changed since Wed, 03 Jun 2009 07:09:42 UTC.</para>
         </section>
         <?hard-pagebreak?>
         <section>
@@ -879,7 +878,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                 <title>Rate Limits</title>
                 <para>
                     We specify rate limits in terms of
-                    both a human-readable wild-card URI and a machine-processable regular expression. 
+                    both a human-readable wild-card URI and a machine-processable regular expression.
                     The regular expression boundary matcher '^' takes effect after
                     the root URI path. For example, the regular
                     expression ^/servers would match the bolded
@@ -1165,14 +1164,14 @@ Host: servers.api.rackspacecloud.com/v1.0/
             <note>
                 <para>If there is a discrepancy between the two specifications, the WADL is
                     authoritative as it contains the most accurate and up-to-date description of the
-                    API service. </para>
+                    API service.</para>
             </note>
         </section>
         <section>
             <title>Faults</title>
-            <para> When an error occurs, the system will return an HTTP error response code denoting
+            <para>When an error occurs, the system will return an HTTP error response code denoting
                 the type of error. The system will also return additional information about the
-                fault in the body of the response. </para>
+                fault in the body of the response.</para>
             <example>
                 <title>Fault Response: XML</title>
                 <programlisting language="xml">
@@ -1185,11 +1184,11 @@ Host: servers.api.rackspacecloud.com/v1.0/
 <xi:include href="samples/fault.json" parse="text"/>
                 </programlisting>
             </example>
-            <para> The error code is returned in the body of the response for convenience. The
+            <para>The error code is returned in the body of the response for convenience. The
                 message section returns a human-readable message that is appropriate for display to
-                the end user. The details section is optional and may contain information&mdash;for example, a stack trace&mdash;to 
+                the end user. The details section is optional and may contain information&mdash;for example, a stack trace&mdash;to
                 assist in tracking down an error. The detail section may or may not be
-                appropriate for display to an end user. </para>
+                appropriate for display to an end user.</para>
             <para>
                 The root element of the fault (e.g. cloudServersFault)
                 may change depending on the type of error. The
@@ -1801,13 +1800,13 @@ Host: servers.api.rackspacecloud.com/v1.0/
                 </simpara>
                 <para>This operation does not require a request body.</para>
                 <example>
-                    <title>Addresses List Response: XML </title>
+                    <title>Addresses List Response: XML</title>
                     <programlisting language="xml">
 <xi:include href="samples/addresses.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
-                    <title>Addresses List Response: JSON </title>
+                    <title>Addresses List Response: JSON</title>
                     <programlisting language="javascript">
 <xi:include href="samples/addresses.json" parse="text"/>
                     </programlisting>
@@ -1889,7 +1888,7 @@ Host: servers.api.rackspacecloud.com/v1.0/
                     badRequest (<errorcode>400</errorcode>),
                     overLimit (<errorcode>413</errorcode>)
                 </para>
-                <para>This operation does not require a request body.  </para>
+                <para>This operation does not require a request body.</para>
                 <example>
                     <title>Private Addresses List Response: XML</title>
                     <programlisting language="xml">
@@ -2099,13 +2098,13 @@ Host: servers.api.rackspacecloud.com/v1.0/
                     equivalent of power cycling the server.
                 </para>
                 <example>
-                    <title>Action Reboot: XML </title>
+                    <title>Action Reboot: XML</title>
                     <programlisting language="xml">
 <xi:include href="samples/reboot.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
-                    <title>Action Reboot: JSON </title>
+                    <title>Action Reboot: JSON</title>
                     <programlisting language="javascript">
 <xi:include href="samples/reboot.json" parse="text"/>
                     </programlisting>
@@ -2174,7 +2173,7 @@ Host: servers.api.rackspacecloud.com/v1.0/
                     addresses will remain the same.
                 </para>
                 <example>
-                    <title>Action Rebuild: XML </title>
+                    <title>Action Rebuild: XML</title>
                     <programlisting language="xml">
 <xi:include href="samples/rebuild.xml" parse="text"/>
                     </programlisting>
@@ -2466,7 +2465,7 @@ Host: servers.api.rackspacecloud.com/v1.0/
                     This operation does not require a request body.
                 </para>
                 <example>
-                    <title>Flavors List Response: XML (detail) </title>
+                    <title>Flavors List Response: XML (detail)</title>
                     <programlisting language="xml">
 <xi:include href="samples/flavors.xml" parse="text"/>
                     </programlisting>
@@ -2520,7 +2519,7 @@ Host: servers.api.rackspacecloud.com/v1.0/
                     </programlisting>
                 </example>
                 <example>
-                    <title>Flavor Details Response: JSON </title>
+                    <title>Flavor Details Response: JSON</title>
                     <programlisting language="javascript">
 <xi:include href="samples/flavor.json" parse="text"/>
                     </programlisting>

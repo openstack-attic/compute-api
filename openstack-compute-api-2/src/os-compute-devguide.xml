@@ -1899,7 +1899,7 @@ Host: servers.api.openstack.org/v2/
                             <td colspan="1"/>
                             <td colspan="3">
                                 <code>BUILD</code> &ARROW;
-                                   <code>ERROR</code> (on error) </td>
+                                   <code>ERROR</code> (on error)</td>
                         </tr>
                     </tbody>
                 </informaltable>
@@ -2321,7 +2321,7 @@ Host: servers.api.openstack.org/v2/
                                    edit the server name, the server
                                    host name does not change. Also,
                                    server names are not guaranteed to
-                                   be unique. </td>
+                                   be unique.</td>
                             </tr>
                             <tr>
                                 <td>
@@ -2515,7 +2515,7 @@ Host: servers.api.openstack.org/v2/
                             <td colspan="3">
                                 <code>ACTIVE</code> &ARROW;
                                    <code>PASSWORD</code> &ARROW;
-                                   <code>ERROR</code> (on error) </td>
+                                   <code>ERROR</code> (on error)</td>
                         </tr>
                         <tr>
                             <td colspan="1"/>
@@ -2523,7 +2523,7 @@ Host: servers.api.openstack.org/v2/
                                 <code>ERROR</code> &ARROW;
                                    <code>PASSWORD</code> &ARROW;
                                    <code>ACTIVE</code> (password reset
-                                after error) </td>
+                                after error)</td>
                         </tr>
                     </tbody>
                 </informaltable>
@@ -2620,7 +2620,7 @@ Host: servers.api.openstack.org/v2/
                                 <code>ACTIVE</code> &ARROW;
                                    <code>REBOOT</code> &ARROW;
                                    <code>ACTIVE</code> (<property>soft
-                                   reboot</property>) </td>
+                                   reboot</property>)</td>
                         </tr>
                         <tr>
                             <td colspan="1"/>
@@ -2628,7 +2628,7 @@ Host: servers.api.openstack.org/v2/
                                 <code>ACTIVE</code> &ARROW;
                                    <code>HARD_REBOOT</code> &ARROW;
                                    <code>ACTIVE</code> (<property>hard
-                                   reboot</property>) </td>
+                                   reboot</property>)</td>
                         </tr>
                     </tbody>
                 </informaltable>
@@ -2687,11 +2687,11 @@ Host: servers.api.openstack.org/v2/
                 <para>This operation does not return a response
                     body.</para>
                 <example>
-                    <title>Action Reboot Request: XML </title>
+                    <title>Action Reboot Request: XML</title>
                     <programlisting language="xml"><xi:include href="samples/reboot.xml" parse="text"/></programlisting>
                 </example>
                 <example>
-                    <title>Action Reboot Request: JSON </title>
+                    <title>Action Reboot Request: JSON</title>
                     <programlisting language="json"><xi:include href="samples/reboot.json" parse="text"/></programlisting>
                 </example>
             </section>
@@ -2748,7 +2748,7 @@ Host: servers.api.openstack.org/v2/
                             <td colspan="3">
                                 <code>ACTIVE</code> &ARROW;
                                    <code>REBUILD</code> &ARROW;
-                                   <code>ERROR</code> (on error) </td>
+                                   <code>ERROR</code> (on error)</td>
                         </tr>
                     </tbody>
                 </informaltable>
@@ -2835,7 +2835,7 @@ Host: servers.api.openstack.org/v2/
                     </table>
                 </para>
                 <example>
-                    <title>Action Rebuild Request: XML </title>
+                    <title>Action Rebuild Request: XML</title>
                     <programlisting language="xml"><xi:include href="samples/rebuild_all.xml" parse="text"/></programlisting>
                 </example>
                 <?hard-pagebreak?>
@@ -3027,7 +3027,7 @@ Host: servers.api.openstack.org/v2/
                             <td colspan="1"/>
                             <td colspan="3">
                                 <code>VERIFY_RESIZE</code> &ARROW;
-                                   <code>ERROR</code> (on error) </td>
+                                   <code>ERROR</code> (on error)</td>
                         </tr>
                     </tbody>
                 </informaltable>
@@ -3110,7 +3110,7 @@ Host: servers.api.openstack.org/v2/
                             <td colspan="3">
                                 <code>VERIFY_RESIZE</code> &ARROW;
                                    <code>REVERT_RESIZE</code> &ARROW;
-                                   <code>ERROR</code> (on error) </td>
+                                   <code>ERROR</code> (on error)</td>
                         </tr>
                     </tbody>
                 </informaltable>
@@ -3199,7 +3199,7 @@ Host: servers.api.openstack.org/v2/
                             <td colspan="1"/>
                             <td colspan="3">
                                 <code>SAVING</code> &ARROW;
-                                   <code>ERROR</code> (on error) </td>
+                                   <code>ERROR</code> (on error)</td>
                         </tr>
                     </tbody>
                 </informaltable>
@@ -3380,7 +3380,7 @@ Host: servers.api.openstack.org/v2/
                 <para>This operation does not require a request
                     body.</para>
                 <example>
-                    <title>Flavors List Response: XML (detail) </title>
+                    <title>Flavors List Response: XML (detail)</title>
                     <programlisting language="xml"><xi:include href="samples/flavors.xml" parse="text"/></programlisting>
                 </example>
                 <example>
@@ -3436,7 +3436,7 @@ Host: servers.api.openstack.org/v2/
                 </example>
                 <?hard-pagebreak?>
                 <example>
-                    <title>Flavor Details Response: JSON </title>
+                    <title>Flavor Details Response: JSON</title>
                     <programlisting language="json"><xi:include href="samples/flavor.json" parse="text"/></programlisting>
                 </example>
             </section>
@@ -3467,7 +3467,7 @@ Host: servers.api.openstack.org/v2/
                                    <parameter>status</parameter>=<literal>imageStatus</literal>&amp;
                                    <parameter>changes-since</parameter>=<literal>dateTime</literal>&amp;
                                    <parameter>marker</parameter>=<literal>markerID</literal>&amp;<parameter>limit</parameter>=<literal>int</literal>&amp;
-                                   <parameter>type</parameter>=(<constant>BASE</constant>|<constant>SERVER</constant>) </td>
+                                   <parameter>type</parameter>=(<constant>BASE</constant>|<constant>SERVER</constant>)</td>
                             <td colspan="3">Lists IDs, names, and
                                 links for all available images.</td>
                         </tr>
@@ -3479,7 +3479,7 @@ Host: servers.api.openstack.org/v2/
                                    <parameter>status</parameter>=<literal>imageStatus</literal>&amp;
                                    <parameter>changes-since</parameter>=<literal>dateTime</literal>&amp;
                                    <parameter>marker</parameter>=<literal>markerID</literal>&amp;<parameter>limit</parameter>=<literal>int</literal>&amp;
-                                   <parameter>type</parameter>=(<constant>BASE</constant>|<constant>SERVER</constant>) </td>
+                                   <parameter>type</parameter>=(<constant>BASE</constant>|<constant>SERVER</constant>)</td>
                             <td colspan="3">Lists all details for all
                                 available images.</td>
                         </tr>
@@ -3757,11 +3757,11 @@ Host: servers.api.openstack.org/v2/
                 <para>This operation does not require a request
                     body.</para>
                 <example>
-                    <title>Metadata List Response: XML </title>
+                    <title>Metadata List Response: XML</title>
                     <programlisting language="xml"><xi:include href="samples/metadata.xml" parse="text"/></programlisting>
                 </example>
                 <example>
-                    <title>Metadata List Response: JSON </title>
+                    <title>Metadata List Response: JSON</title>
                     <programlisting language="json"><xi:include href="samples/metadata.json" parse="text"/></programlisting>
                 </example>
             </section>
@@ -3855,20 +3855,20 @@ Host: servers.api.openstack.org/v2/
                     queried through the maxImageMeta absolute
                     limit.</para>
                 <example>
-                    <title>Set Metadata Request: XML </title>
+                    <title>Set Metadata Request: XML</title>
                     <programlisting language="xml"><xi:include href="samples/metadata.xml" parse="text"/></programlisting>
                 </example>
                 <example>
-                    <title>Set Metadata Request: JSON </title>
+                    <title>Set Metadata Request: JSON</title>
                     <programlisting language="json"><xi:include href="samples/metadata.json" parse="text"/></programlisting>
                 </example>
                 <?hard-pagebreak?>
                 <example>
-                    <title>Set Metadata Response: XML </title>
+                    <title>Set Metadata Response: XML</title>
                     <programlisting language="xml"><xi:include href="samples/metadata.xml" parse="text"/></programlisting>
                 </example>
                 <example>
-                    <title>Set Metadata Response: JSON </title>
+                    <title>Set Metadata Response: JSON</title>
                     <programlisting language="json"><xi:include href="samples/metadata.json" parse="text"/></programlisting>
                 </example>
             </section>
@@ -3962,20 +3962,20 @@ Host: servers.api.openstack.org/v2/
                     an image may be queried through the maxImageMeta
                     absolute limit.</para>
                 <example>
-                    <title>Update Metadata Request: XML </title>
+                    <title>Update Metadata Request: XML</title>
                     <programlisting language="xml"><xi:include href="samples/metadata-update-req.xml" parse="text"/></programlisting>
                 </example>
                 <example>
-                    <title>Update Metadata Request: JSON </title>
+                    <title>Update Metadata Request: JSON</title>
                     <programlisting language="json"><xi:include href="samples/metadata-update-req.json" parse="text"/></programlisting>
                 </example>
                 <?hard-pagebreak?>
                 <example>
-                    <title>Update Metadata Response: XML </title>
+                    <title>Update Metadata Response: XML</title>
                     <programlisting language="xml"><xi:include href="samples/metadata-update-resp.xml" parse="text"/></programlisting>
                 </example>
                 <example>
-                    <title>Update Metadata Response: JSON </title>
+                    <title>Update Metadata Response: JSON</title>
                     <programlisting language="json"><xi:include href="samples/metadata-update-resp.json" parse="text"/></programlisting>
                 </example>
             </section>
@@ -4028,11 +4028,11 @@ Host: servers.api.openstack.org/v2/
                 <para>This operation does not require a request
                     body.</para>
                 <example>
-                    <title>Metadata Item Response: XML </title>
+                    <title>Metadata Item Response: XML</title>
                     <programlisting language="xml"><xi:include href="samples/metadata_item.xml" parse="text"/></programlisting>
                 </example>
                 <example>
-                    <title>Metadata Item Response: JSON </title>
+                    <title>Metadata Item Response: JSON</title>
                     <programlisting language="json"><xi:include href="samples/metadata_item.json" parse="text"/></programlisting>
                 </example>
             </section>
@@ -4121,20 +4121,20 @@ Host: servers.api.openstack.org/v2/
                     of key-value pairs for an image may be queried
                     through the maxImageMeta absolute limit.</para>
                 <example>
-                    <title>Set Metadata Item Request: XML </title>
+                    <title>Set Metadata Item Request: XML</title>
                     <programlisting language="xml"><xi:include href="samples/metadata_item.xml" parse="text"/></programlisting>
                 </example>
                 <example>
-                    <title>Set Metadata Item Request: JSON </title>
+                    <title>Set Metadata Item Request: JSON</title>
                     <programlisting language="json"><xi:include href="samples/metadata_item.json" parse="text"/></programlisting>
                 </example>
                 <?hard-pagebreak?>
                 <example>
-                    <title>Set Metadata Item Response: XML </title>
+                    <title>Set Metadata Item Response: XML</title>
                     <programlisting language="xml"><xi:include href="samples/metadata_item.xml" parse="text"/></programlisting>
                 </example>
                 <example>
-                    <title>Set Metadata Item Response: JSON </title>
+                    <title>Set Metadata Item Response: JSON</title>
                     <programlisting language="json"><xi:include href="samples/metadata_item.json" parse="text"/></programlisting>
                 </example>
             </section>

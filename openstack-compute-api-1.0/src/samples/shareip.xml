@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<shareIp xmlns="http://docs.rackspacecloud.com/servers/api/v1.0" 
-	 sharedIpGroupId="1234" configureServer="true" />
+<shareIp xmlns="http://docs.rackspacecloud.com/servers/api/v1.0"
+         sharedIpGroupId="1234" configureServer="true" />
