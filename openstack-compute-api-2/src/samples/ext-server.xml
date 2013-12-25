@@ -3,7 +3,7 @@
         xmlns:atom="http://www.w3.org/2005/Atom"
         xmlns:aide="http://docs.rackspacecloud.com/servers/api/ext/aide/v1.0"
         id="52415800-8b69-11e0-9b19-734f000004d2" name="sample-server"
-        flavorRef="https://servers.api.rackspacecloud.com/v2/32278/flavors/52415800-8b69-11e0-9b19-734f1195ff37" 
+        flavorRef="https://servers.api.rackspacecloud.com/v2/32278/flavors/52415800-8b69-11e0-9b19-734f1195ff37"
         status="BUILD"
         updated="2010-10-10T12:00:00Z"
         created="2010-08-10T12:00:00Z"

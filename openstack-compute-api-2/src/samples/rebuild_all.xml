@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rebuild 
+<rebuild
     xmlns="http://docs.openstack.org/compute/api/v1.1"
     name="newName"
     imageRef="https://servers.api.rackspacecloud.com/v2/32278/images/52415800-8b69-11e0-9b19-734f6f006e54"

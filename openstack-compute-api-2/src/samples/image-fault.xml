@@ -11,10 +11,10 @@
         <message>An internal error occured</message>
         <details>Error details</details>
     </fault>
-    <atom:link 
+    <atom:link
         rel="self"
         href="http://servers.api.openstack.org/v2/1234/images/52415800-8b69-11e0-9b19-734f5736d2a2"/>
-    <atom:link 
+    <atom:link
         rel="bookmark"
         href="http://servers.api.openstack.org/1234/images/52415800-8b69-11e0-9b19-734f5736d2a2"/>
 </image>

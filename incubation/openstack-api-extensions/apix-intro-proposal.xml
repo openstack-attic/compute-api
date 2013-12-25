@@ -39,17 +39,17 @@
         the process used to promote API extensions to new features.
     </para>
     <warning security="draft">
-        <para> Please note that this document is a <emphasis role="strong">draft</emphasis>. It
+        <para>Please note that this document is a <emphasis role="strong">draft</emphasis>. It
             is intended to give developers an opportunity to provide feedback. If you begin
             implementing against this early access specification, please recognize that it is
             still subject to change. Comments, feedback, and bug reports are always welcomed;
-            please submit these in the webhelp discussion forum at: <link xlink:href="http://docs.openstack.org/">http://docs.openstack.org/</link>. </para>
+            please submit these in the webhelp discussion forum at: <link xlink:href="http://docs.openstack.org/">http://docs.openstack.org/</link>.</para>
     </warning>
     <section>
         <title>Intended Audience</title>
-        <para> This document is intended for software developers who wish either to implement or
+        <para>This document is intended for software developers who wish either to implement or
             to consume an extendable OpenStack API. It assumes that the reader has a general
-            understanding of: </para>
+            understanding of:</para>
         <itemizedlist spacing="compact">
             <listitem>
                 <para>ReSTful web services</para>
@@ -102,8 +102,8 @@
             <varlistentry>
                 <term><phrase security="draft">Chapter 5, <firstterm>Summary</firstterm></phrase></term>
                 <listitem>
-                    <para> Briefly summarizes the benefits of the extension mechanism and
-                        provides a brief overview of how extensions are used. </para>
+                    <para>Briefly summarizes the benefits of the extension mechanism and
+                        provides a brief overview of how extensions are used.</para>
                 </listitem>
             </varlistentry>
         </variablelist>
@@ -123,7 +123,7 @@
                     <td colspan="4">
                         <itemizedlist spacing="compact">
                             <listitem>
-                                <para> Initial draft. </para>
+                                <para>Initial draft.</para>
                             </listitem>
                         </itemizedlist>
                     </td>
@@ -174,7 +174,7 @@
                 function normally — this is where extensions
                 come in.
             </para>
-            <para> An <firstterm>extension</firstterm> adds capabilities to an API beyond those
+            <para>An <firstterm>extension</firstterm> adds capabilities to an API beyond those
                 defined in the core. The introduction of new features, MIME types, actions, states,
                 headers, parameters, and resources can all be accomplished by means of extensions to
                 the core API. In order for extensions to work, the core API must be written in such
@@ -186,7 +186,7 @@
                 together form the <firstterm>extension mechanism</firstterm>. It is important that
                 core APIs adhere to this mechanism in order to ensure compatibility as new
                 extensions are defined. Note also that while a core API may be written to allow for
-                extensibility, the extensions themselves are never part of the core. </para>
+                extensibility, the extensions themselves are never part of the core.</para>
         </section>
         <section>
             <title>Relationship to OpenGL</title>
@@ -211,15 +211,15 @@
                 needed to meet the goal of performing at real-time
                 speeds.
             </para>
-            <para> Gaining vendor support is challenging because vendors are often in direct
+            <para>Gaining vendor support is challenging because vendors are often in direct
                 competition with one another. They differentiate themselves by creating innovative
                 new features and by providing niche functionality to their users. Thus, OpenGL was
                 faced with two competing requirements. On the one hand, it needed to abstract away
                 vendor differences in order to provide a stable cross-platform environment to
                 developers. On the other hand, in order to garner vendor support, it needed a method
                 by which vendors could differentiate themselves and provide innovative new features
-                and niche functionality to their users. </para>
-            <para> The OpenGL extension mechanism was developed to solve these problems. The
+                and niche functionality to their users.</para>
+            <para>The OpenGL extension mechanism was developed to solve these problems. The
                 extension mechanism achieved balance between the two requirements by maintaining the
                 core specification under the direction of the Architecture Review Board while
                 allowing vendors to define extensions to the core OpenGL specification. The core
@@ -231,8 +231,8 @@
                 and many vendors, including NVidia, ATI, Apple, IBM, and Intel, have participated in
                 the process by developing their own custom extensions. Additionally, many key
                 innovations (such as vertex and fragment shaders) have been developed via the
-                extension process and are now part of the core OpenGL API. </para>
-            <para> OpenStack, while very different from OpenGL, shares many similar goals and faces
+                extension process and are now part of the core OpenGL API.</para>
+            <para>OpenStack, while very different from OpenGL, shares many similar goals and faces
                 many of the same challenges. OpenStack APIs are designed to be open API standards.
                 An important goal is to provide developers with a ubiquitous, stable, any-scale
                 cloud development platform that abstracts away many of the differences between
@@ -248,23 +248,23 @@
                 defined vary drastically, of course, since the nature of the APIs is very different
                 (C versus ReST); however, the manner in which extensions are documented, the way in
                 which vendors are attributed, and the promotion path that an extension follows, all
-                borrow heavily from OpenGL. </para>
+                borrow heavily from OpenGL.</para>
         </section>
         <section>
             <title>Extensions and Versions</title>
-            <para> Extensions are always interpreted in relation to a version of the core API. In
+            <para>Extensions are always interpreted in relation to a version of the core API. In
                 other words, from a client's perspective, an extension modifies <emphasis>a
                     particular version</emphasis> of the core API in some way. In reality, an
                 extension may be applicable to several versions of an API at once. For example, a
                 particular extension may continue to be available as a core API moves from one
                 version to another. In fact, different implementations may decide to include support
-                for an extension at different versions. As explained in 
-                <phrase security="draft">the chapter on "Extension Governance and Promotion"</phrase>, 
+                for an extension at different versions. As explained in
+                <phrase security="draft">the chapter on "Extension Governance and Promotion"</phrase>,
                 when an extension is defined, the minimal version of the core API that is required
                 to run the extension is specified; implementers are free to support the extension in
                 that version or in a later version of the core. Note, however, that because the
                 extension mechanism allows for promotion, an extension in one version of a core API
-                may become a standard feature in a later version. </para>
+                may become a standard feature in a later version.</para>
             <note>
                 <para>
                     As always, implementers are not required to
@@ -272,19 +272,19 @@
                     core.
                 </para>
             </note>
-            <para> Because several versions of the core API may be supported simultaneously, and
+            <para>Because several versions of the core API may be supported simultaneously, and
                 because each version may offer support for a different set of extensions, clients
                 must be able to detect what versions and extensions are available in a particular
                 deployment. Thus, both extensions and versions are queryable. Issuing a <command>GET</command> on the
                 base URL (<code>/</code>) of the API endpoint returns information about what
                 versions are available. Similarly, issuing a <command>GET</command> on the API's extensions resource
                     (<code>/v1.1/extensions</code>) returns information about what extensions are
-                available. (See 
-                <phrase security="draft">the chapter on "Extensions and ReST"</phrase>  
+                available. (See
+                <phrase security="draft">the chapter on "Extensions and ReST"</phrase>
                 for details of such requests.) Note that,
                 since extensions modify a particular version of the API, the <code>extensions</code>
-                resource itself is always accessed at a particular version. </para>
-            <para> Backward-compatible changes in an API usually require a minor version bump. In an
+                resource itself is always accessed at a particular version.</para>
+            <para>Backward-compatible changes in an API usually require a minor version bump. In an
                 extensible API, however, these changes can be brought in as extensions. The net
                 effect is that versions change infrequently and thus provide a stable platform on
                 which to develop. The Policy Review Board (PRB), with the help of project team
@@ -295,7 +295,7 @@
                 extensions can be promoted to standard features, the development of new versions can
                 be influenced significantly by individual developers and the OpenStack client
                 community and is therefore not strictly defined by the PRB. In other words, new
-                features of a core API may be developed in a bottom-up fashion. </para>
+                features of a core API may be developed in a bottom-up fashion.</para>
             <para>
                 That said, not all extensions are destined to be
                 promoted to the next API version. Core APIs always
@@ -422,37 +422,37 @@
         </section>
         <section>
             <title>Versioning Extensions</title>
-            <para> There is no explicit versioning mechanism for extensions. Nonetheless, there may
+            <para>There is no explicit versioning mechanism for extensions. Nonetheless, there may
                 be cases in which a developer decides to update an extension after the extension has
                 been released and client support for the extension has been established. In these
                 cases, it is recommended that a new extension be created. The extension may have a
                 name that signifies its relationship to the previous version. For example, a
                 developer may append an integer to the extension name to signify that one extension
-                updates another: <code>RAX-PIE2</code> updates <code>RAX-PIE</code>. </para>
-            <para> Extensions may have dependencies on other extensions. For example,
+                updates another: <code>RAX-PIE2</code> updates <code>RAX-PIE</code>.</para>
+            <para>Extensions may have dependencies on other extensions. For example,
                     <code>RAX-PIE2</code> may depend on <code>RAX-PIE</code> and may simply add
                 additional capabilities to it. In general, dependencies of this kind are discouraged
                 and implementers should strive to keep extensions independent. That said, extension
                 dependencies allow for the possibility of providing updates to existing extensions
                 even if the original extension is under the control of a different vendor. This is
-                particularly useful in cases where an existing extension has good client support. </para>
+                particularly useful in cases where an existing extension has good client support.</para>
         </section>
         <section>
             <title>Extensions and Pluggability</title>
-            <para> Core APIs abstract away vendor differences in order to provide a cross-platform
+            <para>Core APIs abstract away vendor differences in order to provide a cross-platform
                 environment to their clients. For example, a client should be able to interact with
                 an OpenStack load balancing service without worrying about whether the deployment
                 utilizes Zeus, Pound, or HAProxy on the backend. OpenStack implementations strive to
                 support multiple backends out of the box. They do so by employing software drivers.
                 Each driver is responsible for communicating to a specific backend and is in charge
-                of translating core API requests to it. </para>
-            <para> The core API contains only those capabilities which are applicable to all
+                of translating core API requests to it.</para>
+            <para>The core API contains only those capabilities which are applicable to all
                 backends; however, not all backends are created equal, with each backend offering a
                 distinct set of capabilities. Extensions play a critical role in exposing these
                 capabilities to clients. This is illustrated below. Here, extensions fill in the gap
                 between the common capabilities that the core API provides and the unique
                 capabilities of the Zeus load balancer. In a sense, one can think of extensions as
-                providing frontends to OpenStack plug-ins. </para>
+                providing frontends to OpenStack plug-ins.</para>
             <figure xml:id="core-extensions">
                 <title>Extensions and Pluggability</title>
                 <mediaobject>
@@ -466,8 +466,4 @@
             </figure>
         </section>
     </chapter>
-    
-    
-    
-    
 </book>
