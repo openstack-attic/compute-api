@@ -1,5 +1,15 @@
 .DS_Store?
+
+# Build results
 target/
+
+# Testenvironment
+.tox
+
+# Editors
+*~
+.*.swp
+.bak
 
 # Per-user NetBeans files
 nbactions.xml
