@@ -114,9 +114,7 @@
                 <revdescription>
                     <itemizedlist>
                         <listitem>
-                            <para>Added <xref
-                                   linkend="ext-os-admin-actions"/> to
-                                document the server admin actions
+                            <para>Added the server admin actions
                                 extension.</para>
                         </listitem>
                     </itemizedlist>
@@ -1647,7 +1645,7 @@ Host: servers.api.openstack.org/v2/
                         </author>
                         <date>2009-06-26T14:30:46</date>
                     </info>
-                    <para>Well need to revisit. List all status even
+                    <para>We will need to revisit. List all status even
                         the ones that don't enter into our state
                         transitions along with descriptions of each.
                     </para>
@@ -4233,47 +4231,7 @@ Host: servers.api.openstack.org/v2/
             </note>
         </section>
     </chapter>
-    <chapter xml:id="ext-compute" role="api-reference">
-        <title>Compute API v2 Extensions</title>
-        <para>Adds capabilities to the core Compute API. Use
-            extensions to add features, MIME types, actions, states,
-            headers, parameters, and resources to the core API. Query
-            the Compute API to list available extensions with a &GET;
-            request to v2/extensions.</para>
-        <section xml:id="ext-os-admin-actions">
-            <title>Server Admin Actions</title>
-            <para>Permits administrators to perform actions on a
-                server.</para>
-            <wadl:resources
-                href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/ext/os-admin-actions.wadl"
-                xmlns:wadl="http://wadl.dev.java.net/2009/02"/>
-        </section>
-        <section xml:id="os-quota-sets">
-            <title>Quota Sets (os-quota-sets)</title>
-            <para>Permits administrators, depending on policy
-                settings, to view quotas for a tenant and view and
-                update default quotas.</para>
-            <wadl:resources
-                href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/ext/os-quota-sets.wadl"
-                xmlns:wadl="http://wadl.dev.java.net/2009/02"/>
-        </section>
-        <section xml:id="os-security-groups">
-            <title>Security groups (os-security-groups)</title>
-            <para>Lists, shows information for, creates, and deletes
-                security groups.</para>
-            <wadl:resources
-                href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/ext/os-security-groups.wadl"
-                xmlns:wadl="http://wadl.dev.java.net/2009/02"/>
-        </section>
-        <!-- Once https://review.openstack.org/#/c/55438/ is approved, uncomment the following: -->
-        <section xml:id="os-security-group-default-rules">
-            <title>Default security group rules
-                (os-security-group-default-rules)</title>
-            <para>Lists, shows information for, and creates default
-                security group rules.</para>
-            <wadl:resources
-                href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/ext/os-security-group-default-rules.wadl"
-                xmlns:wadl="http://wadl.dev.java.net/2009/02"/>
-        </section>
-    </chapter>
+    <xi:include
+        href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/docbkx/ch_compute-ext.xml"
+    />
 </book>
