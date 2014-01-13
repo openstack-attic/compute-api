@@ -1036,7 +1036,7 @@
       <maxLength value="255" />
     </restriction>
   </simpleType>
-  
+
   <simpleType name="blockDeviceMapping">
     <restriction base="xsd:string">
       <maxLength value="255" />
