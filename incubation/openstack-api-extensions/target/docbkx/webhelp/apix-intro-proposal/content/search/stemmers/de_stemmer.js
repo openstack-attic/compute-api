@@ -29,9 +29,9 @@
         /*
         and then do the following mappings,
         (a) replace ß with ss,
-        (a) replace ae with ä,                          Not doing these, have trouble with diphtongs
-        (a) replace oe with ö,                          Not doing these, have trouble with diphtongs
-        (a) replace ue with ü unless preceded by q.     Not doing these, have trouble with diphtongs
+        (a) replace ae with ä,                          Not doing these, have trouble with diphthongs
+        (a) replace oe with ö,                          Not doing these, have trouble with diphthongs
+        (a) replace ue with ü unless preceded by q.     Not doing these, have trouble with diphthongs
         So in quelle, ue is not mapped to ü because it follows q, and in feuer it is not mapped because the first part of the rule changes it to feUer, so the u is not found.
         */
         word = word.replace(/ß/g, 'ss');

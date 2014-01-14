@@ -161,7 +161,7 @@
         order relative to the verb, going from least to most specific.
         Thus, although the threshold for POST to */servers, below, is
         25 per day, one cannot POST to */servers more than 10 times
-        withing a single minute because the rate limits for any POST
+        within a single minute because the rate limits for any POST
         is 10/min.
       </p>
       <xsdxt:code type="application/xml" href="../samples/rateLimits.xml"/>
