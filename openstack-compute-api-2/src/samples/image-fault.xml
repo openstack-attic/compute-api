@@ -8,7 +8,7 @@
     status="ERROR" progress="89">
     <server id="52415800-8b69-11e0-9b19-734f335aa7b3" />
     <fault code="500">
-        <message>An internal error occured</message>
+        <message>An internal error occurred</message>
         <details>Error details</details>
     </fault>
     <atom:link
