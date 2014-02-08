@@ -3,6 +3,7 @@
 # Build results
 target/
 publish-docs/
+/build-*.log.gz
 
 # Testenvironment
 .tox
