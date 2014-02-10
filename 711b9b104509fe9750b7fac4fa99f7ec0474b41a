@@ -1,0 +1,9 @@
+Verified+2: Jenkins
+Approved+1: Anne Gentle <anne@openstack.org>
+Code-Review+2: Anne Gentle <anne@openstack.org>
+Code-Review+1: Shuangtai Tian <shuangtai.tian@intel.com>
+Submitted-by: Jenkins
+Submitted-at: Mon, 10 Feb 2014 18:39:18 +0000
+Reviewed-on: https://review.openstack.org/71765
+Project: openstack/compute-api
+Branch: refs/heads/master
