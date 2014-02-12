@@ -1645,8 +1645,8 @@ Host: servers.api.openstack.org/v2/
                         </author>
                         <date>2009-06-26T14:30:46</date>
                     </info>
-                    <para>We will need to revisit. List all status even
-                        the ones that don't enter into our state
+                    <para>We will need to revisit. List all status
+                        even the ones that don't enter into our state
                         transitions along with descriptions of each.
                     </para>
                 </annotation>
@@ -3707,9 +3707,14 @@ Host: servers.api.openstack.org/v2/
         <?hard-pagebreak?>
         <section xml:id="MetadataSection">
             <title>Metadata</title>
-            <para>The following operations allow access to metadata
+            <para>The following operations enable access to metadata
                 after a server or image has been created.</para>
-            <section xml:id="List_Metadata-d1e5089">
+            <wadl:resources
+                xmlns:wadl="http://wadl.dev.java.net/2009/02">
+                <wadl:resource href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/wadl/os-compute-2.wadl#metadata"/>
+                <wadl:resource href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/wadl/os-compute-2.wadl#MetadataKey"/>
+            </wadl:resources>
+            <!-- <section xml:id="List_Metadata-d1e5089">
                 <title>List Metadata</title>
                 <informaltable rules="all">
                     <thead>
@@ -4187,7 +4192,7 @@ Host: servers.api.openstack.org/v2/
                     body.</para>
                 <para>The operation does not return a response body.
                 </para>
-            </section>
+            </section>-->
         </section>
         <?hard-pagebreak?>
         <section xml:id="NetworksSection">
