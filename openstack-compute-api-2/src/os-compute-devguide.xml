@@ -4237,6 +4237,6 @@ Host: servers.api.openstack.org/v2/
         </section>
     </chapter>
     <xi:include
-        href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/docbkx/ch_compute-ext.xml"
+        href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/docbkx/ch_compute-v2-ext.xml"
     />
 </book>
