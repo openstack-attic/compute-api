@@ -2455,9 +2455,9 @@ Host: servers.api.openstack.org/v2/
             <wadl:resources
                 xmlns:wadl="http://wadl.dev.java.net/2009/02">
                 <wadl:resource
-                    href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/wadl/os-compute-2.wadl#ips"/>
+                    href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/v2/wadl/os-compute-2.wadl#ips"/>
                 <wadl:resource
-                    href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/wadl/os-compute-2.wadl#network_label"
+                    href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/v2/wadl/os-compute-2.wadl#network_label"
                 />
             </wadl:resources>
         </section>
@@ -3711,8 +3711,11 @@ Host: servers.api.openstack.org/v2/
                 after a server or image has been created.</para>
             <wadl:resources
                 xmlns:wadl="http://wadl.dev.java.net/2009/02">
-                <wadl:resource href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/wadl/os-compute-2.wadl#metadata"/>
-                <wadl:resource href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/wadl/os-compute-2.wadl#MetadataKey"/>
+                <wadl:resource
+                    href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/v2/wadl/os-compute-2.wadl#metadata"/>
+                <wadl:resource
+                    href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/v2/wadl/os-compute-2.wadl#MetadataKey"
+                />
             </wadl:resources>
             <!-- <section xml:id="List_Metadata-d1e5089">
                 <title>List Metadata</title>
@@ -4237,6 +4240,6 @@ Host: servers.api.openstack.org/v2/
         </section>
     </chapter>
     <xi:include
-        href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/docbkx/ch_compute-ext.xml"
+        href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/docbkx/ch_compute-v2-ext.xml"
     />
 </book>
