@@ -2,6 +2,6 @@
     "forbidden" : {
         "code" : 403,
         "message" : "You are not allowed to perform the operation.",
-        "details" : "Error Details..." 
+        "details" : "Error Details..."
     }
 }
