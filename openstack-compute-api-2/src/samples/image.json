@@ -5,7 +5,7 @@
         "updated" : "2010-10-10T12:00:00Z",
         "created" : "2010-08-10T12:00:00Z",
         "tenant_id" : "12345",
-        "user_id" : "joe", 
+        "user_id" : "joe",
         "status" : "SAVING",
         "progress" : 80,
         "minDisk" : 5,
