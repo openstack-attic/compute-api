@@ -46,9 +46,9 @@
             <plugin>
                 <groupId>com.rackspace.cloud.api</groupId>
                 <artifactId>clouddocs-maven-plugin</artifactId>
-                <version>1.13.0</version>
+                <version>1.14.2-SNAPSHOT</version>
                 <executions>
-                    <execution>
+                    <!--<execution>
                         <id>goal1</id>
                         <goals>
                             <goal>generate-pdf</goal>
@@ -57,7 +57,7 @@
                         <configuration>
                             <highlightSource>false</highlightSource>
                         </configuration>
-                    </execution>
+                    </execution>-->
                     <execution>
                         <id>goal2</id>
                         <goals>
