@@ -1,0 +1,9 @@
+Verified+2: Jenkins
+Code-Review+2: Anne Gentle <anne@openstack.org>
+Approved+1: Diane Fleming <diane.fleming@rackspace.com>
+Code-Review+2: Diane Fleming <diane.fleming@rackspace.com>
+Submitted-by: Jenkins
+Submitted-at: Tue, 25 Mar 2014 19:56:45 +0000
+Reviewed-on: https://review.openstack.org/82188
+Project: openstack/compute-api
+Branch: refs/heads/master
