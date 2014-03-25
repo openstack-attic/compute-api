@@ -49,16 +49,6 @@
                 <version>1.15.0</version>
                 <executions>
                     <execution>
-                        <id>goal1</id>
-                        <goals>
-                            <goal>generate-pdf</goal>
-                        </goals>
-                        <phase>generate-sources</phase>
-                        <configuration>
-                            <highlightSource>false</highlightSource>
-                        </configuration>
-                    </execution>
-                    <execution>
                         <id>goal2</id>
                         <goals>
                             <goal>generate-webhelp</goal>
