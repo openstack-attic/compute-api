@@ -552,7 +552,8 @@
         </section>
         <section xml:id="Request_Response_Types-d1e459">
             <title>Request and response types</title>
-            <para>The OpenStack Compute API supports both JSON and XML
+            <para>The OpenStack Compute API supports both
+                <literal>json</literal> and <literal>xml</literal>
                 data serialization request and response
                 formats.</para>
             <para>You specify the request format in the
@@ -563,18 +564,17 @@
                 <programlisting>Content-Type: application/<parameter>format</parameter></programlisting></para>
             <para>Where <parameter>format</parameter> is either
                     <literal>json</literal> or
-                <literal>xml</literal>.</para>
-            <para>You specify the response format by using one of the
-                following methods:</para>
+                <literal>xml</literal>, you specify the response
+                format by using one of the following methods:</para>
             <itemizedlist>
                 <listitem>
                     <para><code>Accept</code> header. The syntax for
                         the <code>Accept</code> header is:
                         <programlisting>Accept: application/<parameter>format</parameter></programlisting></para>
-                    <para>Where <parameter>format</parameter> is
-                        either <constant>json</constant> or
-                            <constant>xml</constant>.</para>
-                    <para>Default is <literal>json</literal>.</para>
+            <para>Where <parameter>format</parameter> is either
+                    <constant>json</constant> or <constant>xml</constant>,
+                        the default format is
+                <literal>json</literal>.</para>
                 </listitem>
                 <listitem>
                     <para>Query extension. Add an
@@ -583,12 +583,12 @@
                         request URI. For example, the
                             <literal>.xml</literal> extension in the
                         following URI request specifies that the
-                        response body is returned in XML
+                        response body is returned in <literal>.xml</literal>
                         format:</para>
                     <literallayout role="monospace">&POST; /v2/010101/servers.xml</literallayout>
                 </listitem>
             </itemizedlist>
-            <para>If you do not specify a response format, JSON is the
+            <para>If you do not specify a response format, <literal>json</literal> is the
                 default.</para>
             <para>If you specify conflicting formats in the
                     <code>Accept</code> header and the query
@@ -596,11 +596,12 @@
                 takes precedence. For example, if the query extension
                 is <literal>.xml</literal> and the <code>Accept</code>
                 header specifies <literal>application/json</literal>,
-                the response is returned in XML format.</para>
+                the response is returned in <literal>xml</literal> format.</para>
             <para>You can serialize a response in a different format
                 from the request format. <xref linkend="JSON_req"/>
                 and <xref linkend="ImageCreateFullResponse"/> show a
-                request body in JSON format and a response body in XML
+                request body in <literal>json</literal> format and
+                a response body in <literal>xml</literal>
                 format.</para>
             <example xml:id="JSON_req">
                 <title>JSON request with headers</title>
