@@ -882,55 +882,56 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb</literallayout>
                         https://servers.api.openstack.org/v2/3542812<emphasis
                         role="bold">/servers</emphasis>.</para>
                 <table rules="all">
-                    <caption>Sample Rate Limits</caption>
+                    <caption>Sample rate limits</caption>
                     <thead>
                         <tr>
-                            <td colspan="1">Verb</td>
-                            <td colspan="2">URI</td>
-                            <td colspan="2">RegEx</td>
-                            <td colspan="1">Default</td>
+                            <td>Verb</td>
+                            <td>URI</td>
+                            <td>RegEx</td>
+                            <td>Default</td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td colspan="1">&POST;</td>
-                            <td colspan="2">*</td>
-                            <td colspan="2">.*</td>
-                            <td colspan="1">10/min</td>
+                            <td>&POST;</td>
+                            <td>*</td>
+                            <td>.*</td>
+                            <td>120/min</td>
                         </tr>
                         <tr>
-                            <td colspan="1">&POST;</td>
-                            <td colspan="2">*/servers</td>
-                            <td colspan="2">^/servers</td>
-                            <td colspan="1">50/day</td>
+                            <td>&POST;</td>
+                            <td>*/servers</td>
+                            <td>^/servers</td>
+                            <td>120/min</td>
                         </tr>
                         <tr>
-                            <td colspan="1">&PUT;</td>
-                            <td colspan="2">*</td>
-                            <td colspan="2">.*</td>
-                            <td colspan="1">10/min</td>
+                            <td>&PUT;</td>
+                            <td>*</td>
+                            <td>.*</td>
+                            <td>120/min</td>
                         </tr>
                         <tr>
-                            <td colspan="1">&GET;</td>
-                            <td colspan="2">*changes-since*</td>
-                            <td colspan="2">changes-since</td>
-                            <td colspan="1">3/min</td>
+                            <td>&GET;</td>
+                            <td>*changes-since*</td>
+                            <td>.*changes-since.*</td>
+                            <td>120/min</td>
                         </tr>
                         <tr>
-                            <td colspan="1">&DELETE;</td>
-                            <td colspan="2">*</td>
-                            <td colspan="2">.*</td>
-                            <td colspan="1">100/min</td>
+                            <td>&DELETE;</td>
+                            <td>*</td>
+                            <td>.*</td>
+                            <td>120/min</td>
+                        </tr>
+                        <tr>
+                            <td>&GET;</td>
+                            <td>*/os-fping*</td>
+                            <td>^/os-fping</td>
+                            <td>12/min</td>
                         </tr>
                     </tbody>
                 </table>
                 <para>Rate limits are applied in order relative to the
-                    verb, going from least to most specific. For
-                    example, although the threshold for &POST; to
-                    */servers is 50 per day, one cannot &POST; to
-                    */servers more than 10 times within a single
-                    minute because the rate limits for any &POST; is
-                    10/min.</para>
+                    verb, going from least to most specific.</para>
                 <para>In the event a request exceeds the thresholds
                     established for your account, a
                         <errorcode>413</errorcode> HTTP response will
@@ -2055,7 +2056,7 @@ Host: servers.api.openstack.org/v2/</literallayout>
                 <wadl:resource
                     href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/v2/wadl/os-compute-2.wadl#metadata"/>
                 <wadl:resource
-                    href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/v2/wadl/os-compute-2.wadl#MetadataKey"
+                    href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/v2/wadl/os-compute-2.wadl#ServerMetadataKey"
                 />
             </wadl:resources>
         </section>
