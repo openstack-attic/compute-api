@@ -1,0 +1,8 @@
+Verified+2: Jenkins
+Approved+1: Andreas Jaeger <jaegerandi@gmail.com>
+Code-Review+2: Andreas Jaeger <jaegerandi@gmail.com>
+Submitted-by: Jenkins
+Submitted-at: Mon, 21 Apr 2014 08:11:35 +0000
+Reviewed-on: https://review.openstack.org/89196
+Project: openstack/compute-api
+Branch: refs/heads/master
