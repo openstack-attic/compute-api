@@ -72,7 +72,7 @@
         </abstract>
         <revhistory>
             <revision>
-                <!-- ... continue addding more revisions here as you change this document using the markup shown below... -->
+
                 <date>2013-09-10</date>
                 <revdescription>
                     <itemizedlist>
@@ -84,7 +84,7 @@
                 </revdescription>
             </revision>
             <revision>
-                <!-- ... continue addding more revisions here as you change this document using the markup shown below... -->
+
                 <date>2013-05-22</date>
                 <revdescription>
                     <itemizedlist>
@@ -96,7 +96,7 @@
                 </revdescription>
             </revision>
             <revision>
-                <!-- ... continue addding more revisions here as you change this document using the markup shown below... -->
+
                 <date>2013-04-27</date>
                 <revdescription>
                     <itemizedlist>
@@ -109,7 +109,7 @@
                 </revdescription>
             </revision>
             <revision>
-                <!-- ... continue addding more revisions here as you change this document using the markup shown below... -->
+
                 <date>2013-04-17</date>
                 <revdescription>
                     <itemizedlist>
@@ -121,7 +121,7 @@
                 </revdescription>
             </revision>
             <revision>
-                <!-- ... continue addding more revisions here as you change this document using the markup shown below... -->
+
                 <date>2012-05-30</date>
                 <revdescription>
                     <itemizedlist>
@@ -135,7 +135,7 @@
                 </revdescription>
             </revision>
             <revision>
-                <!-- ... continue addding more revisions here as you change this document using the markup shown below... -->
+
                 <date>2012-05-02</date>
                 <revdescription>
                     <itemizedlist>
@@ -221,8 +221,8 @@
                                 to server and image.</para>
                         </listitem>
                         <listitem>
-                            <para>Added vcpus attribute to flavors.
-                            </para>
+                            <para>Added vcpus attribute to
+                                flavors.</para>
                         </listitem>
                         <listitem>
                             <para>The flavorRef attribute is now used
@@ -262,8 +262,8 @@
                         <listitem>
                             <para>Bought back the flavorRef and
                                 imageRef server attributes these are
-                                now only used when creating a server.
-                            </para>
+                                now only used when creating a
+                                server.</para>
                         </listitem>
                         <listitem>
                             <para>Made the create image operation a
@@ -303,13 +303,13 @@
                             <para>Compact image, server, and flavor
                                 lists should contain IDs, names, and
                                 links (Any kind of link may be
-                                included &mdash; not just self links).
-                            </para>
+                                included &mdash; not just self
+                                links).</para>
                         </listitem>
                         <listitem>
                             <para>Changed metadata URI from .../meta
-                                to .../metadata for consistency.
-                            </para>
+                                to .../metadata for
+                                consistency.</para>
                         </listitem>
                     </itemizedlist>
                 </revdescription>
@@ -319,8 +319,8 @@
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
-                            <para>Renamed Primary IP to Access IP.
-                            </para>
+                            <para>Renamed Primary IP to Access
+                                IP.</para>
                         </listitem>
                     </itemizedlist>
                 </revdescription>
@@ -337,8 +337,8 @@
                             <para>Removed sections on Content
                                 Compression, Persistent Connections,
                                 and Caching &mdash; these are operator
-                                specific. Added section on HTTP.
-                            </para>
+                                specific. Added section on
+                                HTTP.</para>
                         </listitem>
                         <listitem>
                             <para>A Location header is returned when
@@ -365,8 +365,8 @@
                         </listitem>
                         <listitem>
                             <para>We now use a single bookmark link
-                                per entity regardless of mimetype.
-                            </para>
+                                per entity regardless of
+                                mimetype.</para>
                         </listitem>
                         <listitem>
                             <para>Collections are now sorted by create
@@ -386,12 +386,12 @@
                                 state machine.</para>
                         </listitem>
                         <listitem>
-                            <para>Update to JSON collection format.
-                            </para>
+                            <para>Update to JSON collection
+                                format.</para>
                         </listitem>
                         <listitem>
-                            <para>Replace integer IDs with UUIDs.
-                            </para>
+                            <para>Replace integer IDs with
+                                UUIDs.</para>
                         </listitem>
                         <listitem>
                             <para>Removed affinityID, this will likely
@@ -406,8 +406,8 @@
                     <itemizedlist spacing="compact">
                         <listitem>
                             <para>Some minor cleanups in preparation
-                                for OpenStack Summit discussion.
-                            </para>
+                                for OpenStack Summit
+                                discussion.</para>
                         </listitem>
                     </itemizedlist>
                 </revdescription>
@@ -438,8 +438,8 @@
                         </listitem>
                         <listitem>
                             <para>IPs organized by network ID, versus
-                                showing only public and private IPs.
-                            </para>
+                                showing only public and private
+                                IPs.</para>
                         </listitem>
                         <listitem>
                             <para>Generalized affinity ID.</para>
@@ -548,15 +548,15 @@
         </section>
         <section xml:id="Request_Response_Types-d1e459">
             <title>Request and response types</title>
-            <para>The OpenStack Compute API supports both
-                  JSON and XML data serialization request and response
-                  formats.</para>
+            <para>The OpenStack Compute API supports both JSON and XML
+                data serialization request and response
+                formats.</para>
             <para>You specify the request format in the
                     <code>Content-Type</code> header in the request.
                 This header is required for operations that have a
                 request body. The syntax for the
                     <code>Content-Type</code> header is:</para>
-                <programlisting>Content-Type: application/<parameter>format</parameter></programlisting>
+            <programlisting>Content-Type: application/<parameter>format</parameter></programlisting>
             <para>Where <parameter>format</parameter> is either
                     <literal>json</literal> or <literal>xml</literal>,
                 you specify the response format by using one of the
@@ -578,13 +578,12 @@
                         request URI. For example, the
                             <literal>.xml</literal> extension in the
                         following URI request specifies that the
-                        response body is returned in
-                        XML format:
+                        response body is returned in XML format:
                         <literallayout role="monospace">&POST; /v2/010101/servers.xml</literallayout></para>
                 </listitem>
             </itemizedlist>
-            <para>If you do not specify a response format,
-                  JSON is the default.</para>
+            <para>If you do not specify a response format, JSON is the
+                default.</para>
             <para>If you specify conflicting formats in the
                     <code>Accept</code> header and the query
                 extension, the format specified in the query extension
@@ -595,8 +594,8 @@
             <para>You can serialize a response in a different format
                 from the request format. <xref linkend="JSON_req"/>
                 and <xref linkend="ImageCreateFullResponse"/> show a
-                request body in JSON format and a response body
-                in XML format.</para>
+                request body in JSON format and a response body in XML
+                format.</para>
             <example xml:id="JSON_req">
                 <title>JSON request with headers</title>
                 <literallayout role="monospace"><?db-font-size 70%?>POST /v2/010101/servers HTTP/1.1
@@ -843,8 +842,8 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb</literallayout>
                 indicates that the resource has been removed.
                 Implementations are not required to keep track of
                 deleted resources indefinitely, so sending a changes
-                since time in the distant past may miss deletions.
-            </para>
+                since time in the distant past may miss
+                deletions.</para>
         </section>
         <?hard-pagebreak?>
         <section xml:id="Limits-d1e846">
@@ -1007,47 +1006,6 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb</literallayout>
                         <wadl:method href="#listLimits"/>
                     </wadl:resource>
                 </wadl:resources>
-                <!-- <informaltable rules="all">
-                    <thead>
-                        <tr>
-                            <td colspan="1">Verb</td>
-                            <td colspan="2">URI</td>
-                            <td colspan="3">Description</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="1">&GET;</td>
-                            <td colspan="2">/limits</td>
-                            <td colspan="3">Returns the current limits
-                                for your account</td>
-                        </tr>
-                    </tbody>
-                </informaltable>
-                <simpara> Normal Response Code(s):
-                        <returnvalue>200</returnvalue>,
-                        <returnvalue>203</returnvalue>
-                </simpara>
-                <simpara> Error Response Code(s): computeFault
-                        (<errorcode>400</errorcode>,
-                        <errorcode>500</errorcode>, &hellip;),
-                    serviceUnavailable (<errorcode>503</errorcode>),
-                    unauthorized (<errorcode>401</errorcode>),
-                    forbidden (<errorcode>403</errorcode>), badRequest
-                        (<errorcode>400</errorcode>), badMethod
-                        (<errorcode>405</errorcode>), overLimit
-                        (<errorcode>413</errorcode>) </simpara>
-                <para>This operation does not require a request
-                    body.</para>
-                <example>
-                    <title>Limit Response: XML</title>
-                    <programlisting language="xml"><xi:include href="samples/limits.xml" parse="text"/></programlisting>
-                </example>
-                <?hard-pagebreak?>
-                <example>
-                    <title>Limit Response: JSON</title>
-                    <programlisting language="json"><?db-font-size 75% ?><xi:include href="samples/limits.json" parse="text"/></programlisting>
-                </example>-->
             </section>
         </section>
         <section xml:id="Versions-d1e1193">
@@ -1087,8 +1045,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                 <para>The MIME type versioning approach allows for the
                     creating of permanent links, because the version
                     scheme is not specified in the URI path:
-                    https://api.servers.openstack.org/224532/servers/123.
-                </para>
+                    https://api.servers.openstack.org/224532/servers/123.</para>
             </note>
             <?hard-pagebreak?>
             <para>If a request is made without a version specified in
@@ -1219,18 +1176,6 @@ Host: servers.api.openstack.org/v2/</literallayout>
                     contains the most accurate and up-to-date
                     description of the API service.</para>
             </note>
-            <!-- <section xml:id="compute_versions">
-                <title>Versions</title>
-                <para>Get information about a specific version of the
-                    API.</para>
-                <wadl:resources
-                    xmlns:wadl="http://wadl.dev.java.net/2009/02">
-                    <wadl:resource
-                        href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/v2/wadl/os-compute-2.wadl#version">
-                        <wadl:method href="#versionDetails"/>
-                    </wadl:resource>
-                </wadl:resources>
-            </section>-->
         </section>
         <?hard-pagebreak?>
         <section xml:id="Extensions-d1e1444">
@@ -1293,17 +1238,17 @@ Host: servers.api.openstack.org/v2/</literallayout>
                 <programlisting language="xml"><?db-font-size 90%?><xi:include href="samples/ext-action.xml" parse="text"/></programlisting>
             </example>
             <example xml:id="CBSAJ">
-                <title>Extended action: JSON respone</title>
+                <title>Extended action: JSON response</title>
                 <programlisting language="json"><?db-font-size 90%?><xi:include href="samples/ext-action.json" parse="text"/></programlisting>
             </example>
-            <wadl:resources
+            <!-- <wadl:resources
                 xmlns:wadl="http://wadl.dev.java.net/2009/02">
                 <wadl:resource
                     href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/v2/wadl/os-compute-2.wadl#extensions">
                     <wadl:method href="#listExtensions"/>
                     <wadl:method href="#getExtension"/>
                 </wadl:resource>
-            </wadl:resources>
+            </wadl:resources>-->
         </section>
         <?hard-pagebreak?>
         <section xml:id="Faults-d1e1724">
@@ -1513,108 +1458,102 @@ Host: servers.api.openstack.org/v2/</literallayout>
                     on the server status when you complete a list
                     servers request. The server status is returned in
                     the response body. The server status is one of the
-                    following values:<itemizedlist
-                        xml:id="server_status">
-                        <title>Server status values</title>
-                        <listitem>
-                            <para><code>ACTIVE</code>. The server is
-                                active.</para>
-                        </listitem>
-                        <listitem>
-                            <para><code>BUILD</code>. The server has
-                                not finished the original build
-                                process.</para>
-                        </listitem>
-                        <listitem>
-                            <para><code>DELETED</code>. The server is
-                                deleted.</para>
-                        </listitem>
-                        <listitem>
-                            <para><code>ERROR</code>. The server is in
-                                error.</para>
-                        </listitem>
-                        <listitem>
-                            <para><code>HARD_REBOOT</code>. The server
-                                is hard rebooting. This is equivalent
-                                to pulling the power plug on a
-                                physical server, plugging it back in,
-                                and rebooting it.</para>
-                        </listitem>
-                        <listitem>
-                            <para><code>PASSWORD</code>. The password
-                                is being reset on the server.</para>
-                        </listitem>
-                        <listitem>
-                            <para><code>REBOOT</code>. The server is
-                                in a soft reboot state. A reboot
-                                command was passed to the operating
-                                system.</para>
-                        </listitem>
-                        <listitem>
-                            <para><code>REBUILD</code>. The server is
-                                currently being rebuilt from an
-                                image.</para>
-                        </listitem>
-                        <listitem>
-                            <para><code>RESCUE</code>. The server is
-                                in rescue mode.</para>
-                        </listitem>
-                        <listitem>
-                            <para><code>RESIZE</code>. Server is
-                                performing the differential copy of
-                                data that changed during its initial
-                                copy. Server is down for this
-                                stage.</para>
-                        </listitem>
-                        <listitem>
-                            <para><code>REVERT_RESIZE</code>. The
-                                resize or migration of a server failed
-                                for some reason. The destination
-                                server is being cleaned up and the
-                                original source server is restarting.
-                            </para>
-                        </listitem>
-                        <listitem>
-                            <para><code>SHUTOFF</code>. The virtual
-                                machine (VM) was powered down by the
-                                user, but not through the OpenStack
-                                Compute API. For example, the user
-                                issued a <code>shutdown -h</code>
-                                command from within the server
-                                instance. If the OpenStack Compute
-                                manager detects that the VM was
-                                powered down, it transitions the
-                                server instance to the SHUTOFF status.
-                                If you use the OpenStack Compute API
-                                to restart the instance, the instance
-                                might be deleted first, depending on
-                                the value in the
-                                   <parameter>shutdown_terminate</parameter>
-                                database field on the Instance
-                                model.</para>
-                        </listitem>
-                        <listitem>
-                            <para><code>SUSPENDED</code>. The server
-                                is suspended, either by request or
-                                necessity. This status appears for
-                                only the following hypervisors:
-                                XenServer/XCP, KVM, and ESXi. Review
-                                support tickets or contact Rackspace
-                                support to determine why the server is
-                                in this state.</para>
-                        </listitem>
-                        <listitem>
-                            <para><code>UNKNOWN</code>. The state of
-                                the server is unknown. Contact your
-                                cloud provider.</para>
-                        </listitem>
-                        <listitem>
-                            <para><code>VERIFY_RESIZE</code>. System
-                                is awaiting confirmation that the
-                                server is operational after a move or
-                                resize.</para>
-                        </listitem>
-                    </itemizedlist></para>
+                    following values:</para>
+                <itemizedlist xml:id="server_status">
+                    <title>Server status values</title>
+                    <listitem>
+                        <para><code>ACTIVE</code>. The server is
+                            active.</para>
+                    </listitem>
+                    <listitem>
+                        <para><code>BUILD</code>. The server has not
+                            finished the original build
+                            process.</para>
+                    </listitem>
+                    <listitem>
+                        <para><code>DELETED</code>. The server is
+                            deleted.</para>
+                    </listitem>
+                    <listitem>
+                        <para><code>ERROR</code>. The server is in
+                            error.</para>
+                    </listitem>
+                    <listitem>
+                        <para><code>HARD_REBOOT</code>. The server is
+                            hard rebooting. This is equivalent to
+                            pulling the power plug on a physical
+                            server, plugging it back in, and rebooting
+                            it.</para>
+                    </listitem>
+                    <listitem>
+                        <para><code>PASSWORD</code>. The password is
+                            being reset on the server.</para>
+                    </listitem>
+                    <listitem>
+                        <para><code>REBOOT</code>. The server is in a
+                            soft reboot state. A reboot command was
+                            passed to the operating system.</para>
+                    </listitem>
+                    <listitem>
+                        <para><code>REBUILD</code>. The server is
+                            currently being rebuilt from an
+                            image.</para>
+                    </listitem>
+                    <listitem>
+                        <para><code>RESCUE</code>. The server is in
+                            rescue mode.</para>
+                    </listitem>
+                    <listitem>
+                        <para><code>RESIZE</code>. Server is
+                            performing the differential copy of data
+                            that changed during its initial copy.
+                            Server is down for this stage.</para>
+                    </listitem>
+                    <listitem>
+                        <para><code>REVERT_RESIZE</code>. The resize
+                            or migration of a server failed for some
+                            reason. The destination server is being
+                            cleaned up and the original source server
+                            is restarting.</para>
+                    </listitem>
+                    <listitem>
+                        <para><code>SHUTOFF</code>. The virtual
+                            machine (VM) was powered down by the user,
+                            but not through the OpenStack Compute API.
+                            For example, the user issued a
+                                <code>shutdown -h</code> command from
+                            within the server instance. If the
+                            OpenStack Compute manager detects that the
+                            VM was powered down, it transitions the
+                            server instance to the SHUTOFF status. If
+                            you use the OpenStack Compute API to
+                            restart the instance, the instance might
+                            be deleted first, depending on the value
+                            in the
+                                <parameter>shutdown_terminate</parameter>
+                            database field on the Instance
+                            model.</para>
+                    </listitem>
+                    <listitem>
+                        <para><code>SUSPENDED</code>. The server is
+                            suspended, either by request or necessity.
+                            This status appears for only the following
+                            hypervisors: XenServer/XCP, KVM, and ESXi.
+                            Review support tickets or contact
+                            Rackspace support to determine why the
+                            server is in this state.</para>
+                    </listitem>
+                    <listitem>
+                        <para><code>UNKNOWN</code>. The state of the
+                            server is unknown. Contact your cloud
+                            provider.</para>
+                    </listitem>
+                    <listitem>
+                        <para><code>VERIFY_RESIZE</code>. System is
+                            awaiting confirmation that the server is
+                            operational after a move or resize.</para>
+                    </listitem>
+                </itemizedlist>
                 <para>The compute provisioning algorithm has an
                     anti-affinity property that attempts to spread
                     customer VMs across hosts. Under certain
@@ -1683,116 +1622,6 @@ Host: servers.api.openstack.org/v2/</literallayout>
                         <wadl:method href="#createServer"/>
                     </wadl:resource>
                 </wadl:resources>
-                <!--<para><?rax-fo keep-together?>The following table
-                    describes the required and optional attributes
-                    that you can specify in the request body:</para>
-                <para>
-                    <table rules="all">
-                        <caption>Create Server Request
-                            Attributes</caption>
-                        <col width="20%"/>
-                        <col width="60%"/>
-                        <col width="20%"/>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Required</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>imageRef</td>
-                                <td>
-                                   <para>The image reference for the
-                                   desired image for your server
-                                   instance.</para>
-                                   <para>Specify as an ID or full URL.
-                                   To get a list of available images,
-                                   see <xref
-                                   linkend="List_Images-d1e4435"
-                                   />.</para>
-                                </td>
-                                <td>Yes</td>
-                            </tr>
-                            <tr>
-                                <td>flavorRef</td>
-                                <td>
-                                   <para>The flavor reference for the
-                                   desired flavor for your server
-                                   instance.</para>
-                                   <para>Specify as an ID or full URL.
-                                   To get a list of available flavors,
-                                   see <xref
-                                   linkend="List_Flavors-d1e4188"
-                                   />.</para>
-                                </td>
-                                <td>Yes</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                   <para>name</para>
-                                </td>
-                                <td>
-                                   <para>The server name. Choose any
-                                   name you like.</para>
-                                </td>
-                                <td>Yes</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                   <para>metadata</para>
-                                </td>
-                                <td>Metadata key and value pairs. For
-                                   information, see <xref
-                                   linkend="Server_Metadata-d1e2529"
-                                   />.</td>
-                                <td>No</td>
-                            </tr>
-                            <tr>
-                                <td valign="top">
-                                   <para>personality</para>
-                                </td>
-                                <td>
-                                   <para>File path and contents. For
-                                   information, see <xref
-                                   linkend="Server_Personality-d1e2543"
-                                   />.</para>
-                                </td>
-                                <td>No</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                   <para>networks</para>
-                                </td>
-                                <td>List of networks and their
-                                   attributes. For information, see
-                                   <xref
-                                   linkend="Server_Networks-d1e2530"
-                                   />.</td>
-                                <td>No</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </para>
-                <?hard-pagebreak?>
-                <example>
-                    <title>Server Create Request: JSON</title>
-                    <programlisting language="json"><xi:include href="samples/server-post-req.json" parse="text"/></programlisting>
-                </example>
-                <example>
-                    <title>Server Create Response: JSON</title>
-                    <programlisting language="json"><?db-font-size 90%?><xi:include href="samples/server-post-resp.json" parse="text"/></programlisting>
-                </example>
-                <?hard-pagebreak?>
-                <example>
-                    <title>Server Create Request: XML</title>
-                    <programlisting language="xml"><xi:include href="samples/server-post-req.xml" parse="text"/></programlisting>
-                </example>
-                <example>
-                    <title>Server Create Response: XML</title>
-                    <programlisting language="xml"><xi:include href="samples/server-post-resp.xml" parse="text"/></programlisting>
-                </example>-->
                 <section xml:id="Server_Passwords-d1e2510">
                     <title>Server passwords</title>
                     <para>A password may be specified when creating
@@ -1848,48 +1677,47 @@ Host: servers.api.openstack.org/v2/</literallayout>
                         If you require significant customization,
                         create a custom image.</para>
                     <para>Follow these guidelines when you inject
-                        files: <itemizedlist>
-                            <listitem>
-                                <para>The maximum size of the file
-                                   path data is 255 bytes.</para>
-                            </listitem>
-                            <listitem>
-                                <para>Encode the file contents as a
-                                   Base64 string. The maximum size of
-                                   the file contents is determined by
-                                   the compute provider and may vary
-                                   based on the image that is used to
-                                   create the server</para>
-                                <note>
-                                   <para>The maximum limit refers to
-                                   the number of bytes in the decoded
-                                   data and not the number of
-                                   characters in the encoded
-                                   data.</para>
-                                </note>
-                            </listitem>
-                            <listitem>
-                                <para>You can inject text files only.
-                                   You cannot inject binary or zip
-                                   files into a new build.</para>
-                            </listitem>
-                            <listitem>
-                                <para>The maximum number of file
-                                   path/content pairs that you can
-                                   supply is also determined by the
-                                   compute provider and is defined by
-                                   the maxPersonality absolute limit.
-                                </para>
-                            </listitem>
-                            <listitem>
-                                <para>The absolute limit,
-                                   maxPersonalitySize, is a byte limit
-                                   that is guaranteed to apply to all
-                                   images in the deployment. Providers
-                                   can set additional per-image
-                                   personality limits.</para>
-                            </listitem>
-                        </itemizedlist></para>
+                        files:</para>
+                    <itemizedlist>
+                        <listitem>
+                            <para>The maximum size of the file path
+                                data is 255 bytes.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Encode the file contents as a Base64
+                                string. The maximum size of the file
+                                contents is determined by the compute
+                                provider and may vary based on the
+                                image that is used to create the
+                                server</para>
+                            <note>
+                                <para>The maximum limit refers to the
+                                   number of bytes in the decoded data
+                                   and not the number of characters in
+                                   the encoded data.</para>
+                            </note>
+                        </listitem>
+                        <listitem>
+                            <para>You can inject text files only. You
+                                cannot inject binary or zip files into
+                                a new build.</para>
+                        </listitem>
+                        <listitem>
+                            <para>The maximum number of file
+                                path/content pairs that you can supply
+                                is also determined by the compute
+                                provider and is defined by the
+                                maxPersonality absolute limit.</para>
+                        </listitem>
+                        <listitem>
+                            <para>The absolute limit,
+                                maxPersonalitySize, is a byte limit
+                                that is guaranteed to apply to all
+                                images in the deployment. Providers
+                                can set additional per-image
+                                personality limits.</para>
+                        </listitem>
+                    </itemizedlist>
                     <para>The file injection might not occur until
                         after the server is built and booted.</para>
                     <para>During file injection, any existing files
