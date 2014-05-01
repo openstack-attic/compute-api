@@ -123,7 +123,7 @@
                                    <include name="**/*.wadl"/>
                                    </fileset>
                                 </copy>
-                                <!--Deletes leftover uneeded directories -->
+                                <!--Deletes leftover unneeded directories -->
                                 <delete
                                    dir="${basedir}/target/docbkx/webhelp/os-compute-devguide"/>
                             </postProcess>

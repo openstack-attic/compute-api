@@ -1293,17 +1293,17 @@ Host: servers.api.openstack.org/v2/</literallayout>
                 <programlisting language="xml"><?db-font-size 90%?><xi:include href="samples/ext-action.xml" parse="text"/></programlisting>
             </example>
             <example xml:id="CBSAJ">
-                <title>Extended action: JSON respone</title>
+                <title>Extended action: JSON response</title>
                 <programlisting language="json"><?db-font-size 90%?><xi:include href="samples/ext-action.json" parse="text"/></programlisting>
             </example>
-            <wadl:resources
+            <!--<wadl:resources
                 xmlns:wadl="http://wadl.dev.java.net/2009/02">
                 <wadl:resource
                     href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/v2/wadl/os-compute-2.wadl#extensions">
                     <wadl:method href="#listExtensions"/>
                     <wadl:method href="#getExtension"/>
                 </wadl:resource>
-            </wadl:resources>
+            </wadl:resources>-->
         </section>
         <?hard-pagebreak?>
         <section xml:id="Faults-d1e1724">
