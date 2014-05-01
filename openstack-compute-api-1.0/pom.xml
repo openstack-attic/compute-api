@@ -109,7 +109,7 @@
                                     file="${basedir}/target/docbkx/pdf/openstack-compute-api-1.0/cs-devguide.pdf"
                                     tofile="${basedir}/target/docbkx/webhelp/trunk/openstack-compute/developer/openstack-compute-api-1.0/cs-devguide-trunk.pdf"/>
 
-                                <!--Deletes leftover uneeded directories -->
+                                <!--Deletes leftover unneeded directories -->
                                 <delete
                                     dir="${basedir}/target/docbkx/webhelp/openstack-compute-api-1.0"/>
                             </postProcess>
