@@ -1,16 +1,16 @@
 {
-    "server" : {
-        "name" : "new-server-test",
-        "imageId" : 1,
-        "flavorId" : 1,
-        "metadata" : {
-            "My Server Name" : "Apache1" 
+    "server": {
+        "name": "new-server-test",
+        "imageId": 1,
+        "flavorId": 1,
+        "metadata": {
+            "My Server Name": "Apache1"
         },
-        "personality" : [
+        "personality": [
             {
-                "path" : "/etc/banner.txt",
-                "contents" : "*(&)(*^^&%" 
-            } 
-        ] 
+                "path": "/etc/banner.txt",
+                "contents": "*(&)(*^^&%"
+            }
+        ]
     }
 }

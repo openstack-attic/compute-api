@@ -1,7 +1,7 @@
 {
-    "computeFault" : {
-        "code" : 500,
-        "message" : "Fault!",
-        "details" : "Error Details..."
+    "computeFault": {
+        "code": 500,
+        "message": "Fault!",
+        "details": "Error Details..."
     }
 }

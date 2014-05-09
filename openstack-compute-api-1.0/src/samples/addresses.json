@@ -1,10 +1,10 @@
 {
-    "addresses" : {
-        "public" : [
+    "addresses": {
+        "public": [
             "67.23.10.132",
             "67.23.10.131"
         ],
-        "private" : [
+        "private": [
             "10.176.42.16"
         ]
     }

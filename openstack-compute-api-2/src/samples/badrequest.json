@@ -1,7 +1,7 @@
 {
-    "badRequest" : {
-        "code" : 400,
-        "message" : "Bad Request",
-        "details" : "Error Details..."
+    "badRequest": {
+        "code": 400,
+        "message": "Bad Request",
+        "details": "Error Details..."
     }
 }

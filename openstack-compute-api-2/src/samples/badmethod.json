@@ -1,8 +1,7 @@
-
 {
-    "badMethod" : {
-        "code" : 405,
-        "message" : "Bad Method",
-        "details" : "Error Details..."
+    "badMethod": {
+        "code": 405,
+        "message": "Bad Method",
+        "details": "Error Details..."
     }
 }

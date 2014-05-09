@@ -6,12 +6,12 @@
         "name": "newName",
         "created": "2010-11-11T12:00:00Z",
         "hostId": "e4d909c290d0fb1ca068ffaddf22cbd0",
-        "accessIPv4" : "67.23.10.138",
-        "accessIPv6" : "::babe:67.23.10.138",
+        "accessIPv4": "67.23.10.138",
+        "accessIPv6": "::babe:67.23.10.138",
         "progress": 0,
         "status": "REBUILD",
         "adminPass": "GFf1j9aP",
-        "image" : {
+        "image": {
             "id": "52415800-8b69-11e0-9b19-734f6f006e54",
             "name": "CentOS 5.2",
             "links": [
@@ -25,7 +25,7 @@
                 }
             ]
         },
-        "flavor" : {
+        "flavor": {
             "id": "52415800-8b69-11e0-9b19-734f1195ff37",
             "name": "256 MB Server",
             "links": [
@@ -43,7 +43,7 @@
             "My Server Name": "Apache1"
         },
         "addresses": {
-            "public" : [
+            "public": [
                 {
                     "version": 4,
                     "addr": "67.23.10.138"
@@ -53,7 +53,7 @@
                     "addr": "::babe:67.23.10.138"
                 }
             ],
-            "private" : [
+            "private": [
                 {
                     "version": 4,
                     "addr": "10.176.42.19"

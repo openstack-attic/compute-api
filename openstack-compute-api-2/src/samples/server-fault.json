@@ -8,17 +8,17 @@
         "hostId": "e4d909c290d0fb1ca068ffafff22cbd0",
         "status": "ERROR",
         "progress": 66,
-        "image" : {
+        "image": {
             "id": "52415800-8b69-11e0-9b19-734f6f007777"
         },
-        "flavor" : {
+        "flavor": {
             "id": "52415800-8b69-11e0-9b19-734f216543fd"
         },
-        "fault" : {
-            "code" : 404,
+        "fault": {
+            "code": 404,
             "created": "2010-08-10T11:59:59Z",
-            "message" : "Could not find image 52415800-8b69-11e0-9b19-734f6f007777",
-            "details" : "Fault details"
+            "message": "Could not find image 52415800-8b69-11e0-9b19-734f6f007777",
+            "details": "Fault details"
         },
         "links": [
             {

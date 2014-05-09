@@ -1,5 +1,5 @@
 {
-  "meta" : {
-    "foo" : "Bar Value"
-  }
+    "meta": {
+        "foo": "Bar Value"
+    }
 }

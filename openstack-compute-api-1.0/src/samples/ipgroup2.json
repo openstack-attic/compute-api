@@ -1,6 +1,6 @@
 {
-    "sharedIpGroup" : {
-        "name" : "Shared IP Group 1",
-        "server" : 422
+    "sharedIpGroup": {
+        "name": "Shared IP Group 1",
+        "server": 422
     }
 }

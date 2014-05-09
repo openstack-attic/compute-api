@@ -1,6 +1,6 @@
 {
-    "shareIp" : {
-        "sharedIpGroupId" : 1234,
-        "configureServer" : true
+    "shareIp": {
+        "sharedIpGroupId": 1234,
+        "configureServer": true
     }
 }
