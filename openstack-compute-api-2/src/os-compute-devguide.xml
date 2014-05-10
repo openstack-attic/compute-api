@@ -603,7 +603,7 @@ Host: servers.api.openstack.org
 Content-Type: application/json
 Accept: application/xml
 X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb</literallayout>
-                <programlisting language="json"><?db-font-size 70%?><xi:include href="samples/server-post-req.json" parse="text"/></programlisting>
+                <programlisting language="json"><?db-font-size 70%?><xi:include href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/v2/api_samples/server-post-req.json" parse="text"/></programlisting>
             </example>
             <?hard-pagebreak?>
             <para><xref linkend="ImageCreateFullResponse"/> shows the
@@ -618,7 +618,7 @@ Location: https://servers.api.openstack.org/v2/010101/servers/06dba123-2c7e-4639
 Content-Type: application/xml
 X-Compute-Request-Id: req-ab05045a-452f-4b46-be0d-86494da02a2b
 Server: Jetty(8.0.y.z-SNAPSHOT)</literallayout>
-                <programlisting language="xml"><?db-font-size 70%?><xi:include href="samples/server-post-resp.xml" parse="text"/></programlisting>
+                <programlisting language="xml"><?db-font-size 70%?><xi:include href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/v2/api_samples/server-post-resp.xml" parse="text"/></programlisting>
             </example>
             <para>The following example shows an alternative method of
                 achieving the same result. The following request uses
@@ -635,7 +635,7 @@ Server: Jetty(8.0.y.z-SNAPSHOT)</literallayout>
 Host: servers.api.openstack.org
 Content-Type: application/json
 X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb</literallayout>
-                <programlisting language="json"><?db-font-size 70%?><xi:include href="samples/server-post-req.json" parse="text"/></programlisting>
+                <programlisting language="json"><?db-font-size 70%?><xi:include href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/v2/api_samples/server-post-req.json" parse="text"/></programlisting>
             </example>
         </section>
         <?hard-pagebreak?>
@@ -659,11 +659,11 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb</literallayout>
             </example>
             <example>
                 <title>Full image reference: JSON request</title>
-                <programlisting language="json"><xi:include href="samples/server-post-req.json" parse="text"/></programlisting>
+                <programlisting language="json"><xi:include href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/v2/api_samples/server-post-req.json" parse="text"/></programlisting>
             </example>
             <example>
                 <title>Full image reference: XML request</title>
-                <programlisting language="xml"><xi:include href="samples/server-post-req.xml" parse="text"/></programlisting>
+                <programlisting language="xml"><xi:include href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/v2/api_samples/server-post-req.xml" parse="text"/></programlisting>
             </example>
             <?hard-pagebreak?>
             <para>For convenience, resources contain links to
@@ -1105,7 +1105,7 @@ Host: servers.api.openstack.org</literallayout>
                 body.</para>
             <example>
                 <title>List versions: XML response</title>
-                <programlisting language="xml"><xi:include href="samples/versions.xml" parse="text"/></programlisting>
+                <programlisting language="xml"><xi:include href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/v2/api_samples/versions-get-resp.xml" parse="text"/></programlisting>
             </example>
             <?hard-pagebreak?>
             <example>
@@ -1114,7 +1114,7 @@ Host: servers.api.openstack.org</literallayout>
             </example>
             <example>
                 <title>List versions: JSON response</title>
-                <programlisting language="json"><?db-font-size 80% ?><xi:include href="samples/versions.json" parse="text"/></programlisting>
+                <programlisting language="json"><?db-font-size 80% ?><xi:include href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/v2/api_samples/versions-get-resp.json" parse="text"/></programlisting>
             </example>
             <?hard-pagebreak?>
             <para>You can also obtain additional information about a
@@ -1153,7 +1153,7 @@ Host: servers.api.openstack.org/v2/</literallayout>
                 body</para>
             <example>
                 <title>Get version details: XML response</title>
-                <programlisting language="xml"><xi:include href="samples/version.xml" parse="text"/></programlisting>
+                <programlisting language="xml"><xi:include href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/v2/api_samples/version-get-resp.xml" parse="text"/></programlisting>
             </example>
             <?hard-pagebreak?>
             <example>
@@ -1163,7 +1163,7 @@ Host: servers.api.openstack.org/v2/</literallayout>
             <?hard-pagebreak?>
             <example>
                 <title>Get version details: JSON response</title>
-                <programlisting language="json"><?db-font-size 90%?><xi:include href="samples/version.json" parse="text"/></programlisting>
+                <programlisting language="json"><?db-font-size 90%?><xi:include href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/v2/api_samples/version-get-resp.json" parse="text"/></programlisting>
             </example>
             <para>The detailed version response contains pointers to
                 both a human-readable and a machine-processable
