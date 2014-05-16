@@ -2,40 +2,24 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
+    <parent>
+        <groupId>org.openstack.docs</groupId>
+        <artifactId>parent-pom</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>org.openstack.docs</groupId>
-    <artifactId>openstack-guide</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <artifactId>openstack-compute-api-v1</artifactId>
     <packaging>jar</packaging>
-    <name>OpenStack Compute Developer Guide API 1.0</name>
+    <name>OpenStack Compute API v1.0 Reference</name>
+    <properties>
+        <!-- This is set by Jenkins according to the branch. -->
+        <release.path.name>local</release.path.name>
+        <comments.enabled>1</comments.enabled>
+    </properties>
     <!-- ################################################ -->
     <!-- USE "mvn clean generate-sources" to run this POM -->
     <!-- ################################################ -->
-    <profiles>
-        <profile>
-            <id>Rackspace Research Repositories</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <repositories>
-                <repository>
-                    <id>rackspace-research</id>
-                    <name>Rackspace Research Repository</name>
-                    <url>http://maven.research.rackspacecloud.com/content/groups/public/</url>
-                </repository>
-            </repositories>
-            <pluginRepositories>
-                <pluginRepository>
-                    <id>rackspace-research</id>
-                    <name>Rackspace Research Repository</name>
-                    <url>http://maven.research.rackspacecloud.com/content/groups/public/</url>
-                </pluginRepository>
-            </pluginRepositories>
-        </profile>
-    </profiles>
-
     <build>
         <sourceDirectory>src</sourceDirectory>
         <resources>
@@ -47,11 +31,10 @@
             </resource>
         </resources>
         <plugins>
-
             <plugin>
                 <groupId>com.rackspace.cloud.api</groupId>
                 <artifactId>clouddocs-maven-plugin</artifactId>
-                <version>1.15.0</version>
+               <!-- version is set in ../pom.xml file -->
                 <executions>
                     <execution>
                         <id>goal1</id>
@@ -93,7 +76,6 @@
                             <sectionLabelIncludesComponentLabel>0</sectionLabelIncludesComponentLabel>
                             <postProcess>
                                 <!-- Copies the figures to the correct location for webhelp -->
-
                                 <!-- Why is this necessary? -->
                                 <mkdir dir="${basedir}/target/docbkx/webhelp/openstack-compute-api-1.0/cs-devguide"/>
                                 <copy
@@ -103,12 +85,10 @@
                                         <include name="**/*" />
                                     </fileset>
                                 </copy>
-
                                 <!--Moves PDFs to the needed placement -->
                                 <move failonerror="false"
                                     file="${basedir}/target/docbkx/pdf/openstack-compute-api-1.0/cs-devguide.pdf"
                                     tofile="${basedir}/target/docbkx/webhelp/trunk/openstack-compute/developer/openstack-compute-api-1.0/cs-devguide-trunk.pdf"/>
-
                                 <!--Deletes leftover unneeded directories -->
                                 <delete
                                     dir="${basedir}/target/docbkx/webhelp/openstack-compute-api-1.0"/>
