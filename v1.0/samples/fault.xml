@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cloudServersFault
+  xmlns="http://docs.rackspacecloud.com/servers/api/v1.0" code="500">
+  <message>Fault!</message>
+  <details>Error Details...</details>
+</cloudServersFault>

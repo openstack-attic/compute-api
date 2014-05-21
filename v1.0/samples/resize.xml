@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resize xmlns="http://docs.rackspacecloud.com/servers/api/v1.0"
+        flavorId="3"/>
