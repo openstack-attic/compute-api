@@ -1,4 +1,0 @@
-<resizeNotAllowed xmlns="http://docs.rackspacecloud.com/servers/api/v1.0" code="403">
-  <message>Resize Not Allowed</message>
-  <details>Error Details...</details>
-</resizeNotAllowed>
