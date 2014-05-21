@@ -1,4 +1,0 @@
-<badMediaType xmlns="http://docs.rackspacecloud.com/servers/api/v1.0" code="415">
-  <message>Bad Media Type</message>
-  <details>Error Details...</details>
-</badMediaType>
