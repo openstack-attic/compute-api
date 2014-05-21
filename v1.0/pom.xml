@@ -101,7 +101,7 @@
                     <xincludeSupported>true</xincludeSupported>
                     <sourceDirectory>src</sourceDirectory>
                     <includes>
-                        cs-devguide.xml
+                        bk_compute_api_ref_v1.xml
                     </includes>
                     <profileSecurity>reviewer</profileSecurity>
                     <branding>openstack</branding>

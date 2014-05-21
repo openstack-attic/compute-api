@@ -13,21 +13,21 @@
 
         <!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
                  <imageobject role="fo">
-                 <imagedata fileref="../../figures/Check_mark_23x20_02.svg"
+                 <imagedata fileref="../figures/Check_mark_23x20_02.svg"
                              format="SVG" scale="60"/>
                  </imageobject>
                  <imageobject role="html">
-                 <imagedata fileref="../../figures/Check_mark_23x20_02.png"/>
+                 <imagedata fileref="../figures/Check_mark_23x20_02.png"/>
                 </imageobject>
               </inlinemediaobject>'>
 
         <!ENTITY ARROW  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
                  <imageobject role="fo">
-                 <imagedata fileref="../../figures/Arrow_east.svg"
+                 <imagedata fileref="../figures/Arrow_east.svg"
                              format="SVG" scale="60"/>
                  </imageobject>
                  <imageobject role="html">
-                 <imagedata fileref="../../figures/Arrow_east.png"
+                 <imagedata fileref="../figures/Arrow_east.png"
                           />
                 </imageobject>
               </inlinemediaobject>'>
