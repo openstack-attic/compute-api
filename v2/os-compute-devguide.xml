@@ -13,14 +13,14 @@
 <!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
  <!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
                  <imageobject>
-                  <imagedata fileref="../../figures/Check_mark_23x20_02.svg"
+                  <imagedata fileref="../figures/Check_mark_23x20_02.svg"
                              format="SVG" scale="60"/>
                 </imageobject>
               </inlinemediaobject>'>
 
 <!ENTITY ARROW  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
                  <imageobject>
-                  <imagedata fileref="../../figures/Arrow_east.svg"
+                  <imagedata fileref="../figures/Arrow_east.svg"
                              format="SVG" scale="60"/>
                 </imageobject>
               </inlinemediaobject>'>
@@ -33,9 +33,9 @@
     xmlns:html="http://www.w3.org/1999/xhtml"
     xmlns:db="http://docbook.org/ns/docbook" version="5.0"
     xml:id="os-cs-devguide">
-    <title>OpenStack Compute API v2 and Extensions Reference</title>
+    <title>OpenStack Compute API v2 Reference</title>
     <?rax title.font.size="26px" subtitle.font.size="26px"?>
-    <titleabbrev>Compute API and Extensions Reference</titleabbrev>
+    <titleabbrev>Compute API Reference</titleabbrev>
     <info>
         <author>
             <personname>
@@ -55,7 +55,7 @@
             <year>2014</year>
             <holder>OpenStack Foundation</holder>
         </copyright>
-        <releaseinfo>API v2</releaseinfo>
+        <releaseinfo>API v2 and extensions</releaseinfo>
         <productname>OpenStack Compute</productname>
         <pubdate/>
         <legalnotice role="apache2">

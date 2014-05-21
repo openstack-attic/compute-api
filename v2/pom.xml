@@ -20,7 +20,7 @@
     <!-- USE "mvn clean generate-sources" to run this POM -->
     <!-- ################################################ -->
     <build>
-        <sourceDirectory>src</sourceDirectory>
+        <sourceDirectory>.</sourceDirectory>
         <resources>
             <resource>
                 <directory>target/docbkx/pdf</directory>
@@ -74,39 +74,39 @@
                                 <!-- Copies schema to a folder and styling for the schemas so a browser can display them -->
                                 <copy
                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/xsd">
-                                   <fileset dir="${basedir}/src/xsd">
+                                   <fileset dir="${basedir}/xsd">
                                    <include name="**/*.*"/>
                                    </fileset>
                                 </copy>
                                 <copy
                                     todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/xslt">
-                                   <fileset dir="${basedir}/src/xslt">
+                                   <fileset dir="${basedir}/xslt">
                                    <include name="**/*.*"/>
                                    </fileset>
                                 </copy>
                                 <copy
                                     todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/style">
-                                   <fileset dir="${basedir}/src/style">
+                                   <fileset dir="${basedir}/style">
                                    <include name="**/*.*"/>
                                    </fileset>
                                 </copy>
                                 <copy
                                     todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/js">
-                                   <fileset dir="${basedir}/src/js">
+                                   <fileset dir="${basedir}/js">
                                    <include name="**/*.*"/>
                                    </fileset>
                                 </copy>
                                 <copy
                                     todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/samples">
                                    <fileset
-                                   dir="${basedir}/src/samples">
+                                   dir="${basedir}/samples">
                                    <include name="**/*.*"/>
                                    </fileset>
                                 </copy>
                                 <!-- Copies wadl to a folder -->
                                 <copy
                                     todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/">
-                                   <fileset dir="${basedir}/src/">
+                                   <fileset dir="${basedir}/">
                                    <include name="**/*.wadl"/>
                                    </fileset>
                                 </copy>
@@ -120,7 +120,7 @@
                 <configuration>
                     <!-- These parameters apply to pdf and webhelp -->
                     <xincludeSupported>true</xincludeSupported>
-                    <sourceDirectory>src</sourceDirectory>
+                    <sourceDirectory>.</sourceDirectory>
                     <includes> os-compute-devguide.xml </includes>
                     <profileSecurity>reviewer</profileSecurity>
                     <branding>openstack</branding>
