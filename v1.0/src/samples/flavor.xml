@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<flavor  xmlns="http://docs.rackspacecloud.com/servers/api/v1.0"
-	 id="1" name="256 MB Server"
-	 ram="256" disk="10" />
