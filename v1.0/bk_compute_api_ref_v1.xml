@@ -1,0 +1,3206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+        <!-- Some useful entities borrowed from HTML -->
+        <!ENTITY ndash  "&#x2013;">
+        <!ENTITY mdash  "&#x2014;">
+        <!ENTITY hellip "&#x2026;">
+
+        <!-- Useful for describing APIs -->
+        <!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
+        <!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
+        <!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
+        <!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
+
+        <!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+                 <imageobject role="fo">
+                 <imagedata fileref="../figures/Check_mark_23x20_02.svg"
+                             format="SVG" scale="60"/>
+                 </imageobject>
+                 <imageobject role="html">
+                 <imagedata fileref="../figures/Check_mark_23x20_02.png"/>
+                </imageobject>
+              </inlinemediaobject>'>
+
+        <!ENTITY ARROW  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+                 <imageobject role="fo">
+                 <imagedata fileref="../figures/Arrow_east.svg"
+                             format="SVG" scale="60"/>
+                 </imageobject>
+                 <imageobject role="html">
+                 <imagedata fileref="../figures/Arrow_east.png"
+                          />
+                </imageobject>
+              </inlinemediaobject>'>
+]>
+<book xmlns="http://docbook.org/ns/docbook"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:m="http://www.w3.org/1998/Math/MathML"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:db="http://docbook.org/ns/docbook" version="5.0"
+    xml:id="compute-v1.0">
+    <title>OpenStack Compute API 1.0 Reference</title>
+    <titleabbrev>Compute API Reference</titleabbrev>
+    <info>
+        <author>
+            <personname>
+                <firstname/>
+                <surname/>
+            </personname>
+            <affiliation>
+                <orgname>Rackspace Cloud</orgname>
+            </affiliation>
+        </author>
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>Rackspace US, Inc.</holder>
+        </copyright>
+        <releaseinfo>API v1.0</releaseinfo>
+        <productname>OpenStack Compute</productname>
+        <pubdate/>
+        <legalnotice role="apache2">
+            <annotation>
+                <remark>Copyright details are filled in by the
+                    template.</remark>
+            </annotation>
+        </legalnotice>
+        <abstract>
+            <para>This document is intended for software developers
+                interested in developing applications using the
+                OpenStack Compute Application Programming Interface
+                    (<abbrev>API</abbrev>).</para>
+        </abstract>
+        <cover>
+            <para>this is a placeholder for the front cover</para>
+        </cover>
+        <cover>
+            <para>this is a placeholder for the back cover</para>
+            <para>OpenStack Compute API Operations Reference
+                Summary</para>
+            <para>Servers</para>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2">/servers</td>
+                        <td colspan="3">List servers</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2">/servers/detail</td>
+                        <td colspan="3">List servers details</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="2">/servers</td>
+                        <td colspan="3">Create server</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2"
+                                >/servers/<parameter>id</parameter></td>
+                        <td colspan="3">List server details</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="2"
+                                >/servers/<parameter>id</parameter></td>
+                        <td colspan="3">Update server
+                            name/password</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="2"
+                                >/servers/<parameter>id</parameter></td>
+                        <td colspan="3">Delete server</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>Server Addresses</para>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2"
+                                >/servers/<parameter>id</parameter>/ips</td>
+                        <td colspan="3">List addresses</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2"
+                                >/servers/<parameter>id</parameter>/ips/public</td>
+                        <td colspan="3">List public addresses</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2"
+                                >/servers/<parameter>id</parameter>/ips/private</td>
+                        <td colspan="3">List private addresses</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="2"
+                                >/servers/<parameter>id</parameter>/ips/public/<parameter>address</parameter></td>
+                        <td colspan="3">Share an IP address</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="2"
+                                >/servers/<parameter>id</parameter>/ips/public/<parameter>address</parameter></td>
+                        <td colspan="3">Unshare an IP address</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>Server Actions</para>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="2"
+                                >/servers/<parameter>id</parameter>/<parameter>action</parameter></td>
+                        <td colspan="3">Initiate or confirm server
+                            action</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>Flavors</para>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2">/flavors</td>
+                        <td colspan="3">List flavors</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2">/flavors/detail</td>
+                        <td colspan="3">List flavors details</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2"
+                                >/flavors/<parameter>id</parameter></td>
+                        <td colspan="3">List flavor detail</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>Images</para>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2">/images</td>
+                        <td colspan="3">List images</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2">/images/detail</td>
+                        <td colspan="3">Get images details</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="2">/images</td>
+                        <td colspan="3">Create image</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2"
+                                >/images/<parameter>id</parameter></td>
+                        <td colspan="3">List image details</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="2"
+                                >/images/<parameter>id</parameter></td>
+                        <td colspan="3">Delete image</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>Backup Schedules</para>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2"
+                                >/servers/<parameter>id</parameter>/backup_schedule</td>
+                        <td colspan="3">List backup schedules</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="2"
+                                >/servers/<parameter>id</parameter>/backup_schedule</td>
+                        <td colspan="3">Create/update backup
+                            schedule</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="2"
+                                >/servers/<parameter>id</parameter>/backup_schedule</td>
+                        <td colspan="3">Disable backup schedule</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>Shared IP Groups</para>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td colspan="1">Verb</td>
+                        <td colspan="2">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2">/shared_ip_groups</td>
+                        <td colspan="3">List shared IP groups</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2">/shared_ip_groups/detail</td>
+                        <td colspan="3">Get shared IP groups
+                            details</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="2">/shared_ip_groups</td>
+                        <td colspan="3">Create shared IP group</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="2"
+                                >/shared_ip_groups/<parameter>id</parameter></td>
+                        <td colspan="3">Get shared IP group
+                            details</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="2"
+                                >/shared_ip_groups/<parameter>id</parameter></td>
+                        <td colspan="3">Delete shared IP group</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+        </cover>
+    </info>
+    <chapter xml:id="overview">
+        <title>Overview</title>
+        <para>OpenStack Compute is a compute service that provides
+            server capacity in the cloud. Compute Servers come in
+            different flavors of memory, disk space, and CPU, and can
+            be provisioned in minutes. Interactions with Compute
+            Servers can occur programmatically via the OpenStack
+            Compute API.</para>
+        <para>We welcome feedback, comments, and bug reports at <link
+                xlink:href="http://bugs.launchpad.net/nova"
+                >bugs.launchpad.net/nova</link>.</para>
+        <section xml:id="audience">
+            <title>Intended audience</title>
+            <para>This Guide is intended to assist software developers
+                who want to develop applications using the Rackspace
+                Cloud Servers API. To use the information provided
+                here, you should first have a general understanding of
+                the Rackspace Cloud Servers service and have access to
+                an active Rackspace Cloud Servers account. You should
+                also be familiar with:</para>
+            <itemizedlist spacing="compact">
+                <listitem>
+                    <para>ReSTful web services</para>
+                </listitem>
+                <listitem>
+                    <para>HTTP/1.1</para>
+                </listitem>
+                <listitem>
+                    <para>JSON and/or XML data serialization
+                        formats</para>
+                </listitem>
+            </itemizedlist>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="history">
+            <title>Document Change History</title>
+            <para>This version of the Developer Guide replaces and
+                obsoletes all previous versions. The most recent
+                changes are described in the table below:</para>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td align="center" colspan="1">Revision
+                            Date</td>
+                        <td align="center" colspan="4">Summary of
+                            Changes</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1" align="center">Apr. 14,
+                            2011</td>
+                        <td colspan="4">
+                            <itemizedlist spacing="compact">
+                                <listitem>
+                                   <para>Initial release.</para>
+                                </listitem>
+                            </itemizedlist></td>
+                    </tr>
+                </tbody>
+            </informaltable>
+        </section>
+        <section xml:id="resources">
+            <?dbhtml filename="additional-resources.html" ?>
+            <title>Additional Resources</title>
+            <para>You can download the most current version of this
+                document from the OpenStack Docs website at <link
+                    xlink:href="http://docs.openstack.org">
+                    http://docs.openstack.org</link>.</para>
+            <para>For more details about the Cloud Servers service
+                that this API is based upon, please refer to <link
+                    xlink:href="http://www.rackspacecloud.com/cloud_hosting_products/servers"
+                    >http://www.rackspacecloud.com/cloud_hosting_products/servers</link>.
+                Related documents, including an <link
+                    xlink:href="http://docs.rackspacecloud.com/servers/api/cs-bindguide-latest.pdf"
+                    >API Language Binding Guide</link>, are available
+                at the same site, as are links to Rackspace's official
+                support channels, including knowledge base articles,
+                forums, phone, chat, and email.</para>
+        </section>
+    </chapter>
+    <chapter xml:id="concepts">
+        <title>Concepts</title>
+        <para>To use the Cloud Servers API effectively, you should
+            understand several key concepts:</para>
+        <section xml:id="server">
+            <title>Server</title>
+            <para>A server is a virtual machine instance in the Cloud
+                Servers system. Flavor and image are requisite
+                elements when creating a server.</para>
+        </section>
+        <section xml:id="flavor">
+            <title>Flavor</title>
+            <para>A flavor is an available hardware configuration for
+                a server. Each flavor has a unique combination of disk
+                space, memory capacity and priority for CPU time.</para>
+        </section>
+        <section xml:id="image">
+            <title>Image</title>
+            <para>An image is a collection of files used to create or
+                rebuild a server. Rackspace provides a number of
+                pre-built OS images by default. You may also create
+                custom images from cloud servers you have launched.
+                These custom images are useful for backup purposes or
+                for producing “gold” server images if you plan to
+                deploy a particular server configuration frequently.</para>
+        </section>
+        <section xml:id="backup_schedule_overview">
+            <title>Backup Schedule</title>
+            <para>A backup schedule can be defined to create server
+                images at regular intervals (daily and weekly). Backup
+                schedules are configurable per server.</para>
+        </section>
+        <section xml:id="reboot_overview">
+            <title>Reboot</title>
+            <para>The reboot function allows for either a soft or hard
+                reboot of a server. With a soft reboot, the operating
+                system is signaled to restart, which allows for a
+                graceful shutdown of all processes. A hard reboot is
+                the equivalent of power cycling the server. The
+                virtualization platform should ensure that the reboot
+                action has completed successfully even in cases in
+                which the underlying domain/vm is paused or
+                halted/stopped.</para>
+        </section>
+        <section xml:id="rebuild_overview">
+            <title>Rebuild</title>
+            <para>The rebuild function removes all data on the server
+                and replaces it with the specified image. Server ID
+                and IP addresses remain the same.</para>
+        </section>
+        <section xml:id="resize_overview">
+            <title>Resize</title>
+            <para>The resize function converts an existing server to a
+                different flavor, in essence, scaling the server up or
+                down. The original server is saved for a period of
+                time to allow rollback if there is a problem. All
+                resizes should be tested and explicitly confirmed, at
+                which time the original server is removed. All resizes
+                are automatically confirmed after 24 hours if they are
+                not confirmed or reverted.</para>
+        </section>
+        <section xml:id="shared_ip_address">
+            <title>Shared IP Address</title>
+            <para>Public IP addresses can be shared across multiple
+                servers for use in various high availability
+                scenarios. When an IP address is shared to another
+                server, the cloud network restrictions are modified to
+                allow each server to listen to and respond on that IP
+                address (you may optionally specify that the target
+                server network configuration be modified). Shared IP
+                addresses can be used with many standard heartbeat
+                facilities (e.g. keepalived) that monitor for failure
+                and manage IP failover.</para>
+        </section>
+        <section xml:id="shared_ip_group">
+            <title>Shared IP Group</title>
+            <para>A shared IP group is a collection of servers that
+                can share IPs with other members of the group. Any
+                server in a group can share one or more public IPs
+                with any other server in the group. With the exception
+                of the first server in a shared IP group, servers must
+                be launched into shared IP groups. A server may only
+                be a member of one shared IP group.</para>
+        </section>
+    </chapter>
+    <chapter xml:id="general_info">
+        <title>General API Information</title>
+        <para>The Cloud Servers API is implemented using a ReSTful web
+            service interface. Like other products in the Rackspace
+            Cloud suite, Cloud Servers shares a common token
+            authentication system that allows seamless access between
+            products and services.</para>
+        <note>
+            <para>All requests to authenticate and operate against
+                Cloud Servers are performed using SSL over HTTP
+                (HTTPS) on TCP port 443.</para>
+        </note>
+        <section xml:id="auth">
+            <title>Authentication</title>
+            <para>Each ReST request against the Cloud Servers system
+                requires the inclusion of a specific authorization
+                token HTTP x-header, defined as
+                    <code>X-Auth-Token</code>. Clients obtain this
+                token, along with the Cloud Servers API URL, by first
+                using the Rackspace Cloud Authentication Service and
+                supplying a valid username and API access key.</para>
+            <para>The Rackspace Cloud Authentication Service is a
+                ReSTful web service. It is the entry point to all
+                Rackspace Cloud APIs.</para>
+            <para>To access the Authentication Service, you must know
+                whether your account is US-based or UK-based:</para>
+            <itemizedlist spacing="compact">
+                <listitem>
+                    <para>US-based accounts authenticate through <link
+                            xlink:href="https://auth.api.rackspacecloud.com/v1.0"
+                            >https://auth.api.rackspacecloud.com/v1.0</link>.</para>
+                </listitem>
+                <listitem>
+                    <para>UK-based accounts authenticate through <link
+                            xlink:href="https://lon.auth.api.rackspacecloud.com/v1.0"
+                            >https://lon.auth.api.rackspacecloud.com/v1.0</link>.</para>
+                </listitem>
+            </itemizedlist>
+            <para>Your account may be based in either the US or the
+                UK; this is not determined by your physical location
+                but by the location of the Rackspace retail site which
+                was used to create your account:</para>
+            <itemizedlist spacing="compact">
+                <listitem>
+                    <para>If your account was created via <link
+                            xlink:href="http://www.rackspacecloud.com"
+                            >http://www.rackspacecloud.com</link>, it
+                        is a US-based account.</para>
+                </listitem>
+                <listitem>
+                    <para>If your account was created via <link
+                            xlink:href="http:/www.rackspace.co.uk"
+                            >http:/www.rackspace.co.uk</link>, it is a
+                        UK-based account.</para>
+                </listitem>
+            </itemizedlist>
+            <para>If you are unsure how your account was created, use
+                the Rackspace contact information at either site to
+                ask for help.</para>
+            <simplesect>
+                <title>Request</title>
+                <para>To authenticate, you must supply your username
+                    and API access key in x-headers:</para>
+                <itemizedlist spacing="compact">
+                    <listitem>
+                        <para>Use your Rackspace Cloud username as the
+                            username for the API. Place it in the
+                                <code>X-Auth-User</code>
+                            x-header.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Obtain your API access key from the
+                            Rackspace Cloud Control Panel in the Your
+                            Account | API Access section. Place it in
+                            the <code>X-Auth-User</code>
+                            x-header.</para>
+                    </listitem>
+                </itemizedlist>
+                <example>
+                    <title>Authentication Request (US-Based
+                        Account)</title>
+                    <literallayout class="monospaced">
+GET /v1.0 HTTP/1.1
+Host: auth.api.rackspacecloud.com
+X-Auth-User: jdoe
+X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
+                    </literallayout>
+                </example>
+            </simplesect>
+            <simplesect>
+                <title>Response</title>
+                <para>The Cloud Servers API may return any of the
+                    HTTP/1.1 response codes defined by <link
+                        xlink:href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html"
+                        > RFC-2616 Section 10</link>. If
+                    authentication is successful, an HTTP status
+                        <returnvalue>204 (No Content)</returnvalue> is
+                    returned with three cloud service headers,
+                        <code>X-Server-Management-Url</code>,
+                        <code>X-Storage-Url</code>,
+                        <code>X-CDN-Management-Url</code>, as well as
+                        <code>X-Auth-Token</code>. An HTTP status of
+                        <errorcode>401 (Unauthorized)</errorcode> is
+                    returned if authentication fails. All operations
+                    against Cloud Servers should be performed against
+                    the URL specified in
+                        <code>X-Server-Management-Url</code> (which is
+                    dynamic and subject to change) and must include
+                    the <code>X-Auth-Token</code> header as noted
+                    above. The URLs specified in
+                        <code>X-Storage-Url</code> and
+                        <code>X-CDN-Management-Url</code> are specific
+                    to the Cloud Files product and may be ignored for
+                    purposes of interacting with Cloud Servers.</para>
+                <example>
+                    <title>Authentication Response</title>
+                    <literallayout class="monospaced">
+HTTP/1.1 204 No Content
+Date: Mon, 12 Nov 2007 15:32:21 GMT
+Server: Apache
+X-Server-Management-Url: https://servers.api.rackspacecloud.com/v1.0/35428
+X-Storage-Url: https://storage.clouddrive.com/v1/CloudFS_9c83b-5ed4
+X-CDN-Management-Url: https://cdn.clouddrive.com/v1/CloudFS_9c83b-5ed4
+X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+Content-Length: 0
+Content-Type: text/plain; charset=UTF-8
+                    </literallayout>
+                </example>
+                <para>Authentication tokens are typically valid for 24
+                    hours. Applications should be designed to
+                    re-authenticate after receiving a <errorcode>401
+                        (Unauthorized)</errorcode> response.</para>
+                <para>Note that API operation URIs specified
+                    throughout this document are relative, this is,
+                    they should be appended to the end of the
+                        <code>X-Server-Management-Url</code> that is
+                    returned from the authentication system. For
+                    example, in the sample response above, you would
+                    list servers by performing a &GET; against <link
+                        xlink:href=""
+                        >https://servers.api.rackspacecloud.com/v1.0/35428/servers</link>.</para>
+            </simplesect>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="request-responses">
+            <title>Request/Response Types</title>
+            <para>The Cloud Servers API supports both the JSON and XML
+                data serialization formats. The request format is
+                specified using the <code>Content-Type</code> header
+                and is required for operations that have a request
+                body. The response format can be specified in requests
+                using either the <code>Accept</code> header or adding
+                an .xml or .json extension to the request URI. Note
+                that it is possible for a response to be serialized
+                using a format different from the request (see example
+                below). If no response format is specified, JSON is
+                the default. If conflicting formats are specified
+                using both an <code>Accept</code> header and a query
+                extension, the query extension takes
+                precedence.</para>
+            <table rules="all">
+                <caption>JSON and XML Response Formats</caption>
+                <thead>
+                    <tr>
+                        <td>Format</td>
+                        <td>Accept Header</td>
+                        <td>Query Extension</td>
+                        <td>Default</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>JSON</td>
+                        <td>application/json</td>
+                        <td>.json</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>XML</td>
+                        <td>application/xml</td>
+                        <td>.xml</td>
+                        <td>No</td>
+                    </tr>
+                </tbody>
+            </table>
+            <example>
+                <title>Request with Headers: JSON</title>
+                <literallayout class="monospaced">
+POST /v1.0/214412/images HTTP/1.1
+Host: servers.api.rackspacecloud.com
+Content-Type: application/json
+Accept: application/xml
+X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+                </literallayout>
+                <programlisting language="javascript">
+{
+    "image" : {
+        "serverId" : 12,
+        "name" : "Just in case"}
+}
+                </programlisting>
+            </example>
+            <example>
+                <title>Response with Headers: XML</title>
+                <literallayout class="monospaced">
+HTTP/1.1 200 OKAY
+Date: Mon, 12 Nov 2007 15:55:01 GMT
+Server: Apache
+Content-Length: 185
+                </literallayout>
+                <programlisting language="xml">
+Content-Type: application/xml; charset=UTF-8
+&lt;image xmlns="http://docs.rackspacecloud.com/servers/api/v1.0"
+       id="22" name="Just in case" serverId="12"
+       created="2010-10-10T12:00:00Z"
+       status="SAVING" progress="0" /&gt;
+                </programlisting>
+            </example>
+            <para>Notice, in the above example, that the content type
+                is set to application/json but application/xml is
+                requested via the <code>Accept</code> header. An
+                alternative method of achieving the same result is
+                illustrated below – this time we utilize a URI
+                extension instead of an <code>Accept</code>
+                header.</para>
+            <example>
+                <title>Request with Extension: JSON</title>
+                <literallayout class="monospaced">
+POST /v1.0/214412/images .xml HTTP/1.1
+Host: servers.api.rackspacecloud.com
+Content-Type: application/json
+X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+                </literallayout>
+                <programlisting language="javascript">
+{
+    "image" : {
+        "serverId" : 12,
+        "name" : "Just in case"}
+}
+                </programlisting>
+            </example>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="compression">
+            <title>Content Compression</title>
+            <para>Request and response body data may be encoded with
+                gzip compression in order to accelerate interactive
+                performance of API calls and responses. This is
+                controlled using the <code>Accept-Encoding</code>
+                header on the request from the client and indicated by
+                the <code>Content-Encoding</code> header in the server
+                response. Unless the header is explicitly set,
+                encoding defaults to disabled.</para>
+            <table rules="all">
+                <caption>Encoding Headers</caption>
+                <thead>
+                    <tr>
+                        <td>Header Type</td>
+                        <td>Name</td>
+                        <td>Value</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>HTTP/1.1 Request</td>
+                        <td><code>Accept-Encoding</code></td>
+                        <td>gzip</td>
+                    </tr>
+                    <tr>
+                        <td>HTTP/1.1 Response</td>
+                        <td><code>Content-Encoding</code></td>
+                        <td>gzip</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section xml:id="persistence">
+            <title>Persistent Connections</title>
+            <para>By default, the API supports persistent connections
+                via HTTP/1.1 keepalives. All connections will be kept
+                alive unless the connection header is set to
+                close.</para>
+            <para>To prevent abuse, HTTP sessions have a timeout of 20
+                seconds before being closed.</para>
+            <note>
+                <para>The server may close the connection at any time
+                    and clients should not rely on this behavior.</para>
+            </note>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="paginated_colls">
+            <title>Paginated Collections</title>
+            <para>To reduce load on the service, list operations will
+                return a maximum of 1,000 items at a time. To navigate
+                the collection, the parameters
+                    <parameter>limit</parameter> and
+                    <parameter>offset</parameter> can be set in the
+                URI
+                    (e.g.?<parameter>limit</parameter>=0&amp;<parameter>offset</parameter>=0).
+                If an offset is given beyond the end of a list an
+                empty list will be returned. Note that list operations
+                never return itemNotFound (<errorcode>404</errorcode>)
+                faults.</para>
+        </section>
+        <section xml:id="caching">
+            <title>Caching</title>
+            <para>The Cloud Servers API makes extensive use of caching
+                layers at various tiers of the system. Purging
+                mechanisms exist to ensure that objects served out of
+                cache are accurate and up to date. &GET;s returning a
+                cached entity return a <returnvalue>203
+                    (Cached)</returnvalue> to signal users that the
+                value is being served out of cache. Additionally,
+                cached entities have the following header set:</para>
+            <table rules="all">
+                <caption>Last Modified Header</caption>
+                <thead>
+                    <tr>
+                        <td colspan="1">Header</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="1"
+                            ><code>Last-Modified</code></td>
+                        <td colspan="3">Date and time when the entity
+                            was last updated in cache.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section xml:id="polling">
+            <title>Efficient Polling with the
+                    <parameter>Changes-Since</parameter>
+                Parameter</title>
+            <para>The ReST API allows you to poll for the status of
+                certain operations by performing a &GET; on various
+                elements. Rather than re-downloading and re-parsing
+                the full status at each polling interval, your ReST
+                client may use the
+                    <parameter>changes-since</parameter> parameter to
+                check for changes since a previous request. The
+                    <parameter>changes-since</parameter> time is
+                specified as <link
+                    xlink:href="http://en.wikipedia.org/wiki/Unix_time"
+                    >Unix time</link> (the number of seconds since
+                January 1, 1970, 00:00:00 UTC, not counting leap
+                seconds). If nothing has changed since the
+                    <parameter>changes-since</parameter> time, a
+                    <returnvalue>304 (Not Modified)</returnvalue>
+                response will be returned. If data has changed, only
+                the items changed since the specified time will be
+                returned in the response. For example, performing a
+                &GET; against
+                    https://api.servers.rackspacecloud.com/v1.0/224532/servers?<parameter>changes-since</parameter>=1244012982
+                would list all servers that have changed since Wed, 03
+                Jun 2009 07:09:42 UTC.</para>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="limits-overview">
+            <title>Limits</title>
+            <para>All accounts, by default, have a preconfigured set
+                of thresholds (or limits) to manage capacity and
+                prevent abuse of the system. The system recognizes two
+                kinds of limits: <firstterm>rate limits</firstterm>
+                and <firstterm>absolute limits</firstterm>. Rate
+                limits are thresholds that are reset after a certain
+                amount of time passes. Absolute limits are
+                fixed.</para>
+            <note>
+                <para>If the default limits are too low for your
+                    particular application, please contact Rackspace
+                    Cloud support to request an increase. All requests
+                    require reasonable justification.</para>
+            </note>
+            <section xml:id="rate-limits">
+                <title>Rate Limits</title>
+                <para>We specify rate limits in terms of both a
+                    human-readable wild-card URI and a
+                    machine-processable regular expression. The
+                    regular expression boundary matcher '^' takes
+                    effect after the root URI path. For example, the
+                    regular expression ^/servers would match the
+                    bolded portion of the following URI:
+                        https://servers.api.rackspacecloud.com/v1.0/3542812<emphasis
+                        role="bold">/servers</emphasis>.</para>
+                <table rules="all">
+                    <caption>Default Rate Limits</caption>
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="2">URI</td>
+                            <td colspan="2">RegEx</td>
+                            <td colspan="1">Default</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&POST;</td>
+                            <td colspan="2">*</td>
+                            <td colspan="2">.*</td>
+                            <td colspan="1">10/min</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">&POST;</td>
+                            <td colspan="2">*/servers</td>
+                            <td colspan="2">^/servers</td>
+                            <td colspan="1">50/day</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">&PUT;</td>
+                            <td colspan="2">*</td>
+                            <td colspan="2">.*</td>
+                            <td colspan="1">10/min</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">&GET;</td>
+                            <td colspan="2">*changes-since*</td>
+                            <td colspan="2">changes-since</td>
+                            <td colspan="1">3/min</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">&DELETE;</td>
+                            <td colspan="2">*</td>
+                            <td colspan="2">.*</td>
+                            <td colspan="1">100/min</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <para>Rate limits are applied in order relative to the
+                    verb, going from least to most specific. For
+                    example, although the threshold for &POST; to
+                    */servers is 50 per day, one cannot &POST; to
+                    */servers more than 10 times within a single
+                    minute because the rate limits for any &POST; is
+                    10/min.</para>
+                <para>In the event you exceed the thresholds
+                    established for your account, a <errorcode>413
+                        (Rate Control)</errorcode> HTTP response will
+                    be returned with a <code>Reply-After</code> header
+                    to notify the client when they can attempt to try
+                    again.</para>
+            </section>
+            <?hard-pagebreak?>
+            <section xml:id="absolute-limits">
+                <title>Absolute Limits</title>
+                <para>“Maximum total amount of RAM (GB)” limits the
+                    number of instances you can run based on the total
+                    aggregate RAM size. For example, with the default
+                    limit of 50GB, you may launch a maximum of 200
+                    256MB cloud servers, or 100 512MB cloud servers,
+                    or 50 1GB cloud servers, or 20 2GB + 40 256MB
+                    cloud servers, etc. These limits apply to creating
+                    as well as resizing servers.</para>
+                <table rules="all">
+                    <caption>Default Absolute Limits</caption>
+                    <thead>
+                        <tr>
+                            <td colspan="3">Limit</td>
+                            <td colspan="1">Default</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="3">Maximum total amount of
+                                RAM (GB)</td>
+                            <td colspan="1">50</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">Maximum number of shared
+                                IP groups</td>
+                            <td colspan="1">25</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">Maximum number of members
+                                per shared IP group</td>
+                            <td colspan="1">25</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section xml:id="limits">
+                <title>Determining Limits Programmatically</title>
+                <para>Applications can programmatically determine
+                    current account limits using the /limits URI as
+                    follows:</para>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="2">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&GET;</td>
+                            <td colspan="2">/limits</td>
+                            <td colspan="3">Returns the current limits
+                                for your account</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <simpara> Normal Response Code(s):
+                        <returnvalue>200</returnvalue>,
+                        <returnvalue>203</returnvalue>
+                </simpara>
+                <simpara> Error Response Code(s): cloudServersFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    badRequest (<errorcode>400</errorcode>), overLimit
+                        (<errorcode>413</errorcode>) </simpara>
+                <para>This operation does not require a request
+                    body.</para>
+                <example>
+                    <title>Limit Response: XML</title>
+                    <programlisting language="xml"><xi:include href="samples/limits.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Limit Response: JSON</title>
+                    <programlisting language="javascript"><?db-font-size 90% ?><xi:include href="samples/limits.json" parse="text"/></programlisting>
+                </example>
+            </section>
+        </section>
+        <section xml:id="versions">
+            <title>API Version</title>
+            <para>The Cloud Servers API uses a URI versioning scheme.
+                The first element of the path contains the target
+                version identifier (e.g.
+                https://servers.api.rackspacecloud.com/ v1.0/&hellip;
+                ) All requests (except to query for version &mdash;
+                see below) must contain a target version. New features
+                and functionality that do not break API-compatibility
+                will be introduced in the current version of the API
+                and the URI will remain unchanged. Any features or
+                functionality changes that would necessitate a break
+                in API-compatibility will require a new version, which
+                will result in the URI version being updated
+                accordingly. When new API versions are released, older
+                versions will be marked as <code>DEPRECATED</code>.
+                Rackspace will work with developers and partners to
+                ensure there is adequate time to migrate to the new
+                version before deprecated versions are
+                discontinued.</para>
+            <para>Your application can programmatically determine
+                available API versions by performing a &GET; on the
+                root URL (i.e. with the version and everything to the
+                right of it truncated) returned from the
+                authentication system.</para>
+            <example>
+                <title>Versions List Request</title>
+                <literallayout class="monospaced">
+GET HTTP/1.1
+Host: servers.api.rackspacecloud.com
+                </literallayout>
+            </example>
+            <simpara> Normal Response Code(s):
+                    <returnvalue>200</returnvalue>,
+                    <returnvalue>203</returnvalue>
+            </simpara>
+            <simpara> Error Response Code(s):
+                    <errorcode>400</errorcode>,
+                    <errorcode>413</errorcode>,
+                    <errorcode>500</errorcode>,
+                    <errorcode>503</errorcode>
+            </simpara>
+            <para>This operation does not require a request
+                body.</para>
+            <example>
+                <title>Versions List Response: XML</title>
+                <programlisting language="xml">
+&lt;versions xmlns="http://docs.rackspacecloud.com/servers/api/v1.0" &gt;
+   &lt;version status="CURRENT" id="v1.0"/&gt;
+   &lt;version status="BETA" id="v1.1"/&gt;
+&lt;/versions&gt;
+                </programlisting>
+            </example>
+            <example>
+                <title>Versions List Response: JSON</title>
+                <programlisting language="javascript">
+{"versions": [{
+   "status": "CURRENT",
+   "id": "v1.0"},
+   {
+   "status": "BETA",
+   "id": "v1.1"
+}]}
+                </programlisting>
+            </example>
+            <para>You can also obtain additional information about a
+                specific version by performing a &GET; on the base
+                version URL (e.g.
+                https://servers.api.rackspacecloud.com/v1.0/). Version
+                request URLs should always end with a trailing slash
+                (/). If the slash is omitted, the server may respond
+                with a <returnvalue>302</returnvalue> redirection
+                request. Format extensions may be placed after the
+                slash (e.g.
+                https://servers.api.rackspacecloud.com/v1.0/.xml).
+                Note that this is a special case that does not hold
+                true for other API requests. In general, requests such
+                as /servers.xml and /servers/.xml are handled
+                equivalently.</para>
+            <example>
+                <title>Version Details Request</title>
+                <literallayout class="monospaced">
+GET HTTP/1.1
+Host: servers.api.rackspacecloud.com/v1.0/
+                </literallayout>
+            </example>
+            <simpara> Normal Response Code(s):
+                    <returnvalue>200</returnvalue>,
+                    <returnvalue>203</returnvalue>
+            </simpara>
+            <simpara> Error Response Code(s): cloudServersFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable
+                    (<errorcode>503</errorcode>), unauthorized
+                    (<errorcode>401</errorcode>), badRequest
+                    (<errorcode>400</errorcode>),
+                    overLimit(<errorcode>413</errorcode>) </simpara>
+            <para>This operation does not require a request
+                body</para>
+            <example>
+                <title>Version Details Response: XML</title>
+                <programlisting language="xml"><xi:include href="samples/version.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Version Details Response: JSON</title>
+                <programlisting language="json"><xi:include href="samples/version.json" parse="text"/>
+                </programlisting>
+            </example>
+            <para>The detailed version response contains pointers to
+                both a human-readable and a machine-processable
+                description of the API service. The
+                machine-processable description is written in the Web
+                Application Description Language (WADL).</para>
+            <note>
+                <para>If there is a discrepancy between the two
+                    specifications, the WADL is authoritative as it
+                    contains the most accurate and up-to-date
+                    description of the API service.</para>
+            </note>
+        </section>
+        <section xml:id="faults">
+            <title>Faults</title>
+            <para>When an error occurs, the system will return an HTTP
+                error response code denoting the type of error. The
+                system will also return additional information about
+                the fault in the body of the response.</para>
+            <example>
+                <title>Fault Response: XML</title>
+                <programlisting language="xml"><xi:include href="samples/fault.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Fault Response: JSON</title>
+                <programlisting language="javascript"><xi:include href="samples/fault.json" parse="text"/>
+                </programlisting>
+            </example>
+            <para>The error code is returned in the body of the
+                response for convenience. The message section returns
+                a human-readable message that is appropriate for
+                display to the end user. The details section is
+                optional and may contain information&mdash;for
+                example, a stack trace&mdash;to assist in tracking
+                down an error. The detail section may or may not be
+                appropriate for display to an end user.</para>
+            <para>The root element of the fault (e.g.
+                cloudServersFault) may change depending on the type of
+                error. The following is a list of possible elements
+                along with their associated error codes.</para>
+            <?hard-pagebreak?>
+            <table rules="all">
+                <caption>Fault Elements and Error Codes</caption>
+                <thead>
+                    <tr>
+                        <td>Fault Element</td>
+                        <td>Associated Error Codes</td>
+                        <td>Expected in All Requests?</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>cloudServersFault</td>
+                        <td>500, 400, other codes possible</td>
+                        <td align="center">&CHECK;</td>
+                    </tr>
+                    <tr>
+                        <td>serviceUnavailable</td>
+                        <td>503</td>
+                        <td align="center">&CHECK;</td>
+                    </tr>
+                    <tr>
+                        <td>unauthorized</td>
+                        <td>401</td>
+                        <td align="center">&CHECK;</td>
+                    </tr>
+                    <tr>
+                        <td>badRequest</td>
+                        <td>400</td>
+                        <td align="center">&CHECK;</td>
+                    </tr>
+                    <tr>
+                        <td>overLimit</td>
+                        <td>413</td>
+                        <td align="center">&CHECK;</td>
+                    </tr>
+                    <tr>
+                        <td>badMediaType</td>
+                        <td>415</td>
+                        <td/>
+                    </tr>
+                    <tr>
+                        <td>badMethod</td>
+                        <td>405</td>
+                        <td/>
+                    </tr>
+                    <tr>
+                        <td>itemNotFound</td>
+                        <td>404</td>
+                        <td/>
+                    </tr>
+                    <tr>
+                        <td>buildInProgress</td>
+                        <td>409</td>
+                        <td/>
+                    </tr>
+                    <tr>
+                        <td>serverCapacityUnavailable</td>
+                        <td>503</td>
+                        <td/>
+                    </tr>
+                    <tr>
+                        <td>backupOrResizeInProgress</td>
+                        <td>409</td>
+                        <td/>
+                    </tr>
+                    <tr>
+                        <td>resizeNotAllowed</td>
+                        <td>403</td>
+                        <td/>
+                    </tr>
+                    <tr>
+                        <td>notImplemented</td>
+                        <td>501</td>
+                        <td/>
+                    </tr>
+                </tbody>
+            </table>
+            <example>
+                <title>Fault Response, Item Not Found: XML</title>
+                <programlisting language="xml"><xi:include href="samples/notfound.xml" parse="text"/></programlisting>
+            </example>
+            <example>
+                <title>Fault Response, Item Not Found: JSON</title>
+                <programlisting language="javascript"><xi:include href="samples/notfound.json" parse="text"/></programlisting>
+            </example>
+            <para>From an XML schema perspective, all API faults are
+                extensions of the base fault type
+                CloudServersAPIFault. When working with a system that
+                binds XML to actual classes (such as JAXB), one should
+                be capable of using CloudServersAPIFault as a
+                “catch-all” if there's no interest in distinguishing
+                between individual fault types.</para>
+            <para>The OverLimit fault is generated when a rate limit
+                threshold is exceeded. For convenience, the fault adds
+                a replyAfter attribute that contains the content of
+                the Reply-After header in XML Schema 1.0 date/time
+                format.</para>
+            <example>
+                <title>Fault Response, Over Limit: XML</title>
+                <programlisting language="xml"><xi:include href="samples/overlimit.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Fault Response, Over Limit: JSON</title>
+                <programlisting language="json"><xi:include href="samples/overlimit.json" parse="text"/>
+                </programlisting>
+            </example>
+        </section>
+    </chapter>
+    <chapter xml:id="api-operations">
+        <title>API Operations</title>
+        <section xml:id="servers">
+            <title>Servers</title>
+            <section xml:id="list_servers">
+                <title>List Servers</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="2">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&GET;</td>
+                            <td colspan="2">/servers</td>
+                            <td colspan="3">List all servers (IDs and
+                                names only)</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">&GET;</td>
+                            <td colspan="2">/servers/detail</td>
+                            <td colspan="3">List all servers (all
+                                details)</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <simpara> Normal Response Code(s):
+                        <returnvalue>200</returnvalue>,
+                        <returnvalue>203</returnvalue>
+                </simpara>
+                <simpara> Error Response Code(s): cloudServersFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    badRequest (<errorcode>400</errorcode>), overLimit
+                        (<errorcode>413</errorcode>) </simpara>
+                <annotation annotates="id35836359">
+                    <info>
+                        <title>Office Annotation</title>
+                        <author>
+                            <personname>
+                                <othername role="full">Jorge
+                                   Williams</othername>
+                            </personname>
+                        </author>
+                        <date>2009-06-26T14:30:46</date>
+                    </info>
+                    <para>Well need to revisit. List all status even
+                        the ones that don't enter into our state
+                        transitions along with descriptions of each.</para>
+                </annotation>
+                <para xml:id="id35836359"> This operation provides a
+                    list of servers associated with your account.
+                    Servers that have been deleted are not included in
+                    this list. Servers contain a status attribute that
+                    can be used as an indication of the current server
+                    state. Servers with an <code>ACTIVE</code> status
+                    are available for use. Other possible values for
+                    the status attribute include: <code>BUILD</code>,
+                        <code>REBUILD</code>, <code>SUSPENDED</code>,
+                        <code>QUEUE_RESIZE</code>,
+                        <code>PREP_RESIZE</code>, <code>RESIZE</code>,
+                        <code>VERIFY_RESIZE</code>,
+                        <code>PASSWORD</code>, <code>RESCUE</code>,
+                        <code>REBOOT</code>, <code>HARD_REBOOT</code>,
+                        <code>SHARE_IP</code>,
+                        <code>SHARE_IP_NO_CONFIG</code>,
+                        <code>DELETE_IP</code>, and
+                        <code>UNKNOWN</code>.</para>
+                <para>When retrieving a list of servers via the
+                    changes-since parameter (see Efficient Polling
+                    with the Changes-Since Parameter), the list will
+                    contain servers that have been deleted since the
+                    changes-since time.</para>
+                <para>The Cloud Servers provisioning algorithm has an
+                    anti-affinity property that attempts to spread out
+                    customer VMs across hosts. Under certain
+                    situations, VMs from the same customer may be
+                    placed on the same host.
+                        <property>hostId</property> represents the
+                    host your cloud server runs on and can be used to
+                    determine this scenario if it's relevant to your
+                    application.</para>
+                <note>
+                    <para>
+                        <property>HostId</property> is unique
+                            <emphasis>per account</emphasis> and is
+                        not globally unique.</para>
+                </note>
+                <para>This operation does not require a request
+                    body.</para>
+                <example>
+                    <title>Servers List Response: XML (detail)</title>
+                    <programlisting language="xml"><xi:include href="samples/servers.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Servers List Response: JSON
+                        (detail)</title>
+                    <programlisting language="json"><xi:include href="samples/servers.json" parse="text"/>
+                    </programlisting>
+                </example>
+            </section>
+            <section xml:id="create_server">
+                <title>Create Server</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="2">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&POST;</td>
+                            <td colspan="2">/servers</td>
+                            <td colspan="3">Create a new server</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <simpara> Normal Response Code(s):
+                        <returnvalue>202</returnvalue>
+                </simpara>
+                <simpara> Error Response Code(s): cloudServersFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                        badMediaType(<errorcode>415</errorcode>),
+                    itemNotFound (<errorcode>404</errorcode>),
+                    badRequest (<errorcode>400</errorcode>),
+                    serverCapacityUnavailable
+                        (<errorcode>503</errorcode>), overLimit
+                        (<errorcode>413</errorcode>) </simpara>
+                <informaltable frame="void">
+                    <tbody>
+                        <tr>
+                            <td colspan="1">Status Transition:</td>
+                            <td colspan="3">
+                                <code>BUILD</code> &ARROW;
+                                   <code>ACTIVE</code></td>
+                        </tr>
+                        <tr>
+                            <td colspan="1"/>
+                            <td colspan="3">
+                                <code>BUILD</code> &ARROW;
+                                   <code>ERROR</code> (on error)</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>This operation asynchronously provisions a new
+                    server. The progress of this operation depends on
+                    several factors including location of the
+                    requested image, network i/o, host load, and the
+                    selected flavor. The progress of the request can
+                    be checked by performing a &GET; on /server/ id ,
+                    which will return a progress attribute (0-100%
+                    completion).</para>
+                <annotation annotates="id35837475">
+                    <info>
+                        <title>Office Annotation</title>
+                        <author>
+                            <personname>
+                                <othername role="full">Jorge
+                                   Williams</othername>
+                            </personname>
+                        </author>
+                        <date>2009-06-26T14:36:04</date>
+                    </info>
+                    <para>Removed...</para>
+                    <para>If the adminPass element is not specified in
+                        the request...</para>
+                    <para>Because adding a password on a request is
+                        currently not supported.</para>
+                </annotation>
+                <para xml:id="id35837475"> A password will be randomly
+                    generated for you and returned in the response
+                    object. For security reasons, it will not be
+                    returned in subsequent &GET; calls against a given
+                    server ID.</para>
+                <para>Custom cloud server metadata can also be
+                    supplied at launch time. This metadata is stored
+                    in the API system where it is retrievable by
+                    querying the API for server status. The maximum
+                    size of the metadata key and value is each 255
+                    bytes and the maximum number of key-value pairs
+                    that can be supplied per server is 5.</para>
+                <para>You may further customize a cloud server by
+                    injecting data into the file system of the cloud
+                    server itself. This is useful, for example, for
+                    inserting ssh keys, setting configuration files,
+                    or storing data that you want to retrieve from
+                    within the instance itself. It is intended to
+                    provide a minimal amount of launch-time
+                    personalization. If significant customization is
+                    required, a custom image should be created. The
+                    max size of the file p ath data is 255 bytes while
+                    the max size of the file contents is 10KB. Note
+                    that the file contents should be encoded as a
+                    Base64 string and the 10KB limit refers to the
+                    number of bytes in the decoded data not the number
+                    of characters in the encoded data. The maximum
+                    number of file path/content pairs that can be
+                    supplied is 5. Any existing files that match the
+                    specified file will be renamed to include the
+                    extension bak followed by a time stamp. For
+                    example, the file /etc/passwd will be backed up as
+                    /etc/passwd.bak.1246036261.5785 . All files will
+                    have root and the root group as owner and group
+                    owner, respectively and will allow user and group
+                    read access only ( <code>-r--r-----</code>
+                    ).</para>
+                <para>Servers in the same shared IP group can share
+                    public IPs for various high availability and load
+                    balancing configurations. To launch an HA server,
+                    include the optional sharedIpGroupId element and
+                    the server will be launched into that shared IP
+                    group.</para>
+                <para>If you intend to use a shared IP on the server
+                    being created and have no need for a separate
+                    public IP address, you may launch the server into
+                    a shared IP group and specify an IP address from
+                    that shared IP group to be used as its public IP.
+                    You can accomplish this by specifying the public
+                    shared IP address in your request. This is
+                    optional and is only valid if sharedIpGroupId is
+                    also supplied.</para>
+                <note>
+                    <para>sharedIpGroupId is an optional parameter and
+                        for optimal performance, should ONLY be
+                        specified when intending to share IPs between
+                        servers.</para>
+                </note>
+                <example>
+                    <title>Server Create Request: XML</title>
+                    <programlisting language="xml"><xi:include href="samples/server-post-req.xml" parse="text"/></programlisting>
+                </example>
+                <example>
+                    <title>Server Create Request: JSON</title>
+                    <programlisting language="javascript"><xi:include href="samples/server-post-req.json" parse="text"/></programlisting>
+                </example>
+                <example>
+                    <title>Server Create Response: XML</title>
+                    <programlisting language="xml"><xi:include href="samples/server-post-resp.xml" parse="text"/></programlisting>
+                </example>
+                <example>
+                    <title>Server Create Response: JSON</title>
+                    <programlisting language="javascript"><xi:include href="samples/server-post-resp.json" parse="text"/></programlisting>
+                </example>
+            </section>
+            <section xml:id="get_server">
+                <title>Get Server Details</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="2">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&GET;</td>
+                            <td colspan="2"
+                                   >/servers/<parameter>id</parameter></td>
+                            <td colspan="3">List details of the
+                                specified server</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <simpara> Normal Response Code(s):
+                        <returnvalue>200</returnvalue>,
+                        <returnvalue>203</returnvalue>
+                </simpara>
+                <simpara> Error Response Code(s): cloudServersFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    badRequest (<errorcode>400</errorcode>),
+                    itemNotFound (<errorcode>404</errorcode>),
+                    overLimit (<errorcode>413</errorcode>) </simpara>
+                <para>This operation returns the details of a specific
+                    server by its ID.</para>
+                <para>This operation does not require a request
+                    body.</para>
+                <example>
+                    <title>Server Details Response: XML</title>
+                    <programlisting language="xml"><xi:include href="samples/server.xml" parse="text"/></programlisting>
+                </example>
+                <example>
+                    <title>Server Details Response: JSON</title>
+                    <programlisting language="javascript"><xi:include href="samples/server.json" parse="text"/></programlisting>
+                </example>
+            </section>
+            <section xml:id="update_server">
+                <title>Update Server Name / Administrative
+                    Password</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="2">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&PUT;</td>
+                            <td colspan="2"
+                                   >/servers/<parameter>id</parameter></td>
+                            <td colspan="3">Update the specified
+                                server's name and/or administrative
+                                password</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <simpara> Normal Response Code(s):
+                        <returnvalue>204</returnvalue>
+                </simpara>
+                <simpara> Error Response Code(s): cloudServersFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    badRequest (<errorcode>400</errorcode>),
+                        badMediaType(<errorcode>415</errorcode>),
+                    itemNotFound (<errorcode>404</errorcode>),
+                    buildInProgress (<errorcode>409</errorcode>),
+                    overLimit (<errorcode>413</errorcode>) </simpara>
+                <informaltable frame="void">
+                    <tbody>
+                        <tr>
+                            <td colspan="1">Status Transition:</td>
+                            <td colspan="3">
+                                <code>ACTIVE</code> &ARROW;
+                                   <code>PASSWORD</code> &ARROW;
+                                   <code>ACTIVE</code>
+</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>This operation allows you to update the name of
+                    the server and/or change the administrative
+                    password. This operation changes the name of the
+                    server in the Cloud Servers system and does not
+                    change the server host name itself.</para>
+                <example>
+                    <title>Server Update Request: XML</title>
+                    <programlisting language="xml"><xi:include href="samples/server-put-req.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Server Update Request: JSON</title>
+                    <programlisting language="json"><xi:include href="samples/server-put-req.json" parse="text"/>
+                    </programlisting>
+                </example>
+                <para>This operation does not contain a response
+                    body.</para>
+            </section>
+            <?hard-pagebreak?>
+            <section xml:id="delete_server">
+                <title>Delete Server</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="2">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&DELETE;</td>
+                            <td colspan="2"
+                                   >/servers/<parameter>id</parameter></td>
+                            <td colspan="3">Terminate the specified
+                                server</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <simpara> Normal Response Code(s):
+                        <returnvalue>204</returnvalue>
+                </simpara>
+                <simpara> Error Response Code(s): cloudServersFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    itemNotFound (<errorcode>404</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    buildInProgress (<errorcode>409</errorcode>),
+                    overLimit (<errorcode>413</errorcode>) </simpara>
+                <informaltable frame="void">
+                    <tbody>
+                        <tr>
+                            <td colspan="1">Status Transition:</td>
+                            <td colspan="3">
+                                <code>ACTIVE</code> &ARROW;
+                                   <code>DELETED</code>
+</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1"/>
+                            <td colspan="3">
+                                <code>SUSPENDED</code> &ARROW;
+                                   <code>DELETED</code>
+</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>This operation deletes a cloud server instance
+                    from the system.</para>
+                <note>
+                    <para>When a server is deleted, all images created
+                        from that server are also removed.</para>
+                </note>
+                <para>This operation does not require a request or a
+                    response body.</para>
+            </section>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="server_addresses">
+            <title>Server Addresses</title>
+            <section xml:id="list_addresses">
+                <title>List Addresses</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="2">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&GET;</td>
+                            <td colspan="2"
+                                   >/servers/<parameter>id</parameter>/ips</td>
+                            <td colspan="3">List all server
+                                addresses</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <simpara> Normal Response Code(s):
+                        <returnvalue>200</returnvalue>,
+                        <returnvalue>203</returnvalue>
+                </simpara>
+                <simpara> Error Response Code(s): cloudServersFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    badRequest (<errorcode>400</errorcode>), overLimit
+                        (<errorcode>413</errorcode>) </simpara>
+                <para>This operation does not require a request
+                    body.</para>
+                <example>
+                    <title>Addresses List Response: XML</title>
+                    <programlisting language="xml"><xi:include href="samples/addresses.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Addresses List Response: JSON</title>
+                    <programlisting language="json"><xi:include href="samples/addresses.json" parse="text"/>
+                    </programlisting>
+                </example>
+            </section>
+            <section xml:id="list_public_addresses">
+                <title>List Public Addresses</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="2">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&GET;</td>
+                            <td colspan="2"
+                                   >/servers/<parameter>id</parameter>/ips/public</td>
+                            <td colspan="3">List all public server
+                                addresses</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <simpara> Normal Response Code(s):
+                        <returnvalue>200</returnvalue>,
+                        <returnvalue>203</returnvalue>
+                </simpara>
+                <simpara> Error Response Code(s): cloudServersFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    badRequest (<errorcode>400</errorcode>), overLimit
+                        (<errorcode>413</errorcode>) </simpara>
+                <para>This operation does not require a request
+                    body.</para>
+                <example>
+                    <title>Public Addresses List Response: XML</title>
+                    <programlisting language="xml"><xi:include href="samples/public.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Public Addresses List Response:
+                        JSON</title>
+                    <programlisting language="json"><xi:include href="samples/public.json" parse="text"/>
+                    </programlisting>
+                </example>
+            </section>
+            <section xml:id="list_private_addresses">
+                <title>List Private Addresses</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="2">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&GET;</td>
+                            <td colspan="2"
+                                   >/servers/<parameter>id</parameter>/ips/private</td>
+                            <td colspan="3">List all private server
+                                addresses</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>Normal Response Code(s):
+                        <returnvalue>200</returnvalue>,
+                        <returnvalue>203</returnvalue>
+</para>
+                <para>Error Response Code(s): cloudServersFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    badRequest (<errorcode>400</errorcode>), overLimit
+                        (<errorcode>413</errorcode>)</para>
+                <para>This operation does not require a request
+                    body.</para>
+                <example>
+                    <title>Private Addresses List Response:
+                        XML</title>
+                    <programlisting language="xml"><xi:include href="samples/private.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Private Addresses List Response:
+                        JSON</title>
+                    <programlisting language="json"><xi:include href="samples/private.json" parse="text"/>
+                    </programlisting>
+                </example>
+            </section>
+            <section xml:id="share_address">
+                <title>Share an IP Address</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="4">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&PUT;</td>
+                            <td colspan="4"
+                                   >/servers/<parameter>id</parameter>/ips/public/<parameter>address</parameter></td>
+                            <td colspan="3">Share an IP address to the
+                                specified server</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <simpara> Normal Response Code(s):
+                        <returnvalue>202</returnvalue>
+                </simpara>
+                <simpara> Error Response Code(s): cloudServersFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    badRequest (<errorcode>400</errorcode>),
+                        badMediaType(<errorcode>415</errorcode>),
+                    itemNotFound (<errorcode>404</errorcode>),
+                    overLimit (<errorcode>413</errorcode>) </simpara>
+                <informaltable frame="void">
+                    <tbody>
+                        <tr>
+                            <td colspan="1">Status Transition:</td>
+                            <td colspan="3">
+                                <code>ACTIVE</code> &ARROW;
+                                   <code>SHARE_IP</code> &ARROW;
+                                   <code>ACTIVE</code> (if
+                                   <property>configureServer</property>
+                                is true)</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1"/>
+                            <td colspan="3">
+                                <code>ACTIVE</code> &ARROW;
+                                   <code>SHARE_IP_NO_CONFIG</code>
+                                &ARROW; <code>ACTIVE</code>
+</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>This operation shares an IP from an existing
+                    server in the specified shared IP group to another
+                    specified server in the same group. By default,
+                    the operation modifies cloud network restrictions
+                    to allow IP traffic for the given IP to/from the
+                    server specified, but does not bind the IP to the
+                    server itself. A heartbeat facility (e.g.
+                    keepalived) can then be used within the servers to
+                    perform health checks and manage IP failover. If
+                    the configureServer attribute is set to true, the
+                    server is configured with the new address, though
+                    the address is not enabled. Note that configuring
+                    the server does require a reboot.</para>
+                <example>
+                    <title>Share IP Request: XML</title>
+                    <programlisting language="xml"><xi:include href="samples/shareip.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Share IP Response: JSON</title>
+                    <programlisting language="json"><xi:include href="samples/shareip.json" parse="text"/>
+                    </programlisting>
+                </example>
+                <para>This operation does not return a response
+                    body.</para>
+            </section>
+            <section xml:id="unshare_address">
+                <title>Unshare an IP Address</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="4">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&DELETE;</td>
+                            <td colspan="4"
+                                   >/servers/<parameter>id</parameter>/ips/public/<parameter>address</parameter></td>
+                            <td colspan="3">Remove a shared IP address
+                                from the specified server</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <simpara> Normal Response Code(s):
+                        <returnvalue>202</returnvalue>
+                </simpara>
+                <simpara> Error Response Code(s): cloudServersFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    badRequest (<errorcode>400</errorcode>),
+                        badMediaType(<errorcode>415</errorcode>),
+                    itemNotFound (<errorcode>404</errorcode>),
+                    overLimit (<errorcode>413</errorcode>) </simpara>
+                <informaltable frame="void">
+                    <tbody>
+                        <tr>
+                            <td colspan="1">Status Transition:</td>
+                            <td colspan="3">
+                                <code>ACTIVE</code> &ARROW;
+                                   <code>DELETE_IP</code> &ARROW;
+                                   <code>ACTIVE</code>
+</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>This operation removes a shared IP address from
+                    the specified server.</para>
+                <para>This operation does not contain a request or
+                    response body.</para>
+            </section>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="server_actions">
+            <title>Server Actions</title>
+            <section xml:id="reboot">
+                <title>Reboot Server</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="2">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&POST;</td>
+                            <td colspan="2"
+                                   >/servers/<parameter>id</parameter>/action</td>
+                            <td colspan="3">Reboot the specified
+                                server</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>Normal Response Code(s):
+                        <returnvalue>202</returnvalue>
+</para>
+                <para>Error Response Code(s): cloudServersFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    badRequest (<errorcode>400</errorcode>),
+                        badMediaType(<errorcode>415</errorcode>),
+                    itemNotFound (<errorcode>404</errorcode>),
+                    buildInProgress (<errorcode>409</errorcode>),
+                    overLimit (<errorcode>413</errorcode>)</para>
+                <informaltable frame="void">
+                    <tbody>
+                        <tr>
+                            <td colspan="1">Status Transition:</td>
+                            <td colspan="3">
+                                <code>ACTIVE</code> &ARROW;
+                                   <code>REBOOT</code> &ARROW;
+                                   <code>ACTIVE</code> (<property>soft
+                                   reboot</property>)</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1"/>
+                            <td colspan="3">
+                                <code>ACTIVE</code> &ARROW;
+                                   <code>HARD_REBOOT</code> &ARROW;
+                                   <code>ACTIVE</code> (<property>hard
+                                   reboot</property>)</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>The reboot function allows for either a soft or
+                    hard reboot of a server. With a soft reboot
+                        (<code>SOFT</code>), the operating system is
+                    signaled to restart, which allows for a graceful
+                    shutdown of all processes. A hard reboot
+                        (<code>HARD</code>) is the equivalent of power
+                    cycling the server.</para>
+                <example>
+                    <title>Action Reboot: XML</title>
+                    <programlisting language="xml"><xi:include href="samples/reboot.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Action Reboot: JSON</title>
+                    <programlisting language="json"><xi:include href="samples/reboot.json" parse="text"/>
+                    </programlisting>
+                </example>
+                <para>This operation does not return a response
+                    body.</para>
+            </section>
+            <?hard-pagebreak?>
+            <section xml:id="rebuild">
+                <title>Rebuild Server</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="2">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&POST;</td>
+                            <td colspan="2"
+                                   >/servers/<parameter>id</parameter>/action</td>
+                            <td colspan="3">Rebuild the specified
+                                server</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <simpara> Normal Response Code(s):
+                        <returnvalue>202</returnvalue>
+                </simpara>
+                <simpara> Error Response Code(s): cloudServersFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    badRequest (<errorcode>400</errorcode>),
+                        badMediaType(<errorcode>415</errorcode>),
+                    itemNotFound (<errorcode>404</errorcode>),
+                    buildInProgress (<errorcode>409</errorcode>),
+                    serverCapacityUnavailable
+                        (<errorcode>503</errorcode>), overLimit
+                        (<errorcode>413</errorcode>) </simpara>
+                <informaltable frame="void">
+                    <tbody>
+                        <tr>
+                            <td colspan="1">Status Transition:</td>
+                            <td colspan="3">
+                                <code>ACTIVE</code> &ARROW;
+                                   <code>REBUILD</code> &ARROW;
+                                   <code>ACTIVE</code></td>
+                        </tr>
+                        <tr>
+                            <td colspan="1"/>
+                            <td colspan="3">
+                                <code>ACTIVE</code> &ARROW;
+                                   <code>REBUILD</code> &ARROW;
+                                   <code>ERROR</code> (on error)</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>The rebuild function removes all data on the
+                    server and replaces it with the specified image.
+                        <property>serverId</property> and IP addresses
+                    will remain the same.</para>
+                <example>
+                    <title>Action Rebuild: XML</title>
+                    <programlisting language="xml"><xi:include href="samples/rebuild.xml" parse="text"/></programlisting>
+                </example>
+                <example>
+                    <title>Action Rebuild: JSON</title>
+                    <programlisting language="json"><xi:include href="samples/rebuild.json" parse="text"/></programlisting>
+                </example>
+                <para>This operation does not return a response
+                    body.</para>
+            </section>
+            <?hard-pagebreak?>
+            <section xml:id="resize">
+                <title>Resize Server</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="2">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&POST;</td>
+                            <td colspan="2"
+                                   >/servers/<parameter>id</parameter>/action</td>
+                            <td colspan="3">Resize the specified
+                                server</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <simpara> Normal Response Code(s):
+                        <returnvalue>202</returnvalue>
+                </simpara>
+                <simpara> Error Response Code(s): cloudServersFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    badRequest (<errorcode>400</errorcode>),
+                        badMediaType(<errorcode>415</errorcode>),
+                    itemNotFound (<errorcode>404</errorcode>),
+                    buildInProgress (<errorcode>409</errorcode>),
+                    serverCapacityUnavailable
+                        (<errorcode>503</errorcode>), overLimit
+                        (<errorcode>413</errorcode>), resizeNotAllowed
+                        (<errorcode>403</errorcode>) </simpara>
+                <informaltable frame="void">
+                    <tbody>
+                        <tr>
+                            <td colspan="1">Status Transition:</td>
+                            <td colspan="3">
+                                <code>ACTIVE</code> &ARROW;
+                                   <code>QUEUE_RESIZE</code> &ARROW;
+                                   <code>PREP_RESIZE</code> &ARROW;
+                                   <code>RESIZE</code> &ARROW;
+                                   <code>VERIFY_RESIZE</code></td>
+                        </tr>
+                        <tr>
+                            <td colspan="1"/>
+                            <td colspan="3">
+                                <code>ACTIVE</code> &ARROW;
+                                   <code>QUEUE_RESIZE</code> &ARROW;
+                                   <code>ACTIVE</code> (on error)</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>The resize function converts an existing server
+                    to a different flavor, in essence, scaling the
+                    server up or down. The original server is saved
+                    for a period of time to allow rollback if there is
+                    a problem. All resizes should be tested and
+                    explicitly confirmed, at which time the original
+                    server is removed. All resizes are automatically
+                    confirmed after 24 hours if they are not
+                    explicitly confirmed or reverted.</para>
+                <example>
+                    <title>Action Resize: XML</title>
+                    <programlisting language="xml"><xi:include href="samples/resize.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Action Resize: JSON</title>
+                    <programlisting language="json"><xi:include href="samples/resize.json" parse="text"/>
+                    </programlisting>
+                </example>
+                <para>This operation does not return a response
+                    body.</para>
+            </section>
+            <?hard-pagebreak?>
+            <section xml:id="confirm_resize">
+                <title>Confirm Resized Server</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="2">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&POST;</td>
+                            <td colspan="2"
+                                   >/servers/<parameter>id</parameter>/action</td>
+                            <td colspan="3">Confirm a pending resize
+                                action</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <simpara> Normal Response Code(s):
+                        <returnvalue>204</returnvalue>
+                </simpara>
+                <simpara> Error ResponseCode(s): cloudServersFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    badRequest (<errorcode>400</errorcode>),
+                        badMediaType(<errorcode>415</errorcode>),
+                    itemNotFound (<errorcode>404</errorcode>),
+                    buildInProgress (<errorcode>409</errorcode>),
+                    serverCapacityUnavailable
+                        (<errorcode>503</errorcode>), overLimit
+                        (<errorcode>413</errorcode>), resizeNotAllowed
+                        (<errorcode>403</errorcode>) </simpara>
+                <informaltable frame="void">
+                    <tbody>
+                        <tr>
+                            <td colspan="1">Status Transition:</td>
+                            <td colspan="3">
+                                <code>VERIFY_RESIZE</code> &ARROW;
+                                   <code>ACTIVE</code>
+</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>During a resize operation, the original server
+                    is saved for a period of time to allow roll back
+                    if there is a problem. Once the newly resized
+                    server is tested and has been confirmed to be
+                    functioning properly, use this operation to
+                    confirm the resize. After confirmation, the
+                    original server is removed and cannot be rolled
+                    back to. All resizes are automatically confirmed
+                    after 24 hours if they are not explicitly
+                    confirmed or reverted.</para>
+                <example>
+                    <title>Action Confirm Resize: XML</title>
+                    <programlisting language="xml"><xi:include href="samples/confirmresize.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Action Confirm Resize: JSON</title>
+                    <programlisting language="json"><xi:include href="samples/confirmresize.json" parse="text"/>
+                    </programlisting>
+                </example>
+                <para>This operation does not return a response
+                    body.</para>
+            </section>
+            <?hard-pagebreak?>
+            <section xml:id="revert_server">
+                <title>Revert Resized Server</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="2">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&POST;</td>
+                            <td colspan="2"
+                                   >/servers/<parameter>id</parameter>/action</td>
+                            <td colspan="3">Cancel and revert a
+                                pending resize action</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <simpara> Normal Response Code(s):
+                        <returnvalue>202</returnvalue>
+                </simpara>
+                <simpara> Error ResponseCode(s): cloudServersFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    badRequest (<errorcode>400</errorcode>),
+                        badMediaType(<errorcode>415</errorcode>),
+                    itemNotFound (<errorcode>404</errorcode>),
+                    buildInProgress (<errorcode>409</errorcode>),
+                    serverCapacityUnavailable
+                        (<errorcode>503</errorcode>), overLimit
+                        (<errorcode>413</errorcode>), resizeNotAllowed
+                        (<errorcode>403</errorcode>) </simpara>
+                <informaltable frame="void">
+                    <tbody>
+                        <tr>
+                            <td colspan="1">Status Transition:</td>
+                            <td colspan="3">
+                                <code>VERIFY_RESIZE</code> &ARROW;
+                                   <code>ACTIVE</code></td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>During a resize operation, the original server
+                    is saved for a period of time to allow for roll
+                    back if there is a problem. If you determine there
+                    is a problem with a newly resized server, use this
+                    operation to revert the resize and roll back to
+                    the original server. All resizes are automatically
+                    confirmed after 24 hours if they have not already
+                    been confirmed explicitly or reverted.</para>
+                <example>
+                    <title>Action Revert Resize: XML</title>
+                    <programlisting language="xml"><xi:include href="samples/revertresize.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Action Revert Resize: JSON</title>
+                    <programlisting language="json"><xi:include href="samples/revertresize.json" parse="text"/>
+                    </programlisting>
+                </example>
+                <para>This operation does not return a response
+                    body.</para>
+            </section>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="flavors">
+            <title>Flavors</title>
+            <para>A flavor is an available hardware configuration for
+                a server. Each flavor has a unique combination of disk
+                space and memory capacity.</para>
+            <section xml:id="list_flavors">
+                <title>List Flavors</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="2">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&GET;</td>
+                            <td colspan="2">/flavors</td>
+                            <td colspan="3">List available flavors
+                                (IDs and names only)</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">&GET;</td>
+                            <td colspan="2">/flavors/detail</td>
+                            <td colspan="3">List available flavors
+                                (all details)</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <simpara> Normal Response Code(s):
+                        <returnvalue>200</returnvalue>,
+                        <returnvalue>203</returnvalue>
+                </simpara>
+                <simpara> Error ResponseCode(s): cloudServersFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    badRequest (<errorcode>400</errorcode>), overLimit
+                        (<errorcode>413</errorcode>) </simpara>
+                <para>This operation will list all available flavors
+                    with details.</para>
+                <para>This operation does not require a request
+                    body.</para>
+                <example>
+                    <title>Flavors List Response: XML (detail)</title>
+                    <programlisting language="xml"><xi:include href="samples/flavors.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Flavors List Response: JSON
+                        (detail)</title>
+                    <programlisting language="json"><xi:include href="samples/flavors.json" parse="text"/>
+                    </programlisting>
+                </example>
+            </section>
+            <?hard-pagebreak?>
+            <section xml:id="get_flavor">
+                <title>Get Flavor Details</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="2">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&GET;</td>
+                            <td colspan="2"
+                                   >/flavors/<parameter>id</parameter></td>
+                            <td colspan="3">List details of the
+                                specified flavor</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <simpara> Normal Response Code(s):
+                        <returnvalue>200</returnvalue>,
+                        <returnvalue>203</returnvalue>
+                </simpara>
+                <simpara> Error ResponseCode(s): cloudServersFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    badRequest (<errorcode>400</errorcode>),
+                    itemNotFound (<errorcode>404</errorcode>),
+                    overLimit (<errorcode>413</errorcode>) </simpara>
+                <para>This operation returns details of the specified
+                    flavor.</para>
+                <para>This operation does not require a request
+                    body.</para>
+                <example>
+                    <title>Flavor Details Response: XML</title>
+                    <programlisting language="xml"><xi:include href="samples/flavor.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Flavor Details Response: JSON</title>
+                    <programlisting language="json"><xi:include href="samples/flavor.json" parse="text"/>
+                    </programlisting>
+                </example>
+            </section>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="images">
+            <title>Images</title>
+            <para>An image is a collection of files you use to create
+                or rebuild a server. Rackspace provides pre-built OS
+                images by default. You may also create custom
+                images.</para>
+            <section xml:id="list_images">
+                <title>List Images</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="2">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&GET;</td>
+                            <td colspan="2">/images</td>
+                            <td colspan="3">List available images (IDs
+                                and names only)</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">&GET;</td>
+                            <td colspan="2">/images/detail</td>
+                            <td colspan="3">List available images (all
+                                details)</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <simpara> Normal Response Code(s):
+                        <returnvalue>200</returnvalue>,
+                        <returnvalue>203</returnvalue>
+                </simpara>
+                <simpara> Error ResponseCode(s): cloudServersFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    badRequest (<errorcode>400</errorcode>), overLimit
+                        (<errorcode>413</errorcode>) </simpara>
+                <para>This operation will list all images visible by
+                    the account.</para>
+                <para>In-flight images will have the status attribute
+                    set to <code>SAVING</code> and the conditional
+                    progress element (0-100% completion) will also be
+                    returned. Other possible values for the status
+                    attribute include: <code>UNKNOWN</code>,
+                        <code>PREPARING</code>, <code>ACTIVE</code>,
+                        <code>QUEUED</code>, <code>FAILED</code>.
+                    Images with an <code>ACTIVE</code> status are
+                    available for install.</para>
+                <para>This operation does not require a request
+                    body.</para>
+                <example>
+                    <title>Images List Response: XML (detail)</title>
+                    <programlisting language="xml"><xi:include href="samples/images.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Images List Response: JSON (detail)</title>
+                    <programlisting language="json"><xi:include href="samples/images.json" parse="text"/>
+                    </programlisting>
+                </example>
+            </section>
+            <section xml:id="create_image">
+                <title>Create Image</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="2">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&POST;</td>
+                            <td colspan="2">/images</td>
+                            <td colspan="3">Create a new image</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <simpara> Normal Response Code(s):
+                        <returnvalue>202</returnvalue>
+                </simpara>
+                <simpara> Error Response Code(s): cloudServersFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                        badMediaType(<errorcode>415</errorcode>),
+                    itemNotFound (<errorcode>404</errorcode>),
+                    badRequest (<errorcode>400</errorcode>),
+                    serverCapacityUnavailable
+                        (<errorcode>503</errorcode>), buildInProgress
+                        (<errorcode>409</errorcode>), resizeNotAllowed
+                        (<errorcode>403</errorcode>),
+                    backupOrResizeInProgress
+                        (<errorcode>409</errorcode>), overLimit
+                        (<errorcode>413</errorcode>) </simpara>
+                <informaltable frame="void">
+                    <tbody>
+                        <tr>
+                            <td colspan="1">Status Transition:</td>
+                            <td colspan="3">
+                                <code>QUEUED</code> &ARROW;
+                                   <code>PREPARING</code> &ARROW;
+                                   <code>SAVING</code> &ARROW;
+                                   <code>ACTIVE</code></td>
+                        </tr>
+                        <tr>
+                            <td colspan="1"/>
+                            <td colspan="3">
+                                <code>QUEUED</code> &ARROW;
+                                   <code>PREPARING</code> &ARROW;
+                                   <code>SAVING</code> &ARROW;
+                                   <code>FAILED</code> (on error)</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>This operation creates a new image for the given
+                    server ID. Once complete, a new image will be
+                    available that can be used to rebuild or create
+                    servers. The image creation status can be queried
+                    by performing a &GET; on
+                        /images/<parameter>id</parameter> and
+                    examining the status and progress
+                    attributes.</para>
+                <note>
+                    <para>At present, image creation is an
+                        asynchronous operation, so coordinating the
+                        creation with data quiescence, etc. is
+                        currently not possible.</para>
+                </note>
+                <example>
+                    <title>Image Create Request: XML</title>
+                    <programlisting language="xml">
+&lt;image xmlns="http://docs.rackspacecloud.com/servers/api/v1.0"
+  name="Just in case" serverId="12" /&gt;
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Image Create Request: JSON</title>
+                    <programlisting language="javascript">
+{
+      "image" : {
+          "serverId" : 12,
+          "name" : "Just in case"
+      }
+}
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Image Create Response: XML</title>
+                    <programlisting language="xml">
+&lt;image xmlns="http://docs.rackspacecloud.com/servers/api/v1.0"
+         id="22" name="Just in case"
+         created="2010-10-10T12:00:00Z"
+         status="SAVING" progress="0" serverId="12"/&gt;
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Image Create Response: JSON</title>
+                    <programlisting language="javascript">
+{
+      "image" : {
+          "id" : 22,
+          "serverId" : 12,
+          "name" : "Just in case",
+          "created" : "2010-10-10T12:00:00Z",
+          "status" : "SAVING",
+          "progress" : 0
+      }
+}
+                    </programlisting>
+                </example>
+            </section>
+            <?hard-pagebreak?>
+            <section xml:id="get_image_details">
+                <title>Get Image Details</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="2">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&GET;</td>
+                            <td colspan="2"
+                                   >/images/<parameter>id</parameter></td>
+                            <td colspan="3">List details of the
+                                specified image</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <simpara> Normal Response Code(s):
+                        <returnvalue>200</returnvalue>,
+                        <returnvalue>203</returnvalue>
+                </simpara>
+                <simpara> Error Response Code(s): cloudServersFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    badRequest (<errorcode>400</errorcode>),
+                    itemNotFound (<errorcode>404</errorcode>),
+                    overLimit (<errorcode>413</errorcode>) </simpara>
+                <para>This operation returns details of the specified
+                    image.</para>
+                <para>This operation does not require a request
+                    body.</para>
+                <example>
+                    <title>Image Details Response: XML</title>
+                    <programlisting language="xml"><xi:include href="samples/image.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Image Details Response: JSON</title>
+                    <programlisting language="json"><xi:include href="samples/image.json" parse="text"/>
+                    </programlisting>
+                </example>
+            </section>
+            <?hard-pagebreak?>
+            <section xml:id="delete_image">
+                <title>Delete Image</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="2">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&DELETE;</td>
+                            <td colspan="2"
+                                   >/images/<parameter>id</parameter></td>
+                            <td colspan="3">Deletes the specified
+                                image.</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <simpara> Normal Response Code(s):
+                        <returnvalue>204</returnvalue>
+                </simpara>
+                <simpara> Error Response Code(s): cloudServersFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    itemNotFound (<errorcode>404</errorcode>),
+                    overLimit (<errorcode>413</errorcode>) </simpara>
+                <para>This operation deletes an image from the
+                    system.</para>
+                <para>Images are immediately removed. Currently, there
+                    are no state transitions to track the delete
+                    operation.</para>
+                <para>This operation does not require a request
+                    body.</para>
+                <para>This operation does not contain a response
+                    body.</para>
+            </section>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="backup-schedules">
+            <title>Backup Schedules</title>
+            <para>In addition to creating images on demand, you may
+                also schedule periodic (daily and weekly) images via a
+                backup schedule. The daily and weekly images are
+                triggered automatically based on the backup schedule
+                established. The days/times specified for the backup
+                schedule are targets and actual start and completion
+                times may vary based on other activity in the system.
+                All backup times are in GMT.</para>
+            <table rules="all">
+                <caption>Weekly Backup Schedule</caption>
+                <thead>
+                    <tr>
+                        <td>Value</td>
+                        <td>Day</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>DISABLED</td>
+                        <td>Weekly backup disabled</td>
+                    </tr>
+                    <tr>
+                        <td>SUNDAY</td>
+                        <td>Sunday</td>
+                    </tr>
+                    <tr>
+                        <td>MONDAY</td>
+                        <td>Monday</td>
+                    </tr>
+                    <tr>
+                        <td>TUESDAY</td>
+                        <td>Tuesday</td>
+                    </tr>
+                    <tr>
+                        <td>WEDNESDAY</td>
+                        <td>Wednesday</td>
+                    </tr>
+                    <tr>
+                        <td>THURSDAY</td>
+                        <td>Thursday</td>
+                    </tr>
+                    <tr>
+                        <td>FRIDAY</td>
+                        <td>Friday</td>
+                    </tr>
+                    <tr>
+                        <td>SATURDAY</td>
+                        <td>Saturday</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table rules="all">
+                <caption>Daily Backup Schedule</caption>
+                <thead>
+                    <tr>
+                        <td>Value</td>
+                        <td>Hour Range</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>DISABLED</td>
+                        <td>Daily backups disabled</td>
+                    </tr>
+                    <tr>
+                        <td>H_0000_0200</td>
+                        <td>0000-0200</td>
+                    </tr>
+                    <tr>
+                        <td>H_0200_0400</td>
+                        <td>0200-0400</td>
+                    </tr>
+                    <tr>
+                        <td>H_0400_0600</td>
+                        <td>0400-0600</td>
+                    </tr>
+                    <tr>
+                        <td>H_0600_0800</td>
+                        <td>0600-0800</td>
+                    </tr>
+                    <tr>
+                        <td>H_0800_1000</td>
+                        <td>0800-1000</td>
+                    </tr>
+                    <tr>
+                        <td>H_1000_1200</td>
+                        <td>1000-1200</td>
+                    </tr>
+                    <tr>
+                        <td>H_1200_1400</td>
+                        <td>1200-1400</td>
+                    </tr>
+                    <tr>
+                        <td>H_1400_1600</td>
+                        <td>1400-1600</td>
+                    </tr>
+                    <tr>
+                        <td>H_1600_1800</td>
+                        <td>1600-1800</td>
+                    </tr>
+                    <tr>
+                        <td>H_1800_2000</td>
+                        <td>1800-2000</td>
+                    </tr>
+                    <tr>
+                        <td>H_2000_2200</td>
+                        <td>2000-2200</td>
+                    </tr>
+                    <tr>
+                        <td>H_2200_0000</td>
+                        <td>2200-0000</td>
+                    </tr>
+                </tbody>
+            </table>
+            <?hard-pagebreak?>
+            <section xml:id="list_backup_schedule">
+                <title>List Backup Schedules</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="4">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&GET;</td>
+                            <td colspan="4"
+                                   >/servers/<parameter>id</parameter>/backup_schedule</td>
+                            <td colspan="3">List the backup schedule
+                                for the specified server</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>Normal Response Code(s):
+                        <returnvalue>200</returnvalue>,
+                        <returnvalue>203</returnvalue>
+</para>
+                <para>Error Response Code(s): cloudServersFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    badRequest (<errorcode>400</errorcode>),
+                    itemNotFound (<errorcode>404</errorcode>),
+                    overLimit (<errorcode>413</errorcode>)</para>
+                <para>This operation lists the backup schedule for the
+                    specified server.</para>
+                <para>This operation does not require a request
+                    body.</para>
+                <example>
+                    <title>Backup Schedule List Response: XML</title>
+                    <programlisting language="xml"><xi:include href="samples/backup.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Backup Schedule List Response: JSON</title>
+                    <programlisting language="json"><xi:include href="samples/backup.json" parse="text"/>
+                    </programlisting>
+                </example>
+            </section>
+            <?hard-pagebreak?>
+            <section xml:id="create_backup_schedule">
+                <title>Create / Update Backup Schedule</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="4">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&POST;</td>
+                            <td colspan="4"
+                                   >/servers/<parameter>id</parameter>/backup_schedule</td>
+                            <td colspan="3">Enable/update the backup
+                                schedule for the specified server</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <simpara> Normal Response Code(s):
+                        <returnvalue>204</returnvalue>
+                </simpara>
+                <simpara> Error Response Code(s): cloudServersFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    badRequest (<errorcode>400</errorcode>),
+                        badMediaType(<errorcode>415</errorcode>),
+                    itemNotFound (<errorcode>404</errorcode>),
+                    buildInProgress (<errorcode>409</errorcode>),
+                    serverCapacityUnavailable
+                        (<errorcode>503</errorcode>),
+                        backupOrResizeInProgress(<errorcode>409</errorcode>),
+                    overLimit (<errorcode>413</errorcode>) </simpara>
+                <para>This operation creates a new backup schedule or
+                    updates an existing backup schedule for the
+                    specified server. Backup schedules will occur only
+                    when the enabled attribute is set to true. The
+                    weekly and daily attributes can be used to set or
+                    to disable individual backup schedules.</para>
+                <example>
+                    <title>Backup Schedule Update Request: XML</title>
+                    <programlisting language="xml"><xi:include href="samples/backup.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Backup Schedule Update Request:
+                        JSON</title>
+                    <programlisting language="json"><xi:include href="samples/backup.json" parse="text"/>
+                    </programlisting>
+                </example>
+                <para>This operation does not return a response
+                    body.</para>
+            </section>
+            <?hard-pagebreak?>
+            <section xml:id="disable_backup_schedule">
+                <title>Disable Backup Schedule</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="4">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&DELETE;</td>
+                            <td colspan="4"
+                                   >/servers/<parameter>id</parameter>/backup_schedule</td>
+                            <td colspan="3">Disables the backup
+                                schedule for the specified server</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <simpara> Normal Response Code(s):
+                        <returnvalue>204</returnvalue>
+                </simpara>
+                <simpara> Error Response Code(s): cloudServersFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    itemNotFound (<errorcode>404</errorcode>),
+                    buildInProgress (<errorcode>409</errorcode>),
+                    serverCapacityUnavailable
+                        (<errorcode>503</errorcode>),
+                        backupOrResizeInProgress(<errorcode>409</errorcode>),
+                    overLimit (<errorcode>413</errorcode>) </simpara>
+                <para>This operation disables the backup schedule for
+                    the specified server.</para>
+                <para>This operation does not require a request
+                    body.</para>
+                <para>This operation does not return a response
+                    body.</para>
+            </section>
+        </section>
+        <?hard-pagebreak?>
+        <section xml:id="shared_groups">
+            <title>Shared IP Groups</title>
+            <para>A shared IP group is a collection of servers that
+                can share IPs with other members of the group. Any
+                server in a group can share one or more public IPs
+                with any other server in the group. With the exception
+                of the first server in a shared IP group, servers must
+                be launched into shared IP groups. A server may only
+                be a member of one shared IP group.</para>
+            <section xml:id="list_groups">
+                <title>List Shared IP Groups</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="2">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&GET;</td>
+                            <td colspan="2">/shared_ip_groups</td>
+                            <td colspan="3">List shared ip groups (IDs
+                                and names only)</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">&GET;</td>
+                            <td colspan="2"
+                                >/shared_ip_groups/detail</td>
+                            <td colspan="3">List shared ip groups (all
+                                details)</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <simpara> Normal Response Code(s):
+                        <returnvalue>200</returnvalue>,
+                        <returnvalue>203</returnvalue>
+                </simpara>
+                <simpara> Error ResponseCode(s): cloudServersFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    badRequest (<errorcode>400</errorcode>), overLimit
+                        (<errorcode>413</errorcode>) </simpara>
+                <para>This operation provides a list of shared IP
+                    groups associated with your account.</para>
+                <para>This operation does not require a request
+                    body.</para>
+                <example>
+                    <title>Shared IP Groups List Response: XML
+                        (detail)</title>
+                    <programlisting language="xml"><xi:include href="samples/ipgroups.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Shared IP Groups List Response: JSON
+                        (detail)</title>
+                    <programlisting language="json"><xi:include href="samples/ipgroups.json" parse="text"/>
+                    </programlisting>
+                </example>
+            </section>
+            <section xml:id="create_group">
+                <title>Create Shared IP Group</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="2">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&POST;</td>
+                            <td colspan="2">/shared_ip_groups</td>
+                            <td colspan="3">Create a new shared ip
+                                group</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <simpara> Normal Response Code(s):
+                        <returnvalue>201</returnvalue>
+                </simpara>
+                <simpara> Error Response Code(s): cloudServersFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                        badMediaType(<errorcode>415</errorcode>),
+                    badRequest (<errorcode>400</errorcode>), overLimit
+                        (<errorcode>413</errorcode>) </simpara>
+                <para>This operation creates a new shared IP group.
+                    Please note, all responses to requests for
+                    shared_ip_groups return an array of servers.
+                    However, on a create request, the shared IP group
+                    can be created empty or can be initially populated
+                    with a single server. Submitting a create request
+                    with a sharedIpGroup that contains an array of
+                    servers will generate a badRequest
+                        (<errorcode>400</errorcode>) fault.</para>
+                <example>
+                    <title>Shared IP Group Create Request: XML</title>
+                    <programlisting language="xml"><xi:include href="samples/ipgroup2.xml" parse="text"/></programlisting>
+                </example>
+                <example>
+                    <title>Shared IP Group Create Request:
+                        JSON</title>
+                    <programlisting language="javascript"><xi:include href="samples/ipgroup2.json" parse="text"/></programlisting>
+                </example>
+                <example>
+                    <title>Shared IP Group Create Response:
+                        XML</title>
+                    <programlisting language="xml"><xi:include href="samples/ipgroup.xml" parse="text"/></programlisting>
+                </example>
+                <example>
+                    <title>Shared IP Group Create Response:
+                        JSON</title>
+                    <programlisting language="javascript"><xi:include href="samples/ipgroup.json" parse="text"/></programlisting>
+                </example>
+            </section>
+            <?hard-pagebreak?>
+            <section xml:id="get_group">
+                <title>Get Shared IP Group Details</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="2">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&GET;</td>
+                            <td colspan="2"
+                                   >/shared_ip_groups/<parameter>id</parameter></td>
+                            <td colspan="3">List details of the
+                                specified shared IP group</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <simpara> Normal Response Code(s):
+                        <returnvalue>200</returnvalue>,
+                        <returnvalue>203</returnvalue>
+                </simpara>
+                <simpara> Error Response Code(s): cloudServersFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    badRequest (<errorcode>400</errorcode>),
+                    itemNotFound (<errorcode>404</errorcode>),
+                    overLimit (<errorcode>413</errorcode>) </simpara>
+                <para>This operation returns details of the specified
+                    shared IP group.</para>
+                <example>
+                    <title>Shared IP Group Details Response:
+                        XML</title>
+                    <programlisting language="xml"><xi:include href="samples/ipgroup.xml" parse="text"/></programlisting>
+                </example>
+                <example>
+                    <title>Shared IP Group Details Response:
+                        JSON</title>
+                    <programlisting language="javascript"><xi:include href="samples/ipgroup.json" parse="text"/></programlisting>
+                </example>
+                <para>This operation does not require a request
+                    body.</para>
+            </section>
+            <?hard-pagebreak?>
+            <section xml:id="deleted_group">
+                <title>Delete Shared IP Group</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr>
+                            <td colspan="1">Verb</td>
+                            <td colspan="2">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1">&DELETE;</td>
+                            <td colspan="2"
+                                   >/shared_ip_groups/<parameter>id</parameter></td>
+                            <td colspan="3">Delete the specified
+                                shared IP group</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <simpara> Normal Response Code(s):
+                        <returnvalue>204</returnvalue>
+                </simpara>
+                <simpara> Error Response Code(s): cloudServersFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    itemNotFound (<errorcode>404</errorcode>),
+                    overLimit (<errorcode>413</errorcode>) </simpara>
+                <para>This operation deletes the specified shared IP
+                    group. This operation will <emphasis role="bold"
+                        >only</emphasis> succeed if:</para>
+                <orderedlist spacing="compact">
+                    <listitem>
+                        <para>There are no active servers in the group
+                            (i.e. they have all been terminated)
+                            or</para>
+                    </listitem>
+                    <listitem>
+                        <para>No servers in the group are actively
+                            sharing IPs.</para>
+                    </listitem>
+                </orderedlist>
+                <para>This operation does not require a request
+                    body.</para>
+                <para>This operation does not contain a response
+                    body.</para>
+            </section>
+        </section>
+    </chapter>
+</book>
