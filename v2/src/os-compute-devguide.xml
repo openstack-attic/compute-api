@@ -1895,9 +1895,43 @@ Host: servers.api.openstack.org/v2/</literallayout>
         <?hard-pagebreak?>
         <section xml:id="NetworksSection">
             <title>Networks</title>
+            <para>Using the network API you can create, update, delete and
+                 show networks, ports and subnets. A few examples are given below.</para>
+            <table rules="all" xml:id="NetworkAttributes-d1e5090">
+                <caption>Get all networks</caption>
+                <thead>
+                    <tr>
+                        <td>Method</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GET</td>
+                        <td>/v2.0/networks</td>
+                        <td>Returns an array of all networks</td>
+                    </tr>
+                    <tr>
+                        <td>GET</td>
+                        <td>/v2.0/networks/{network_id}</td>
+                        <td>Return network with given id</td>
+                    </tr>
+                    <tr>
+                        <td>POST</td>
+                        <td>/v2.0/networks</td>
+                        <td>Creates new network</td>
+                    </tr>
+                    <tr>
+                        <td>DELETE</td>
+                        <td>/v2.0/networks/{network_id}</td>
+                        <td>Delete network with given id</td>
+                    </tr>
+                </tbody>
+            </table>
             <para>You can specify the following attributes for a
                 network.</para>
-            <table rules="all" xml:id="NetworkAttributes-d1e5090">
+            <table rules="all" xml:id="NetworkAttributes-d1e5091">
                 <caption>Network attributes</caption>
                 <thead>
                     <tr>
