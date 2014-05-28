@@ -953,41 +953,41 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb</literallayout>
                     <caption>Sample Absolute Limits</caption>
                     <thead>
                         <tr>
-                            <td colspan="2">Name</td>
-                            <td colspan="1">Value</td>
-                            <td colspan="3">Description</td>
+                            <td>Name</td>
+                            <td>Value</td>
+                            <td>Description</td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td colspan="2">maxTotalRAMSize</td>
-                            <td colspan="1">51200</td>
-                            <td colspan="3">Maximum total amount of
+                            <td>maxTotalRAMSize</td>
+                            <td>51200</td>
+                            <td>Maximum total amount of
                                 RAM (MB)</td>
                         </tr>
                         <tr>
-                            <td colspan="2">maxServerMeta</td>
-                            <td colspan="1">5</td>
-                            <td colspan="3">Maximum number of metadata
+                            <td>maxServerMeta</td>
+                            <td>5</td>
+                            <td>Maximum number of metadata
                                 items associated with a server</td>
                         </tr>
                         <tr>
-                            <td colspan="2">maxImageMeta</td>
-                            <td colspan="1">5</td>
-                            <td colspan="3">Maximum number of metadata
+                            <td>maxImageMeta</td>
+                            <td>5</td>
+                            <td>Maximum number of metadata
                                 items associated with an Image</td>
                         </tr>
                         <tr>
-                            <td colspan="2">maxPersonality</td>
-                            <td colspan="1">5</td>
-                            <td colspan="3">The maximum number of file
+                            <td>maxPersonality</td>
+                            <td>5</td>
+                            <td>The maximum number of file
                                 path/content pairs that can be
                                 supplied on server build</td>
                         </tr>
                         <tr>
-                            <td colspan="2">maxPersonalitySize</td>
-                            <td colspan="1">10240</td>
-                            <td colspan="3">The maximum size, in
+                            <td>maxPersonalitySize</td>
+                            <td>10240</td>
+                            <td>The maximum size, in
                                 bytes, for each personality file</td>
                         </tr>
                     </tbody>
@@ -1582,15 +1582,15 @@ Host: servers.api.openstack.org/v2/</literallayout>
                 <informaltable frame="void">
                     <tbody>
                         <tr>
-                            <td colspan="1">Status Transition:</td>
-                            <td colspan="3">
+                            <td>Status Transition:</td>
+                            <td>
                                 <code>BUILD</code> &ARROW;
                                    <code>ACTIVE</code>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="1"/>
-                            <td colspan="3">
+                            <td/>
+                            <td>
                                 <code>BUILD</code> &ARROW;
                                    <code>ERROR</code> (on error)</td>
                         </tr>
@@ -1935,27 +1935,27 @@ Host: servers.api.openstack.org/v2/</literallayout>
                 <caption>Network attributes</caption>
                 <thead>
                     <tr>
-                        <td colspan="1">Name</td>
-                        <td colspan="2">Type</td>
-                        <td colspan="3">Description</td>
+                        <td>Name</td>
+                        <td>Type</td>
+                        <td>Description</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td colspan="1">uuid</td>
-                        <td colspan="2">uuid</td>
-                        <td colspan="3">The uuid of the network.</td>
+                        <td>uuid</td>
+                        <td>uuid</td>
+                        <td>The uuid of the network.</td>
                     </tr>
                     <tr>
-                        <td colspan="1">fixed_ip</td>
-                        <td colspan="2">IPv4</td>
-                        <td colspan="3">The IP address to assign to
+                        <td>fixed_ip</td>
+                        <td>IPv4</td>
+                        <td>The IP address to assign to
                             the interface.</td>
                     </tr>
                     <tr>
-                        <td colspan="1">port</td>
-                        <td colspan="2">uuid</td>
-                        <td colspan="3">The uuid of the port.</td>
+                        <td>port</td>
+                        <td>uuid</td>
+                        <td>The uuid of the port.</td>
                     </tr>
                 </tbody>
             </table>
