@@ -1,0 +1,9 @@
+Verified+2: Jenkins
+Code-Review+1: Christian Berendt <berendt@b1-systems.de>
+Code-Review+2: Diane Fleming <diane.fleming@rackspace.com>
+Workflow+1: Diane Fleming <diane.fleming@rackspace.com>
+Submitted-by: Jenkins
+Submitted-at: Fri, 13 Jun 2014 18:57:03 +0000
+Reviewed-on: https://review.openstack.org/99030
+Project: openstack/compute-api
+Branch: refs/heads/master
