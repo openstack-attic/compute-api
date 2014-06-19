@@ -547,96 +547,119 @@
             </note>
         </section>
         <section xml:id="Request_Response_Types-d1e459">
-            <title>Request and response types</title>
+            <title>Request and response formats</title>
             <para>The OpenStack Compute API supports both JSON and XML
                 data serialization request and response
                 formats.</para>
-            <para>You specify the request format in the
-                    <code>Content-Type</code> header in the request.
-                This header is required for operations that have a
-                request body. The syntax for the
-                    <code>Content-Type</code> header is:</para>
-            <programlisting>Content-Type: application/<parameter>format</parameter></programlisting>
-            <para>Where <parameter>format</parameter> is either
-                    <literal>json</literal> or <literal>xml</literal>,
-                you specify the response format by using one of the
-                following methods:</para>
-            <itemizedlist>
-                <listitem>
-                    <para><code>Accept</code> header. The syntax for
-                        the <code>Accept</code> header is:
-                        <programlisting>Accept: application/<parameter>format</parameter></programlisting></para>
-                    <para>Where <parameter>format</parameter> is
-                        either <constant>json</constant> or
-                            <constant>xml</constant>, the default
-                        format is <literal>json</literal>.</para>
-                </listitem>
-                <listitem>
-                    <para>Query extension. Add an
-                            <literal>.xml</literal> or
-                            <literal>.json</literal> extension to the
-                        request URI. For example, the
-                            <literal>.xml</literal> extension in the
-                        following URI request specifies that the
-                        response body is returned in XML format:
-                        <literallayout role="monospace">&POST; /v2/010101/servers.xml</literallayout></para>
-                </listitem>
-            </itemizedlist>
-            <para>If you do not specify a response format, JSON is the
-                default.</para>
-            <para>If you specify conflicting formats in the
-                    <code>Accept</code> header and the query
-                extension, the format specified in the query extension
-                takes precedence. For example, if the query extension
-                is <literal>.xml</literal> and the <code>Accept</code>
-                header specifies <literal>application/json</literal>,
-                the response is returned in XML format.</para>
-            <para>You can serialize a response in a different format
-                from the request format. <xref linkend="JSON_req"/>
-                and <xref linkend="ImageCreateFullResponse"/> show a
-                request body in JSON format and a response body in XML
-                format.</para>
-            <example xml:id="JSON_req">
-                <title>JSON request with headers</title>
-                <literallayout role="monospace"><?db-font-size 70%?>POST /v2/010101/servers HTTP/1.1
+            <section xml:id="request-format">
+                <title>Request format</title>
+                <para>Use the <code>Content-Type</code> request header
+                    to specify the request format. This header is
+                    required for operations that have a request body.</para>
+                <para>The syntax for the <code>Content-Type</code>
+                    header is:</para>
+                <programlisting>Content-Type: application/<replaceable>FORMAT</replaceable></programlisting>
+                <para>Where <replaceable>FORMAT</replaceable> is
+                    either <literal>json</literal> or
+                        <literal>xml</literal>.</para>
+            </section>
+            <section xml:id="response-format">
+                <title>Response format</title>
+                <para>Use one of the following methods to specify the
+                    response format:</para>
+                <variablelist>
+                    <varlistentry>
+                        <term><code>Accept</code> header</term>
+                        <listitem>
+                            <para>The syntax for the
+                                   <code>Accept</code> header
+                                is:</para>
+                            <programlisting>Accept: application/<replaceable>FORMAT</replaceable></programlisting>
+                            <para>Where
+                                   <replaceable>FORMAT</replaceable>
+                                is either <literal>json</literal> or
+                                   <literal>xml</literal>. The default
+                                format is
+                                <literal>json</literal>.</para>
+                        </listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>Query extension</term>
+                        <listitem>
+                            <para>Add an <literal>.xml</literal> or
+                                   <literal>.json</literal> extension
+                                to the request URI. For example, the
+                                   <literal>.xml</literal> extension
+                                in the following list servers URI
+                                request specifies that the response
+                                body is to be returned in XML
+                                format:</para>
+                            <literallayout role="monospace">&GET; <replaceable>publicURL</replaceable>/servers.xml</literallayout>
+                        </listitem>
+                    </varlistentry>
+                </variablelist>
+                <para>If you do not specify a response format, JSON is
+                    the default.</para>
+                <para>If the <code>Accept</code> header and the query
+                    extension specify conflicting formats, the format
+                    specified in the query extension takes precedence.
+                    For example, if the query extension is
+                        <literal>.xml</literal> and the
+                        <code>Accept</code> header specifies
+                        <literal>application/json</literal>, the
+                    response is returned in XML format.</para>
+            </section>
+            <section xml:id="request-response-examples">
+                <title>Request and response examples</title>
+                <para>You can serialize a response in a different
+                    format from the request format.</para>
+                <para><xref linkend="JSON_req"/> and <xref
+                        linkend="ImageCreateFullResponse"/> show a
+                    request body in JSON format and a response body in
+                    XML format.</para>
+                <example xml:id="JSON_req">
+                    <title>JSON request with headers</title>
+                    <literallayout role="monospace"><?db-font-size 70%?>POST /v2/010101/servers HTTP/1.1
 Host: servers.api.openstack.org
 Content-Type: application/json
 Accept: application/xml
 X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb</literallayout>
-                <programlisting language="json"><?db-font-size 70%?><xi:include href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/v2/api_samples/server-post-req.json" parse="text"/></programlisting>
-            </example>
-            <?hard-pagebreak?>
-            <para><xref linkend="ImageCreateFullResponse"/> shows the
-                headers and XML response returned by the JSON
-                request:</para>
-            <example xml:id="ImageCreateFullResponse">
-                <title>XML response with headers</title>
-                <literallayout role="monospace"><?db-font-size 70%?>HTTP/1.1 202 Accepted
+                    <programlisting language="json"><?db-font-size 70%?><xi:include href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/v2/api_samples/server-post-req.json" parse="text"/></programlisting>
+                </example>
+                <?hard-pagebreak?>
+                <para><xref linkend="ImageCreateFullResponse"/> shows
+                    the headers and XML response returned by the JSON
+                    request:</para>
+                <example xml:id="ImageCreateFullResponse">
+                    <title>XML response with headers</title>
+                    <literallayout role="monospace"><?db-font-size 70%?>HTTP/1.1 202 Accepted
 Date: Mon, 23 Jul 2012 20:24:48 GMT
 Content-Length: 582
 Location: https://servers.api.openstack.org/v2/010101/servers/06dba123-2c7e-4639-bea0-09fbe219b056
 Content-Type: application/xml
 X-Compute-Request-Id: req-ab05045a-452f-4b46-be0d-86494da02a2b
 Server: Jetty(8.0.y.z-SNAPSHOT)</literallayout>
-                <programlisting language="xml"><?db-font-size 70%?><xi:include href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/v2/api_samples/server-post-resp.xml" parse="text"/></programlisting>
-            </example>
-            <para>The following example shows an alternative method of
-                achieving the same result. The following request uses
-                an URI extension of <literal>.xml</literal> instead of
-                an <code>Accept</code> header to request an XML
-                response.</para>
-            <note>
-                <para>The XML response is not shown.</para>
-            </note>
-            <example xml:id="diff_serialization">
-                <title>JSON request with XML query extension for the
-                    response</title>
-                <literallayout role="monospace"><?db-font-size 70%?>POST /v2/010101/servers<emphasis role="bold">.xml</emphasis> HTTP/1.1
+                    <programlisting language="xml"><?db-font-size 70%?><xi:include href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/v2/api_samples/server-post-resp.xml" parse="text"/></programlisting>
+                </example>
+                <para>The following example shows an alternative
+                    method of achieving the same result. The following
+                    request uses an URI extension of
+                        <literal>.xml</literal> instead of an
+                        <code>Accept</code> header to request an XML
+                    response.</para>
+                <note>
+                    <para>The XML response is not shown.</para>
+                </note>
+                <example xml:id="diff_serialization">
+                    <title>JSON request with XML query extension for
+                        the response</title>
+                    <literallayout role="monospace"><?db-font-size 70%?>POST /v2/010101/servers<emphasis role="bold">.xml</emphasis> HTTP/1.1
 Host: servers.api.openstack.org
 Content-Type: application/json
 X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb</literallayout>
-                <programlisting language="json"><?db-font-size 70%?><xi:include href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/v2/api_samples/server-post-req.json" parse="text"/></programlisting>
-            </example>
+                    <programlisting language="json"><?db-font-size 70%?><xi:include href="http://git.openstack.org/cgit/openstack/api-site/plain/api-ref/src/wadls/compute-api/src/v2/api_samples/server-post-req.json" parse="text"/></programlisting>
+                </example>
+            </section>
         </section>
         <?hard-pagebreak?>
         <section xml:id="LinksReferences">
@@ -962,20 +985,19 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb</literallayout>
                         <tr>
                             <td>maxTotalRAMSize</td>
                             <td>51200</td>
-                            <td>Maximum total amount of
-                                RAM (MB)</td>
+                            <td>Maximum total amount of RAM (MB)</td>
                         </tr>
                         <tr>
                             <td>maxServerMeta</td>
                             <td>5</td>
-                            <td>Maximum number of metadata
-                                items associated with a server</td>
+                            <td>Maximum number of metadata items
+                                associated with a server</td>
                         </tr>
                         <tr>
                             <td>maxImageMeta</td>
                             <td>5</td>
-                            <td>Maximum number of metadata
-                                items associated with an Image</td>
+                            <td>Maximum number of metadata items
+                                associated with an Image</td>
                         </tr>
                         <tr>
                             <td>maxPersonality</td>
@@ -987,8 +1009,8 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb</literallayout>
                         <tr>
                             <td>maxPersonalitySize</td>
                             <td>10240</td>
-                            <td>The maximum size, in
-                                bytes, for each personality file</td>
+                            <td>The maximum size, in bytes, for each
+                                personality file</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1568,6 +1590,13 @@ Host: servers.api.openstack.org/v2/</literallayout>
                             <emphasis>per account</emphasis> and is
                         not globally unique.</para>
                 </note>
+                <!--<wadl:resources
+                    xmlns:wadl="http://wadl.dev.java.net/2009/02">
+                    <wadl:resource
+                        href="v2/wadl/os-compute-2.wadl#Servers">
+                        <wadl:method href="#listServers"/>
+                    </wadl:resource>
+                </wadl:resources>-->
                 <wadl:resources
                     xmlns:wadl="http://wadl.dev.java.net/2009/02">
                     <wadl:resource
@@ -1895,8 +1924,9 @@ Host: servers.api.openstack.org/v2/</literallayout>
         <?hard-pagebreak?>
         <section xml:id="NetworksSection">
             <title>Networks</title>
-            <para>Using the network API you can create, update, delete and
-                 show networks, ports and subnets. A few examples are given below.</para>
+            <para>Using the network API you can create, update, delete
+                and show networks, ports and subnets. A few examples
+                are given below.</para>
             <table rules="all" xml:id="NetworkMethods-d1e5091">
                 <caption>Get all networks</caption>
                 <thead>
@@ -1949,8 +1979,8 @@ Host: servers.api.openstack.org/v2/</literallayout>
                     <tr>
                         <td>fixed_ip</td>
                         <td>IPv4</td>
-                        <td>The IP address to assign to
-                            the interface.</td>
+                        <td>The IP address to assign to the
+                            interface.</td>
                     </tr>
                     <tr>
                         <td>port</td>
