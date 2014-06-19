@@ -73,8 +73,35 @@
                 time to allow rollback if there is a problem. All
                 resizes should be tested and explicitly confirmed, at
                 which time the original server is removed. All resizes
-                are automatically confirmed after 24 hours if you do not
-                confirm or revert them.</para>
+                are automatically confirmed after 24 hours if you do
+                not confirm or revert them.</para>
+        </listitem>
+        <listitem>
+            <para><emphasis role="bold">Pause</emphasis></para>
+            <para>You can pause a server instance by running the
+                    <command>nova pause</command>
+                <replaceable>INSTANCE_NAME></replaceable> command.
+                Running this command stores the state of the VM in
+                RAM. A paused instance continues to run in a frozen
+                state. A server instance can be unpaused by running
+                the <command>nova unpause</command>
+                <replaceable>INSTANCE_NAME></replaceable> command.
+                command.</para>
+        </listitem>
+        <listitem>
+            <para><emphasis role="bold">Suspend</emphasis></para>
+            <para>You can suspend a server instance on the hypervisor
+                level by running the  <command>nova suspend</command>
+                <replaceable>INSTANCE_NAME></replaceable> command.
+                When you suspend an instance, its VM state is stored
+                on disk, all memory is written to disk, and the
+                virtual machine is stopped. Suspending an instance is
+                similar to placing a device in hibernation; memory and
+                vCPUs become available to create other instances. To
+                resume a suspended server instance, run the
+                    <command>nova resume</command>
+                <replaceable>INSTANCE_NAME></replaceable>
+                command.</para>
         </listitem>
     </itemizedlist>
 </section>
