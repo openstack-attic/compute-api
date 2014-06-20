@@ -73,8 +73,30 @@
                 time to allow rollback if there is a problem. All
                 resizes should be tested and explicitly confirmed, at
                 which time the original server is removed. All resizes
-                are automatically confirmed after 24 hours if you do not
-                confirm or revert them.</para>
+                are automatically confirmed after 24 hours if you do
+                not confirm or revert them.</para>
+        </listitem>
+        <listitem>
+            <para><emphasis role="bold">Pause</emphasis></para>
+            <para>You can pause a server by making a <link
+                    xlink:href="http://docs.openstack.org/api/openstack-compute/2/content/POST_os-admin-actions-v2_pause__v2__tenant_id__servers__server_id__action_ext-action.html"
+                    >Pause server</link> request. This request stores
+                the state of the VM in RAM. A paused instance
+                continues to run in a frozen state. You can unpause a
+                server that has been paused by making an <link
+                    xlink:href="http://docs.openstack.org/api/openstack-compute/2/content/POST_os-admin-actions-v2_unpause__v2__tenant_id__servers__server_id__action_ext-action.html"
+                    >Unpause server</link> request. </para>
+        </listitem>
+        <listitem>
+            <para><emphasis role="bold">Suspend</emphasis></para>
+            <para>Administrative users might want to suspend an
+                instance if it is infrequently used or to perform
+                system maintenance. When you suspend an instance, its
+                VM state is stored on disk, all memory is written to
+                disk, and the virtual machine is stopped. Suspending
+                an instance is similar to placing a device in
+                hibernation; memory and vCPUs become available to
+                create other instances.</para>
         </listitem>
     </itemizedlist>
 </section>
