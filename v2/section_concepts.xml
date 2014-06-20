@@ -78,14 +78,10 @@
         </listitem>
         <listitem>
             <para><emphasis role="bold">Pause</emphasis></para>
-            <para>You can pause a server by making a <link
-                    xlink:href="http://docs.openstack.org/api/openstack-compute/2/content/POST_os-admin-actions-v2_pause__v2__tenant_id__servers__server_id__action_ext-action.html"
-                    >Pause server</link> request. This request stores
-                the state of the VM in RAM. A paused instance
-                continues to run in a frozen state. You can unpause a
-                server that has been paused by making an <link
-                    xlink:href="http://docs.openstack.org/api/openstack-compute/2/content/POST_os-admin-actions-v2_unpause__v2__tenant_id__servers__server_id__action_ext-action.html"
-                    >Unpause server</link> request. </para>
+            <para>You can pause a server by making a <command>Pause
+                    server</command> request. This request stores the
+                state of the VM in RAM. A paused instance continues to
+                run in a frozen state.</para>
         </listitem>
         <listitem>
             <para><emphasis role="bold">Suspend</emphasis></para>
