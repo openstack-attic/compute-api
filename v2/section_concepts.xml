@@ -79,6 +79,7 @@
                 confirm or revert them.</para>
         </listitem>
         <listitem>
+<<<<<<< HEAD
             <para><emphasis role="bold">Pause action</emphasis></para>
             <para>Pauses a server and causes it to run in a frozen
                 state. To pause a server, make a <link
@@ -97,6 +98,13 @@
                 users might want to suspend an infrequently used
                 instance or suspend an instance to perform system
                 maintenance.</para>
+=======
+            <para><emphasis role="bold">Pause</emphasis></para>
+            <para>You can pause a server by making a <command>Pause
+                    server</command> request. This request stores the
+                state of the VM in RAM. A paused instance continues to
+                run in a frozen state.</para>
+>>>>>>> 7016f83... Fix: Updated after code review Closes-Bug: 1295718 Change-Id: Ie128f353c5bcc963fff6e234a949762bfd6c19ac
         </listitem>
         <listitem>
             <para><emphasis role="bold">Unpause
