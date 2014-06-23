@@ -48,63 +48,50 @@
                 particular server configuration frequently.</para>
         </listitem>
         <listitem>
-            <para><emphasis role="bold">Reboot
-                action</emphasis></para>
-            <para>Performs a soft or hard reboot of a server. With a
-                soft reboot, the operating system is signaled to
-                restart, which allows for a graceful shutdown of all
-                processes. A hard reboot is the equivalent of power
-                cycling the server. The virtualization platform should
-                ensure that the reboot action has completed
-                successfully even in cases in which the underlying
-                domain/VM is paused or halted/stopped.</para>
+            <para><emphasis role="bold">Reboot</emphasis></para>
+            <para>Use this function to perform either a soft or hard
+                reboot of a server. With a soft reboot, the operating
+                system is signaled to restart, which allows for a
+                graceful shutdown of all processes. A hard reboot is
+                the equivalent of power cycling the server. The
+                virtualization platform should ensure that the reboot
+                action has completed successfully even in cases in
+                which the underlying domain/VM is paused or
+                halted/stopped.</para>
         </listitem>
         <listitem>
-            <para><emphasis role="bold">Rebuild
-                action</emphasis></para>
-            <para>Removes all data on the server and replaces it with
-                the specified image. Server ID and IP addresses remain
-                the same.</para>
+            <para><emphasis role="bold">Rebuild</emphasis></para>
+            <para>Use this function to remove all data on the server and
+                replaces it with the specified image. Server ID and IP
+                addresses remain the same.</para>
         </listitem>
         <listitem>
-            <para><emphasis role="bold">Resize
-                action</emphasis></para>
-            <para>Converts an existing server to a different flavor,
-                in essence, scaling the server up or down. The
-                original server is saved for a period of time to allow
-                rollback if there is a problem. All resizes should be
-                tested and explicitly confirmed, at which time the
-                original server is removed. All resizes are
-                automatically confirmed after 24 hours if you do not
-                confirm or revert them.</para>
+            <para><emphasis role="bold">Resize</emphasis></para>
+            <para>Use this function to convert an existing server to a
+                different flavor, in essence, scaling the server up or
+                down. The original server is saved for a period of
+                time to allow rollback if there is a problem. All
+                resizes should be tested and explicitly confirmed, at
+                which time the original server is removed. All resizes
+                are automatically confirmed after 24 hours if you do
+                not confirm or revert them.</para>
         </listitem>
         <listitem>
-            <para><emphasis role="bold">Pause action</emphasis></para>
-            <para>Pauses a server and causes it to run in a frozen
-                state. To pause a server, make a <link
-                    xlink:href="http://docs.openstack.org/api/openstack-compute/2/content/POST_os-admin-actions-v2_pause__v2__tenant_id__servers__server_id__action_ext-action.html"
-                    >Pause server</link> request. This request stores
-                the state of the VM in RAM.</para>
+            <para><emphasis role="bold">Pause</emphasis></para>
+            <para>You can pause a server by making a pause request. This
+                request stores the state of the VM in RAM. A paused
+                instance continues to run in a frozen state.</para>
         </listitem>
         <listitem>
-            <para><emphasis role="bold">Suspend
-                action</emphasis></para>
-            <para>Suspends a server, which stores its VM state on
-                disk, writes all memory to disk, and stops the virtual
-                machine. Suspending an instance is similar to placing
-                a device in hibernation; memory and vCPUs become
-                available to create other instances. Administrative
-                users might want to suspend an infrequently used
-                instance or suspend an instance to perform system
-                maintenance.</para>
-        </listitem>
-        <listitem>
-            <para><emphasis role="bold">Unpause
-                action</emphasis></para>
-            <para>Unpauses a paused server. To unpause a server, make
-                an <link
-                    xlink:href="http://docs.openstack.org/api/openstack-compute/2/content/POST_os-admin-actions-v2_unpause__v2__tenant_id__servers__server_id__action_ext-action.html"
-                    >Unpause server</link> request.</para>
+            <para><emphasis role="bold">Suspend</emphasis></para>
+            <para>Administrative users might want to suspend an
+                instance if it is infrequently used or to perform
+                system maintenance. When you suspend an instance, its
+                VM state is stored on disk, all memory is written to
+                disk, and the virtual machine is stopped. Suspending
+                an instance is similar to placing a device in
+                hibernation; memory and vCPUs become available to
+                create other instances.</para>
         </listitem>
     </itemizedlist>
 </section>
