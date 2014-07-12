@@ -1,0 +1,11 @@
+Verified+2: Jenkins
+Code-Review+1: Christian Berendt <berendt@b1-systems.de>
+Code-Review+2: Diane Fleming <dfleming@austin.rr.com>
+Workflow+1: Diane Fleming <dfleming@austin.rr.com>
+Code-Review+2: Andreas Jaeger <jaegerandi@gmail.com>
+Workflow+1: Andreas Jaeger <jaegerandi@gmail.com>
+Submitted-by: Jenkins
+Submitted-at: Sat, 12 Jul 2014 20:03:41 +0000
+Reviewed-on: https://review.openstack.org/104309
+Project: openstack/compute-api
+Branch: refs/heads/master
