@@ -614,9 +614,13 @@
                 <para>You can serialize a response in a different
                     format from the request format.</para>
                 <para><xref linkend="JSON_req"/> and <xref
-                        linkend="ImageCreateFullResponse"/> show a
-                    request body in JSON format and a response body in
-                    XML format.</para>
+                        linkend="ImageCreateFullResponse"/> show a request body
+                    in JSON format and a response body in XML format.<note>
+                        <para>Though this document shows them, XML support in
+                            requests and responses has been deprecated for the
+                            Compute API v2 (stable) and v3
+                            (experimental).</para>
+                    </note></para>
                 <example xml:id="JSON_req">
                     <title>JSON request with headers</title>
                     <literallayout role="monospace"><?db-font-size 70%?>POST /v2/010101/servers HTTP/1.1
