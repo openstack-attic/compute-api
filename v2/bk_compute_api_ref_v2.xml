@@ -72,7 +72,15 @@
         </abstract>
         <revhistory>
             <revision>
-
+                <date>2014-07-25</date>
+                <revdescription>
+                    <itemizedlist>
+                        <listitem>
+                            <para>Removed erroneous "changes-since" parameter from List Flavors.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>            <revision>
                 <date>2013-09-10</date>
                 <revdescription>
                     <itemizedlist>

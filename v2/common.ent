@@ -200,7 +200,6 @@
 
      <!ENTITY flavorListParameters
            '
-            <param xmlns="http://wadl.dev.java.net/2009/02" name="changes-since" style="query" required="false" type="xsd:dateTime"><doc><p xmlns="http://www.w3.org/1999/xhtml">A time/date stamp for when the flavor last changed.</p></doc></param>
             <param xmlns="http://wadl.dev.java.net/2009/02" name="minDisk" style="query" required="false" type="xsd:int"><doc><p xmlns="http://www.w3.org/1999/xhtml">Integer value for the minimum disk space in GB so you can filter results.</p></doc></param>
             <param xmlns="http://wadl.dev.java.net/2009/02" name="minRam"  style="query" required="false" type="xsd:int"><doc><p xmlns="http://www.w3.org/1999/xhtml">Integer value for the minimum RAM so you can filter results.</p></doc></param>
             <param xmlns="http://wadl.dev.java.net/2009/02" name="marker" style="query" required="false" type="csapi:UUID"><doc><p xmlns="http://www.w3.org/1999/xhtml">UUID of the flavor at which you want to set a marker.</p></doc></param>
