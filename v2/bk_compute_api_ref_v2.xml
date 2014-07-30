@@ -65,6 +65,16 @@
                     (<abbrev>API</abbrev>).</para>
         </abstract>
         <revhistory>
+            <revision>               
+                <date>2014-07-30</date>
+                <revdescription>
+                    <itemizedlist>
+                        <listitem>
+                            <para>Removed erroneous mention of a "changes-since" parameter in the List Flavors section.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2014-08-01</date>
                 <revdescription>
@@ -726,7 +736,8 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb</literallayout>
                 contain a <code>DELETED</code> status that indicates that the resource has been
                 removed. Implementations are not required to keep track of deleted resources
                 indefinitely, so sending a changes since time in the distant past may miss
-                deletions.</para>
+                would list all servers that have changed since Mon, 24
+                Jan 2011 17:08:00 UTC.</para>
         </section>
         <?hard-pagebreak?>
         <section xml:id="Limits-d1e846">
