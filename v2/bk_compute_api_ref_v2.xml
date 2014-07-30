@@ -66,6 +66,16 @@
         </abstract>
         <revhistory>
             <revision>
+                <date>2014-07-30</date>
+                <revdescription>
+                    <itemizedlist>
+                        <listitem>
+                            <para>Removed erroneous mention of a <parameter>changes-since</parameter> parameter in the List Flavors section.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
                 <date>2014-08-01</date>
                 <revdescription>
                     <para>Removes and replaces all WADL references with links to the <link
