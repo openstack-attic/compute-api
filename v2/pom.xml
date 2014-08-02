@@ -69,34 +69,34 @@
                             <postProcess>
                                 <!-- New stuff -->
                                 <mkdir
-                                   dir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/"/>
+                                   dir="${basedir}/target/docbkx/webhelp/api/openstack-compute/v2/"/>
                                 <!-- Copies schema to a folder and styling for the schemas so a browser can display them -->
                                 <copy
-                                   todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/xsd">
+                                   todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/v2/xsd">
                                    <fileset dir="${basedir}/xsd">
                                    <include name="**/*.*"/>
                                    </fileset>
                                 </copy>
                                 <copy
-                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/xslt">
+                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/v2/xslt">
                                    <fileset dir="${basedir}/xslt">
                                    <include name="**/*.*"/>
                                    </fileset>
                                 </copy>
                                 <copy
-                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/style">
+                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/v2/style">
                                    <fileset dir="${basedir}/style">
                                    <include name="**/*.*"/>
                                    </fileset>
                                 </copy>
                                 <copy
-                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/js">
+                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/v2/js">
                                    <fileset dir="${basedir}/js">
                                    <include name="**/*.*"/>
                                    </fileset>
                                 </copy>
                                 <copy
-                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/samples">
+                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/v2/samples">
                                    <fileset
                                    dir="${basedir}/samples">
                                    <include name="**/*.*"/>
@@ -104,7 +104,7 @@
                                 </copy>
                                 <!-- Copies wadl to a folder -->
                                 <copy
-                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/2/">
+                                    todir="${basedir}/target/docbkx/webhelp/api/openstack-compute/v2/">
                                    <fileset dir="${basedir}/">
                                    <include name="**/*.wadl"/>
                                    </fileset>
