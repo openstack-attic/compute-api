@@ -1,0 +1,8 @@
+Verified+2: Jenkins
+Code-Review+2: Andreas Jaeger <jaegerandi@gmail.com>
+Workflow+1: Andreas Jaeger <jaegerandi@gmail.com>
+Submitted-by: Jenkins
+Submitted-at: Mon, 18 Aug 2014 18:56:33 +0000
+Reviewed-on: https://review.openstack.org/115052
+Project: openstack/compute-api
+Branch: refs/heads/master
