@@ -1190,11 +1190,11 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                         <para><code>ACTIVE</code>. The server is active.</para>
                     </listitem>
                     <listitem>
-                        <para><code>BUILD</code>. The server has not finished the original build
+                        <para><code>BUILDING</code>. The server has not finished the original build
                             process.</para>
                     </listitem>
                     <listitem>
-                        <para><code>DELETED</code>. The server is deleted.</para>
+                        <para><code>DELETED</code>. The server is permanently deleted.</para>
                     </listitem>
                     <listitem>
                         <para><code>ERROR</code>. The server is in error.</para>
@@ -1209,6 +1209,10 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                             server.</para>
                     </listitem>
                     <listitem>
+                        <para><code>PAUSED</code>. The server is paused and continues to run in frozen state.
+                        The state of the server is stored in RAM.</para>
+                    </listitem>
+                    <listitem>
                         <para><code>REBOOT</code>. The server is in a soft reboot state. A reboot
                             command was passed to the operating system.</para>
                     </listitem>
@@ -1217,17 +1221,15 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                             image.</para>
                     </listitem>
                     <listitem>
-                        <para><code>RESCUE</code>. The server is in rescue mode.</para>
+                        <para><code>RESCUED</code>. The server is in rescue mode. A rescue image
+                            is running with the original server image attached.</para>
                     </listitem>
                     <listitem>
-                        <para><code>RESIZE</code>. Server is performing the differential copy of
-                            data that changed during its initial copy. Server is down for this
-                            stage.</para>
+                        <para><code>RESIZED</code>. The server is down while it performs a differential copy of data that changed during its initial copy.</para>
                     </listitem>
                     <listitem>
-                        <para><code>REVERT_RESIZE</code>. The resize or migration of a server failed
-                            for some reason. The destination server is being cleaned up and the
-                            original source server is restarting.</para>
+                        <para><code>REVERT_RESIZE</code>. Because a server resize or migration failed, the destination server is
+                        being cleaned up as the original source server restarts.</para>
                     </listitem>
                     <listitem>
                         <para><code>SHUTOFF</code>. The virtual machine (VM) was powered down by the
@@ -1241,9 +1243,17 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                             Instance model.</para>
                     </listitem>
                     <listitem>
-                        <para><code>SUSPENDED</code>. The server is suspended, either by request or
-                            necessity. This status appears for only the following hypervisors:
-                            XenServer/XCP, KVM, and ESXi. Administrative users may suspend an
+                        <para><code>SOFT_DELETED</code>. The server is marked as deleted but the
+                            disk images are still available to restore.</para>
+                    </listitem>
+                    <listitem>
+                        <para><code>STOPPED</code>. The server is powered off and the disk image
+                            still persists.</para>
+                    </listitem>
+                    <listitem>
+                        <para><code>SUSPENDED</code>. The server is suspended either by request or
+                            necessity. This status appears for only
+                            XenServer/XCP, KVM, and ESXi hypervisors. Administrative users can suspend an
                             instance if it is infrequently used or to perform system maintenance.
                             When you suspend an instance, its VM state is stored on disk, all memory
                             is written to disk, and the virtual machine is stopped. Suspending an
@@ -1255,17 +1265,16 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                             cloud provider.</para>
                     </listitem>
                     <listitem>
-                        <para><code>VERIFY_RESIZE</code>. System is awaiting confirmation that the
+                        <para><code>VERIFY_RESIZE</code>. The system awaits confirmation that the
                             server is operational after a move or resize.</para>
                     </listitem>
                 </itemizedlist>
-                <para>The compute provisioning algorithm has an anti-affinity property that attempts
-                    to spread customer VMs across hosts. Under certain situations, VMs from the same
-                    customer might be placed on the same host. <property>hostId</property>
-                    represents the host your server runs on and can be used to determine this
+                <para>The compute provisioning algorithm has an anti-affinity property that tries to distribute customer VMs across hosts. Under certain situations, VMs from the same
+                    customer might be placed on the same host. The <property>hostId</property> property
+                    represents the host that your server runs on and can be used to determine this
                     scenario if it is relevant to your application.</para>
                 <note>
-                    <para><property>HostId</property> is unique <emphasis>per account</emphasis> and
+                    <para>The <property>hostId</property> property is unique <emphasis>per account</emphasis> and
                         is not globally unique.</para>
                 </note>
             </section>
