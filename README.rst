@@ -1,9 +1,16 @@
 Compute API
 +++++++++++
 
-This repository contains the RESTful API information for the OpenStack
-Compute project, also known as Nova. The Nova project provides open
-source cloud management and orchestration services.
+This repository is now frozen-in-time and will not accept new patches.
+
+To update Compute API information, please submit patches to
+http://git.openstack.org/cgit/openstack/nova-specs for a new API feature
+and to http://git.openstack.org/cgit/openstack/api-site and http://git.openstack.org/cgit/openstack/nova for implemented v2.0 API
+information.
+
+It was the original API information holder for the OpenStack Compute project,
+also known as Nova. The Nova project provides open source cloud management and
+orchestration services.
 
 Prerequisites
 =============
